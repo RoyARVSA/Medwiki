@@ -1,0 +1,10 @@
+title: Medwiki
+language: zh-Hant
+theme: academic-blue
+public_output_roots: [03_outputs/web, 03_outputs/slides]
+public_assets: assets
+exclude: [00_inbox, 02_sources/raw, private, .obsidian]
+formats: [html, pptx, pdf]
+pending_label: 待加入
+repository_url: https://github.com/RoyARVSA/Medwiki
+note: 首版無即時 LLM 問答、無常駐監看；發布只用白名單成品。

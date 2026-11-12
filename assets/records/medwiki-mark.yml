@@ -1,0 +1,18 @@
+asset_id: asset-medwiki-mark
+title: Medwiki knowledge nodes
+path: assets/images/medwiki-mark.svg
+description: Five knowledge nodes around a medical cross; original vector brand illustration.
+keywords:
+- brand
+- knowledge
+- medical-learning
+source_type: original_vector_design
+author: Medwiki project
+source_url: null
+public_permission: confirmed
+permission_basis: Original project artwork; user selected option C on 2026-11-12.
+modifications: []
+used_by:
+- site-header
+- favicon
+review_status: reviewed

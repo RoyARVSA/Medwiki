@@ -1,0 +1,49 @@
+name: Check and publish Medwiki
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements.txt
+      - name: Reject tracked private paths
+        shell: bash
+        run: |
+          if git ls-files | rg '^(private/|00_inbox/|02_sources/raw/|\.obsidian/|\.env($|\.))'; then
+            echo 'Private files must not be tracked.'
+            exit 1
+          fi
+      - run: python -m unittest discover -s tests -v
+      - run: python scripts/build_site.py
+      - run: python scripts/lint.py
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: .build/site
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

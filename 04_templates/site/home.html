@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block bodyclass %}home{% endblock %}
+{% block body %}
+<main id="main">
+  <section class="hero">
+    <div class="hero-copy"><div class="eyebrow"><span class="tiny-line"></span> MEDICAL LEARNING</div><h1>醫學學習<br><span>知識網站</span></h1><p class="hero-desc">疾病診斷、處置流程、論文摘要與指引比較。<br>依主題瀏覽醫學筆記與已完成的學習成果。</p><div class="hero-actions"><a class="button primary" href="#topics">探索學習主題 <span>↗</span></a><button class="button quiet" data-open-search>搜尋知識庫 <span>⌕</span></button></div><div class="hero-note"><span class="status-dot"></span> 醫學生學習與文獻整理</div></div>
+    <div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div><span class="orbit-label label-one">CONCEPT</span><span class="orbit-label label-two">EVIDENCE</span><span class="orbit-label label-three">PRACTICE</span><div class="art-center"><span class="art-plus">+</span><span>MED<br>WIKI</span></div><span class="art-caption">MEDICAL KNOWLEDGE</span></div>
+  </section>
+  <div class="library-stats"><div><strong>{{ count }}</strong><span>學習篇章</span></div><div><strong>{{ sources|length }}</strong><span>文獻與指引</span></div><div><strong>{{ topic_count }}</strong><span>學習主題</span></div><p>主題筆記 · 文獻摘要<br>指引比較 · 學習成果</p></div>
+  <section class="section" id="topics"><div class="section-heading"><div><span class="eyebrow">EXPLORE BY TOPIC</span><h2>從主題開始</h2></div><span class="section-caption">依科別與主題瀏覽</span></div>
+    {% for t in topic_entries %}<a class="topic-feature" href="{{ t.url }}"><div class="topic-copy"><div class="topic-tags"><span>{{ t.specialty_en }}</span><span>{{ t.specialty_label }}</span></div><h3>{{ t.topic_title }}<span>{{ t.title_en }}</span></h3><p>{{ t.summary }}</p><span class="topic-link">進入學習專題 <span>→</span></span></div><div class="topic-map">{% for n in nav if n.web_topic == t.web_topic and n.web_file != 'index.html' and n.type != 'source_summary' %}{% if loop.index <= 4 %}<span class="map-chip chip-{{ ['one','two','three','four'][loop.index0] }}">{{ n.nav_title }}</span>{% endif %}{% endfor %}<div class="map-core">{{ t.topic_title }}</div></div></a>{% else %}<p>目前尚無主題網頁。新增指定發布的 wiki 後即可出現在此。</p>{% endfor %}
+  </section>
+  <section class="section" id="literature"><div class="section-heading"><div><span class="eyebrow">READ THE EVIDENCE</span><h2>文獻與指引</h2></div><span class="section-caption">保留方法、結果與不確定性</span></div><div class="paper-grid">{% for p in nav if p.type == 'source_summary' %}<a class="paper-card" href="{{ p.url }}"><span class="paper-number">0{{ loop.index }}</span><div class="paper-meta"><span>{{ p.source_label }}</span><span>{{ p.year_label }}</span></div><h3>{{ p.title }}</h3><p>{{ p.summary }}</p><div class="paper-footer"><span>{{ p.author_label }}</span><span aria-hidden="true">↗</span></div></a>{% endfor %}</div></section>
+  <section class="section" id="outputs"><div class="section-heading"><div><span class="eyebrow">LEARNING, MADE VISIBLE</span><h2>學習成果</h2></div><span class="section-caption">已完成的內容，以及下一次更新的位置</span></div>
+    <div class="output-tabs"><button class="selected" data-output-tab="complete" aria-pressed="true">已完成 <span>{{ catalog|length }}</span></button><button data-output-tab="pending" aria-pressed="false">待加入 <span>＋</span></button></div>
+    <div id="completed-outputs" class="output-list">{% for item in catalog %}<a class="output-item" href="{{ item.path }}"><span class="format">{{ item.kind|upper }}</span><span>{{ item.title }}</span><span class="output-end">已完成 <span>↗</span></span></a>{% else %}<p>目前尚無完成成果。</p>{% endfor %}</div>
+    <div id="pending-outputs" class="pending-panel" hidden><span class="pending-plus" aria-hidden="true">＋</span><h3>待加入的學習內容</h3><p>新的主題、文獻筆記與簡報將逐步加入。<br>目前尚未完成的內容，不會顯示為可開啟的成果。</p><span class="pill">待加入 · 持續更新</span></div>
+    <div class="coming-note"><span aria-hidden="true">＋</span><p><strong>待加入</strong>　更多專科主題與簡報，將隨學習逐步更新。</p></div>
+  </section>
+</main>
+{% endblock %}

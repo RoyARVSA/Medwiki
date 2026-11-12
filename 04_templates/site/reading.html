@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}{{ page.title }} | Medwiki{% endblock %}
+{% block description %}{{ page.summary }}{% endblock %}
+{% block bodyclass %}reading{% endblock %}
+{% block body %}
+<div class="mobile-reading-bar"><a href="{{ rel('index.html', current) }}">← 返回</a><span>{{ page.topic_title }}</span><button id="mobile-menu" aria-expanded="false" aria-controls="topic-sidebar">篇章 ☰</button></div>
+<div class="reading-layout">
+  <aside class="topic-sidebar" id="topic-sidebar" aria-label="主題導航"><a class="back-library" href="{{ rel('index.html', current) }}#topics">← 所有主題</a><div class="sidebar-topic"><span class="eyebrow">{{ page.specialty_en }}</span><h2>{{ page.topic_title }}</h2><p>{{ page.specialty_label }} · 學習地圖</p></div><span class="nav-label">學習篇章</span><nav>{% for p in nav %}<a href="{{ rel(p.url, current) }}" {% if p.id == page.id %}aria-current="page" class="active"{% endif %}><span class="nav-number">0{{ loop.index }}</span>{{ p.nav_title }}</a>{% endfor %}</nav><div class="sidebar-bottom"><span class="status-dot"></span> 學習內容更新中<a href="{{ rel('index.html', current) }}#outputs">查看所有學習成果 ↗</a></div></aside>
+  <main class="article-main" id="main"><div class="breadcrumb"><a href="{{ rel('index.html', current) }}">知識庫</a><span>/</span><a href="{{ rel(nav[0].url, current) }}">{{ page.topic_title }}</a><span>/</span><span>{{ page.nav_title }}</span></div>
+    <header class="article-header"><span class="eyebrow">{{ page.eyebrow }}</span><h1>{{ page.title }}</h1><p class="article-subtitle">{{ page.title_en }}</p><p class="article-summary">{{ page.summary }}</p><div class="article-meta"><span class="pill review-pill">{{ '✓ 已人工審閱' if page.review_status == 'reviewed' else '◌ 未人工審閱' }}</span><span>更新 {{ page.updated }}</span><button id="focus-inline" class="text-button" aria-pressed="false">專注閱讀 ↔</button><button id="print-page" class="text-button">列印 / PDF ↗</button></div></header>
+    {% if page.conflict_status == 'open' %}<div class="conflict-strip"><span aria-hidden="true">◇</span><p>本頁保留尚未裁決的來源差異或原文問題。</p>{% if page.comparison_url %}<a href="{{ rel(page.comparison_url, current) }}">查看比較 →</a>{% endif %}</div>{% endif %}
+    <details class="compact-toc"><summary>本頁目錄</summary>{{ toc|safe }}</details>
+    <article class="prose">{{ content|safe }}</article>
+    <section class="references" id="references"><span class="eyebrow">REFERENCES</span><h2>參考文獻與定位</h2>{% for key,s in sources.items() if s.source_id in page.source_ids %}<div class="reference-item"><span class="reference-key">{{ key }}</span><div><strong>{{ s.short_title }}</strong><p>{{ s.title }}</p><a href="{{ s.url }}" target="_blank" rel="noopener">doi: {{ s.doi }} ↗</a></div></div>{% endfor %}<p class="small muted">文內引用可點擊查看 PDF 頁次與期刊頁碼。人工審閱狀態與原文證據分級分開保存。</p></section>
+    <nav class="chapter-nav" aria-label="前後篇章">{% for p in nav if p.order == page.order - 1 %}<a href="{{ rel(p.url,current) }}"><span>← 上一篇</span><strong>{{ p.nav_title }}</strong></a>{% endfor %}{% for p in nav if p.order == page.order + 1 %}<a class="next" href="{{ rel(p.url,current) }}"><span>下一篇 →</span><strong>{{ p.nav_title }}</strong></a>{% endfor %}</nav>
+  </main>
+  <aside class="page-toc"><span class="eyebrow">ON THIS PAGE</span>{{ toc|safe }}<a class="toc-ref" href="#references">參考文獻 ↗</a><button id="focus-toggle" class="focus-toggle" aria-pressed="false">專注閱讀 ↔</button></aside>
+</div>
+<script type="application/json" id="citation-data">{{ citations_json|safe }}</script>
+<button class="back-top" aria-label="返回頁首">↑</button>
+{% endblock %}

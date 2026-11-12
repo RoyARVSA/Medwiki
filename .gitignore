@@ -1,0 +1,13 @@
+/00_inbox/
+/02_sources/raw/
+/private/
+/.obsidian/
+/.build/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+node_modules/
+.DS_Store
+Thumbs.db

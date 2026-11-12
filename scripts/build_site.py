@@ -1,0 +1,151 @@
+"""Deterministic static pages, public-only staging and local generated outputs."""
+import argparse
+from html import escape
+import json
+from pathlib import Path
+import re
+import shutil
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / '.build/deps'))
+import markdown
+from jinja2 import Environment, FileSystemLoader, select_autoescape
+import common
+
+PUBLIC_EXT = {'.html', '.css', '.js', '.json', '.svg', '.png', '.jpg', '.jpeg', '.webp', '.gif', '.ico', '.woff', '.woff2', '.ttf', '.pdf', '.pptx'}
+
+
+def checked_rmtree(path, root):
+    if path.is_symlink() or not path.resolve().is_relative_to((root / '.build').resolve()):
+        raise ValueError('Refusing unsafe build cleanup')
+    if path.exists():
+        shutil.rmtree(path)
+
+
+def build_site(root=common.ROOT):
+    root = Path(root).resolve()
+    from lint import lint, check_html
+    content_errors = lint(root, check_site=False)
+    if content_errors:
+        raise ValueError('\n'.join(content_errors))
+    docs = common.load_documents(root)
+    published = sorted([d for d in docs if d.get('publish')], key=lambda d: d.get('order', 100))
+    sources = common.load_sources(root)
+    env = Environment(loader=FileSystemLoader(root / '04_templates/site'), autoescape=select_autoescape(['html']))
+    env.globals['rel'] = common.relative_url
+    stage = root / '.build/site-next'
+    target = root / '.build/site'
+    checked_rmtree(stage, root)
+    stage.mkdir(parents=True)
+    nav = []
+    for d in published:
+        name = d.get('web_file', '')
+        if not re.fullmatch(r'[a-z0-9-]+\.html', name):
+            raise ValueError('web_file must be an English HTML filename')
+        topic_slug = d.get('web_topic', 'sjs-ten')
+        if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', topic_slug):
+            raise ValueError('web_topic must be a lowercase English slug')
+        d['web_topic'] = topic_slug
+        d['topic_title'] = d.get('topic_title', 'SJS / TEN' if topic_slug == 'sjs-ten' else topic_slug)
+        d['specialty_label'] = d.get('specialty_label', '皮膚科' if topic_slug == 'sjs-ten' else '醫學主題')
+        d['specialty_en'] = d.get('specialty_en', str(d.get('tags', ['MEDICINE'])[0] if d.get('tags') else 'MEDICINE').upper())
+        src = next((s for s in sources.values() if s['source_id'] in d.get('source_ids', [])), {})
+        d['author_label'] = src.get('short_title', '')
+        d['year_label'] = src.get('year', '')
+        d['source_label'] = str(src.get('source_type', 'SOURCE SUMMARY')).replace('_', ' ').upper()
+        d['url'] = '03_outputs/web/' + topic_slug + '/' + name
+        if d['url'] in [n['url'] for n in nav]:
+            raise ValueError('Duplicate published route')
+        nav.append(d)
+    route_map = {d['path']: d['url'] for d in published}
+    search = []
+    generated = {}
+    public_sources = {k: {f: v for f, v in s.items() if f in ['title', 'short_title', 'year', 'doi', 'url', 'pdf_pages', 'printed_start', 'printed_prefix']} for k, s in sources.items()}
+    for d in published:
+        text = common.render_citations(d['body'], sources)
+        md = markdown.Markdown(extensions=['tables', 'toc', 'fenced_code', 'attr_list'], extension_configs={'toc': {'slugify': lambda s, sep: re.sub(r'[^\w\-]+', '-', s.lower()).strip('-')}})
+        content = md.convert(text)
+        def fix_link(m):
+            val = m.group(1)
+            if '.md' not in val or '://' in val:
+                return m.group(0)
+            file, _, anchor = val.partition('#')
+            dest = (root / d['path']).parent.joinpath(file).resolve()
+            if not dest.is_relative_to(root):
+                raise ValueError('Wiki link escapes workspace')
+            mapped = route_map.get(dest.relative_to(root).as_posix())
+            if not mapped:
+                raise ValueError(f'Unpublished wiki link: {file}')
+            return 'href="' + common.relative_url(mapped, d['url']) + ('#' + anchor if anchor else '') + '"'
+        content = re.sub(r'href="([^"]+)"', fix_link, content)
+        topic_nav = [n for n in nav if n['web_topic'] == d['web_topic']]
+        d['comparison_url'] = next((n['url'] for n in topic_nav if n.get('type') == 'comparison'), None)
+        page = env.get_template('reading.html').render(page=d, content=content, toc=md.toc, nav=topic_nav, sources=sources, citations_json=json.dumps(public_sources, ensure_ascii=False).replace('<', '\\u003c'), current=d['url'])
+        generated[d['url']] = page
+        parser = common.PlainHTML()
+        parser.feed(content)
+        search.append({'title': d['title'], 'summary': d.get('summary', ''), 'tags': d.get('tags', []), 'aliases': d.get('aliases', []), 'url': d['url'], 'text': ' '.join(parser.text), 'type': d.get('type'), 'review': d.get('review_status')})
+    search_json = json.dumps(search, ensure_ascii=False, sort_keys=True).replace('<', '\\u003c')
+    search_script = '<script type="application/json" id="local-search-data">' + search_json + '</script>'
+    generated = {url: html.replace('<!-- SEARCH_DATA -->', search_script) for url, html in generated.items()}
+    # Copy only whitelisted public assets and user-created outputs; never raw/private.
+    for folder in ['assets', '03_outputs/web', '03_outputs/slides']:
+        for path in sorted((root / folder).rglob('*')):
+            if path.suffix.lower() in PUBLIC_EXT and common.safe_file(path, root):
+                rel = path.relative_to(root)
+                if any(x.startswith('.') or x in {'node_modules', '_internal'} for x in rel.parts):
+                    continue
+                out = stage / rel
+                out.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(path, out)
+    old_manifest = root / '.build/generated-pages.json'
+    old = json.loads(old_manifest.read_text()) if old_manifest.exists() else []
+    for stale in set(old) - set(generated):
+        if stale.startswith('03_outputs/web/'):
+            p = stage / stale
+            if p.exists() and 'medwiki-generated' in p.read_text(encoding='utf-8', errors='replace'):
+                p.unlink()
+    for url, html in generated.items():
+        existing = root / url
+        if existing.exists() and 'medwiki-generated' not in existing.read_text(encoding='utf-8', errors='replace'):
+            raise ValueError(f'Refusing to overwrite manual output: {url}')
+        common.atomic_text(stage / url, html)
+    catalog = common.discover_outputs(stage, config_root=root)
+    homepage = env.get_template('home.html').render(current='index.html', catalog=catalog, nav=nav, topic=published[0] if published else None, topic_entries=[n for n in nav if n['web_file'] == 'index.html'], topic_count=len({n['web_topic'] for n in nav}), count=len(published), sources=sources).replace('<!-- SEARCH_DATA -->', search_script)
+    common.atomic_text(stage / 'index.html', homepage)
+    common.atomic_text(stage / 'assets/site/search-index.json', json.dumps(search, ensure_ascii=False, sort_keys=True))
+    common.atomic_text(stage / '.nojekyll', '')
+    from lint import check_html
+    errors = check_html(stage)
+    if errors:
+        raise ValueError('\n'.join(errors))
+    # Keep prior site until the staged site passes link checks.
+    backup = root / '.build/site-old'
+    checked_rmtree(backup, root)
+    if target.exists():
+        target.rename(backup)
+    try:
+        stage.rename(target)
+    except Exception:
+        if backup.exists():
+            backup.rename(target)
+        raise
+    checked_rmtree(backup, root)
+    for url, html in generated.items():
+        common.atomic_text(root / url, html)
+    for stale in set(old) - set(generated):
+        p = (root / stale).resolve()
+        if p.is_relative_to((root / '03_outputs/web').resolve()) and p.exists() and 'medwiki-generated' in p.read_text(encoding='utf-8', errors='replace'):
+            p.unlink()
+    common.atomic_text(root / 'index.html', homepage)
+    common.atomic_text(root / 'assets/site/search-index.json', json.dumps(search, ensure_ascii=False, sort_keys=True))
+    common.atomic_text(old_manifest, json.dumps(sorted(generated)))
+    from update_indexes import update_markdown
+    update_markdown(root)
+    return target
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--root', type=Path, default=common.ROOT)
+    args = parser.parse_args()
+    print('Built:', build_site(args.root))
