@@ -5,7 +5,7 @@
 {% block body %}
 <main id="main" class="hub-main">
   <a class="back-library" href="{{ rel('index.html',current) }}">← 返回醫學學習知識網站</a>
-  <header class="hub-header"><span class="eyebrow">READING LAYOUTS / DESIGN PREVIEW</span><h1>選一種適合你的<br><span>閱讀方式。</span></h1><p>三種內頁，同一份「{{ source.title }}」內容。<br>可直接打開版本，測試表格、引用與平板／手機閱讀。</p><div class="hub-notice">正式版維持原樣。這些是供你比較的設計提案。</div></header>
+  <header class="hub-header"><span class="eyebrow">READING LAYOUTS / DESIGN PREVIEW</span><h1>內頁版型<span>比較</span></h1><p>三種內頁，同一份「{{ source.title }}」內容。<br>可直接打開版本，測試表格、引用與平板／手機閱讀。</p><div class="hub-notice">正式版維持原樣。這些是供你比較的設計提案。</div></header>
   <section class="layout-cards" aria-label="三種版型">
   {% for v in variants %}<a class="layout-choice" href="style-{{ v.key }}.html"><div class="mini-layout mini-{{ v.key }}" aria-hidden="true"><div class="mini-top"><span></span><i></i><i></i></div><div class="mini-sidebar"><b></b><i></i><i></i><i></i><i></i><i></i></div><div class="mini-body"><div class="mini-title"></div><div class="mini-line"></div><div class="mini-tags"></div><div class="mini-section"><b></b><i></i><i></i><i></i></div><div class="mini-section"><b></b><i></i><i></i><i></i></div><div class="mini-section"><b></b><i></i><i></i></div></div><div class="mini-toc"><i></i><i></i><i></i><i></i></div></div><div class="layout-choice-copy"><span class="layout-letter">{{ v.key|upper }}</span><span class="eyebrow">{{ v.english }}</span><h2>{{ v.name }}</h2><p>{{ v.summary }}</p><ul>{% for feature in v.features %}<li>{{ feature }}</li>{% endfor %}</ul><span class="layout-open">開啟這個版本 <span>↗</span></span></div></a>{% endfor %}
   </section>

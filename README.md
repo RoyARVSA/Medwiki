@@ -35,7 +35,7 @@ python -m unittest discover -s tests -v
 python -m http.server 8000 --bind 127.0.0.1 --directory .build/site
 ```
 
-瀏覽器開啟 `http://127.0.0.1:8000/`。本次 agent 執行環境對本機連線有隔離限制，未完成瀏覽器視覺驗證；不需為此停用系統防火牆。直接開啟 HTML 是另一種使用者閱讀方式。
+瀏覽器開啟 `http://127.0.0.1:8000/`。本次 agent 執行環境對本機連線有隔離限制；已改由公開 Pages 網址完成電腦、平板與手機的閱讀、引用、搜尋及版型檢查，不需停用系統防火牆。直接開啟 HTML 仍可離線閱讀。
 
 ## 加入資料
 
