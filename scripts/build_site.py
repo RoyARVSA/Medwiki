@@ -32,6 +32,7 @@ def build_site(root=common.ROOT):
     sources = common.load_sources(root)
     env = Environment(loader=FileSystemLoader(root / '04_templates/site'), autoescape=select_autoescape(['html']))
     env.globals['rel'] = common.relative_url
+    env.globals['asset'] = lambda target, current: common.asset_url(root, target, current)
     stage = root / '.build/site-next'
     target = root / '.build/site'
     checked_rmtree(stage, root)
@@ -59,6 +60,7 @@ def build_site(root=common.ROOT):
     route_map = {d['path']: d['url'] for d in published}
     search = []
     generated = {}
+    rendered = {}
     public_sources = {k: {f: v for f, v in s.items() if f in ['title', 'short_title', 'year', 'doi', 'url', 'pdf_pages', 'printed_start', 'printed_prefix']} for k, s in sources.items()}
     for d in published:
         text = common.render_citations(d['body'], sources)
@@ -81,9 +83,15 @@ def build_site(root=common.ROOT):
         d['comparison_url'] = next((n['url'] for n in topic_nav if n.get('type') == 'comparison'), None)
         page = env.get_template('reading.html').render(page=d, content=content, toc=md.toc, nav=topic_nav, sources=sources, citations_json=json.dumps(public_sources, ensure_ascii=False).replace('<', '\\u003c'), current=d['url'])
         generated[d['url']] = page
+        rendered[d['id']] = (content, md.toc)
         parser = common.PlainHTML()
         parser.feed(content)
         search.append({'title': d['title'], 'summary': d.get('summary', ''), 'tags': d.get('tags', []), 'aliases': d.get('aliases', []), 'url': d['url'], 'text': ' '.join(parser.text), 'type': d.get('type'), 'review': d.get('review_status')})
+    from build_previews import render_previews
+    previews = render_previews(root, env, nav, rendered, sources, public_sources)
+    if set(previews).intersection(generated):
+        raise ValueError('Layout previews conflict with a published route')
+    generated.update(previews)
     search_json = json.dumps(search, ensure_ascii=False, sort_keys=True).replace('<', '\\u003c')
     search_script = '<script type="application/json" id="local-search-data">' + search_json + '</script>'
     generated = {url: html.replace('<!-- SEARCH_DATA -->', search_script) for url, html in generated.items()}

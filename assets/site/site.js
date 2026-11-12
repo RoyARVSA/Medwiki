@@ -55,6 +55,10 @@
       $('#citation-dialog').showModal();
     }));
   }
+  if (document.body.classList.contains('layout-b')) {
+    const article = $('.prose'); let card;
+    [...article.childNodes].forEach(node => {if(node.nodeType===1 && node.tagName==='H2'){card=document.createElement('section');card.className='section-card';article.insertBefore(card,node);}if(card)card.append(node);});
+  }
   $$('.prose table').forEach(t => { const wrap = document.createElement('div'); wrap.className = 'table-wrap'; wrap.tabIndex = 0; wrap.setAttribute('role','region'); wrap.setAttribute('aria-label','可橫向捲動的比較表格'); t.before(wrap); wrap.append(t); });
   const mobile = $('#mobile-menu');
   mobile?.addEventListener('click', () => {const open = $('#topic-sidebar').classList.toggle('open'); mobile.setAttribute('aria-expanded', String(open));});

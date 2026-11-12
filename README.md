@@ -4,6 +4,9 @@
 
 ## 開始閱讀
 
+- [線上網站](https://royarvsa.github.io/Medwiki/)
+- [內頁版型比較](https://royarvsa.github.io/Medwiki/03_outputs/web/layout-previews/index.html)：三種設計使用相同內容，正式內頁暫不替換。
+
 - [網站首頁](index.html)：學術藍色知識入口、完成成果與待加入區。
 - [SJS/TEN 學習專題](03_outputs/web/sjs-ten/index.html)。
 - [全部 wiki 索引](index.md)：適合 Obsidian。
@@ -52,7 +55,7 @@ python -m http.server 8000 --bind 127.0.0.1 --directory .build/site
 
 ## GitHub Pages
 
-已準備 `.github/workflows/pages.yml`：PR/分支執行檢查，只有預設分支 push 或手動執行才部署。第一次仍需由儲存庫設定將 Pages source 選為 GitHub Actions。本機尚未建立 Git 儲存庫、推送或部署。
+已準備 `.github/workflows/pages.yml`：PR/分支執行檢查，只有預設分支 push 或手動執行才部署。儲存庫已設定 Pages source 為 GitHub Actions，首次部署已成功。之後推送預設分支會重新建置與部署。
 
 公開來源文件可重建網站，不依賴私有 PDF。網站發布白名單與 `.gitignore` 分開管理；不把專案整個根目錄上傳為 Pages artifact。第三方內容未經確認不重新授權。
 

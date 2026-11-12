@@ -124,6 +124,54 @@ class PipelineTests(unittest.TestCase):
         with self.assertRaises(ValueError):build.build_site(self.root)
         self.assertEqual((dest/'index.html').read_text(),'last-valid-site')
 
+    def test_layout_previews_reuse_content_without_changing_source(self):
+        self.api();self.prepare_templates();self.add_page('treatment')
+        config=self.root/'config';config.mkdir()
+        (config/'layout-previews.yml').write_text('enabled: true\nsource_id: treatment\n')
+        source=self.root/'01_wiki/concepts/treatment.md';before=source.read_bytes()
+        build.build_site(self.root)
+        import re
+        original=(self.root/'.build/site/03_outputs/web/asthma/treatment.html').read_text(encoding='utf-8')
+        content=re.search(r'<article class="prose">(.*?)</article>',original,re.S).group(1)
+        for key in ['a','b','c']:
+            p=self.root/'.build/site/03_outputs/web/layout-previews'/('style-'+key+'.html')
+            self.assertTrue(p.exists())
+            actual=re.search(r'<article class="prose">(.*?)</article>',p.read_text(encoding='utf-8'),re.S).group(1)
+            self.assertEqual(content,actual)
+        self.assertEqual(source.read_bytes(),before)
+        self.assertTrue((self.root/'.build/site/03_outputs/web/layout-previews/index.html').exists())
+
+    def test_preview_article_links_are_rebased_to_the_original_topic(self):
+        self.api();self.prepare_templates();self.add_page('treatment');self.add_page('next',order=2)
+        source=self.root/'01_wiki/concepts/treatment.md'
+        source.write_text(source.read_text(encoding='utf-8')+'\n[Next](next.md)\n',encoding='utf-8')
+        p=self.root/'config';p.mkdir()
+        (p/'layout-previews.yml').write_text('enabled: true\nsource_id: treatment\n')
+        build.build_site(self.root)
+        page=(self.root/'.build/site/03_outputs/web/layout-previews/style-a.html').read_text(encoding='utf-8')
+        self.assertIn('href="../asthma/next.html"',page)
+
+    def test_missing_layout_preview_source_preserves_existing_site(self):
+        self.api();self.prepare_templates()
+        p=self.root/'config';p.mkdir()
+        (p/'layout-previews.yml').write_text('enabled: true\nsource_id: missing\n')
+        dest=self.root/'.build/site';dest.mkdir(parents=True)
+        (dest/'index.html').write_text('last-valid-site')
+        with self.assertRaises(ValueError):build.build_site(self.root)
+        self.assertEqual((dest/'index.html').read_text(),'last-valid-site')
+
+    def test_updated_stylesheet_gets_new_browser_cache_key(self):
+        self.api();self.prepare_templates()
+        import re
+        build.build_site(self.root)
+        home=self.root/'.build/site/index.html'
+        old=re.search(r'href="([^"]*site\.css[^"]*)"',home.read_text(encoding='utf-8')).group(1)
+        style=self.root/'assets/site/site.css'
+        style.write_text(style.read_text(encoding='utf-8')+'\n/* changed style */',encoding='utf-8')
+        build.build_site(self.root)
+        new=re.search(r'href="([^"]*site\.css[^"]*)"',home.read_text(encoding='utf-8')).group(1)
+        self.assertNotEqual(old,new)
+
     def test_local_fragments_must_resolve_to_existing_heading(self):
         self.api()
         from lint import check_html

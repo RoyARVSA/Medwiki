@@ -1,5 +1,6 @@
 """Content, citations and public output discovery; never reads local raw files."""
 from html import escape, unescape
+import hashlib
 from html.parser import HTMLParser
 import os
 from pathlib import Path
@@ -54,6 +55,11 @@ def safe_file(path, root):
 
 def relative_url(target, current):
     return quote(os.path.relpath(target, str(Path(current).parent)).replace('\\', '/'), safe='/#')
+
+
+def asset_url(root, target, current):
+    key = hashlib.sha256((root / target).read_bytes()).hexdigest()[:12]
+    return relative_url(target, current) + '?v=' + key
 
 
 def printed_pages(src, spec):

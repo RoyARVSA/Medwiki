@@ -7,10 +7,11 @@
   <meta name="color-scheme" content="light">
   <meta name="description" content="{% block description %}醫學學習、文獻閱讀與持續累積的知識筆記。{% endblock %}">
   <title>{% block title %}Medwiki · 醫學學習知識庫{% endblock %}</title>
-  <link rel="icon" href="{{ rel('assets/images/medwiki-mark.svg', current) }}" type="image/svg+xml">
-  <link rel="icon" href="{{ rel('assets/images/favicon-32.png', current) }}" type="image/png" sizes="32x32">
-  <link rel="stylesheet" href="{{ rel('assets/site/site.css', current) }}">
-  <script src="{{ rel('assets/site/site.js', current) }}" defer></script>
+  <link rel="icon" href="{{ asset('assets/images/medwiki-mark.svg', current) }}" type="image/svg+xml">
+  <link rel="icon" href="{{ asset('assets/images/favicon-32.png', current) }}" type="image/png" sizes="32x32">
+  <link rel="stylesheet" href="{{ asset('assets/site/site.css', current) }}">
+  {% block extra_head %}{% endblock %}
+  <script src="{{ asset('assets/site/site.js', current) }}" defer></script>
 </head>
 <body data-home="{{ rel('index.html', current) }}" class="{% block bodyclass %}{% endblock %}">
   <a class="skip" href="#main">跳至正文</a>
