@@ -3,6 +3,7 @@ from pathlib import Path
 import re
 from urllib.parse import unquote, urlsplit
 import common
+import markdown
 
 
 def check_html(root):
@@ -29,6 +30,25 @@ def check_html(root):
     return errors
 
 
+def check_source_locators(root, sources):
+    """Check every advertised HTML locator against the completed public tree."""
+    errors = []
+    for key, source in sources.items():
+        path = source.get('public_path')
+        if source.get('locator_type') != 'html' or not path:
+            continue
+        dest = root / path
+        if not common.safe_file(dest, root):
+            errors.append(f'{key}: missing/unsafe HTML source public_path: {path}')
+            continue
+        parser = common.PlainHTML()
+        parser.feed(dest.read_text(encoding='utf-8'))
+        for locator in source['locators']:
+            if locator not in parser.ids:
+                errors.append(f'{key}: missing HTML source locator: {path}#{locator}')
+    return errors
+
+
 def lint(root=common.ROOT, check_site=True):
     errors = []
     seen = set()
@@ -45,6 +65,7 @@ def lint(root=common.ROOT, check_site=True):
             errors.append(f"{d['path']}: unknown source")
         try:
             common.render_citations(d['body'], sources)
+            common.rewrite_media(markdown.markdown(d['body'], extensions=['tables', 'fenced_code', 'attr_list']), root, d['path'])
         except ValueError as e:
             errors.append(f"{d['path']}: {e}")
         for val in re.findall(r'\]\(([^)]+\.md)(?:#[^)]*)?\)', d['body']):
@@ -55,6 +76,7 @@ def lint(root=common.ROOT, check_site=True):
     site = root / '.build/site'
     if check_site and site.exists():
         errors.extend(check_html(site))
+        errors.extend(check_source_locators(site, sources))
         for bad in ['private', '02_sources/raw', '00_inbox', '.obsidian']:
             if (site / bad).exists():
                 errors.append('Private directory in site: ' + bad)

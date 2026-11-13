@@ -1,0 +1,63 @@
+asset_id: asset-dermatology-b3be30ae1e2f856d
+filename: b3be30ae1e2f856d.jpg
+path: assets/images/dermatology/b3be30ae1e2f856d.jpg
+description: 紅色背景上密布大小相近的細小白色膿疱，像針尖撒滿皮膚。
+source_type: clinical_atlas_embedded_image
+source_url: https://dermnetnz.org/imagedetail/4379-acute-generalised-exanthematous-pustulosis
+source_urls:
+- https://dermnetnz.org/imagedetail/4379-acute-generalised-exanthematous-pustulosis
+source_ids:
+- src-dermatology-atlas-55-2026
+title_as_embedded:
+- Acute generalised exanthematous pustulosis
+authors_as_provided:
+- 'Te Whatu Ora '
+copyright_as_embedded:
+- © Te Whatu Ora
+attribution_as_provided:
+- Image sourced from DermNet · © Te Whatu Ora · 原圖／出處
+licence: CC BY-NC-ND 4.0
+licence_url: https://creativecommons.org/licenses/by-nc-nd/4.0/
+conditions_url: https://dermnetnz.org/image-licence
+conditions:
+- Educational noncommercial use only.
+- Credit DermNet and retain the supplied copyright attribution.
+- Link the source image page and licence.
+- Retain the original watermark and distribute only the unchanged image.
+- No endorsement is implied.
+public_allowed: true
+public_allowed_basis: Supplied DermNet image licence section Free use of Watermarked Images, clauses 2–3; visible
+  original watermark retained. This educational wiki is noncommercial.
+licence_checked_at: '2026-11-13'
+modifications: none
+preservation: Decoded supplied HTML image bytes copied unchanged, retaining original frame, metadata, watermark,
+  annotations and scale.
+sha256: b3be30ae1e2f856dc88a58e74d328ee5f5c9a499295ff34c92e03e4d3c321b06
+bytes: 47220
+width: 640
+height: 480
+watermark_observed: Te Whatu Ora
+review_status: not_reviewed
+image_check_scope: Whole-frame visual check for watermark and visible personal labels; not diagnostic interpretation.
+usages:
+- figure_code: 11b-04
+  figure_index: 2
+  article_id: d11
+  source_id: src-dermatology-atlas-55-2026
+  short_id: A
+  caption: 臨床照片 紅色背景上密布大小相近的細小白色膿疱，像針尖撒滿皮膚。
+  attribution: Image sourced from DermNet · © Te Whatu Ora · 原圖／出處
+  source_url: https://dermnetnz.org/imagedetail/4379-acute-generalised-exanthematous-pustulosis
+  alt: 紅色背景上密布大小相近的細小白色膿疱，像針尖撒滿皮膚。
+- figure_code: 11b-04
+  figure_index: 2
+  article_id: c3
+  source_id: src-dermatology-atlas-55-2026
+  short_id: A
+  caption: 臨床照片 紅色背景上密布大小相近的細小白色膿疱，像針尖撒滿皮膚。
+  attribution: Image sourced from DermNet · © Te Whatu Ora · 原圖／出處
+  source_url: https://dermnetnz.org/imagedetail/4379-acute-generalised-exanthematous-pustulosis
+  alt: 紅色背景上密布大小相近的細小白色膿疱，像針尖撒滿皮膚。
+used_in:
+- 01_wiki/comparisons/gpp-agep.md
+- 03_outputs/web/dermatology/gpp-agep.html

@@ -1,0 +1,65 @@
+asset_id: asset-dermatology-d8c0d702e22af0ec
+filename: d8c0d702e22af0ec.jpg
+path: assets/images/dermatology/d8c0d702e22af0ec.jpg
+description: 口鼻周圍的紅斑、痂與細裂隙是讀圖線索；真正口腔黏膜是否保留，仍須檢查。
+source_type: clinical_atlas_embedded_image
+source_url: https://dermnetnz.org/imagedetail/3251-staphylococcal-scalded-skin-syndrome
+source_urls:
+- https://dermnetnz.org/imagedetail/3251-staphylococcal-scalded-skin-syndrome
+source_ids:
+- src-dermatology-atlas-supplement-01-2026
+title_as_embedded:
+- Staphylococcal scalded skin syndrome
+authors_as_provided:
+- 'Dr Lawrence Meyerson '
+copyright_as_embedded:
+- © Dr Lawrence Meyerson
+attribution_as_provided:
+- Image sourced from DermNet · © Dr Lawrence Meyerson · 原圖／出處
+licence: CC BY-NC-ND 4.0
+licence_url: https://creativecommons.org/licenses/by-nc-nd/4.0/
+conditions_url: https://dermnetnz.org/image-licence
+conditions:
+- Educational noncommercial use only.
+- Credit DermNet and retain the supplied copyright attribution.
+- Link the source image page and licence.
+- Retain the original watermark and distribute only the unchanged image.
+- No endorsement is implied.
+public_allowed: true
+public_allowed_basis: Supplied DermNet image licence section Free use of Watermarked Images, clauses 2–3; visible
+  original watermark retained. This educational wiki is noncommercial.
+licence_checked_at: '2026-11-13'
+modifications: none
+preservation: Decoded supplied HTML image bytes copied unchanged, retaining original frame, metadata, watermark,
+  annotations and scale.
+sha256: d8c0d702e22af0ec33960db4056872a5473b48e965746fe3de13eb2037ad9b13
+bytes: 44580
+width: 640
+height: 480
+watermark_observed: DermNet
+review_status: not_reviewed
+image_check_scope: Whole-frame visual check for watermark and visible personal labels; not diagnostic interpretation.
+usages:
+- figure_code: 58-05
+  figure_index: 3
+  article_id: d58
+  source_id: src-dermatology-atlas-supplement-01-2026
+  short_id: B
+  caption: 臨床照片 口鼻周圍的紅斑、痂與細裂隙是讀圖線索；真正口腔黏膜是否保留，仍須檢查。
+  attribution: Image sourced from DermNet · © Dr Lawrence Meyerson · 原圖／出處
+  source_url: https://dermnetnz.org/imagedetail/3251-staphylococcal-scalded-skin-syndrome
+  alt: 口鼻周圍的紅斑、痂與細裂隙是讀圖線索；真正口腔黏膜是否保留，仍須檢查。
+- figure_code: 58-05
+  figure_index: 1
+  article_id: blister
+  source_id: src-dermatology-atlas-supplement-01-2026
+  short_id: B
+  caption: 臨床照片 口鼻周圍的紅斑、痂與細裂隙是讀圖線索；真正口腔黏膜是否保留，仍須檢查。
+  attribution: Image sourced from DermNet · © Dr Lawrence Meyerson · 原圖／出處
+  source_url: https://dermnetnz.org/imagedetail/3251-staphylococcal-scalded-skin-syndrome
+  alt: 口鼻周圍的紅斑、痂與細裂隙是讀圖線索；真正口腔黏膜是否保留，仍須檢查。
+used_in:
+- 01_wiki/comparisons/epidermal-detachment-differential.md
+- 01_wiki/concepts/staphylococcal-scalded-skin-syndrome.md
+- 03_outputs/web/dermatology-comparisons/epidermal-detachment-differential.html
+- 03_outputs/web/dermatology/staphylococcal-scalded-skin-syndrome.html

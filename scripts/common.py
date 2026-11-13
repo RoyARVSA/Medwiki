@@ -7,13 +7,17 @@ from pathlib import Path
 import re
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / '.build/deps'))
-from urllib.parse import quote
+from urllib.parse import quote, unquote, urlsplit
 import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
-CITE = re.compile(r'\[@([A-Z]+):([0-9,\-]+)\]')
+CITE = re.compile(r'\[@([^\]\r\n]*)\]')
+LOCATOR = re.compile(r'[A-Za-z][A-Za-z0-9_-]*')
 SUPPORT = {'assets', 'vendor', '_includes', '_internal', 'node_modules'}
 EXTENSIONS = {'.html', '.pdf', '.pptx'}
+PUBLIC_EXT = {'.html', '.css', '.js', '.json', '.svg', '.png', '.jpg', '.jpeg', '.webp', '.gif', '.ico', '.woff', '.woff2', '.ttf', '.pdf', '.pptx'}
+MEDIA_TAG = re.compile(r'<(?:img|video|audio|source)\b(?:[^>\"\']|\"[^\"]*\"|\'[^\']*\')*>', re.I)
+MEDIA_ATTR = re.compile(r'(\s+)([^\s=/>]+)(?:\s*=\s*(?:\"([^\"]*)\"|\'([^\']*)\'|([^\s>]+)))?', re.I)
 
 
 def read_document(path):
@@ -39,10 +43,29 @@ def load_sources(root):
     sources = {}
     for path in sorted((root / '02_sources/records').glob('*.md')):
         data, _ = read_document(path)
+        if not re.fullmatch(r'[A-Z]+', str(data.get('short_id', ''))) or not data.get('source_id'):
+            raise ValueError('Source must have a source ID and uppercase short citation ID')
+        kind = data.get('locator_type', 'pdf')
+        if kind not in {'pdf', 'html'}:
+            raise ValueError(f'Unknown source locator type: {kind}')
+        if kind == 'html':
+            validate_html_source(data)
         if data['short_id'] in sources or any(s['source_id'] == data['source_id'] for s in sources.values()):
             raise ValueError('Duplicate source ID or short citation ID')
         sources[data['short_id']] = data
     return sources
+
+
+def validate_html_source(src):
+    locators = src.get('locators')
+    if not isinstance(locators, dict) or not locators:
+        raise ValueError('HTML source requires a nonempty locator map')
+    for key, label in locators.items():
+        if not isinstance(key, str) or not LOCATOR.fullmatch(key) or not isinstance(label, str) or not label.strip():
+            raise ValueError(f'Invalid HTML source locator: {key}')
+    path = src.get('public_path')
+    if path is not None and path != '' and (not isinstance(path, str) or not re.fullmatch(r'03_outputs/web/(?:[a-z0-9]+(?:-[a-z0-9]+)*/)*[a-z0-9]+(?:-[a-z0-9]+)*\.html', path)):
+        raise ValueError('HTML source public_path must be a public output HTML route')
 
 
 def safe_file(path, root):
@@ -63,6 +86,8 @@ def asset_url(root, target, current):
 
 
 def printed_pages(src, spec):
+    if not re.fullmatch(r'[0-9]+(?:-[0-9]+)?(?:,[0-9]+(?:-[0-9]+)?)*', spec):
+        raise ValueError(f'Invalid citation page: {spec}')
     parts = []
     for item in spec.split(','):
         ends = list(map(int, item.split('-')))
@@ -74,13 +99,73 @@ def printed_pages(src, spec):
 
 
 def render_citations(text, sources):
+    if '[@' in CITE.sub('', text):
+        raise ValueError('Malformed citation')
     def sub(match):
-        key, spec = match.groups()
+        key, separator, spec = match.group(1).partition(':')
+        if not separator or not re.fullmatch(r'[A-Z]+', key):
+            raise ValueError(f'Malformed citation: {match.group(0)}')
         if key not in sources:
             raise ValueError(f'Unknown source: {key}')
-        label = printed_pages(sources[key], spec)
+        src = sources[key]
+        kind = src.get('locator_type', 'pdf')
+        if kind == 'html':
+            validate_html_source(src)
+            if not LOCATOR.fullmatch(spec) or spec not in src['locators']:
+                raise ValueError(f'Unknown or invalid HTML locator: {key}:{spec}')
+            label = escape(src['locators'][spec])
+            short = spec[1:] if re.fullmatch(r'd[0-9]+', spec) else spec
+            return f'<button type="button" class="citation" data-source="{key}" data-locator="{escape(spec)}" data-kind="html" aria-label="查看來源 {key}，{label}" title="{label}">{key} · {escape(short)}</button>'
+        if kind != 'pdf':
+            raise ValueError(f'Unknown source locator type: {kind}')
+        label = escape(printed_pages(src, spec))
         return f'<button type="button" class="citation" data-source="{key}" data-pages="{escape(spec)}" aria-label="查看來源 {key}，頁 {label}">{key} · {label}</button>'
     return CITE.sub(sub, text)
+
+
+def media_url(value, root, source_path, current=None):
+    """Validate a wiki-relative public media URL, optionally rebasing for output."""
+    url = urlsplit(value)
+    if url.netloc and url.scheme in {'', 'http', 'https'}:
+        return value
+    path = unquote(url.path)
+    if url.scheme or not path or path.startswith('/') or '\\' in path:
+        raise ValueError(f'Unsafe media URL: {value}')
+    root = Path(root).resolve()
+    target = (root / source_path).parent.joinpath(path).resolve()
+    if not target.is_relative_to(root):
+        raise ValueError(f'Media escapes workspace: {value}')
+    rel = target.relative_to(root)
+    public = rel.parts[0] == 'assets' or rel.parts[:2] in {('03_outputs', 'web'), ('03_outputs', 'slides')}
+    if not public or target.suffix.lower() not in PUBLIC_EXT or any(p.startswith('.') or p in {'node_modules', '_internal'} for p in rel.parts):
+        raise ValueError(f'Non-public media: {value}')
+    if not safe_file(target, root):
+        raise ValueError(f'Missing or unsafe media: {value}')
+    if current is None:
+        return value
+    return relative_url(rel.as_posix(), current) + ('?' + url.query if url.query else '') + ('#' + url.fragment if url.fragment else '')
+
+
+def rewrite_media(content, root, source_path, current=None):
+    """Validate rendered Markdown media; preserve external URLs and prose."""
+    def attribute(match):
+        space, name = match.group(1, 2)
+        if name.lower() not in {'src', 'poster', 'srcset'}:
+            return match.group(0)
+        raw_value = next((v for v in match.groups()[2:] if v is not None), '')
+        value = unescape(raw_value)
+        if name.lower() == 'srcset':
+            candidates = []
+            for item in value.split(','):
+                parts = item.strip().split()
+                if not parts or len(parts) > 2 or len(parts) == 2 and not re.fullmatch(r'(?:[1-9][0-9]*w|[0-9]+(?:\.[0-9]+)?x)', parts[1]):
+                    raise ValueError(f'Invalid media srcset: {value}')
+                candidates.append(media_url(parts[0], root, source_path, current) + (' ' + parts[1] if len(parts) == 2 else ''))
+            value = ', '.join(candidates)
+        else:
+            value = media_url(value, root, source_path, current)
+        return space + name + '="' + escape(value) + '"'
+    return MEDIA_TAG.sub(lambda tag: MEDIA_ATTR.sub(attribute, tag.group(0)), content)
 
 
 class PlainHTML(HTMLParser):

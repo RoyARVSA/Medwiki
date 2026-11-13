@@ -1,0 +1,80 @@
+id: japanese-sjs-criteria
+title: 日本 SJS 診斷準則：五項主準則與完整病程
+kind: criteria
+population: Watanabe 指引 Table 3 所述的日本 SJS 準則；不是國際 TEN 分型。
+version: Diagnostic criteria 2025；2026 年刊登，Table 3，PDF 9／e96。
+source_ids: [src-watanabe-2026]
+review_status: not_reviewed
+conflict_status: open
+entry: scope
+nodes:
+  - id: scope
+    kind: step
+    label: 確認準則版本與適用情境
+    detail: 本圖逐項呈現日本 SJS 準則。原文要求全部五項主準則，並參考次要準則及整個臨床病程；不只評估初診當下。
+    citations: ['[@W:9]']
+  - id: mucosa
+    kind: step
+    label: '① 廣泛且嚴重的黏膜病灶'
+    detail: 眼、口腔、生殖器等黏膜皮膚交界處，出現廣泛且嚴重的病灶，例如出血性糜爛或結痂。
+    citations: ['[@W:9]']
+  - id: skin
+    kind: step
+    label: '② 表皮壞死性病灶，面積 <10% BSA'
+    detail: 廣泛紅斑伴隨表皮壞死所致糜爛或水疱，恢復後可見結痂或膜狀脫屑；受影響面積小於 10% BSA，包含輕壓可容易剝離的區域。紅斑範圍不能直接當作剝離面積。
+    citations: ['[@W:9]']
+  - id: fever
+    kind: step
+    label: '③ 發燒'
+    detail: 主準則列為存在發燒。此表未在該項指定溫度界值，本站不補造數字。
+    citations: ['[@W:9]']
+  - id: pathology
+    kind: step
+    label: '④ 病理：表皮壞死'
+    detail: 組織病理顯示表皮壞死變化。成熟病灶可有全層表皮壞死；註記建議在 200× 視野確認至少 10 個壞死角質形成細胞。普通臨床照片不提供病理證據。
+    citations: ['[@W:9]']
+  - id: exclusions
+    kind: step
+    label: '⑤ 排除 EMM 與特定藥理性傷害'
+    detail: 排除 erythema multiforme major，以及細胞毒性抗癌藥的藥理作用、而非遲發型過敏所致皮膚傷害。需保留這些排除對象與機轉限制。
+    citations: ['[@W:9]']
+  - id: all-five
+    kind: decision
+    label: 全部五項主準則是否已確認符合？
+    detail: 「全部五項」是 AND 關係，不能改成任選幾項。以下缺資料與未滿足的出口是本站呈現資訊狀態的編輯提示，不是原指引新增的診斷規則。
+    citations: ['[@W:9]']
+  - id: course
+    kind: step
+    label: 參考次要準則與完整病程
+    detail: 次要線索包括臉頸軀幹為主、可融合的平坦非典型靶形紅斑；黏膜皮膚交界病灶，眼部可有雙側急性結膜炎合併偽膜形成和／或眼表上皮缺損；全身症狀、倦怠及進食困難；排除自體免疫性水疱病。評估涵蓋整個病程。
+    citations: ['[@W:9]']
+  - id: criteria-met
+    kind: terminal
+    label: 依此版本準則綜合判讀
+    detail: 原文以全部五項主準則並參考次要準則診斷 SJS。本圖呈現準則關係，不能由單張照片或未取得的病例資料自動給出診斷。
+    citations: ['[@W:9]']
+  - id: not-all-met
+    kind: terminal
+    label: 尚未滿足全部主準則
+    detail: 回看未符合的項目、鑑別及病程；未滿足本表條件不等於本站已排除 SJS。原文另註記少數可僅有黏膜病灶，不能自行將例外重組成另一套準則。
+    citations: ['[@W:9]']
+  - id: incomplete
+    kind: unknown
+    label: 資料不足，保留未確認項目
+    detail: 明列缺少的病史、全身皮膚／黏膜範圍或病理證據；不將未知當作陰性，也不推定五項均已符合。此節點是資訊缺口提示。
+    citations: ['[@W:9]']
+edges:
+  - {from: scope, to: mucosa, label: 逐項核對}
+  - {from: mucosa, to: skin, label: ''}
+  - {from: skin, to: fever, label: ''}
+  - {from: fever, to: pathology, label: ''}
+  - {from: pathology, to: exclusions, label: ''}
+  - {from: exclusions, to: all-five, label: ''}
+  - {from: all-five, to: course, label: 已確認全部符合}
+  - {from: all-five, to: not-all-met, label: 已知未全部符合}
+  - {from: all-five, to: incomplete, label: 尚有未知}
+  - {from: course, to: criteria-met, label: 綜合病程}
+notes:
+  - '主準則不能擇一；次要準則並非另一組可任意替換主準則的條件。[@W:9]'
+  - '本圖只呈現日本 SJS 準則；日本 TEN 與國際分型的面積界線另見診斷與評估頁，保留差異，不混合。[@W:9-10]'
+  - '少數僅黏膜病灶的原文註記保留為例外說明；不由本站另訂例外演算法。[@W:9]'

@@ -6,8 +6,12 @@ type: source_summary
 created: 2026-11-12
 updated: 2026-11-12
 summary: 方法、主要效果、比較對象與侷限的完整閱讀摘要。
-tags: [dermatology, systematic-review, meta-analysis]
-source_ids: [src-heuer-2026]
+tags:
+- dermatology
+- systematic-review
+- meta-analysis
+source_ids:
+- src-heuer-2026
 review_status: not_reviewed
 conflict_status: open
 publish: true
@@ -15,6 +19,7 @@ web_file: heuer-review.html
 nav_title: Heuer 系統回顧
 order: 6
 eyebrow: PAPER / SYSTEMATIC REVIEW
+conflict_page_id: comparison-sjs-ten-evidence
 ---
 
 ## 研究問題

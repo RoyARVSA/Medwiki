@@ -1,0 +1,48 @@
+asset_id: asset-flow-japanese-sjs-criteria
+filename: japanese-sjs-criteria.svg
+path: assets/figures/flows/japanese-sjs-criteria.svg
+title: 日本 SJS 診斷準則：五項主準則與完整病程
+description: Watanabe 指引 Table 3 所述的日本 SJS 準則；不是國際 TEN 分型。
+keywords:
+- dermatology
+- criteria
+- source-backed-flow
+- original-vector
+source_type: original_source_based_vector_diagram
+author: Medwiki project (AI-assisted diagram assembly)
+source_ids:
+- src-watanabe-2026
+source_version: Diagnostic criteria 2025；2026 年刊登，Table 3，PDF 9／e96。
+source_locators:
+- '[@W:9]'
+source_url: null
+attribution: Original diagram by Medwiki; source facts and locators are cited in the accompanying node explanations.
+public_allowed: true
+public_allowed_basis: User-authorized, self-created vector layout and paraphrased learning text derived from the
+  supplied source facts. No original source figure, photograph, or source full text is reproduced.
+conditions:
+- Retain source IDs, versions, node citations, scope, unknown outcomes and review status.
+- The diagram layout and information-state annotations do not establish new clinical rules.
+definition_path: config/flows/japanese-sjs-criteria.yml
+mermaid_path: assets/figures/flows/japanese-sjs-criteria.mmd
+manifest_path: assets/figures/flows/japanese-sjs-criteria.json
+sha256: 7a7fdb53a58a42f45a4b6c4d3934b953f6e9620180f1483e5a2bcde419c99379
+definition_sha256: 9bc07afe8ab8891f4a08fb27359daeb2137ed81cf4780db0af1f12a4d0ce3aac
+renderer:
+  name: pele
+  version: 1.13.0
+  sha256: e7cd374e7674dbdc34e4c9983a7fd18674468934dbe0667ebbc22e13e95a6505
+modifications:
+- Generated from the unmodified public YAML definition with pinned Pele.
+- Applied academic-blue defaults, an explicit dashed unknown outlet, accessibility labels and node hooks; clinical
+  labels and relationships remain unchanged.
+- Balanced CJK line breaks within existing SVG tspan positions and maximum measured width. Canonical Mermaid labels
+  and clinical glyph sequences are unchanged.
+used_in:
+- 01_wiki/approaches/sjs-diagnostic-criteria.md
+- 03_outputs/web/clinical-reasoning/sjs-diagnostic-criteria.html
+review_status: not_reviewed
+conflict_status: open
+created: '2026-11-13'
+validation_scope: SVG safety, definition/renderer/artifact hashes, exact node glyph sequence, accessible title/description,
+  18 px label font and text equivalent; no claim of human clinical review.

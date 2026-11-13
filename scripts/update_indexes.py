@@ -7,9 +7,9 @@ def update_markdown(root=common.ROOT):
     groups = defaultdict(list)
     for d in common.load_documents(root):
         groups[d.get('type', 'other')].append(d)
-    lines = ['# Medwiki 內容索引', '', '主題、來源與學習路徑；網站成果入口見 [index.html](index.html)。', '']
-    labels = {'map': '學習導航', 'concept': '概念頁', 'comparison': '比較頁', 'question': '學習問答', 'source_summary': '來源摘要'}
-    for key in ['map', 'concept', 'comparison', 'question', 'source_summary']:
+    lines = ['# Medwiki 內容索引', '', '主題、來源與學習路徑；線上網站與本機建置方式見 [README.md](README.md)。', '']
+    labels = {'map': '學習導航', 'concept': '概念頁', 'comparison': '比較頁', 'approach': '臨床思路', 'question': '學習問答', 'source_summary': '來源摘要'}
+    for key in ['map', 'concept', 'comparison', 'approach', 'question', 'source_summary']:
         lines.extend(['## ' + labels[key], ''])
         for d in groups[key]:
             lines.append(f"- [{d['title']}]({d['path']})：{d.get('summary', '')}（{d.get('review_status', 'not_reviewed')}）")

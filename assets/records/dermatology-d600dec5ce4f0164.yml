@@ -1,0 +1,63 @@
+asset_id: asset-dermatology-d600dec5ce4f0164
+filename: d600dec5ce4f0164.jpg
+path: assets/images/dermatology/d600dec5ce4f0164.jpg
+description: 斑塊型：可見界線較清楚的紅色隆起斑塊，表面帶有鱗屑。
+source_type: clinical_atlas_embedded_image
+source_url: https://dermnetnz.org/imagedetail/6142-plaque-stage-mycosis-fungoides
+source_urls:
+- https://dermnetnz.org/imagedetail/6142-plaque-stage-mycosis-fungoides
+source_ids:
+- src-dermatology-atlas-supplement-01-2026
+title_as_embedded:
+- mycosis fungoides 12
+authors_as_provided:
+- 'Te Whatu Ora '
+copyright_as_embedded:
+- © Te Whatu Ora
+attribution_as_provided:
+- Image sourced from DermNet · © Te Whatu Ora · 原圖／出處
+licence: CC BY-NC-ND 4.0
+licence_url: https://creativecommons.org/licenses/by-nc-nd/4.0/
+conditions_url: https://dermnetnz.org/image-licence
+conditions:
+- Educational noncommercial use only.
+- Credit DermNet and retain the supplied copyright attribution.
+- Link the source image page and licence.
+- Retain the original watermark and distribute only the unchanged image.
+- No endorsement is implied.
+public_allowed: true
+public_allowed_basis: Supplied DermNet image licence section Free use of Watermarked Images, clauses 2–3; visible
+  original watermark retained. This educational wiki is noncommercial.
+licence_checked_at: '2026-11-13'
+modifications: none
+preservation: Decoded supplied HTML image bytes copied unchanged, retaining original frame, metadata, watermark,
+  annotations and scale.
+sha256: d600dec5ce4f0164b652524ff6c86a3a5bd11e4e243a4b55bcae08f1843b9972
+bytes: 38702
+width: 640
+height: 480
+watermark_observed: Te Whatu Ora
+review_status: not_reviewed
+image_check_scope: Whole-frame visual check for watermark and visible personal labels; not diagnostic interpretation.
+usages:
+- figure_code: 56-08
+  figure_index: 2
+  article_id: d56
+  source_id: src-dermatology-atlas-supplement-01-2026
+  short_id: B
+  caption: 臨床照片 斑塊型：可見界線較清楚的紅色隆起斑塊，表面帶有鱗屑。
+  attribution: Image sourced from DermNet · © Te Whatu Ora · 原圖／出處
+  source_url: https://dermnetnz.org/imagedetail/6142-plaque-stage-mycosis-fungoides
+  alt: 斑塊型：可見界線較清楚的紅色隆起斑塊，表面帶有鱗屑。
+- source_id: src-dermatology-atlas-supplement-01-2026
+  short_id: B
+  article_id: cover
+  alt: 斑塊型：可見界線較清楚的紅色隆起斑塊，表面帶有鱗屑。
+  caption: ''
+  attribution: ''
+  source_url: null
+  figure_code: null
+  usage_type: cover
+used_in:
+- 01_wiki/concepts/mycosis-fungoides.md
+- 03_outputs/web/dermatology/mycosis-fungoides.html

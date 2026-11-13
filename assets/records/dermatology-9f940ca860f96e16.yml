@@ -1,0 +1,54 @@
+asset_id: asset-dermatology-9f940ca860f96e16
+filename: 9f940ca860f96e16.jpg
+path: assets/images/dermatology/9f940ca860f96e16.jpg
+description: 軀幹上多個界線銳利的紅色斑塊覆有厚白鱗屑，部分已相互融合。
+source_type: clinical_atlas_embedded_image
+source_url: https://dermnetnz.org/imagedetail/11077-chronic-plaque-psoriasis
+source_urls:
+- https://dermnetnz.org/imagedetail/11077-chronic-plaque-psoriasis
+source_ids:
+- src-dermatology-atlas-55-2026
+title_as_embedded:
+- 26261a
+authors_as_provided:
+- 'DermNet '
+copyright_as_embedded:
+- © DermNet
+attribution_as_provided:
+- Image sourced from DermNet · © DermNet · 原圖／出處
+licence: CC BY-NC-ND 4.0
+licence_url: https://creativecommons.org/licenses/by-nc-nd/4.0/
+conditions_url: https://dermnetnz.org/image-licence
+conditions:
+- Educational noncommercial use only.
+- Credit DermNet and retain the supplied copyright attribution.
+- Link the source image page and licence.
+- Retain the original watermark and distribute only the unchanged image.
+- No endorsement is implied.
+public_allowed: true
+public_allowed_basis: Supplied DermNet image licence section Free use of Watermarked Images, clauses 2–3; visible
+  original watermark retained. This educational wiki is noncommercial.
+licence_checked_at: '2026-11-13'
+modifications: none
+preservation: Decoded supplied HTML image bytes copied unchanged, retaining original frame, metadata, watermark,
+  annotations and scale.
+sha256: 9f940ca860f96e1655dfbc6d158a92259a3724edb978267e672f2a644e85498d
+bytes: 50521
+width: 640
+height: 480
+watermark_observed: DermNet
+review_status: not_reviewed
+image_check_scope: Whole-frame visual check for watermark and visible personal labels; not diagnostic interpretation.
+usages:
+- figure_code: 10-01
+  figure_index: 2
+  article_id: d10
+  source_id: src-dermatology-atlas-55-2026
+  short_id: A
+  caption: 臨床照片 軀幹上多個界線銳利的紅色斑塊覆有厚白鱗屑，部分已相互融合。
+  attribution: Image sourced from DermNet · © DermNet · 原圖／出處
+  source_url: https://dermnetnz.org/imagedetail/11077-chronic-plaque-psoriasis
+  alt: 軀幹上多個界線銳利的紅色斑塊覆有厚白鱗屑，部分已相互融合。
+used_in:
+- 01_wiki/concepts/plaque-psoriasis.md
+- 03_outputs/web/dermatology/plaque-psoriasis.html

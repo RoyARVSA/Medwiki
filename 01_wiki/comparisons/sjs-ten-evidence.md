@@ -6,9 +6,19 @@ type: comparison
 created: 2026-11-12
 updated: 2026-11-12
 summary: 並列指引陳述與統合分析，保留比較對象、終點與尚未裁決的差異。
-tags: [dermatology, evidence, corticosteroids, etanercept]
-aliases: [meta-analysis, guideline comparison, mortality, reepithelialization]
-source_ids: [src-heuer-2026, src-watanabe-2026]
+tags:
+- dermatology
+- evidence
+- corticosteroids
+- etanercept
+aliases:
+- meta-analysis
+- guideline comparison
+- mortality
+- reepithelialization
+source_ids:
+- src-heuer-2026
+- src-watanabe-2026
 review_status: not_reviewed
 conflict_status: open
 publish: true
@@ -16,6 +26,7 @@ web_file: evidence.html
 nav_title: 證據比較
 order: 5
 eyebrow: EVIDENCE / SIDE BY SIDE
+conflict_page_id: comparison-sjs-ten-evidence
 ---
 
 ## 先分清四個問題

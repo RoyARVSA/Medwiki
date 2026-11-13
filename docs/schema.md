@@ -4,6 +4,12 @@
 
 必要欄位：id、title、type、created、updated、summary、tags、source_ids、review_status、conflict_status。其定義見 AGENTS.md。
 
+`type` 支援 concept / comparison / approach / question / map / source_summary。新增的 `approach` 存於 `01_wiki/approaches/`；`specialties` 可列多個科別，`content_kind` 區分 disease、sign、chapter、comparison、approach、differential、criteria、atlas、specialty、navigation、learning_resource。`related_ids` 連到既有核心頁，分類不另複製正文。
+
+`conflict_page_id` 明確指定保留分歧的已發布比較頁。沒有指定時只顯示衝突提示，不從同科別任選比較頁；目標為自身時不顯示重複跳轉按鈕。
+
+科別、疾病與概念、臨床思路是不同瀏覽方式；網站路徑由穩定 page-id 與發布欄位決定。`view` 可選 atlas / concept-library / specialty / reasoning，未設定使用一般閱讀頁；前三者的導航由公開欄位生成。
+
 網頁欄位：
 
 | 欄位 | 說明 |
@@ -33,6 +39,26 @@ source_id 穩定識別；short_id 是文內短代碼（本版 H/W）。pdf_pages
 ```
 
 冒號後為一開始算起的 PDF 頁次，不是期刊頁。工具根據來源記錄換算顯示（H PDF3→期刊36；W PDF9→e96），保留兩種定位。未知來源、超過總頁、倒置範圍會中止建置。公開頁只連 DOI，不連本機 PDF。
+
+HTML 彙編來源使用 `locator_type: html`、`locators` 字典，例如 `d01: 項目 01：雄性禿`；引用 `[@A:d01]`、`[@B:blister]`。`public_path` 可連到已發布的來源整理頁；每個宣告的定位都必須是該頁存在的 HTML id，建置於 staging 檢查後才替換網站。`original_access: local_only` 不變；公開來源整理不是原始 HTML。講義所列外部連結不自動視為已讀來源。
+
+## 流程圖
+
+`config/flows/<flow-id>.yml` 是單一流程定義，記錄 id、title、kind、population、version、source_ids、review_status、conflict_status、entry、nodes、edges、notes。kind 為 criteria / differential / management；node kind 為 step / decision / terminal / unknown，節點保留 label、detail、citations，分支保留 from、to、label。
+
+`assets/figures/flows/` 保存由定義生成的 `.mmd`、`.svg` 及雜湊 manifest；資產紀錄在 `assets/records/flow-<id>.yml`。正式頁的 Markdown 保留原生圖片與註解：
+
+```markdown
+<!-- flow:japanese-sjs-criteria -->
+
+![流程圖與來源文字對照](../../assets/figures/flows/japanese-sjs-criteria.svg)
+```
+
+Obsidian 可直接閱讀 SVG，網站以同一個流程定義產生互動圖、文字步驟與來源。決策節點須有來源與明確未知出口；所有節點/分支必須存在且從 entry 可達。工具不執行病人診斷或產生疾病機率。定義或引擎變更後，舊雜湊會使建置失敗，須重新產圖與核對。
+
+## 圖譜導航
+
+`config/atlas.yml` 只保存分組、原卡片 id/source、canonical page-id、Markdown 路徑與章節 anchor。圖片、辨認要點與驗證內容由核心頁讀取，不另維護第二份醫學正文。圖片預覽保留原圖、圖說及原署名/來源/授權；未知使用條件的圖不進公開資產。
 
 ## 索引
 

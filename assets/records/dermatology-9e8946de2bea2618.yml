@@ -1,0 +1,54 @@
+asset_id: asset-dermatology-9e8946de2bea2618
+filename: 9e8946de2bea2618.jpg
+path: assets/images/dermatology/9e8946de2bea2618.jpg
+description: 手指側方的外生性結節覆蓋厚黃黑色痂，周邊可見脫屑。
+source_type: clinical_atlas_embedded_image
+source_url: https://dermnetnz.org/imagedetail/9657-pyogenic-granuloma
+source_urls:
+- https://dermnetnz.org/imagedetail/9657-pyogenic-granuloma
+source_ids:
+- src-dermatology-atlas-55-2026
+title_as_embedded:
+- pyo gran1
+authors_as_provided:
+- 'DermNet '
+copyright_as_embedded:
+- © DermNet
+attribution_as_provided:
+- Image sourced from DermNet · © DermNet · 原圖／出處
+licence: CC BY-NC-ND 4.0
+licence_url: https://creativecommons.org/licenses/by-nc-nd/4.0/
+conditions_url: https://dermnetnz.org/image-licence
+conditions:
+- Educational noncommercial use only.
+- Credit DermNet and retain the supplied copyright attribution.
+- Link the source image page and licence.
+- Retain the original watermark and distribute only the unchanged image.
+- No endorsement is implied.
+public_allowed: true
+public_allowed_basis: Supplied DermNet image licence section Free use of Watermarked Images, clauses 2–3; visible
+  original watermark retained. This educational wiki is noncommercial.
+licence_checked_at: '2026-11-13'
+modifications: none
+preservation: Decoded supplied HTML image bytes copied unchanged, retaining original frame, metadata, watermark,
+  annotations and scale.
+sha256: 9e8946de2bea2618cb3e23df65029d2c897a930a05c7cee0009052a48583e531
+bytes: 26262
+width: 640
+height: 480
+watermark_observed: DermNet
+review_status: not_reviewed
+image_check_scope: Whole-frame visual check for watermark and visible personal labels; not diagnostic interpretation.
+usages:
+- figure_code: 40-03
+  figure_index: 2
+  article_id: d40
+  source_id: src-dermatology-atlas-55-2026
+  short_id: A
+  caption: 臨床照片 手指側方的外生性結節覆蓋厚黃黑色痂，周邊可見脫屑。
+  attribution: Image sourced from DermNet · © DermNet · 原圖／出處
+  source_url: https://dermnetnz.org/imagedetail/9657-pyogenic-granuloma
+  alt: 手指側方的外生性結節覆蓋厚黃黑色痂，周邊可見脫屑。
+used_in:
+- 01_wiki/concepts/pyogenic-granuloma.md
+- 03_outputs/web/dermatology/pyogenic-granuloma.html

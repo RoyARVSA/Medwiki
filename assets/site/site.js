@@ -46,12 +46,20 @@
     $$('.citation').forEach(b => b.addEventListener('click', () => {
       lastFocus = b;
       const src = sources[b.dataset.source];
-      const pages = b.dataset.pages.split(',').map(part => part.split('-').map(Number).map(n => `${src.printed_prefix || ''}${src.printed_start+n-1}`).join('–')).join(', ');
       $('#citation-title').textContent = src.short_title;
       $('#citation-full').textContent = src.title;
-      $('#citation-locator').textContent = `期刊頁 ${pages} · PDF 頁 ${b.dataset.pages} · ${src.year}`;
-      $('#citation-doi').href = src.url;
-      $('#citation-doi').textContent = `doi: ${src.doi} ↗`;
+      const link = $('#citation-doi');
+      if (b.dataset.kind === 'html') {
+        $('#citation-locator').textContent = `${src.locators[b.dataset.locator]} · ${src.year} · 教學彙編條目`;
+        link.hidden = !src.public_path;
+        if (src.public_path) { const target = new URL(src.public_path, base); target.hash = b.dataset.locator; link.href = target; }
+        link.textContent = '查看來源整理與條目 ↗';
+      } else {
+        const pages = b.dataset.pages.split(',').map(part => part.split('-').map(Number).map(n => `${src.printed_prefix || ''}${src.printed_start+n-1}`).join('–')).join(', ');
+        $('#citation-locator').textContent = `期刊頁 ${pages} · PDF 頁 ${b.dataset.pages} · ${src.year}`;
+        link.hidden = !src.url; link.href = src.url || '#';
+        link.textContent = src.doi ? `doi: ${src.doi} ↗` : '查看原文 ↗';
+      }
       $('#citation-dialog').showModal();
     }));
   }
@@ -74,5 +82,5 @@
     const observer = new IntersectionObserver(entries=>{const seen=entries.filter(e=>e.isIntersecting);if(seen.length){$$('.page-toc .toc a').forEach(a=>a.classList.toggle('current',decodeURIComponent(a.hash.slice(1))===seen[0].target.id));}},{rootMargin:'-110px 0px -60% 0px'});
     $$('.prose h2').forEach(h=>observer.observe(h));
   }
-  $$('.prose img').forEach(img=>{ img.tabIndex=0; img.setAttribute('role','button');img.setAttribute('aria-label',`放大圖片：${img.alt}`);const show=()=>{lastFocus=img;const d=document.createElement('dialog');d.className='image-dialog';const b=document.createElement('button');b.textContent='關閉 ✕';b.onclick=()=>{d.close();d.remove();img.focus();};const copy=img.cloneNode();copy.removeAttribute('role');copy.removeAttribute('tabindex');const p=document.createElement('p');p.textContent=img.alt;d.append(b,copy,p);document.body.append(d);d.addEventListener('close',()=>d.remove());d.showModal();};img.addEventListener('click',show);img.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show();}});});
+  $$('.prose img').forEach(img=>{ img.tabIndex=0; img.setAttribute('role','button');img.setAttribute('aria-label',`放大圖片：${img.alt}`);const show=()=>{lastFocus=img;const d=document.createElement('dialog');d.className='image-dialog';const b=document.createElement('button');b.textContent='關閉 ✕';b.onclick=()=>d.close();const copy=img.cloneNode();copy.removeAttribute('role');copy.removeAttribute('tabindex');const caption=img.closest('figure')?.querySelector('figcaption');const p=caption?caption.cloneNode(true):document.createElement('p');if(!caption)p.textContent=img.alt;d.append(b,copy,p);document.body.append(d);d.addEventListener('close',()=>{d.remove();img.focus();},{once:true});d.showModal();};img.addEventListener('click',show);img.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show();}});});
 })();

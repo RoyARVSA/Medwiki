@@ -1,0 +1,20 @@
+<section class="atlas-explorer" data-atlas data-view="grid" aria-label="皮膚病灶辨識圖譜">
+  <div class="atlas-toolbar"><p><strong id="atlas-count">{{ library.atlas_entries|length }} 項主題</strong><span>點名稱進入正文，點圖片檢視細節。</span></p><div class="segmented js-only" aria-label="圖譜閱讀方式"><button data-atlas-view="grid" aria-pressed="true" class="selected">圖像</button><button data-atlas-view="list" aria-pressed="false">清單</button><button data-atlas-view="practice" aria-pressed="false">自測</button></div></div>
+  <div class="atlas-search-row js-only"><label class="atlas-search"><span class="sr-only">搜尋圖譜</span><span aria-hidden="true">⌕</span><input type="search" id="atlas-search" placeholder="搜尋病名、形態、部位或驗證方法…" autocomplete="off"></label><label class="atlas-select"><span class="sr-only">依學習分組篩選</span><select id="atlas-category"><option value="all">全部主題</option>{% for g in library.atlas_groups %}<option value="{{g.id}}">{{g.label}}</option>{% endfor %}</select></label></div>
+  <div class="atlas-filter-chips js-only" aria-label="依學習分組篩選"><button data-atlas-filter="all" class="selected" aria-pressed="true">全部 <span>{{library.atlas_entries|length}}</span></button>{% for g in library.atlas_groups %}<button data-atlas-filter="{{g.id}}" aria-pressed="false">{{g.label}} <span>{{library.atlas_entries|selectattr('group','equalto',g.id)|list|length}}</span></button>{% endfor %}</div>
+  <p id="atlas-empty" class="empty-state" hidden>沒有符合的主題。試試較短的病名、英文縮寫或其他特徵。</p>
+  <div class="atlas-grid" id="atlas-grid">
+    {% for e in library.atlas_entries %}<article class="atlas-card" id="entry-{{e.id}}" data-atlas-entry data-entry-id="{{e.id}}" data-category="{{e.group}}" data-search="{{e.search}}">
+      <div class="atlas-photo">{% if e.image %}<img src="{{e.image}}" alt="{{e.image_alt}}" loading="lazy" decoding="async">{% else %}<span>文字辨識主題</span>{% endif %}<span class="atlas-card-number">{{e.id[1:]}}</span></div>
+      {% if e.credit %}<div class="atlas-credit"><span>{{e.credit.attribution}}</span><a href="{{e.credit.source_url}}" target="_blank" rel="noopener">圖源</a><a href="{{e.credit.licence_url}}" target="_blank" rel="noopener">{{e.credit.licence}}</a></div>{% endif %}
+      <div class="atlas-card-copy"><span class="eyebrow">{% for g in library.atlas_groups if g.id==e.group %}{{g.label}}{% endfor %}</span><h2><a href="{{rel(e.url,current)}}">{{e.title}}</a></h2><p class="atlas-english">{{e.title_en}}</p><p class="atlas-card-focus">{{e.focus}}</p><a class="atlas-read-link" href="{{rel(e.url,current)}}">辨認、鑑別與驗證 <span>→</span></a></div>
+    </article>{% endfor %}
+  </div>
+  <section id="atlas-practice" class="atlas-practice" hidden aria-label="當次圖片自測">
+    <div class="practice-heading"><span class="eyebrow">OBSERVE FIRST</span><p data-practice-position></p></div><p class="practice-prompt">先描述<strong>部位、形態、表面與分布</strong>，再提出鑑別及需要補充的證據。</p>
+    <figure class="practice-figure"><img data-practice-image alt=""><figcaption data-practice-credit></figcaption></figure>
+    <div class="practice-actions"><button type="button" data-practice-prev>← 上一項</button><button type="button" data-practice-reveal class="primary">查看解釋</button><button type="button" data-practice-next>下一項 →</button></div>
+    <div class="practice-answer" data-practice-answer hidden><h2 data-practice-title></h2><p data-practice-focus></p><h3>如何確認與限制</h3><p data-practice-verification></p><a data-practice-link href="#">回到完整正文與來源 →</a></div><p class="practice-note">當次練習不保存作答或個人紀錄。原圖文字與署名完整保留。</p>
+  </section>
+</section>
+<script type="application/json" id="atlas-practice-data">{{library.atlas_entries|tojson}}</script>

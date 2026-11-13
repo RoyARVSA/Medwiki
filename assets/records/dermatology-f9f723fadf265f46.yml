@@ -1,0 +1,56 @@
+asset_id: asset-dermatology-f9f723fadf265f46
+filename: f9f723fadf265f46.jpg
+path: assets/images/dermatology/f9f723fadf265f46.jpg
+description: 手背與指部多顆膚色角化丘疹，表面較粗糙。
+source_type: clinical_atlas_embedded_image
+source_url: https://dermnetnz.org/imagedetail/10092-viral-warts
+source_urls:
+- https://dermnetnz.org/imagedetail/10092-viral-warts
+source_ids:
+- src-dermatology-atlas-55-2026
+title_as_embedded:
+- viral wart 07
+authors_as_provided:
+- 'DermNet '
+copyright_as_embedded:
+- © DermNet
+attribution_as_provided:
+- Image sourced from DermNet · © DermNet · 原圖／出處
+licence: CC BY-NC-ND 4.0
+licence_url: https://creativecommons.org/licenses/by-nc-nd/4.0/
+conditions_url: https://dermnetnz.org/image-licence
+conditions:
+- Educational noncommercial use only.
+- Credit DermNet and retain the supplied copyright attribution.
+- Link the source image page and licence.
+- Retain the original watermark and distribute only the unchanged image.
+- No endorsement is implied.
+public_allowed: true
+public_allowed_basis: Supplied DermNet image licence section Free use of Watermarked Images, clauses 2–3;
+  visible original watermark retained. This educational wiki is noncommercial.
+licence_checked_at: '2026-11-13'
+modifications: none
+preservation: Decoded supplied HTML image bytes copied unchanged, retaining original frame, metadata,
+  watermark, annotations and scale.
+sha256: f9f723fadf265f46ae9fec6d2206ccae23f859a1d751466e04656fff6b2ca2fc
+bytes: 37038
+width: 640
+height: 480
+watermark_observed: DermNet
+review_status: not_reviewed
+image_check_scope: Whole-frame visual check for watermark and visible personal labels; not diagnostic
+  interpretation.
+usages:
+- figure_code: 36-00
+  figure_index: 1
+  article_id: d36
+  source_id: src-dermatology-atlas-55-2026
+  short_id: A
+  caption: 臨床照片 手背與指部多顆膚色角化丘疹，表面較粗糙。
+  attribution: Image sourced from DermNet · © DermNet · 原圖／出處
+  source_url: https://dermnetnz.org/imagedetail/10092-viral-warts
+  alt: 手背與指部多顆膚色角化丘疹，表面較粗糙。
+used_in:
+- 01_wiki/concepts/verruca-vulgaris.md
+- 03_outputs/web/dermatology-atlas/index.html
+- 03_outputs/web/dermatology/verruca-vulgaris.html

@@ -6,6 +6,8 @@ created: YYYY-MM-DD
 updated: YYYY-MM-DD
 summary: 主題分組與學習順序。
 tags: []
+specialties: []
+content_kind: navigation
 source_ids: []
 review_status: not_reviewed
 conflict_status: none

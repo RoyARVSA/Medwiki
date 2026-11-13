@@ -1,0 +1,10 @@
+{
+  "name": "medwiki-diagram-build",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Build-time-only source-backed Mermaid diagrams for Medwiki",
+  "dependencies": {
+    "pele": "1.13.0"
+  }
+}

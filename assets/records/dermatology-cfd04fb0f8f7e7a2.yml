@@ -1,0 +1,58 @@
+asset_id: asset-dermatology-cfd04fb0f8f7e7a2
+filename: cfd04fb0f8f7e7a2.jpg
+path: assets/images/dermatology/cfd04fb0f8f7e7a2.jpg
+description: SJS/TEN 光譜的皮疹示例：背部多發暗紅紫色斑融合。原圖未提供可據以分型的全身剝離面積。
+source_type: clinical_atlas_embedded_image
+source_url: https://dermnetnz.org/imagedetail/15265-sjs-ten
+source_urls:
+- https://dermnetnz.org/imagedetail/15265-sjs-ten
+source_ids:
+- src-dermatology-atlas-supplement-01-2026
+title_as_embedded:
+- sjs ten trunk 160
+authors_as_provided:
+- 'DermNet '
+copyright_as_embedded:
+- © DermNet
+attribution_as_provided:
+- Image sourced from DermNet · © DermNet · 原圖／出處
+licence: CC BY-NC-ND 4.0
+licence_url: https://creativecommons.org/licenses/by-nc-nd/4.0/
+conditions_url: https://dermnetnz.org/image-licence
+conditions:
+- Educational noncommercial use only.
+- Credit DermNet and retain the supplied copyright attribution.
+- Link the source image page and licence.
+- Retain the original watermark and distribute only the unchanged image.
+- No endorsement is implied.
+public_allowed: true
+public_allowed_basis: Supplied DermNet image licence section Free use of Watermarked Images, clauses 2–3;
+  visible original watermark retained. This educational wiki is noncommercial.
+licence_checked_at: '2026-11-13'
+modifications: none
+preservation: Decoded supplied HTML image bytes copied unchanged, retaining original frame, metadata,
+  watermark, annotations and scale.
+sha256: cfd04fb0f8f7e7a220da7ce1b25be6655cbc8d7237c95445f7084fe6ecd263f0
+bytes: 42865
+width: 640
+height: 480
+watermark_observed: Te Whatu Ora
+review_status: not_reviewed
+image_check_scope: Whole-frame visual check for watermark and visible personal labels; not diagnostic
+  interpretation.
+usages:
+- figure_code: 59g-50
+  figure_index: 1
+  article_id: d59
+  source_id: src-dermatology-atlas-supplement-01-2026
+  short_id: B
+  caption: 臨床照片 SJS/TEN 光譜的皮疹示例：背部多發暗紅紫色斑融合。原圖未提供可據以分型的全身剝離面積。
+  attribution: Image sourced from DermNet · © DermNet · 原圖／出處
+  source_url: https://dermnetnz.org/imagedetail/15265-sjs-ten
+  alt: SJS/TEN 光譜的皮疹示例：背部多發暗紅紫色斑融合。原圖未提供可據以分型的全身剝離面積。
+used_in:
+- 01_wiki/concepts/sjs-ten.md
+- 03_outputs/web/dermatology-atlas/index.html
+- 03_outputs/web/sjs-ten/index.html
+attribution_note: Supplied copyright credit says DermNet; the original frame carries a Te Whatu Ora watermark.
+  Both are retained without changing ownership attribution.

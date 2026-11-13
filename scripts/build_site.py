@@ -11,7 +11,17 @@ import markdown
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 import common
 
-PUBLIC_EXT = {'.html', '.css', '.js', '.json', '.svg', '.png', '.jpg', '.jpeg', '.webp', '.gif', '.ico', '.woff', '.woff2', '.ttf', '.pdf', '.pptx'}
+PUBLIC_EXT = common.PUBLIC_EXT
+
+
+def update_generated_ignores(root, paths):
+    """Keep reproducible HTML local while leaving manually added outputs trackable."""
+    path = Path(root) / '.gitignore'
+    text = path.read_text(encoding='utf-8-sig') if path.exists() else ''
+    text = re.sub(r'\n?# BEGIN MEDWIKI GENERATED OUTPUTS\n.*?# END MEDWIKI GENERATED OUTPUTS\n?', '', text, flags=re.S)
+    owned = sorted({'index.html', 'assets/site/search-index.json', *paths})
+    block = '\n# BEGIN MEDWIKI GENERATED OUTPUTS\n' + '\n'.join('/' + p for p in owned) + '\n# END MEDWIKI GENERATED OUTPUTS\n'
+    common.atomic_text(path, text.rstrip() + '\n' + block)
 
 
 def checked_rmtree(path, root):
@@ -23,7 +33,7 @@ def checked_rmtree(path, root):
 
 def build_site(root=common.ROOT):
     root = Path(root).resolve()
-    from lint import lint, check_html
+    from lint import lint, check_html, check_source_locators
     content_errors = lint(root, check_site=False)
     if content_errors:
         raise ValueError('\n'.join(content_errors))
@@ -52,20 +62,33 @@ def build_site(root=common.ROOT):
         src = next((s for s in sources.values() if s['source_id'] in d.get('source_ids', [])), {})
         d['author_label'] = src.get('short_title', '')
         d['year_label'] = src.get('year', '')
-        d['source_label'] = str(src.get('source_type', 'SOURCE SUMMARY')).replace('_', ' ').upper()
+        d['source_label'] = {'compiled_html':'教學彙編','guideline':'指引','systematic_review':'系統性回顧'}.get(src.get('source_type'), str(src.get('source_type', 'SOURCE SUMMARY')).replace('_', ' ').upper())
         d['url'] = '03_outputs/web/' + topic_slug + '/' + name
         if d['url'] in [n['url'] for n in nav]:
             raise ValueError('Duplicate published route')
         nav.append(d)
     route_map = {d['path']: d['url'] for d in published}
+    from library import library_context
+    import flows
+    flow_errors = flows.validate_flows(root, sources)
+    if flow_errors:
+        raise ValueError('\n'.join(flow_errors))
+    library = library_context(root, nav, sources, '03_outputs/web/dermatology-atlas/index.html')
+    env.globals['library'] = library
+    by_id = {d['id']: d for d in published}
+    for d in published:
+        d['related_pages'] = [by_id[key] for key in d.get('related_ids', []) if key in by_id and key != d['id']]
     search = []
     generated = {}
     rendered = {}
-    public_sources = {k: {f: v for f, v in s.items() if f in ['title', 'short_title', 'year', 'doi', 'url', 'pdf_pages', 'printed_start', 'printed_prefix']} for k, s in sources.items()}
+    public_sources = {k: {f: v for f, v in s.items() if f in ['title', 'short_title', 'year', 'doi', 'url', 'pdf_pages', 'printed_start', 'printed_prefix', 'locator_type', 'locators', 'public_path']} for k, s in sources.items()}
     for d in published:
         text = common.render_citations(d['body'], sources)
+        # Obsidian reads the native SVG fallback; the website adds evidence and text steps.
+        text = re.sub(r'<!-- flow:([a-z][a-z0-9-]*) -->\s*!\[[^\]]*\]\([^\n)]+\)', lambda m: flows.render_flow(root, m[1], d['url'], sources), text)
         md = markdown.Markdown(extensions=['tables', 'toc', 'fenced_code', 'attr_list'], extension_configs={'toc': {'slugify': lambda s, sep: re.sub(r'[^\w\-]+', '-', s.lower()).strip('-')}})
         content = md.convert(text)
+        content = common.rewrite_media(content, root, d['path'], d['url'])
         def fix_link(m):
             val = m.group(1)
             if '.md' not in val or '://' in val:
@@ -80,7 +103,10 @@ def build_site(root=common.ROOT):
             return 'href="' + common.relative_url(mapped, d['url']) + ('#' + anchor if anchor else '') + '"'
         content = re.sub(r'href="([^"]+)"', fix_link, content)
         topic_nav = [n for n in nav if n['web_topic'] == d['web_topic']]
-        d['comparison_url'] = next((n['url'] for n in topic_nav if n.get('type') == 'comparison'), None)
+        conflict_id = d.get('conflict_page_id')
+        if conflict_id and (conflict_id not in by_id or by_id[conflict_id].get('type') != 'comparison'):
+            raise ValueError('Conflict target must be a published comparison page: ' + str(conflict_id))
+        d['comparison_url'] = by_id[conflict_id]['url'] if conflict_id and conflict_id != d['id'] else None
         page = env.get_template('reading.html').render(page=d, content=content, toc=md.toc, nav=topic_nav, sources=sources, citations_json=json.dumps(public_sources, ensure_ascii=False).replace('<', '\\u003c'), current=d['url'])
         generated[d['url']] = page
         rendered[d['id']] = (content, md.toc)
@@ -118,12 +144,19 @@ def build_site(root=common.ROOT):
             raise ValueError(f'Refusing to overwrite manual output: {url}')
         common.atomic_text(stage / url, html)
     catalog = common.discover_outputs(stage, config_root=root)
-    homepage = env.get_template('home.html').render(current='index.html', catalog=catalog, nav=nav, topic=published[0] if published else None, topic_entries=[n for n in nav if n['web_file'] == 'index.html'], topic_count=len({n['web_topic'] for n in nav}), count=len(published), sources=sources).replace('<!-- SEARCH_DATA -->', search_script)
+    catalog_groups = {}
+    topic_names = {n['web_topic']: n['topic_title'] for n in nav}
+    for item in catalog:
+        slug = Path(item['group']).name
+        label = topic_names.get(slug, '版型比較' if slug == 'layout-previews' else slug.replace('-', ' '))
+        catalog_groups.setdefault(label, []).append(item)
+    homepage = env.get_template('home.html').render(current='index.html', catalog=catalog, catalog_groups=catalog_groups, nav=nav, topic=published[0] if published else None, topic_entries=[n for n in nav if n['web_file'] == 'index.html'], topic_count=len({n['web_topic'] for n in nav}), count=len(published), sources=sources).replace('<!-- SEARCH_DATA -->', search_script)
     common.atomic_text(stage / 'index.html', homepage)
     common.atomic_text(stage / 'assets/site/search-index.json', json.dumps(search, ensure_ascii=False, sort_keys=True))
     common.atomic_text(stage / '.nojekyll', '')
     from lint import check_html
     errors = check_html(stage)
+    errors.extend(check_source_locators(stage, sources))
     if errors:
         raise ValueError('\n'.join(errors))
     # Keep prior site until the staged site passes link checks.
@@ -149,6 +182,7 @@ def build_site(root=common.ROOT):
     common.atomic_text(old_manifest, json.dumps(sorted(generated)))
     from update_indexes import update_markdown
     update_markdown(root)
+    update_generated_ignores(root, generated.keys())
     return target
 
 

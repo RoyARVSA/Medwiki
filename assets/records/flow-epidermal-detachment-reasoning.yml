@@ -1,0 +1,52 @@
+asset_id: asset-flow-epidermal-detachment-reasoning
+filename: epidermal-detachment-reasoning.svg
+path: assets/figures/flows/epidermal-detachment-reasoning.svg
+title: 表皮剝脫：從可見外觀走向鑑別證據
+description: 依提供的皮膚科講義進行 EB、SSSS、SJS/TEN 的辨識與鑑別學習。
+keywords:
+- dermatology
+- differential
+- source-backed-flow
+- original-vector
+source_type: original_source_based_vector_diagram
+author: Medwiki project (AI-assisted diagram assembly)
+source_ids:
+- src-dermatology-atlas-55-2026
+- src-dermatology-atlas-supplement-01-2026
+source_version: 主講義 c2、增補 blister；2026 年 11 月提供版本。
+source_locators:
+- '[@A:c2]'
+- '[@B:blister]'
+- '[@B:d58]'
+- '[@A:guide]'
+source_url: null
+attribution: Original diagram by Medwiki; source facts and locators are cited in the accompanying node explanations.
+public_allowed: true
+public_allowed_basis: User-authorized, self-created vector layout and paraphrased learning text derived from the
+  supplied source facts. No original source figure, photograph, or source full text is reproduced.
+conditions:
+- Retain source IDs, versions, node citations, scope, unknown outcomes and review status.
+- The diagram layout and information-state annotations do not establish new clinical rules.
+definition_path: config/flows/epidermal-detachment-reasoning.yml
+mermaid_path: assets/figures/flows/epidermal-detachment-reasoning.mmd
+manifest_path: assets/figures/flows/epidermal-detachment-reasoning.json
+sha256: bbe2bdd3b1fbc18ef240bf79bc94e04bee5918e304f6daa0dc75c745ddd21c3e
+definition_sha256: 1f4d5acaef4ac19e483a3a548259263a278c569e35dbee44a045375cc75798a6
+renderer:
+  name: pele
+  version: 1.13.0
+  sha256: e7cd374e7674dbdc34e4c9983a7fd18674468934dbe0667ebbc22e13e95a6505
+modifications:
+- Generated from the unmodified public YAML definition with pinned Pele.
+- Applied academic-blue defaults, an explicit dashed unknown outlet, accessibility labels and node hooks; clinical
+  labels and relationships remain unchanged.
+- Balanced CJK line breaks within existing SVG tspan positions and maximum measured width. Canonical Mermaid labels
+  and clinical glyph sequences are unchanged.
+used_in:
+- 01_wiki/approaches/epidermal-detachment-reasoning.md
+- 03_outputs/web/clinical-reasoning/epidermal-detachment.html
+review_status: not_reviewed
+conflict_status: none
+created: '2026-11-13'
+validation_scope: SVG safety, definition/renderer/artifact hashes, exact node glyph sequence, accessible title/description,
+  18 px label font and text equivalent; no claim of human clinical review.

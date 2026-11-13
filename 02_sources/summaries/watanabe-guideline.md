@@ -6,8 +6,12 @@ type: source_summary
 created: 2026-11-12
 updated: 2026-11-12
 summary: 逐題整理 CQ1–17、診斷準則、處置流程及原指引限制。
-tags: [dermatology, guideline, clinical-questions]
-source_ids: [src-watanabe-2026]
+tags:
+- dermatology
+- guideline
+- clinical-questions
+source_ids:
+- src-watanabe-2026
 review_status: not_reviewed
 conflict_status: open
 publish: true
@@ -15,6 +19,7 @@ web_file: watanabe-guideline.html
 nav_title: 指引 CQ1–17
 order: 7
 eyebrow: GUIDELINE / CLINICAL QUESTIONS
+conflict_page_id: comparison-sjs-ten-evidence
 ---
 
 ## 文件定位與分級

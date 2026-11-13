@@ -1,0 +1,65 @@
+asset_id: asset-dermatology-466e6277c427880f
+filename: 466e6277c427880f.jpg
+path: assets/images/dermatology/466e6277c427880f.jpg
+description: 雙手掌與手指可見多個同心圓靶形斑，中央與外環顏色較深、中間相對較淡。
+source_type: clinical_atlas_embedded_image
+source_url: https://dermnetnz.org/imagedetail/8133-cutaneous-adverse-reaction-to-anticonvulsant-erythema-multiforme-target-lesions
+source_urls:
+- https://dermnetnz.org/imagedetail/8133-cutaneous-adverse-reaction-to-anticonvulsant-erythema-multiforme-target-lesions
+source_ids:
+- src-dermatology-atlas-55-2026
+title_as_embedded:
+- ac em
+authors_as_provided:
+- 'DermNet '
+copyright_as_embedded:
+- © DermNet
+attribution_as_provided:
+- Image sourced from DermNet · © DermNet · 原圖／出處
+licence: CC BY-NC-ND 4.0
+licence_url: https://creativecommons.org/licenses/by-nc-nd/4.0/
+conditions_url: https://dermnetnz.org/image-licence
+conditions:
+- Educational noncommercial use only.
+- Credit DermNet and retain the supplied copyright attribution.
+- Link the source image page and licence.
+- Retain the original watermark and distribute only the unchanged image.
+- No endorsement is implied.
+public_allowed: true
+public_allowed_basis: Supplied DermNet image licence section Free use of Watermarked Images, clauses 2–3;
+  visible original watermark retained. This educational wiki is noncommercial.
+licence_checked_at: '2026-11-13'
+modifications: none
+preservation: Decoded supplied HTML image bytes copied unchanged, retaining original frame, metadata,
+  watermark, annotations and scale.
+sha256: 466e6277c427880f6035f5670b14a70f0d4ff3664e7ead6818711ecb05bf4580
+bytes: 66326
+width: 640
+height: 480
+watermark_observed: DermNet
+review_status: not_reviewed
+image_check_scope: Whole-frame visual check for watermark and visible personal labels; not diagnostic
+  interpretation.
+usages:
+- figure_code: 06-00
+  figure_index: 1
+  article_id: d06
+  source_id: src-dermatology-atlas-55-2026
+  short_id: A
+  caption: 臨床照片 雙手掌與手指可見多個同心圓靶形斑，中央與外環顏色較深、中間相對較淡。
+  attribution: Image sourced from DermNet · © DermNet · 原圖／出處
+  source_url: https://dermnetnz.org/imagedetail/8133-cutaneous-adverse-reaction-to-anticonvulsant-erythema-multiforme-target-lesions
+  alt: 雙手掌與手指可見多個同心圓靶形斑，中央與外環顏色較深、中間相對較淡。
+- source_id: src-dermatology-atlas-55-2026
+  short_id: A
+  article_id: cover
+  alt: 雙手掌與手指可見多個同心圓靶形斑，中央與外環顏色較深、中間相對較淡。
+  caption: ''
+  attribution: ''
+  source_url: null
+  figure_code: null
+  usage_type: cover
+used_in:
+- 01_wiki/concepts/erythema-multiforme.md
+- 03_outputs/web/dermatology-atlas/index.html
+- 03_outputs/web/dermatology/erythema-multiforme.html

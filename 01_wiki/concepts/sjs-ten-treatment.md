@@ -3,12 +3,25 @@ id: concept-sjs-ten-treatment
 title: 處置與流程
 title_en: Management & treatment pathways
 type: concept
+content_kind: chapter
+specialties:
+- dermatology
 created: 2026-11-12
 updated: 2026-11-12
 summary: 保留日本指引的分層處置流程，並與系統性回顧的效果及限制分開閱讀。
-tags: [dermatology, management, corticosteroids, etanercept, IVIG]
-aliases: [pulse therapy, systemic immunomodulation, supportive care]
-source_ids: [src-heuer-2026, src-watanabe-2026]
+tags:
+- dermatology
+- management
+- corticosteroids
+- etanercept
+- IVIG
+aliases:
+- pulse therapy
+- systemic immunomodulation
+- supportive care
+source_ids:
+- src-heuer-2026
+- src-watanabe-2026
 review_status: not_reviewed
 conflict_status: open
 publish: true
@@ -16,6 +29,7 @@ web_file: treatment.html
 nav_title: 處置與流程
 order: 3
 eyebrow: MANAGEMENT / TREATMENT
+conflict_page_id: comparison-sjs-ten-evidence
 ---
 
 ## 先抓住共同處置基礎

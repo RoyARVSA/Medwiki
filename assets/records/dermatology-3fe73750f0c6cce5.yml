@@ -1,0 +1,54 @@
+asset_id: asset-dermatology-3fe73750f0c6cce5
+filename: 3fe73750f0c6cce5.jpg
+path: assets/images/dermatology/3fe73750f0c6cce5.jpg
+description: 腋下多個結節及開口夾在粗厚、相互牽連的瘢痕中，可見局部變形。
+source_type: clinical_atlas_embedded_image
+source_url: https://dermnetnz.org/imagedetail/7478-hidradenitis-suppurativa-axilla
+source_urls:
+- https://dermnetnz.org/imagedetail/7478-hidradenitis-suppurativa-axilla
+source_ids:
+- src-dermatology-atlas-55-2026
+title_as_embedded:
+- hidradenitis7
+authors_as_provided:
+- 'DermNet '
+copyright_as_embedded:
+- © DermNet
+attribution_as_provided:
+- Image sourced from DermNet · © DermNet · 原圖／出處
+licence: CC BY-NC-ND 4.0
+licence_url: https://creativecommons.org/licenses/by-nc-nd/4.0/
+conditions_url: https://dermnetnz.org/image-licence
+conditions:
+- Educational noncommercial use only.
+- Credit DermNet and retain the supplied copyright attribution.
+- Link the source image page and licence.
+- Retain the original watermark and distribute only the unchanged image.
+- No endorsement is implied.
+public_allowed: true
+public_allowed_basis: Supplied DermNet image licence section Free use of Watermarked Images, clauses 2–3; visible
+  original watermark retained. This educational wiki is noncommercial.
+licence_checked_at: '2026-11-13'
+modifications: none
+preservation: Decoded supplied HTML image bytes copied unchanged, retaining original frame, metadata, watermark,
+  annotations and scale.
+sha256: 3fe73750f0c6cce576c089600f63ee192288acbe1c832eec039f391c463b12b6
+bytes: 49777
+width: 640
+height: 480
+watermark_observed: DermNet
+review_status: not_reviewed
+image_check_scope: Whole-frame visual check for watermark and visible personal labels; not diagnostic interpretation.
+usages:
+- figure_code: 15-05
+  figure_index: 2
+  article_id: d15
+  source_id: src-dermatology-atlas-55-2026
+  short_id: A
+  caption: 臨床照片 腋下多個結節及開口夾在粗厚、相互牽連的瘢痕中，可見局部變形。
+  attribution: Image sourced from DermNet · © DermNet · 原圖／出處
+  source_url: https://dermnetnz.org/imagedetail/7478-hidradenitis-suppurativa-axilla
+  alt: 腋下多個結節及開口夾在粗厚、相互牽連的瘢痕中，可見局部變形。
+used_in:
+- 01_wiki/concepts/hidradenitis-suppurativa.md
+- 03_outputs/web/dermatology/hidradenitis-suppurativa.html

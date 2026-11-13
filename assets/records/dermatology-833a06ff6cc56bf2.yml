@@ -1,0 +1,54 @@
+asset_id: asset-dermatology-833a06ff6cc56bf2
+filename: 833a06ff6cc56bf2.jpg
+path: assets/images/dermatology/833a06ff6cc56bf2.jpg
+description: 表淺剝脫近照：紅色皮膚上殘留薄而皺縮、捲起的表皮；照片無法直接判定組織分離層次。
+source_type: clinical_atlas_embedded_image
+source_url: https://dermnetnz.org/imagedetail/3258-staphylococcal-scalded-skin-syndrome
+source_urls:
+- https://dermnetnz.org/imagedetail/3258-staphylococcal-scalded-skin-syndrome
+source_ids:
+- src-dermatology-atlas-supplement-01-2026
+title_as_embedded:
+- Staphylococcal scalded skin syndrome
+authors_as_provided:
+- 'Te Whatu Ora '
+copyright_as_embedded:
+- © Te Whatu Ora
+attribution_as_provided:
+- Image sourced from DermNet · © Te Whatu Ora · 原圖／出處
+licence: CC BY-NC-ND 4.0
+licence_url: https://creativecommons.org/licenses/by-nc-nd/4.0/
+conditions_url: https://dermnetnz.org/image-licence
+conditions:
+- Educational noncommercial use only.
+- Credit DermNet and retain the supplied copyright attribution.
+- Link the source image page and licence.
+- Retain the original watermark and distribute only the unchanged image.
+- No endorsement is implied.
+public_allowed: true
+public_allowed_basis: Supplied DermNet image licence section Free use of Watermarked Images, clauses 2–3; visible
+  original watermark retained. This educational wiki is noncommercial.
+licence_checked_at: '2026-11-13'
+modifications: none
+preservation: Decoded supplied HTML image bytes copied unchanged, retaining original frame, metadata, watermark,
+  annotations and scale.
+sha256: 833a06ff6cc56bf2551358399f0cabd086a699a3cf2a0a4c712fddb99b7732de
+bytes: 37828
+width: 640
+height: 480
+watermark_observed: Te Whatu Ora
+review_status: not_reviewed
+image_check_scope: Whole-frame visual check for watermark and visible personal labels; not diagnostic interpretation.
+usages:
+- figure_code: 58-02
+  figure_index: 2
+  article_id: d58
+  source_id: src-dermatology-atlas-supplement-01-2026
+  short_id: B
+  caption: 臨床照片 表淺剝脫近照：紅色皮膚上殘留薄而皺縮、捲起的表皮；照片無法直接判定組織分離層次。
+  attribution: Image sourced from DermNet · © Te Whatu Ora · 原圖／出處
+  source_url: https://dermnetnz.org/imagedetail/3258-staphylococcal-scalded-skin-syndrome
+  alt: 表淺剝脫近照：紅色皮膚上殘留薄而皺縮、捲起的表皮；照片無法直接判定組織分離層次。
+used_in:
+- 01_wiki/concepts/staphylococcal-scalded-skin-syndrome.md
+- 03_outputs/web/dermatology/staphylococcal-scalded-skin-syndrome.html

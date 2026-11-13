@@ -1,0 +1,55 @@
+id: epidermal-detachment-reasoning
+title: 表皮剝脫：從可見外觀走向鑑別證據
+kind: differential
+population: 依提供的皮膚科講義進行 EB、SSSS、SJS/TEN 的辨識與鑑別學習。
+version: 主講義 c2、增補 blister；2026 年 11 月提供版本。
+source_ids: [src-dermatology-atlas-55-2026, src-dermatology-atlas-supplement-01-2026]
+review_status: not_reviewed
+conflict_status: none
+entry: describe
+nodes:
+  - id: describe
+    kind: step
+    label: 描述病灶、分布與剝脫外觀
+    detail: 先分清鬆弛或薄壁水疱、皺紙樣脫屑、暗紅非典型靶形斑及糜爛。外觀是線索；照片不能直接證明組織分離層次。
+    citations: ['[@A:c2]', '[@B:blister]']
+  - id: mucosa
+    kind: step
+    label: 區分口周皮膚與真正黏膜病灶
+    detail: SSSS 的黏膜通常保留，口周結痂不等於口腔黏膜糜爛；SJS/TEN 常見口、眼或生殖器黏膜糜爛。這些典型差異不能單獨確診或作絕對排除。
+    citations: ['[@A:c2]', '[@B:blister]']
+  - id: chronology
+    kind: step
+    label: 補上病程、年齡、摩擦與用藥時序
+    detail: 遺傳性 EB 重在幼年起、摩擦相關反覆起疱；SSSS 常為幼兒急性發燒與觸痛，成人也有特定背景；SJS/TEN 追問急性疼痛皮疹與近期用藥。這些資訊須由病史取得。
+    citations: ['[@A:c2]', '[@B:blister]']
+  - id: verify
+    kind: step
+    label: 對照需要另外取得的檢查證據
+    detail: EB 依分離層次、抗原定位與基因檢查分型；SSSS 結合感染源培養，必要時切片確認顆粒層表淺裂隙；SJS/TEN 病理可見角質細胞壞死，成熟病灶可達全層壞死。不能從照片替代這些結果。
+    citations: ['[@A:c2]', '[@B:blister]', '[@B:d58]']
+  - id: evidence-ready
+    kind: decision
+    label: 關鍵資料是否足以繼續對照？
+    detail: 此處是學習資料的完整性檢查，不是診斷機率模型。對照已知線索與限制，仍缺資料時明列缺口。
+    citations: ['[@A:guide]', '[@A:c2]', '[@B:blister]']
+  - id: compare
+    kind: terminal
+    label: 回到比較頁與各疾病準則
+    detail: 保留可支持及仍無法區分的證據。Nikolsky 可在不同疾病陽性；黏膜照片不能區分 SJS 與 TEN，國際分型另依全身已剝離／可剝離表皮 BSA。此圖不自動選定疾病。
+    citations: ['[@A:c2]', '[@B:blister]']
+  - id: missing
+    kind: unknown
+    label: 列出缺少證據，保留鑑別
+    detail: 清楚記錄尚缺病程、黏膜檢查、用藥或檢驗證據。資訊未知不等於病灶不存在或檢驗陰性；此節點為本站的學習缺口提示。
+    citations: ['[@A:guide]', '[@B:blister]']
+edges:
+  - {from: describe, to: mucosa, label: ''}
+  - {from: mucosa, to: chronology, label: ''}
+  - {from: chronology, to: verify, label: ''}
+  - {from: verify, to: evidence-ready, label: ''}
+  - {from: evidence-ready, to: compare, label: 可整合現有證據}
+  - {from: evidence-ready, to: missing, label: 尚有未知}
+notes:
+  - '本圖是依講義整理的鑑別學習順序，不是具敏感度／特異度驗證的診斷演算法。[@A:guide][@B:blister]'
+  - '外觀、病史與檢查是不同證據；不能只靠 Nikolsky 或單張照片定案。[@A:c2][@B:blister]'

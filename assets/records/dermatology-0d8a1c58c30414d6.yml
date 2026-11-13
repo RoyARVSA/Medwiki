@@ -1,0 +1,54 @@
+asset_id: asset-dermatology-0d8a1c58c30414d6
+filename: 0d8a1c58c30414d6.jpg
+path: assets/images/dermatology/0d8a1c58c30414d6.jpg
+description: MF 分布例：臀部與下背部有多發、不規則的紅褐色斑塊，示範衣物遮蔽區受累。
+source_type: clinical_atlas_embedded_image
+source_url: https://dermnetnz.org/imagedetail/6276-plaque-stage-mycosis-fungoides
+source_urls:
+- https://dermnetnz.org/imagedetail/6276-plaque-stage-mycosis-fungoides
+source_ids:
+- src-dermatology-atlas-supplement-01-2026
+title_as_embedded:
+- mycosis fungoides plaque 19
+authors_as_provided:
+- 'Te Whatu Ora '
+copyright_as_embedded:
+- © Te Whatu Ora
+attribution_as_provided:
+- Image sourced from DermNet · © Te Whatu Ora · 原圖／出處
+licence: CC BY-NC-ND 4.0
+licence_url: https://creativecommons.org/licenses/by-nc-nd/4.0/
+conditions_url: https://dermnetnz.org/image-licence
+conditions:
+- Educational noncommercial use only.
+- Credit DermNet and retain the supplied copyright attribution.
+- Link the source image page and licence.
+- Retain the original watermark and distribute only the unchanged image.
+- No endorsement is implied.
+public_allowed: true
+public_allowed_basis: Supplied DermNet image licence section Free use of Watermarked Images, clauses 2–3; visible
+  original watermark retained. This educational wiki is noncommercial.
+licence_checked_at: '2026-11-13'
+modifications: none
+preservation: Decoded supplied HTML image bytes copied unchanged, retaining original frame, metadata, watermark,
+  annotations and scale.
+sha256: 0d8a1c58c30414d615b240c3dace8e4861b0d7c64fb6a042ffea242d70b88a23
+bytes: 31601
+width: 640
+height: 480
+watermark_observed: Te Whatu Ora
+review_status: not_reviewed
+image_check_scope: Whole-frame visual check for watermark and visible personal labels; not diagnostic interpretation.
+usages:
+- figure_code: 56-06
+  figure_index: 1
+  article_id: ctcl
+  source_id: src-dermatology-atlas-supplement-01-2026
+  short_id: B
+  caption: 臨床照片 MF 分布例：臀部與下背部有多發、不規則的紅褐色斑塊，示範衣物遮蔽區受累。
+  attribution: Image sourced from DermNet · © Te Whatu Ora · 原圖／出處
+  source_url: https://dermnetnz.org/imagedetail/6276-plaque-stage-mycosis-fungoides
+  alt: MF 分布例：臀部與下背部有多發、不規則的紅褐色斑塊，示範衣物遮蔽區受累。
+used_in:
+- 01_wiki/comparisons/mycosis-fungoides-sezary.md
+- 03_outputs/web/dermatology-comparisons/mycosis-fungoides-sezary.html

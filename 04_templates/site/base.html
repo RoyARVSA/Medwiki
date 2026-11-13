@@ -10,16 +10,19 @@
   <link rel="icon" href="{{ asset('assets/images/medwiki-mark.svg', current) }}" type="image/svg+xml">
   <link rel="icon" href="{{ asset('assets/images/favicon-32.png', current) }}" type="image/png" sizes="32x32">
   <link rel="stylesheet" href="{{ asset('assets/site/site.css', current) }}">
+  <link rel="stylesheet" href="{{ asset('assets/site/learning.css', current) }}">
   {% block extra_head %}{% endblock %}
   <script src="{{ asset('assets/site/site.js', current) }}" defer></script>
+  <script src="{{ asset('assets/site/learning.js', current) }}" defer></script>
 </head>
 <body data-home="{{ rel('index.html', current) }}" class="{% block bodyclass %}{% endblock %}">
   <a class="skip" href="#main">跳至正文</a>
   <header class="site-header">
     <a class="brand" href="{{ rel('index.html', current) }}" aria-label="Medwiki 首頁"><img class="brand-icon" src="{{ rel('assets/images/medwiki-mark.svg', current) }}" alt="" width="44" height="44"><span>medwiki<span class="brand-caption">MEDICAL LEARNING</span></span></a>
     <nav class="global-nav" aria-label="全站導航">
-      <a href="{{ rel('index.html', current) }}#topics">主題館</a>
-      <a href="{{ rel('index.html', current) }}#literature">文獻與指引</a>
+      <a href="{{ rel('index.html', current) }}#specialties">科別</a>
+      <a href="{{ rel('index.html', current) }}#concepts">疾病與概念</a>
+      <a href="{{ rel('index.html', current) }}#reasoning">臨床思路</a>
       <a href="{{ rel('index.html', current) }}#outputs">學習成果</a>
     </nav>
     <button class="search-trigger" data-open-search aria-label="搜尋知識庫"><span aria-hidden="true">⌕</span><span class="search-word">搜尋知識庫</span><kbd>⌘ / Ctrl K</kbd></button>
@@ -31,7 +34,7 @@
     <div class="dialog-top"><span class="eyebrow" id="search-title">SEARCH THE LIBRARY</span><button data-close-dialog aria-label="關閉搜尋">✕</button></div>
     <label class="sr-only" for="search-input">搜尋主題、英文術語或縮寫</label>
     <input id="search-input" type="search" placeholder="搜尋主題、英文術語或縮寫…" autocomplete="off">
-    <div class="search-filters"><label>內容 <select id="search-type"><option value="">全部</option><option value="concept">疾病與概念</option><option value="comparison">證據比較</option><option value="source_summary">論文與指引</option></select></label><span>只搜尋已公開的學習內容</span></div>
+    <div class="search-filters"><label>內容 <select id="search-type"><option value="">全部</option><option value="concept">疾病與概念</option><option value="comparison">鑑別與證據比較</option><option value="approach">臨床思路與準則</option><option value="source_summary">文獻與學習資源</option><option value="map">學習導航</option></select></label><span>搜尋已公開內容</span></div>
     <div id="search-results" aria-live="polite"><p class="muted">輸入關鍵字開始搜尋。</p></div>
   </dialog>
   <dialog id="citation-dialog" class="citation-dialog" aria-labelledby="citation-title">

@@ -1,0 +1,20 @@
+/* Exercise the actual browser URL/filter helpers in a minimal VM context. */
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const vm = require('node:vm');
+const path = require('node:path');
+const source = fs.readFileSync(path.join(__dirname, '../assets/site/learning.js'), 'utf8');
+const marker = '  const returnUrl = contextUrl';
+assert.ok(source.includes(marker), 'browser initialization boundary must exist');
+const fixture = source.slice(0, source.indexOf(marker)) + '\n globalThis.helpers={imageUrl,siteUrl,matchesAtlas,contextUrl};\n})();';
+const context = {URL,matchMedia:()=>({matches:true}),location:{href:'https://example.org/Medwiki/03_outputs/web/dermatology-atlas/index.html'},document:{documentElement:{classList:{add(){}}},body:{dataset:{home:'../../../index.html'}}}};
+vm.createContext(context);vm.runInContext(fixture,context);
+const h=context.helpers;
+assert.equal(h.imageUrl('../../../assets/images/dermatology/example.jpg'),'https://example.org/Medwiki/assets/images/dermatology/example.jpg','practice image must resolve from the atlas page, retaining the GitHub project prefix');
+assert.equal(h.siteUrl('03_outputs/web/dermatology/example.html#atlas-d01').href,'https://example.org/Medwiki/03_outputs/web/dermatology/example.html#atlas-d01');
+assert.equal(h.siteUrl('javascript:alert(1)'),null);
+assert.equal(h.matchesAtlas({category:'blister',search:'BP tense bulla'},{category:'blister',query:'bp BULLA'}),true);
+assert.equal(h.matchesAtlas({category:'hair',search:'BP tense bulla'},{category:'blister',query:'BP'}),false);
+assert.equal(h.contextUrl(new URLSearchParams('atlas=d01&group=hair')).href,'https://example.org/Medwiki/03_outputs/web/dermatology-atlas/index.html?category=hair#entry-d01');
+assert.equal(h.contextUrl(new URLSearchParams('atlas=https://evil.example')),null);
+console.log('PASS: public learning URLs, image resolution, filtering and safe context returns');

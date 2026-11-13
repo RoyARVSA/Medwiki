@@ -1,0 +1,54 @@
+asset_id: asset-dermatology-59aa68ab6848f6f6
+filename: 59aa68ab6848f6f6.jpg
+path: assets/images/dermatology/59aa68ab6848f6f6.jpg
+description: 口周群聚糜爛、密集結痂；痂皮外觀仍需與膿痂疹鑑別。
+source_type: clinical_atlas_embedded_image
+source_url: https://dermnetnz.org/imagedetail/10834-eczema-herpeticum
+source_urls:
+- https://dermnetnz.org/imagedetail/10834-eczema-herpeticum
+source_ids:
+- src-dermatology-atlas-55-2026
+title_as_embedded:
+- ecz herp1
+authors_as_provided:
+- 'DermNet '
+copyright_as_embedded:
+- © DermNet
+attribution_as_provided:
+- Image sourced from DermNet · © DermNet · 原圖／出處
+licence: CC BY-NC-ND 4.0
+licence_url: https://creativecommons.org/licenses/by-nc-nd/4.0/
+conditions_url: https://dermnetnz.org/image-licence
+conditions:
+- Educational noncommercial use only.
+- Credit DermNet and retain the supplied copyright attribution.
+- Link the source image page and licence.
+- Retain the original watermark and distribute only the unchanged image.
+- No endorsement is implied.
+public_allowed: true
+public_allowed_basis: Supplied DermNet image licence section Free use of Watermarked Images, clauses 2–3; visible
+  original watermark retained. This educational wiki is noncommercial.
+licence_checked_at: '2026-11-13'
+modifications: none
+preservation: Decoded supplied HTML image bytes copied unchanged, retaining original frame, metadata, watermark,
+  annotations and scale.
+sha256: 59aa68ab6848f6f6d05961d9f6cb424706c40150e7098036ada2d68c30b3198f
+bytes: 31289
+width: 640
+height: 480
+watermark_observed: DermNet
+review_status: not_reviewed
+image_check_scope: Whole-frame visual check for watermark and visible personal labels; not diagnostic interpretation.
+usages:
+- figure_code: 26-00
+  figure_index: 2
+  article_id: d26
+  source_id: src-dermatology-atlas-55-2026
+  short_id: A
+  caption: 臨床照片 口周群聚糜爛、密集結痂；痂皮外觀仍需與膿痂疹鑑別。
+  attribution: Image sourced from DermNet · © DermNet · 原圖／出處
+  source_url: https://dermnetnz.org/imagedetail/10834-eczema-herpeticum
+  alt: 口周群聚糜爛、密集結痂；痂皮外觀仍需與膿痂疹鑑別。
+used_in:
+- 01_wiki/concepts/eczema-herpeticum.md
+- 03_outputs/web/dermatology/eczema-herpeticum.html

@@ -1,0 +1,54 @@
+asset_id: asset-dermatology-e1e98ae517fa1e45
+filename: e1e98ae517fa1e45.jpg
+path: assets/images/dermatology/e1e98ae517fa1e45.jpg
+description: V sign：前頸至上胸開領區的片狀紅斑與微血管擴張；紅斑不必形成銳利幾何 V 字。
+source_type: commons_clinical_image
+source_url: https://commons.wikimedia.org/wiki/File:Dermatomyositis17.jpg
+source_urls:
+- https://commons.wikimedia.org/wiki/File:Dermatomyositis17.jpg
+source_ids:
+- src-dermatology-atlas-55-2026
+title_as_embedded: []
+authors_as_provided:
+- Elizabeth M. Dugan
+- Adam M. Huber
+- Frederick W. Miller
+- Lisa G. Rider
+- IMACS Group
+copyright_as_embedded: []
+attribution_as_provided:
+- Dugan et al. / IMACS Group · 來源 · CC BY-SA 3.0
+licence: CC BY-SA 3.0
+licence_url: https://creativecommons.org/licenses/by-sa/3.0/
+conditions_url: https://commons.wikimedia.org/wiki/File:Dermatomyositis17.jpg
+conditions:
+- Credit the named authors and link the source and licence.
+- State whether changes were made.
+- Any adaptation must use the same or compatible licence.
+- No endorsement is implied.
+public_allowed: true
+public_allowed_basis: Supplied Commons file page identifies the authors and CC BY-SA 3.0; unchanged full frame retained.
+licence_checked_at: '2026-11-13'
+modifications: none
+preservation: Decoded supplied HTML image bytes copied unchanged, retaining original frame, metadata, watermark,
+  annotations and scale.
+sha256: e1e98ae517fa1e45c74144a05d4ce36e3f3d5e6223a61790fd900a16f84b3304
+bytes: 348654
+width: 768
+height: 423
+watermark_observed: IMACS source text
+review_status: not_reviewed
+image_check_scope: Whole-frame visual check for watermark and visible personal labels; not diagnostic interpretation.
+usages:
+- figure_code: 04-vsign-extra
+  figure_index: 2
+  article_id: d04
+  source_id: src-dermatology-atlas-55-2026
+  short_id: A
+  caption: 臨床照片 V sign：前頸至上胸開領區的片狀紅斑與微血管擴張；紅斑不必形成銳利幾何 V 字。
+  attribution: Dugan et al. / IMACS Group · 來源 · CC BY-SA 3.0
+  source_url: https://commons.wikimedia.org/wiki/File:Dermatomyositis17.jpg
+  alt: V sign：前頸至上胸開領區的片狀紅斑與微血管擴張；紅斑不必形成銳利幾何 V 字。
+used_in:
+- 01_wiki/concepts/dermatomyositis.md
+- 03_outputs/web/dermatology/dermatomyositis.html

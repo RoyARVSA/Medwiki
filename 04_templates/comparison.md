@@ -6,6 +6,9 @@ created: YYYY-MM-DD
 updated: YYYY-MM-DD
 summary: 說明比較的族群、問題與終點。
 tags: []
+specialties: []
+content_kind: comparison
+related_ids: []
 source_ids: []
 review_status: not_reviewed
 conflict_status: none

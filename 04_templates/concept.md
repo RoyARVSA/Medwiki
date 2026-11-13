@@ -8,6 +8,9 @@ updated: YYYY-MM-DD
 summary: 一至兩句範圍說明，不宣稱未讀取內容。
 tags: []
 aliases: []
+specialties: []
+content_kind: concept
+related_ids: []
 source_ids: []
 review_status: not_reviewed
 conflict_status: none

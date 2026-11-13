@@ -1,0 +1,65 @@
+asset_id: asset-dermatology-6754ce4b351884f6
+filename: 6754ce4b351884f6.jpg
+path: assets/images/dermatology/6754ce4b351884f6.jpg
+description: 來源為 Sézary 病例：胸頸與上肢廣泛紅褐色改變並有細屑；本圖無法呈現血液診斷證據。
+source_type: clinical_atlas_embedded_image
+source_url: https://dermnetnz.org/imagedetail/10487-sezary-syndrome
+source_urls:
+- https://dermnetnz.org/imagedetail/10487-sezary-syndrome
+source_ids:
+- src-dermatology-atlas-supplement-01-2026
+title_as_embedded:
+- sezary 1
+authors_as_provided:
+- 'DermNet '
+copyright_as_embedded:
+- © DermNet
+attribution_as_provided:
+- Image sourced from DermNet · © DermNet · 原圖／出處
+licence: CC BY-NC-ND 4.0
+licence_url: https://creativecommons.org/licenses/by-nc-nd/4.0/
+conditions_url: https://dermnetnz.org/image-licence
+conditions:
+- Educational noncommercial use only.
+- Credit DermNet and retain the supplied copyright attribution.
+- Link the source image page and licence.
+- Retain the original watermark and distribute only the unchanged image.
+- No endorsement is implied.
+public_allowed: true
+public_allowed_basis: Supplied DermNet image licence section Free use of Watermarked Images, clauses 2–3;
+  visible original watermark retained. This educational wiki is noncommercial.
+licence_checked_at: '2026-11-13'
+modifications: none
+preservation: Decoded supplied HTML image bytes copied unchanged, retaining original frame, metadata,
+  watermark, annotations and scale.
+sha256: 6754ce4b351884f60b12541e640563e2932c73195957ece02c5da6897ea99140
+bytes: 40810
+width: 640
+height: 480
+watermark_observed: DermNet
+review_status: not_reviewed
+image_check_scope: Whole-frame visual check for watermark and visible personal labels; not diagnostic
+  interpretation.
+usages:
+- figure_code: 57-00
+  figure_index: 1
+  article_id: d57
+  source_id: src-dermatology-atlas-supplement-01-2026
+  short_id: B
+  caption: 臨床照片 來源為 Sézary 病例：胸頸與上肢廣泛紅褐色改變並有細屑；本圖無法呈現血液診斷證據。
+  attribution: Image sourced from DermNet · © DermNet · 原圖／出處
+  source_url: https://dermnetnz.org/imagedetail/10487-sezary-syndrome
+  alt: 來源為 Sézary 病例：胸頸與上肢廣泛紅褐色改變並有細屑；本圖無法呈現血液診斷證據。
+- source_id: src-dermatology-atlas-supplement-01-2026
+  short_id: B
+  article_id: cover
+  alt: 來源為 Sézary 病例：胸頸與上肢廣泛紅褐色改變並有細屑；本圖無法呈現血液診斷證據。
+  caption: ''
+  attribution: ''
+  source_url: null
+  figure_code: null
+  usage_type: cover
+used_in:
+- 01_wiki/concepts/sezary-syndrome.md
+- 03_outputs/web/dermatology-atlas/index.html
+- 03_outputs/web/dermatology/sezary-syndrome.html

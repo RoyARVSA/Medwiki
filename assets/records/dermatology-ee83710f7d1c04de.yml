@@ -1,0 +1,54 @@
+asset_id: asset-dermatology-ee83710f7d1c04de
+filename: ee83710f7d1c04de.jpg
+path: assets/images/dermatology/ee83710f7d1c04de.jpg
+description: 上下唇局部可見界線較清楚的暗褐色斑，與周圍粉紅唇色形成對比。
+source_type: clinical_atlas_embedded_image
+source_url: https://dermnetnz.org/imagedetail/8104-fixed-drug-eruption
+source_urls:
+- https://dermnetnz.org/imagedetail/8104-fixed-drug-eruption
+source_ids:
+- src-dermatology-atlas-55-2026
+title_as_embedded:
+- fde lips
+authors_as_provided:
+- 'DermNet '
+copyright_as_embedded:
+- © DermNet
+attribution_as_provided:
+- Image sourced from DermNet · © DermNet · 原圖／出處
+licence: CC BY-NC-ND 4.0
+licence_url: https://creativecommons.org/licenses/by-nc-nd/4.0/
+conditions_url: https://dermnetnz.org/image-licence
+conditions:
+- Educational noncommercial use only.
+- Credit DermNet and retain the supplied copyright attribution.
+- Link the source image page and licence.
+- Retain the original watermark and distribute only the unchanged image.
+- No endorsement is implied.
+public_allowed: true
+public_allowed_basis: Supplied DermNet image licence section Free use of Watermarked Images, clauses 2–3; visible
+  original watermark retained. This educational wiki is noncommercial.
+licence_checked_at: '2026-11-13'
+modifications: none
+preservation: Decoded supplied HTML image bytes copied unchanged, retaining original frame, metadata, watermark,
+  annotations and scale.
+sha256: ee83710f7d1c04decd37a33a4b831525a12da01bd7be30ad1f7281f9df7c1926
+bytes: 74618
+width: 640
+height: 480
+watermark_observed: DermNet
+review_status: not_reviewed
+image_check_scope: Whole-frame visual check for watermark and visible personal labels; not diagnostic interpretation.
+usages:
+- figure_code: 08-06
+  figure_index: 2
+  article_id: d08
+  source_id: src-dermatology-atlas-55-2026
+  short_id: A
+  caption: 臨床照片 上下唇局部可見界線較清楚的暗褐色斑，與周圍粉紅唇色形成對比。
+  attribution: Image sourced from DermNet · © DermNet · 原圖／出處
+  source_url: https://dermnetnz.org/imagedetail/8104-fixed-drug-eruption
+  alt: 上下唇局部可見界線較清楚的暗褐色斑，與周圍粉紅唇色形成對比。
+used_in:
+- 01_wiki/concepts/fixed-drug-eruption.md
+- 03_outputs/web/dermatology/fixed-drug-eruption.html

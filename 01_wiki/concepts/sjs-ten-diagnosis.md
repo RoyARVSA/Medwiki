@@ -4,11 +4,26 @@ title: 診斷與評估
 title_en: Diagnosis & assessment
 type: concept
 created: 2026-11-12
-updated: 2026-11-12
+updated: 2026-11-13
+specialties:
+- dermatology
+content_kind: chapter
 summary: 區分國際分型與日本準則，保留黏膜、病理、鑑別與致病藥物檢測的條件。
-tags: [dermatology, diagnosis, SJS, TEN, CRISTEN]
-aliases: [diagnostic criteria, DLST, LTT, patch test, SCORTEN]
-source_ids: [src-heuer-2026, src-watanabe-2026]
+tags:
+- dermatology
+- diagnosis
+- SJS
+- TEN
+- CRISTEN
+aliases:
+- diagnostic criteria
+- DLST
+- LTT
+- patch test
+- SCORTEN
+source_ids:
+- src-heuer-2026
+- src-watanabe-2026
 review_status: not_reviewed
 conflict_status: open
 publish: true
@@ -16,6 +31,7 @@ web_file: diagnosis.html
 nav_title: 診斷與評估
 order: 2
 eyebrow: DIAGNOSIS / ASSESSMENT
+conflict_page_id: comparison-sjs-ten-evidence
 ---
 
 ## 日本 SJS 準則：五項主準則
@@ -23,12 +39,14 @@ eyebrow: DIAGNOSIS / ASSESSMENT
 Table 3 要求**全部五項**，並參考次要準則及完整病程，不只看初診當下。[@W:9]
 
 1. 眼、口腔、生殖器等黏膜皮膚交界的廣泛且嚴重黏膜損傷，例如出血性糜爛與結痂。
-2. 廣泛紅斑伴隨表皮壞死造成的糜爛或水疱，剝離面積 <10% BSA，包含輕壓可剝離區。
+2. 廣泛紅斑伴隨表皮壞死造成的糜爛或水疱，恢復後可見結痂或膜狀脫屑；剝離面積 <10% BSA，包含輕壓可剝離區。
 3. 發燒。
 4. 組織病理顯示表皮壞死。
 5. 排除 erythema multiforme major（EMM），以及由細胞毒性抗癌藥藥理作用、而非遲發型過敏造成的皮膚傷害。
 
-次要線索包括臉/頸/軀幹為主的平坦非典型 target、急性雙側結膜炎及偽膜/眼表上皮缺損、倦怠與進食困難，以及排除自體免疫性水疱病。病理註記建議在 200× 視野確認至少 10 個壞死角質形成細胞；成熟病灶可見全層表皮壞死。原文也註記少數病例可僅有黏膜病灶，不能將此例外與面積條件自行重組成新準則。[@W:9]
+次要線索包括臉/頸/軀幹為主的平坦非典型 target、急性雙側結膜炎合併偽膜形成和／或眼表上皮缺損、倦怠與進食困難，以及排除自體免疫性水疱病。病理註記建議在 200× 視野確認至少 10 個壞死角質形成細胞；成熟病灶可見全層表皮壞死。原文也註記少數病例可僅有黏膜病灶，不能將此例外與面積條件自行重組成新準則。[@W:9]
+
+[逐項查看準則圖與文字對照](../approaches/sjs-diagnostic-criteria.md)。
 
 ## 日本 TEN 準則：三項主準則
 

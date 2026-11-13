@@ -1,0 +1,54 @@
+asset_id: asset-dermatology-c1fd3c20e9a397c7
+filename: c1fd3c20e9a397c7.jpg
+path: assets/images/dermatology/c1fd3c20e9a397c7.jpg
+description: 來源標示 SJS：雙側可見結膜充血；眼部嚴重程度須眼科檢查，無法僅由照片分級。
+source_type: clinical_atlas_embedded_image
+source_url: https://dermnetnz.org/imagedetail/17815-stevens-johnson-syndrome
+source_urls:
+- https://dermnetnz.org/imagedetail/17815-stevens-johnson-syndrome
+source_ids:
+- src-dermatology-atlas-supplement-01-2026
+title_as_embedded:
+- sjs4
+authors_as_provided:
+- 'DermNet '
+copyright_as_embedded:
+- © DermNet
+attribution_as_provided:
+- Image sourced from DermNet · © DermNet · 原圖／出處
+licence: CC BY-NC-ND 4.0
+licence_url: https://creativecommons.org/licenses/by-nc-nd/4.0/
+conditions_url: https://dermnetnz.org/image-licence
+conditions:
+- Educational noncommercial use only.
+- Credit DermNet and retain the supplied copyright attribution.
+- Link the source image page and licence.
+- Retain the original watermark and distribute only the unchanged image.
+- No endorsement is implied.
+public_allowed: true
+public_allowed_basis: Supplied DermNet image licence section Free use of Watermarked Images, clauses 2–3; visible
+  original watermark retained. This educational wiki is noncommercial.
+licence_checked_at: '2026-11-13'
+modifications: none
+preservation: Decoded supplied HTML image bytes copied unchanged, retaining original frame, metadata, watermark,
+  annotations and scale.
+sha256: c1fd3c20e9a397c7a3751121860786dd84f57e841adf86fca03569a91c5b4413
+bytes: 36578
+width: 640
+height: 480
+watermark_observed: DermNet
+review_status: not_reviewed
+image_check_scope: Whole-frame visual check for watermark and visible personal labels; not diagnostic interpretation.
+usages:
+- figure_code: 59-05
+  figure_index: 3
+  article_id: d59
+  source_id: src-dermatology-atlas-supplement-01-2026
+  short_id: B
+  caption: 臨床照片 來源標示 SJS：雙側可見結膜充血；眼部嚴重程度須眼科檢查，無法僅由照片分級。
+  attribution: Image sourced from DermNet · © DermNet · 原圖／出處
+  source_url: https://dermnetnz.org/imagedetail/17815-stevens-johnson-syndrome
+  alt: 來源標示 SJS：雙側可見結膜充血；眼部嚴重程度須眼科檢查，無法僅由照片分級。
+used_in:
+- 01_wiki/concepts/sjs-ten.md
+- 03_outputs/web/sjs-ten/index.html

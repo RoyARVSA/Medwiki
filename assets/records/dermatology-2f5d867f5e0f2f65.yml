@@ -1,0 +1,54 @@
+asset_id: asset-dermatology-2f5d867f5e0f2f65
+filename: 2f5d867f5e0f2f65.jpg
+path: assets/images/dermatology/2f5d867f5e0f2f65.jpg
+description: 顯微鏡可見圓形酵母與短菌絲；這是檢體所見，不是肉眼皮疹。
+source_type: clinical_atlas_embedded_image
+source_url: https://dermnetnz.org/imagedetail/17299-malassezia-microscopy
+source_urls:
+- https://dermnetnz.org/imagedetail/17299-malassezia-microscopy
+source_ids:
+- src-dermatology-atlas-55-2026
+title_as_embedded:
+- pitver3
+authors_as_provided:
+- 'DermNet '
+copyright_as_embedded:
+- © DermNet
+attribution_as_provided:
+- Image sourced from DermNet · © DermNet · 原圖／出處
+licence: CC BY-NC-ND 4.0
+licence_url: https://creativecommons.org/licenses/by-nc-nd/4.0/
+conditions_url: https://dermnetnz.org/image-licence
+conditions:
+- Educational noncommercial use only.
+- Credit DermNet and retain the supplied copyright attribution.
+- Link the source image page and licence.
+- Retain the original watermark and distribute only the unchanged image.
+- No endorsement is implied.
+public_allowed: true
+public_allowed_basis: Supplied DermNet image licence section Free use of Watermarked Images, clauses 2–3; visible
+  original watermark retained. This educational wiki is noncommercial.
+licence_checked_at: '2026-11-13'
+modifications: none
+preservation: Decoded supplied HTML image bytes copied unchanged, retaining original frame, metadata, watermark,
+  annotations and scale.
+sha256: 2f5d867f5e0f2f653033d5169b58822db5c872dfd42b7e84ff1a6e9e480714ed
+bytes: 62737
+width: 640
+height: 480
+watermark_observed: DermNet
+review_status: not_reviewed
+image_check_scope: Whole-frame visual check for watermark and visible personal labels; not diagnostic interpretation.
+usages:
+- figure_code: 34-06
+  figure_index: 3
+  article_id: d34
+  source_id: src-dermatology-atlas-55-2026
+  short_id: A
+  caption: 顯微鏡影像 顯微鏡可見圓形酵母與短菌絲；這是檢體所見，不是肉眼皮疹。
+  attribution: Image sourced from DermNet · © DermNet · 原圖／出處
+  source_url: https://dermnetnz.org/imagedetail/17299-malassezia-microscopy
+  alt: 顯微鏡可見圓形酵母與短菌絲；這是檢體所見，不是肉眼皮疹。
+used_in:
+- 01_wiki/concepts/pityriasis-versicolor.md
+- 03_outputs/web/dermatology/pityriasis-versicolor.html

@@ -1,0 +1,67 @@
+asset_id: asset-dermatology-ce5fa13acc3d2f99
+filename: ce5fa13acc3d2f99.jpg
+path: assets/images/dermatology/ce5fa13acc3d2f99.jpg
+description: 軀幹可見大片表皮脫落，留下鮮紅糜爛面，邊緣殘留薄而捲起的表皮。
+source_type: clinical_atlas_embedded_image
+source_url: https://dermnetnz.org/imagedetail/8151-toxic-epidermal-necrolysis
+source_urls:
+- https://dermnetnz.org/imagedetail/8151-toxic-epidermal-necrolysis
+source_ids:
+- src-dermatology-atlas-55-2026
+title_as_embedded:
+- ten1
+authors_as_provided:
+- 'DermNet '
+copyright_as_embedded:
+- © DermNet
+attribution_as_provided:
+- Image sourced from DermNet · © DermNet · 原圖／出處
+licence: CC BY-NC-ND 4.0
+licence_url: https://creativecommons.org/licenses/by-nc-nd/4.0/
+conditions_url: https://dermnetnz.org/image-licence
+conditions:
+- Educational noncommercial use only.
+- Credit DermNet and retain the supplied copyright attribution.
+- Link the source image page and licence.
+- Retain the original watermark and distribute only the unchanged image.
+- No endorsement is implied.
+public_allowed: true
+public_allowed_basis: Supplied DermNet image licence section Free use of Watermarked Images, clauses 2–3;
+  visible original watermark retained. This educational wiki is noncommercial.
+licence_checked_at: '2026-11-13'
+modifications: none
+preservation: Decoded supplied HTML image bytes copied unchanged, retaining original frame, metadata,
+  watermark, annotations and scale.
+sha256: ce5fa13acc3d2f9963a92204ea6444924ea5a2babd60af858a6b8b8cc64896e6
+bytes: 49462
+width: 640
+height: 480
+watermark_observed: DermNet
+review_status: not_reviewed
+image_check_scope: Whole-frame visual check for watermark and visible personal labels; not diagnostic
+  interpretation.
+usages:
+- figure_code: 12-00
+  figure_index: 1
+  article_id: d12
+  source_id: src-dermatology-atlas-55-2026
+  short_id: A
+  caption: 臨床照片 軀幹可見大片表皮脫落，留下鮮紅糜爛面，邊緣殘留薄而捲起的表皮。
+  attribution: Image sourced from DermNet · © DermNet · 原圖／出處
+  source_url: https://dermnetnz.org/imagedetail/8151-toxic-epidermal-necrolysis
+  alt: 軀幹可見大片表皮脫落，留下鮮紅糜爛面，邊緣殘留薄而捲起的表皮。
+- figure_code: 12-00
+  figure_index: 3
+  article_id: c2
+  source_id: src-dermatology-atlas-55-2026
+  short_id: A
+  caption: 臨床照片 軀幹可見大片表皮脫落，留下鮮紅糜爛面，邊緣殘留薄而捲起的表皮。
+  attribution: Image sourced from DermNet · © DermNet · 原圖／出處
+  source_url: https://dermnetnz.org/imagedetail/8151-toxic-epidermal-necrolysis
+  alt: 軀幹可見大片表皮脫落，留下鮮紅糜爛面，邊緣殘留薄而捲起的表皮。
+used_in:
+- 01_wiki/comparisons/epidermal-detachment-differential.md
+- 01_wiki/concepts/sjs-ten.md
+- 03_outputs/web/dermatology-atlas/index.html
+- 03_outputs/web/dermatology-comparisons/epidermal-detachment-differential.html
+- 03_outputs/web/sjs-ten/index.html

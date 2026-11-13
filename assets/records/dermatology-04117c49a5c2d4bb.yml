@@ -1,0 +1,65 @@
+asset_id: asset-dermatology-04117c49a5c2d4bb
+filename: 04117c49a5c2d4bb.jpg
+path: assets/images/dermatology/04117c49a5c2d4bb.jpg
+description: 關節附近可見透明薄疱皮、大片糜爛及周圍發亮的舊瘢痕樣皮膚。
+source_type: clinical_atlas_embedded_image
+source_url: https://dermnetnz.org/imagedetail/7589-epidermolysis-bullosa
+source_urls:
+- https://dermnetnz.org/imagedetail/7589-epidermolysis-bullosa
+source_ids:
+- src-dermatology-atlas-55-2026
+title_as_embedded:
+- eb5
+authors_as_provided:
+- 'DermNet '
+copyright_as_embedded:
+- © DermNet
+attribution_as_provided:
+- Image sourced from DermNet · © DermNet · 原圖／出處
+licence: CC BY-NC-ND 4.0
+licence_url: https://creativecommons.org/licenses/by-nc-nd/4.0/
+conditions_url: https://dermnetnz.org/image-licence
+conditions:
+- Educational noncommercial use only.
+- Credit DermNet and retain the supplied copyright attribution.
+- Link the source image page and licence.
+- Retain the original watermark and distribute only the unchanged image.
+- No endorsement is implied.
+public_allowed: true
+public_allowed_basis: Supplied DermNet image licence section Free use of Watermarked Images, clauses 2–3; visible
+  original watermark retained. This educational wiki is noncommercial.
+licence_checked_at: '2026-11-13'
+modifications: none
+preservation: Decoded supplied HTML image bytes copied unchanged, retaining original frame, metadata, watermark,
+  annotations and scale.
+sha256: 04117c49a5c2d4bb4fec530685c7f8bceeed173db62101f33cce270d406bf93b
+bytes: 64539
+width: 640
+height: 480
+watermark_observed: DermNet
+review_status: not_reviewed
+image_check_scope: Whole-frame visual check for watermark and visible personal labels; not diagnostic interpretation.
+usages:
+- figure_code: 07-04
+  figure_index: 2
+  article_id: d07
+  source_id: src-dermatology-atlas-55-2026
+  short_id: A
+  caption: 臨床照片 關節附近可見透明薄疱皮、大片糜爛及周圍發亮的舊瘢痕樣皮膚。
+  attribution: Image sourced from DermNet · © DermNet · 原圖／出處
+  source_url: https://dermnetnz.org/imagedetail/7589-epidermolysis-bullosa
+  alt: 關節附近可見透明薄疱皮、大片糜爛及周圍發亮的舊瘢痕樣皮膚。
+- figure_code: 07-04
+  figure_index: 1
+  article_id: c2
+  source_id: src-dermatology-atlas-55-2026
+  short_id: A
+  caption: 臨床照片 關節附近可見透明薄疱皮、大片糜爛及周圍發亮的舊瘢痕樣皮膚。
+  attribution: Image sourced from DermNet · © DermNet · 原圖／出處
+  source_url: https://dermnetnz.org/imagedetail/7589-epidermolysis-bullosa
+  alt: 關節附近可見透明薄疱皮、大片糜爛及周圍發亮的舊瘢痕樣皮膚。
+used_in:
+- 01_wiki/comparisons/epidermal-detachment-differential.md
+- 01_wiki/concepts/inherited-epidermolysis-bullosa.md
+- 03_outputs/web/dermatology-comparisons/epidermal-detachment-differential.html
+- 03_outputs/web/dermatology/inherited-epidermolysis-bullosa.html

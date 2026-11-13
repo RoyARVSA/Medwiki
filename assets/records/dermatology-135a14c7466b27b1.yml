@@ -1,0 +1,67 @@
+asset_id: asset-dermatology-135a14c7466b27b1
+filename: 135a14c7466b27b1.jpg
+path: assets/images/dermatology/135a14c7466b27b1.jpg
+description: 軀幹皮膚散布大小不一的紅色糜爛與痂皮，周圍有明顯深色色素改變。
+source_type: clinical_atlas_embedded_image
+source_url: https://dermnetnz.org/imagedetail/9413-pemphigus-vulgaris
+source_urls:
+- https://dermnetnz.org/imagedetail/9413-pemphigus-vulgaris
+source_ids:
+- src-dermatology-atlas-55-2026
+title_as_embedded:
+- pgus4
+authors_as_provided:
+- 'DermNet '
+copyright_as_embedded:
+- © DermNet
+attribution_as_provided:
+- Image sourced from DermNet · © DermNet · 原圖／出處
+licence: CC BY-NC-ND 4.0
+licence_url: https://creativecommons.org/licenses/by-nc-nd/4.0/
+conditions_url: https://dermnetnz.org/image-licence
+conditions:
+- Educational noncommercial use only.
+- Credit DermNet and retain the supplied copyright attribution.
+- Link the source image page and licence.
+- Retain the original watermark and distribute only the unchanged image.
+- No endorsement is implied.
+public_allowed: true
+public_allowed_basis: Supplied DermNet image licence section Free use of Watermarked Images, clauses 2–3;
+  visible original watermark retained. This educational wiki is noncommercial.
+licence_checked_at: '2026-11-13'
+modifications: none
+preservation: Decoded supplied HTML image bytes copied unchanged, retaining original frame, metadata,
+  watermark, annotations and scale.
+sha256: 135a14c7466b27b1ffe29f658da2010e4b572bc72ac71c400022dec8f70d3210
+bytes: 47136
+width: 640
+height: 480
+watermark_observed: DermNet
+review_status: not_reviewed
+image_check_scope: Whole-frame visual check for watermark and visible personal labels; not diagnostic
+  interpretation.
+usages:
+- figure_code: 09-00
+  figure_index: 1
+  article_id: d09
+  source_id: src-dermatology-atlas-55-2026
+  short_id: A
+  caption: 臨床照片 軀幹皮膚散布大小不一的紅色糜爛與痂皮，周圍有明顯深色色素改變。
+  attribution: Image sourced from DermNet · © DermNet · 原圖／出處
+  source_url: https://dermnetnz.org/imagedetail/9413-pemphigus-vulgaris
+  alt: 軀幹皮膚散布大小不一的紅色糜爛與痂皮，周圍有明顯深色色素改變。
+- figure_code: 09-00
+  figure_index: 2
+  article_id: c1
+  source_id: src-dermatology-atlas-55-2026
+  short_id: A
+  caption: 臨床照片 軀幹皮膚散布大小不一的紅色糜爛與痂皮，周圍有明顯深色色素改變。
+  attribution: Image sourced from DermNet · © DermNet · 原圖／出處
+  source_url: https://dermnetnz.org/imagedetail/9413-pemphigus-vulgaris
+  alt: 軀幹皮膚散布大小不一的紅色糜爛與痂皮，周圍有明顯深色色素改變。
+used_in:
+- 01_wiki/comparisons/bullous-pemphigoid-pemphigus.md
+- 01_wiki/concepts/pemphigus-vulgaris.md
+- 03_outputs/web/dermatology-atlas/index.html
+- 03_outputs/web/dermatology-comparisons/bullous-pemphigoid-pemphigus.html
+- 03_outputs/web/dermatology/pemphigus-vulgaris.html
