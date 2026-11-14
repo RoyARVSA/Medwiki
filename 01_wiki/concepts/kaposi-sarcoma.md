@@ -29,6 +29,7 @@ nav_title: 卡波西肉瘤
 order: 125
 eyebrow: IMAGE RECOGNITION
 atlas_group: tumour
+browse_group: 腫瘤與增生
 ---
 
 ## 卡波西肉瘤 {#atlas-d25}

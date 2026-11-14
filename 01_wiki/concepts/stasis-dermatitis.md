@@ -31,6 +31,7 @@ nav_title: 鬱滯性皮膚炎與靜脈性潰瘍
 order: 120
 eyebrow: IMAGE RECOGNITION
 atlas_group: leg-wound
+browse_group: 下肢與傷口
 ---
 
 ## 鬱滯性皮膚炎與靜脈性潰瘍 {#atlas-d20}

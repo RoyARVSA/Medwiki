@@ -28,6 +28,7 @@ nav_title: 帶狀疱疹
 order: 124
 eyebrow: IMAGE RECOGNITION
 atlas_group: infection
+browse_group: 感染與相關鑑別
 ---
 
 ## 帶狀疱疹 {#atlas-d24}

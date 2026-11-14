@@ -29,6 +29,7 @@ nav_title: 水疱性類天疱瘡
 order: 103
 eyebrow: IMAGE RECOGNITION
 atlas_group: blister-drug
+browse_group: 水疱與藥物反應
 ---
 
 ## 水疱性類天疱瘡 {#atlas-d03}

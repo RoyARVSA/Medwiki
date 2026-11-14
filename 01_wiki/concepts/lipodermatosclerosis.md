@@ -29,6 +29,7 @@ nav_title: 脂性皮膚硬化症
 order: 117
 eyebrow: IMAGE RECOGNITION
 atlas_group: leg-wound
+browse_group: 下肢與傷口
 ---
 
 ## 脂性皮膚硬化症 {#atlas-d17}

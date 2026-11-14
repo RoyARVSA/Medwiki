@@ -29,6 +29,7 @@ nav_title: 皮贅／軟纖維瘤
 order: 153
 eyebrow: IMAGE RECOGNITION
 atlas_group: tumour
+browse_group: 腫瘤與增生
 ---
 
 ## 皮贅／軟纖維瘤 {#atlas-d53}

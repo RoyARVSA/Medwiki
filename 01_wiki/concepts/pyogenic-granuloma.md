@@ -30,6 +30,7 @@ nav_title: 化膿性肉芽腫（小葉狀微血管瘤）
 order: 140
 eyebrow: IMAGE RECOGNITION
 atlas_group: tumour
+browse_group: 腫瘤與增生
 ---
 
 ## 化膿性肉芽腫（小葉狀微血管瘤） {#atlas-d40}

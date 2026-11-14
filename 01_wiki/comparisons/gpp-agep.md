@@ -29,6 +29,7 @@ nav_title: 全身性膿疱性乾癬 vs 急性廣泛性發疹性膿疱症
 order: 111
 eyebrow: IMAGE RECOGNITION
 atlas_group: blister-drug
+browse_group: 水疱與藥物反應
 ---
 
 ## 全身性膿疱性乾癬 vs 急性廣泛性發疹性膿疱症 {#atlas-d11}

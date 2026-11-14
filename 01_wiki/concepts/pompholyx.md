@@ -30,6 +30,7 @@ nav_title: 汗皰疹
 order: 150
 eyebrow: IMAGE RECOGNITION
 atlas_group: inflammatory
+browse_group: 濕疹與發炎
 ---
 
 ## 汗皰疹 {#atlas-d50}

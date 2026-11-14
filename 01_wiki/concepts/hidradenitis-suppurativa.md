@@ -28,6 +28,7 @@ nav_title: 化膿性汗腺炎
 order: 115
 eyebrow: IMAGE RECOGNITION
 atlas_group: inflammatory
+browse_group: 濕疹與發炎
 ---
 
 ## 化膿性汗腺炎 {#atlas-d15}

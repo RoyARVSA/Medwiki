@@ -29,6 +29,7 @@ nav_title: 嬰兒血管瘤
 order: 148
 eyebrow: IMAGE RECOGNITION
 atlas_group: pigment-vascular
+browse_group: 色素與血管
 ---
 
 ## 嬰兒血管瘤 {#atlas-d48}

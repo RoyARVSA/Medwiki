@@ -29,6 +29,7 @@ nav_title: 傳染性軟疣
 order: 135
 eyebrow: IMAGE RECOGNITION
 atlas_group: infection
+browse_group: 感染與相關鑑別
 ---
 
 ## 傳染性軟疣 {#atlas-d35}

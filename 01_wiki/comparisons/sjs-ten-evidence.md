@@ -27,6 +27,9 @@ nav_title: 證據比較
 order: 5
 eyebrow: EVIDENCE / SIDE BY SIDE
 conflict_page_id: comparison-sjs-ten-evidence
+specialties:
+- dermatology
+content_kind: comparison
 ---
 
 ## 先分清四個問題

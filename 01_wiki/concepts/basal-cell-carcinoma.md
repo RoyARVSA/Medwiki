@@ -29,6 +29,7 @@ nav_title: 基底細胞癌
 order: 137
 eyebrow: IMAGE RECOGNITION
 atlas_group: tumour
+browse_group: 腫瘤與增生
 ---
 
 ## 基底細胞癌 {#atlas-d37}

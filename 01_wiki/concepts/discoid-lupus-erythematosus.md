@@ -29,6 +29,7 @@ nav_title: 圓盤狀紅斑性狼瘡
 order: 105
 eyebrow: IMAGE RECOGNITION
 atlas_group: hair-autoimmune
+browse_group: 毛髮與自體免疫
 ---
 
 ## 圓盤狀紅斑性狼瘡 {#atlas-d05}

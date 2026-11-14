@@ -10,6 +10,10 @@
 
 科別、疾病與概念、臨床思路是不同瀏覽方式；網站路徑由穩定 page-id 與發布欄位決定。`view` 可選 atlas / concept-library / specialty / reasoning，未設定使用一般閱讀頁；前三者的導航由公開欄位生成。
 
+網站以科別為主：`view: specialty` 且 `content_kind: specialty` 的 map 宣告科別入口；`specialties` 使用已宣告的英文科別 id，可列多個。`browse_group` 是可選的科內學習群組標籤；`cross_specialty: true` 明確加入主訴／跨科入口，不能由 comparison 類型推定。`catalog_role: work` 標示完整作品；一般頁與章節不因此逐一列成果。來源摘要仍按單一來源保留，文獻與作品目錄分開。
+
+新介面目錄由 `scripts/navigation.py` 的公開欄位模型生成；首頁科別框格受控換頁，科內四類清單分開。既有 concept-library 網址保留作精簡目錄，首頁不再列全站疾病卡片。通用文獻／成果／全部科別目錄是網站介面，不預造醫學知識頁。安全返回 context 僅使用已知科別 id；查詢、分組、頁碼存 URL，不寫個人儲存。
+
 網頁欄位：
 
 | 欄位 | 說明 |
@@ -23,6 +27,7 @@
 | eyebrow | 學術版面的小標籤 |
 | title_en | 副標題 |
 | aliases | 搜尋用的中英文別名、縮寫 |
+| parent_id | 可選的共同核心頁 id；明記真正章節關係，與實體檔案或 web_topic 分開 |
 
 route 為 `03_outputs/web/<web_topic>/<web_file>`。同一 route 不能重複，站內 Markdown 連結在兩端都已發布時轉為相對網址；未發布的連結不能悄悄產生失效網址。跨主題的入口與側欄由共用版型維護。
 
@@ -62,7 +67,7 @@ Obsidian 可直接閱讀 SVG，網站以同一個流程定義產生互動圖、�
 
 ## 索引
 
-index.md 由文件欄位產生，map 由學習邏輯維護，index.html 掃描公開成果；三者職責不同。搜尋 JSON 與內嵌搜尋資料由公開頁正文產生，不讀 raw/private，不能放入私有擷取資料。
+index.md 由文件欄位產生，map 由學習邏輯維護，index.html 提供固定入口及科別選擇。公開成果掃描結果在獨立學習成果頁按作品分組；章節不逐頁當作品。搜尋 JSON 與內嵌搜尋資料由公開頁正文產生，不讀 raw/private，不能放入私有擷取資料。
 
 ## 狀態
 

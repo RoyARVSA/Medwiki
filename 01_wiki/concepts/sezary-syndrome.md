@@ -30,6 +30,7 @@ nav_title: Sézary 症候群（白血病型皮膚 T 細胞淋巴瘤）
 order: 157
 eyebrow: IMAGE RECOGNITION
 atlas_group: tumour
+browse_group: 腫瘤與增生
 ---
 
 ## Sézary 症候群（白血病型皮膚 T 細胞淋巴瘤） {#atlas-d57}

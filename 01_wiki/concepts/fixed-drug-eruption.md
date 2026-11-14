@@ -30,6 +30,7 @@ nav_title: 固定型藥物疹
 order: 108
 eyebrow: IMAGE RECOGNITION
 atlas_group: blister-drug
+browse_group: 水疱與藥物反應
 ---
 
 ## 固定型藥物疹 {#atlas-d08}

@@ -28,6 +28,7 @@ nav_title: 壓力性損傷／壓瘡
 order: 142
 eyebrow: IMAGE RECOGNITION
 atlas_group: leg-wound
+browse_group: 下肢與傷口
 ---
 
 ## 壓力性損傷／壓瘡 {#atlas-d42}

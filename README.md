@@ -7,7 +7,7 @@
 - [線上網站](https://royarvsa.github.io/Medwiki/)
 - [內頁版型比較](https://royarvsa.github.io/Medwiki/03_outputs/web/layout-previews/index.html)：三種設計使用相同內容，正式內頁暫不替換。
 
-- 本機建置後開啟根目錄 `index.html`：知識入口、完成成果與待加入區。
+- 本機建置後開啟根目錄 `index.html`：精簡科別入口與全站搜尋；文獻資源和學習成果各有獨立目錄。
 - [SJS/TEN 學習專題](https://royarvsa.github.io/Medwiki/03_outputs/web/sjs-ten/index.html)。
 - [全部 wiki 索引](index.md)：適合 Obsidian。
 - [皮膚科學習路徑](01_wiki/maps/dermatology.md)。
@@ -70,7 +70,7 @@ python scripts/build_site.py
 
 ## 加入網頁或簡報
 
-手動 HTML 放 `03_outputs/web/<topic>/`，PDF/PPTX 放 `03_outputs/slides/<topic>/`，執行更新即可被首頁收錄。不需先填 metadata，assets/ 裡的支援頁不列成果。來源圖先依可公開狀態歸檔，不放到文件範本。
+手動 HTML 放 `03_outputs/web/<topic>/`，PDF/PPTX 放 `03_outputs/slides/<topic>/`，執行更新即可被學習成果頁收錄，首頁保留固定入口。不需先填 metadata，assets/ 裡的支援頁不列成果。產生的完整專題可標 `catalog_role: work`，閱讀章節不逐頁列作品。來源圖先依可公開狀態歸檔，不放到文件範本。
 
 新 wiki 不會預設變成網頁。經使用者要求製作時，頁面設定 `publish: true`、`web_topic`、`web_file` 等欄位；共用版型產生 HTML。詳見 [欄位規格](docs/schema.md)。
 

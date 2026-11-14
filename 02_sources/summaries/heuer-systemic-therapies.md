@@ -20,6 +20,9 @@ nav_title: Heuer 系統回顧
 order: 6
 eyebrow: PAPER / SYSTEMATIC REVIEW
 conflict_page_id: comparison-sjs-ten-evidence
+specialties:
+- dermatology
+content_kind: learning_resource
 ---
 
 ## 研究問題

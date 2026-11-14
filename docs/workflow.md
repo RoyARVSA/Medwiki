@@ -10,11 +10,15 @@
 
 1. 知識正文寫入 wiki 或來源摘要，而非直接編輯產生的 HTML。
 2. 經要求發布者設 `publish: true` 與英文 route。
-3. 執行 `python scripts/build_site.py`，產生閱讀頁、首頁、公開搜尋資料與 wiki 索引。
+3. 執行 `python scripts/build_site.py`，產生閱讀頁、精簡首頁、科別／文獻／成果目錄、公開搜尋資料與 wiki 索引。
 4. 執行 `python scripts/lint.py` 及 unittest。
 5. 本機開啟 index.html；GitHub 推送/部署另依授權進行。
 
 手動成果不需 publish 欄位，放公開成果目錄即收錄。產生檔含 medwiki-generated 標記；工具遇到未帶此標記的同名手動 HTML 會拒絕覆寫。移除產生頁前先移除該 Markdown 的 publish 設定，再建置，舊 manifest 控制清理範圍。
+
+先宣告科別 map，再為相關頁設定 specialties；跨科共用同一頁及來源，不複製正文。科別頁分四類目錄；只將真正主訴／跨科內容明記 cross_specialty。完整產生作品以 catalog_role: work 收錄，章節及來源摘要回到相關目錄。新增手動作品持續掃描，首頁只維持固定成果入口。閱讀返回需保留安全科別／圖譜脈絡。
+
+學習內容以階層正文為本，複習問題先回想再揭示，答案附來源；需要對照時使用比較表，需要條件關係時使用經核對流程。無個人答案、進度或排程儲存。筆記版型不取代醫學來源與限制。
 
 成功建置同步維護 `.gitignore` 的 MEDWIKI GENERATED OUTPUTS 區塊，只排除實際產生的 HTML 與搜尋 JSON，不排除整個成果資料夾。手動新增仍可追蹤；原件、可編輯來源及圖像資產的公開邊界不變。GitHub Actions 從公開來源重建成果；本機原件不參與發布建置。
 

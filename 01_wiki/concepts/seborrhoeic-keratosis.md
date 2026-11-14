@@ -29,6 +29,7 @@ nav_title: 脂漏性角化症（俗稱老人斑）
 order: 152
 eyebrow: IMAGE RECOGNITION
 atlas_group: tumour
+browse_group: 腫瘤與增生
 ---
 
 ## 脂漏性角化症（俗稱老人斑） {#atlas-d52}

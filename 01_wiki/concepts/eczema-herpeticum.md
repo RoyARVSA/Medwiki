@@ -30,6 +30,7 @@ nav_title: 皰疹性濕疹
 order: 126
 eyebrow: IMAGE RECOGNITION
 atlas_group: infection
+browse_group: 感染與相關鑑別
 ---
 
 ## 皰疹性濕疹 {#atlas-d26}

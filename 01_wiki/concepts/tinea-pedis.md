@@ -30,6 +30,7 @@ nav_title: 足癬／香港腳
 order: 133
 eyebrow: IMAGE RECOGNITION
 atlas_group: infection
+browse_group: 感染與相關鑑別
 ---
 
 ## 足癬／香港腳 {#atlas-d33}

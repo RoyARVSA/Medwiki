@@ -30,6 +30,7 @@ nav_title: 尋常疣
 order: 136
 eyebrow: IMAGE RECOGNITION
 atlas_group: infection
+browse_group: 感染與相關鑑別
 ---
 
 ## 尋常疣 {#atlas-d36}

@@ -26,6 +26,7 @@ nav_title: 圖譜總覽
 order: 30
 eyebrow: OBSERVE / DESCRIBE / VERIFY
 view: atlas
+catalog_role: work
 ---
 
 ## 圖譜入口

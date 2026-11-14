@@ -29,6 +29,7 @@ nav_title: 頭癬
 order: 131
 eyebrow: IMAGE RECOGNITION
 atlas_group: infection
+browse_group: 感染與相關鑑別
 ---
 
 ## 頭癬 {#atlas-d31}

@@ -29,6 +29,7 @@ nav_title: 皮肌炎
 order: 104
 eyebrow: IMAGE RECOGNITION
 atlas_group: hair-autoimmune
+browse_group: 毛髮與自體免疫
 ---
 
 ## 皮肌炎 {#atlas-d04}

@@ -28,6 +28,7 @@ nav_title: 蜂窩性組織炎
 order: 122
 eyebrow: IMAGE RECOGNITION
 atlas_group: infection
+browse_group: 感染與相關鑑別
 ---
 
 ## 蜂窩性組織炎 {#atlas-d22}

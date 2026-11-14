@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}{{ directory.title }} | Medwiki{% endblock %}
+{% block description %}{{ directory.summary }}{% endblock %}
+{% block bodyclass %}browse-directory{% endblock %}
+{% macro row(p) %}
+<li class="directory-row" data-directory-row data-search="{{ p.title }} {{ p.title_en|default('') }} {{ p.aliases|default([])|join(' ') }} {{ p.summary|default('') }} {{ p.source_label|default('') }} {{ p.year_label|default('') }} {{ p.version_label|default('') }}" data-group="{{ p.browse_group|default(p.source_label|default('')) }}" data-specialties="{{ p.specialties|default([])|join(',') }}">
+  <div class="directory-row-copy"><a class="directory-title" data-learning-link href="{{rel(p.url,current)}}">{{p.title}}<span aria-hidden="true">↗</span></a>{% if p.title_en %}<p class="directory-english">{{p.title_en}}</p>{% endif %}{% if p.summary %}<p class="directory-description">{{p.summary}}</p>{% endif %}
+    {% if p.type=='source_summary' %}<div class="resource-locator">{% if p.version_label %}<span><b>版本</b> {{p.version_label}}</span>{% endif %}{% if p.processing_label %}<span><b>處理狀態</b> {{p.processing_label}}</span>{% endif %}{% if p.processed_ranges or p.unprocessed_ranges %}<details class="source-scope"><summary>查看已讀範圍與缺口</summary>{% if p.processed_ranges %}<strong>已處理</strong><ul>{% for range in p.processed_ranges %}<li>{{range}}</li>{% endfor %}</ul>{% endif %}{% if p.unprocessed_ranges %}<strong>未處理／未提供</strong><ul>{% for range in p.unprocessed_ranges %}<li>{{range}}</li>{% endfor %}</ul>{% endif %}</details>{% endif %}</div>{% endif %}
+  </div><div class="directory-row-meta">{% if p.browse_group %}<span>{{p.browse_group}}</span>{% endif %}{% if p.type=='source_summary' %}{% if p.source_label %}<span class="directory-type">{{p.source_label}}</span>{% endif %}{% if p.year_label %}<span>出版 {{p.year_label}}</span>{% endif %}{% endif %}{% if p.review_status %}<span class="directory-review">{{'已人工審閱' if p.review_status=='reviewed' else '未人工審閱'}}</span>{% endif %}</div>
+</li>
+{% endmacro %}
+{% macro work(p) %}
+<li class="directory-row output-work" data-directory-row data-search="{{p.title}} {{p.summary|default('')}} {% for f in p.formats %}{{f.kind}} {% endfor %}" data-group="" data-specialties="{{p.specialties|default([])|join(',')}}"><div class="directory-row-copy"><h3>{{p.title}}</h3>{% if p.summary %}<p class="directory-description">{{p.summary}}</p>{% endif %}<div class="work-formats">{% for f in p.formats %}<a href="{{rel(f.url,current)}}" {% if f.kind=='html' %}data-learning-link{% endif %}><span>{{f.kind|upper}}</span>{{'閱讀' if f.kind=='html' else '下載'}} <span aria-hidden="true">↗</span></a>{% endfor %}</div></div></li>
+{% endmacro %}
+{% block body %}
+<main id="main" class="directory-shell">
+  <div class="directory-breadcrumb"><a href="{{rel('index.html',current)}}">首頁</a><span aria-hidden="true">/</span><span>{{directory.title}}</span></div>
+  <header class="directory-intro"><span class="eyebrow">{{'EXPLORE BY SPECIALTY' if directory.kind in ['specialty','specialties'] else 'SOURCES & LEARNING RESOURCES' if directory.kind=='resources' else 'LEARNING OUTPUTS' if directory.kind=='outputs' else 'CHIEF COMPLAINTS & SHARED REASONING' if directory.kind=='cross' else 'KNOWLEDGE DIRECTORY'}}</span><h1>{{directory.title}}</h1><p>{{directory.summary}}</p></header>
+  {% if directory.kind=='specialties' %}
+    <div class="all-specialties-grid">{% for s in browse.specialties %}<a class="specialty-card" href="{{rel(s.url,current)}}"><span class="specialty-card-top"><span class="specialty-monogram" aria-hidden="true">{{s.title[:1]}}</span><span aria-hidden="true">↗</span></span><h2>{{s.title}}</h2><span class="specialty-english">{{s.title_en}}</span><span class="specialty-card-count">{{s.count}} 項內容</span></a>{% else %}<p class="directory-empty">目前尚無科別內容。</p>{% endfor %}</div>
+  {% else %}
+    {% set specialty=directory.specialty|default(none) %}
+    {% set sections=directory.sections if directory.kind=='specialty' else [{'id':directory.kind,'label':directory.title,'pages':directory.works if directory.kind=='outputs' else directory.pages}] %}
+    {% set ns=namespace(groups=[]) %}{% for section in sections %}{% for p in section.pages %}{% set g=p.browse_group|default(p.source_label|default('')) %}{% if g and g not in ns.groups %}{% set ns.groups=ns.groups+[g] %}{% endif %}{% endfor %}{% endfor %}
+    <section class="directory-browser" id="browse-panel" data-directory data-specialty-id="{{specialty.id if specialty else ''}}" data-scope-label="{{directory.title}}" aria-label="{{directory.title}}內容目錄">
+      {% if directory.kind=='specialty' %}<nav class="directory-tabs" aria-label="{{directory.title}}內容種類">{% for section in sections %}<a id="tab-{{section.id}}" href="#section-{{section.id}}" data-directory-tab="{{section.id}}" data-label="{{section.label}}" aria-controls="section-{{section.id}}">{{section.label}}<span>{{section.pages|length}}</span></a>{% endfor %}</nav>{% endif %}
+      <div class="directory-filter-bar navigation-only"><label class="directory-search"><span aria-hidden="true">⌕</span><span class="sr-only">搜尋此目錄</span><input type="search" data-directory-search maxlength="256" placeholder="搜尋名稱、英文或關鍵詞…" autocomplete="off"></label>{% if ns.groups %}<label class="directory-select"><span class="sr-only">依分類篩選</span><select data-directory-group><option value="">全部分類</option>{% for g in ns.groups %}<option value="{{g}}">{{g}}</option>{% endfor %}</select></label>{% endif %}{% if not specialty and browse.specialties|length>1 %}<label class="directory-select"><span class="sr-only">依科別篩選</span><select data-directory-specialty><option value="">全部科別</option>{% for s in browse.specialties %}<option value="{{s.id}}">{{s.title}}</option>{% endfor %}</select></label>{% endif %}<button type="button" class="directory-clear" data-directory-clear>清除</button></div>
+      <div class="directory-results-bar navigation-only"><p tabindex="-1" data-directory-status aria-live="polite"></p><div class="directory-pagination"><button type="button" data-directory-prev aria-label="上一頁內容">←</button><button type="button" data-directory-next aria-label="下一頁內容">→</button></div></div>
+      {% for section in sections %}<section id="section-{{section.id}}" data-directory-panel="{{section.id}}" aria-labelledby="{% if directory.kind=='specialty' %}tab-{{section.id}}{% else %}heading-{{section.id}}{% endif %}"><h2 class="directory-section-title" id="heading-{{section.id}}">{{section.label}}</h2><ul class="directory-list">{% for p in section.pages %}{{work(p) if directory.kind=='outputs' else row(p)}}{% endfor %}</ul></section>{% endfor %}
+      <p class="directory-empty navigation-only" data-directory-empty data-empty-text="{{'目前尚無主訴與跨科內容。科別專屬的思路與比較，請由相關科別進入。' if directory.kind=='cross' else '目前尚無此類內容，將隨資料逐步加入。'}}" hidden></p>
+      <noscript><p class="no-script-note">此頁列出全部內容；可使用瀏覽器的頁面尋找功能查找關鍵詞。</p>{% if not (directory.pages|default([])) and directory.kind!='specialty' and directory.kind!='outputs' %}<p>目前尚無此類內容。</p>{% endif %}</noscript>
+    </section>
+    {% if directory.kind=='outputs' %}<div class="output-pending-note"><span aria-hidden="true">＋</span><p><strong>待加入</strong>新的專題與簡報將隨學習逐步更新。</p></div>{% endif %}
+  {% endif %}
+</main>
+{% endblock %}

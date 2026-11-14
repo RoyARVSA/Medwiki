@@ -30,6 +30,7 @@ nav_title: 大型／巨型先天性黑色素細胞痣（舊稱 giant hairy nevus
 order: 146
 eyebrow: IMAGE RECOGNITION
 atlas_group: pigment-vascular
+browse_group: 色素與血管
 ---
 
 ## 大型／巨型先天性黑色素細胞痣（舊稱 giant hairy nevus） {#atlas-d46}

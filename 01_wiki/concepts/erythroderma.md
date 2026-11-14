@@ -29,6 +29,7 @@ nav_title: 紅皮症
 order: 114
 eyebrow: IMAGE RECOGNITION
 atlas_group: inflammatory
+browse_group: 濕疹與發炎
 ---
 
 ## 紅皮症 {#atlas-d14}

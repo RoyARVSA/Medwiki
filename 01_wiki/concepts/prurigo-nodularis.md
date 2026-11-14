@@ -29,6 +29,7 @@ nav_title: 結節性癢疹
 order: 151
 eyebrow: IMAGE RECOGNITION
 atlas_group: inflammatory
+browse_group: 濕疹與發炎
 ---
 
 ## 結節性癢疹 {#atlas-d51}

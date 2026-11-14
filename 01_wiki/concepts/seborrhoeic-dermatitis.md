@@ -29,6 +29,7 @@ nav_title: 脂漏性皮膚炎
 order: 121
 eyebrow: IMAGE RECOGNITION
 atlas_group: inflammatory
+browse_group: 濕疹與發炎
 ---
 
 ## 脂漏性皮膚炎 {#atlas-d21}

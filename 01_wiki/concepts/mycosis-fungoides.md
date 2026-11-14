@@ -30,6 +30,7 @@ nav_title: 蕈狀肉芽腫（皮膚 T 細胞淋巴瘤）
 order: 156
 eyebrow: IMAGE RECOGNITION
 atlas_group: tumour
+browse_group: 腫瘤與增生
 ---
 
 ## 蕈狀肉芽腫（皮膚 T 細胞淋巴瘤） {#atlas-d56}

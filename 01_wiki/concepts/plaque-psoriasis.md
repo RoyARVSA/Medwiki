@@ -30,6 +30,7 @@ nav_title: 尋常性乾癬／斑塊型乾癬
 order: 110
 eyebrow: IMAGE RECOGNITION
 atlas_group: inflammatory
+browse_group: 濕疹與發炎
 ---
 
 ## 尋常性乾癬／斑塊型乾癬 {#atlas-d10}

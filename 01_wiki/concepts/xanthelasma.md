@@ -28,6 +28,7 @@ nav_title: 眼瞼黃斑瘤／眼瞼黃色瘤
 order: 155
 eyebrow: IMAGE RECOGNITION
 atlas_group: pigment-vascular
+browse_group: 色素與血管
 ---
 
 ## 眼瞼黃斑瘤／眼瞼黃色瘤 {#atlas-d55}

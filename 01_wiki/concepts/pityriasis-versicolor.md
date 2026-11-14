@@ -30,6 +30,7 @@ nav_title: 變色糠疹／汗斑
 order: 134
 eyebrow: IMAGE RECOGNITION
 atlas_group: infection
+browse_group: 感染與相關鑑別
 ---
 
 ## 變色糠疹／汗斑 {#atlas-d34}

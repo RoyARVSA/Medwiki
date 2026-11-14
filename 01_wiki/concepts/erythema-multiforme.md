@@ -30,6 +30,7 @@ nav_title: 多形性紅斑
 order: 106
 eyebrow: IMAGE RECOGNITION
 atlas_group: blister-drug
+browse_group: 水疱與藥物反應
 ---
 
 ## 多形性紅斑 {#atlas-d06}

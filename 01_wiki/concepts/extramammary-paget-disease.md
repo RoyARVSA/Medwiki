@@ -29,6 +29,7 @@ nav_title: 乳房外柏哲氏病
 order: 138
 eyebrow: IMAGE RECOGNITION
 atlas_group: tumour
+browse_group: 腫瘤與增生
 ---
 
 ## 乳房外柏哲氏病 {#atlas-d38}

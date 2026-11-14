@@ -30,6 +30,7 @@ nav_title: 尋常天疱瘡
 order: 109
 eyebrow: IMAGE RECOGNITION
 atlas_group: blister-drug
+browse_group: 水疱與藥物反應
 ---
 
 ## 尋常天疱瘡 {#atlas-d09}

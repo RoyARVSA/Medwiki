@@ -29,6 +29,7 @@ nav_title: 雄性禿／雄性素性禿髮
 order: 101
 eyebrow: IMAGE RECOGNITION
 atlas_group: hair-autoimmune
+browse_group: 毛髮與自體免疫
 ---
 
 ## 雄性禿／雄性素性禿髮 {#atlas-d01}

@@ -29,6 +29,7 @@ nav_title: 疥瘡
 order: 128
 eyebrow: IMAGE RECOGNITION
 atlas_group: infection
+browse_group: 感染與相關鑑別
 ---
 
 ## 疥瘡 {#atlas-d28}

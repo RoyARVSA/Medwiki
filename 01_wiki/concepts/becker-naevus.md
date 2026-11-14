@@ -28,6 +28,7 @@ nav_title: 貝克痣
 order: 141
 eyebrow: IMAGE RECOGNITION
 atlas_group: pigment-vascular
+browse_group: 色素與血管
 ---
 
 ## 貝克痣 {#atlas-d41}

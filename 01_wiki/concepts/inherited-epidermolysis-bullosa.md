@@ -30,6 +30,7 @@ nav_title: 遺傳性表皮分解性水疱症
 order: 107
 eyebrow: IMAGE RECOGNITION
 atlas_group: blister-drug
+browse_group: 水疱與藥物反應
 ---
 
 ## 遺傳性表皮分解性水疱症 {#atlas-d07}

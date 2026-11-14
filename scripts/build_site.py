@@ -49,6 +49,8 @@ def build_site(root=common.ROOT):
     stage.mkdir(parents=True)
     nav = []
     for d in published:
+        d['order'] = d.get('order', 100)
+        d['nav_title'] = d.get('nav_title') or d['title']
         name = d.get('web_file', '')
         if not re.fullmatch(r'[a-z0-9-]+\.html', name):
             raise ValueError('web_file must be an English HTML filename')
@@ -75,9 +77,14 @@ def build_site(root=common.ROOT):
         raise ValueError('\n'.join(flow_errors))
     library = library_context(root, nav, sources, '03_outputs/web/dermatology-atlas/index.html')
     env.globals['library'] = library
+    import navigation
+    browse = navigation.build_navigation(root, nav)
+    env.globals['browse'] = browse
     by_id = {d['id']: d for d in published}
     for d in published:
         d['related_pages'] = [by_id[key] for key in d.get('related_ids', []) if key in by_id and key != d['id']]
+        d['specialty_options'] = [navigation.specialty_link(browse['by_specialty'][key]) for key in d.get('specialties', [])]
+        d['primary_specialty'] = d['specialty_options'][0] if d['specialty_options'] else None
     search = []
     generated = {}
     rendered = {}
@@ -102,12 +109,14 @@ def build_site(root=common.ROOT):
                 raise ValueError(f'Unpublished wiki link: {file}')
             return 'href="' + common.relative_url(mapped, d['url']) + ('#' + anchor if anchor else '') + '"'
         content = re.sub(r'href="([^"]+)"', fix_link, content)
-        topic_nav = [n for n in nav if n['web_topic'] == d['web_topic']]
+        topic_nav = navigation.topic_navigation(nav, d)
         conflict_id = d.get('conflict_page_id')
         if conflict_id and (conflict_id not in by_id or by_id[conflict_id].get('type') != 'comparison'):
             raise ValueError('Conflict target must be a published comparison page: ' + str(conflict_id))
         d['comparison_url'] = by_id[conflict_id]['url'] if conflict_id and conflict_id != d['id'] else None
-        page = env.get_template('reading.html').render(page=d, content=content, toc=md.toc, nav=topic_nav, sources=sources, citations_json=json.dumps(public_sources, ensure_ascii=False).replace('<', '\\u003c'), current=d['url'])
+        directory = navigation.directory_for_page(d, browse)
+        template = 'directory.html' if directory else 'reading.html'
+        page = env.get_template(template).render(page=d, directory=directory, content=content, toc=md.toc, nav=topic_nav, sources=sources, citations_json=json.dumps(public_sources, ensure_ascii=False).replace('<', '\\u003c'), current=d['url'])
         generated[d['url']] = page
         rendered[d['id']] = (content, md.toc)
         parser = common.PlainHTML()
@@ -144,6 +153,26 @@ def build_site(root=common.ROOT):
             raise ValueError(f'Refusing to overwrite manual output: {url}')
         common.atomic_text(stage / url, html)
     catalog = common.discover_outputs(stage, config_root=root)
+    browse = navigation.build_navigation(root, nav, catalog)
+    env.globals['browse'] = browse
+    directory_definitions = {
+        'specialties': dict(kind='specialties', title='科別瀏覽', summary='依正在學習的科別查找疾病、臨床思路、圖譜與文獻。', pages=browse['specialties']),
+        'resources': dict(kind='resources', title='文獻資源', summary='依科別與來源類型查找論文、指引及教學資料整理。', pages=browse['resources']),
+        'outputs': dict(kind='outputs', title='學習成果', summary='以完整專題、圖譜與簡報為單位，閱讀或下載已完成的成果。', works=browse['outputs']),
+        'cross': dict(kind='cross', title='主訴與跨科', summary='從跨科問題出發，查找已整理的評估、鑑別與處置思路。', pages=browse['shared']),
+    }
+    for kind, descriptor in directory_definitions.items():
+        url = browse['routes'][kind]
+        if url in generated:
+            if kind == 'cross' and any(p['url'] == url and p.get('view') == 'reasoning' for p in published):
+                continue
+            raise ValueError('Published page conflicts with a reserved directory route: '+url)
+        existing = root / url
+        if existing.exists() and 'medwiki-generated' not in existing.read_text(encoding='utf-8', errors='replace'):
+            raise ValueError('Refusing to overwrite manual output: '+url)
+        html = env.get_template('directory.html').render(directory=descriptor, current=url, sources=sources).replace('<!-- SEARCH_DATA -->', search_script)
+        generated[url] = html
+        common.atomic_text(stage / url, html)
     catalog_groups = {}
     topic_names = {n['web_topic']: n['topic_title'] for n in nav}
     for item in catalog:

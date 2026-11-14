@@ -32,6 +32,7 @@ nav_title: 尼可斯基徵象
 order: 149
 eyebrow: IMAGE RECOGNITION
 atlas_group: blister-drug
+browse_group: 水疱與藥物反應
 ---
 
 ## 尼可斯基徵象 {#atlas-d49}

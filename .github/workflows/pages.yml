@@ -32,7 +32,8 @@ jobs:
           fi
       - run: python -m unittest discover -s tests -v
       - run: node tests/learning-functions.test.cjs
-      - run: node --check assets/site/site.js && node --check assets/site/learning.js
+      - run: node tests/navigation-functions.test.cjs
+      - run: node --check assets/site/site.js && node --check assets/site/learning.js && node --check assets/site/navigation.js
       - run: python scripts/flows.py
       - run: python scripts/build_site.py
       - run: python scripts/lint.py

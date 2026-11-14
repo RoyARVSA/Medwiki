@@ -29,6 +29,7 @@ nav_title: 慢性砷中毒
 order: 144
 eyebrow: IMAGE RECOGNITION
 atlas_group: pigment-vascular
+browse_group: 色素與血管
 ---
 
 ## 慢性砷中毒 {#atlas-d44}

@@ -28,6 +28,7 @@ nav_title: 伯格氏病／閉塞性血栓血管炎
 order: 143
 eyebrow: IMAGE RECOGNITION
 atlas_group: leg-wound
+browse_group: 下肢與傷口
 ---
 
 ## 伯格氏病／閉塞性血栓血管炎 {#atlas-d43}

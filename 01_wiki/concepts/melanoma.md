@@ -28,6 +28,7 @@ nav_title: 黑色素瘤
 order: 139
 eyebrow: IMAGE RECOGNITION
 atlas_group: tumour
+browse_group: 腫瘤與增生
 ---
 
 ## 黑色素瘤 {#atlas-d39}

@@ -30,6 +30,7 @@ nav_title: 暈痣
 order: 147
 eyebrow: IMAGE RECOGNITION
 atlas_group: pigment-vascular
+browse_group: 色素與血管
 ---
 
 ## 暈痣 {#atlas-d47}

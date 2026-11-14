@@ -30,6 +30,7 @@ nav_title: 尖圭濕疣／尖形濕疣
 order: 123
 eyebrow: IMAGE RECOGNITION
 atlas_group: infection
+browse_group: 感染與相關鑑別
 ---
 
 ## 尖圭濕疣／尖形濕疣 {#atlas-d23}

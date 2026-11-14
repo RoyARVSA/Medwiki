@@ -30,6 +30,7 @@ nav_title: 異位性皮膚炎
 order: 113
 eyebrow: IMAGE RECOGNITION
 atlas_group: inflammatory
+browse_group: 濕疹與發炎
 ---
 
 ## 異位性皮膚炎 {#atlas-d13}

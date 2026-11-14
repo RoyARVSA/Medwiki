@@ -37,6 +37,8 @@ related_ids:
 - concept-fixed-drug-eruption
 - concept-staphylococcal-scalded-skin-syndrome
 conflict_page_id: comparison-sjs-ten-evidence
+catalog_role: work
+browse_group: 水疱與藥物反應
 ---
 
 ## 先建立核心概念

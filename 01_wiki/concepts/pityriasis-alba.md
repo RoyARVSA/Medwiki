@@ -30,6 +30,7 @@ nav_title: 白色糠疹
 order: 127
 eyebrow: IMAGE RECOGNITION
 atlas_group: pigment-vascular
+browse_group: 色素與血管
 ---
 
 ## 白色糠疹 {#atlas-d27}

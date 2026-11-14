@@ -29,6 +29,7 @@ nav_title: 酒糟／玫瑰斑
 order: 119
 eyebrow: IMAGE RECOGNITION
 atlas_group: inflammatory
+browse_group: 濕疹與發炎
 ---
 
 ## 酒糟／玫瑰斑 {#atlas-d19}

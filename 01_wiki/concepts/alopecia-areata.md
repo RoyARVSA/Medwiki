@@ -30,6 +30,7 @@ nav_title: 圓禿
 order: 102
 eyebrow: IMAGE RECOGNITION
 atlas_group: hair-autoimmune
+browse_group: 毛髮與自體免疫
 ---
 
 ## 圓禿 {#atlas-d02}

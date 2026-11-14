@@ -29,6 +29,7 @@ nav_title: 葡萄球菌燙傷樣皮膚症候群
 order: 158
 eyebrow: IMAGE RECOGNITION
 atlas_group: blister-drug
+browse_group: 水疱與藥物反應
 ---
 
 ## 葡萄球菌燙傷樣皮膚症候群 {#atlas-d58}

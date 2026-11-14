@@ -28,6 +28,7 @@ nav_title: 隱翅蟲皮膚炎
 order: 118
 eyebrow: IMAGE RECOGNITION
 atlas_group: inflammatory
+browse_group: 濕疹與發炎
 ---
 
 ## 隱翅蟲皮膚炎 {#atlas-d18}

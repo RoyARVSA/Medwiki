@@ -29,6 +29,7 @@ nav_title: 白斑症
 order: 154
 eyebrow: IMAGE RECOGNITION
 atlas_group: pigment-vascular
+browse_group: 色素與血管
 ---
 
 ## 白斑症 {#atlas-d54}

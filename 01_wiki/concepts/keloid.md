@@ -29,6 +29,7 @@ nav_title: 蟹足腫
 order: 116
 eyebrow: IMAGE RECOGNITION
 atlas_group: tumour
+browse_group: 腫瘤與增生
 ---
 
 ## 蟹足腫 {#atlas-d16}

@@ -28,6 +28,7 @@ nav_title: 毛囊囊腫（常指表皮樣囊腫）
 order: 145
 eyebrow: IMAGE RECOGNITION
 atlas_group: tumour
+browse_group: 腫瘤與增生
 ---
 
 ## 毛囊囊腫（常指表皮樣囊腫） {#atlas-d45}

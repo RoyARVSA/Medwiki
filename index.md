@@ -4,7 +4,7 @@
 
 ## 學習導航
 
-- [臨床思路](01_wiki/maps/clinical-reasoning.md)：從問題出發，連接觀察、鑑別、驗證與來源支持的準則和流程。（not_reviewed）
+- [主訴與跨科](01_wiki/maps/clinical-reasoning.md)：以主訴或跨科問題連到共同知識頁；特定疾病與科別思路由科內目錄閱讀。（not_reviewed）
 - [皮膚科鑑別比較](01_wiki/maps/dermatology-comparisons.md)：以外觀、病程及驗證方式對齊容易混淆的主題。（not_reviewed）
 - [皮膚病灶辨識圖譜](01_wiki/maps/dermatology-image-atlas.md)：從形態與分布出發，對照 59 項主題、鑑別與驗證方法。（not_reviewed）
 - [皮膚科學習導航](01_wiki/maps/dermatology.md)：病灶辨識、疾病與徵象、鑑別思路，以及 SJS/TEN 文獻與處置的共同入口。（not_reviewed）

@@ -20,6 +20,9 @@ nav_title: 指引 CQ1–17
 order: 7
 eyebrow: GUIDELINE / CLINICAL QUESTIONS
 conflict_page_id: comparison-sjs-ten-evidence
+specialties:
+- dermatology
+content_kind: learning_resource
 ---
 
 ## 文件定位與分級
