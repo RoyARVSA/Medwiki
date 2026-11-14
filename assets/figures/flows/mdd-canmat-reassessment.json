@@ -1,0 +1,18 @@
+{
+  "definition_sha256": "25d0252c937b811f844d610489d4f4615e42960cbc7ffb7a6f2750286f9e7e71",
+  "flow_id": "mdd-canmat-reassessment",
+  "mermaid_sha256": "db16c528dd52ffb445c922285abd05a6bd0da82fabe688c4eca67544616882db",
+  "renderer": {
+    "files": {
+      "scripts/flows.py": "6d65cbcc4a9782d5afbafcad3cb4aa4ce4dc0a30a38ad9d2f4bfcfb0a4ee9d0c",
+      "tools/diagrams/package-lock.json": "caf8eba3218494a5f00b0fb8bf5539e2b581632821528718cbd7174eaa3ea5a1",
+      "tools/diagrams/package.json": "65c7d7e238fc1fb87b2cae72c8942f9a99c0e8b0b49da9cbb03e60646cc040fe",
+      "tools/diagrams/render-flows.mjs": "8377c99ecb0d8d65dc654a1da742e33c85eb18cb13ea00ad2a2ed0e84171a293"
+    },
+    "integrity": "sha512-Ie8UKY9x00MsuR3jO6AzUwzK2Z6MIV3Tf4EDdITiuk8Uaz8K7g0R082WqsqNaSU8DdgkrRvZThzhit83mi/uiw==",
+    "name": "pele",
+    "sha256": "921fff97a87371410f45d9bda78cebf572b0085d6e1f3ef7b9c6ead8372e2ff6",
+    "version": "1.13.0"
+  },
+  "svg_sha256": "371952075a1b6f9cdae17527f425f4cdb2043c31bb03ef81a939a4bbf1e86e7b"
+}

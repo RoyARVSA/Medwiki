@@ -65,6 +65,10 @@ def lint(root=common.ROOT, check_site=True):
             errors.append(f"{d['path']}: unknown source")
         try:
             common.render_citations(d['body'], sources)
+            cited_ids = {sources[match.group(1).split(':', 1)[0]]['source_id']
+                         for match in common.CITE.finditer(d['body'])}
+            for source_id in sorted(cited_ids - set(d.get('source_ids', []))):
+                errors.append(f"{d['path']}: cited source absent from source_ids: {source_id}")
             common.rewrite_media(markdown.markdown(d['body'], extensions=['tables', 'fenced_code', 'attr_list']), root, d['path'])
         except ValueError as e:
             errors.append(f"{d['path']}: {e}")

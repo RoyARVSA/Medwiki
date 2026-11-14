@@ -11,6 +11,8 @@
 - [SJS/TEN 學習專題](https://royarvsa.github.io/Medwiki/03_outputs/web/sjs-ten/index.html)。
 - [全部 wiki 索引](index.md)：適合 Obsidian。
 - [皮膚科學習路徑](01_wiki/maps/dermatology.md)。
+- [精神科學習路徑](01_wiki/maps/psychiatry.md)與[成人單極性憂鬱症專題](https://royarvsa.github.io/Medwiki/03_outputs/web/major-depressive-disorder/index.html)。
+- [文獻資源](https://royarvsa.github.io/Medwiki/03_outputs/web/library/resources.html)與[學習成果](https://royarvsa.github.io/Medwiki/03_outputs/web/library/outputs.html)分開瀏覽。
 - [皮膚病灶辨識圖譜](01_wiki/maps/dermatology-image-atlas.md)：主講義 55 項與增補 4 項，連回共同核心頁。
 - [疾病與概念](01_wiki/maps/diseases-concepts.md)、[臨床思路](01_wiki/maps/clinical-reasoning.md)。
 
@@ -39,7 +41,7 @@ python -m unittest discover -s tests -v
 python -m http.server 8000 --bind 127.0.0.1 --directory .build/site
 ```
 
-瀏覽器開啟 `http://127.0.0.1:8000/`。本次 agent 執行環境對本機連線有隔離限制；已改由公開 Pages 網址完成電腦、平板與手機的閱讀、引用、搜尋及版型檢查，不需停用系統防火牆。直接開啟 HTML 仍可離線閱讀。
+瀏覽器開啟 `http://127.0.0.1:8000/`。直接開啟 HTML 也可離線閱讀。2026-11-14 的科別改版與精神科新增內容已做自動化及獨立 agent 檢查；本輪瀏覽器工具無法存取，尚未完成新版的實際電腦、平板與手機畫面／互動驗證。舊版的檢查紀錄不能代替新版驗證。
 
 ## 加入資料
 
@@ -50,7 +52,9 @@ python -m http.server 8000 --bind 127.0.0.1 --directory .build/site
 - 主題內容在 `01_wiki/`，重要結論保留頁次引用。
 - 多疾病比較在 `01_wiki/comparisons/`，評估/診斷/處置思路在 `01_wiki/approaches/`。科別與其他 map 可指向同頁，不複製正文。
 
-目前完成兩份 PDF 的閱讀與整理，人工審閱尚未完成。已記錄國際/日本分型、類固醇證據及原文數據等差異；缺少的補充檔與個別原始研究不視為已讀。
+目前整合五份 PDF 與兩份皮膚病灶 HTML 教學彙編，人工審閱尚未完成。精神科新增 WFSBP 2013、WFSBP 2015 與 CANMAT 2023 更新版（2024 出版），合計 119 個 PDF 頁；建立一份成人單極性憂鬱症核心頁、九個閱讀章節、版本比較與反應不足的再評估流程。已提供 PDF 全讀，不代表已讀未提供的補充檔或所引原始研究。
+
+完整正文保留條件與限制，重點以問題提示、可展開回想答案、比較表及來源支持的流程圖輔助；不保存個人閱讀或作答歷史。SJS/TEN 可由皮膚科與精神科進入同一核心頁，不複製醫學正文。指引差異及原文疑點維持 `open`，詳見[整合與審查紀錄](docs/depression-ingestion-audit.md)。
 
 另外整合兩份使用者提供的皮膚病灶 HTML 教學彙編；引用 A/B 使用卡片與章節定位。彙編所列外部文獻保留連結，未視為本次全部重讀。原始 HTML 與 PDF 同樣只留本機。
 

@@ -1,0 +1,76 @@
+id: mdd-canmat-reassessment
+title: 初始抗憂鬱劑反應不足：先再評估，再比較策略
+kind: management
+population: 成人 MDD 初始抗憂鬱劑反應不理想；本圖為學習用途，不自動選藥或判定 TRD。
+version: CANMAT 2023 update（2024 出版），Q7／Figure 7.1；危急情境另參照 Q3／Q8。
+source_ids: [src-canmat-2023-update]
+review_status: not_reviewed
+conflict_status: none
+entry: reassess
+nodes:
+  - id: reassess
+    kind: step
+    label: 先評估安全，再重查診斷與充分治療
+    detail: 先確認安全與急迫性，並核對雙極性等診斷、精神科與身體共病、壓力、不良反應、依從性、劑量及時間；不能只憑一次量表分數宣告抗藥性。
+    citations: ['[@C:11,14,29,33-34,41]']
+  - id: safety
+    kind: terminal
+    label: 優先安全評估，必要時較早考量 ECT
+    detail: 嚴重、危及生命等情境可優先考量 ECT；既往 ECT 反應佳也可較早評估，並非自動指定 ECT。安全情境未明或有疑慮時，先做臨床安全評估，不等待一般換藥／加藥序列走完。
+    citations: ['[@C:11,14,41]']
+  - id: evidence
+    kind: decision
+    label: 關鍵資訊是否足以比較策略？
+    detail: 此節點是本站的資訊完整性提示。已知沒有反應、部分反應、無法耐受及資料尚缺須分開；缺資料不視為陰性或已排除。
+    citations: ['[@C:33-35]']
+  - id: missing
+    kind: unknown
+    label: 明列缺少資料，保留判斷
+    detail: 補上實際用藥與依從性、充分劑量／時間、反應與不良反應及共病；安全情境未明或有疑慮另走優先安全評估出口，不因藥物資訊尚缺而等待。本站不自動填值或指定治療。
+    citations: ['[@C:33-35]']
+  - id: optimize
+    kind: step
+    label: 在耐受與風險下考量最佳化
+    detail: 劑量不足或已有部分反應時，考量是否在治療範圍內最佳化；增量的可能效益須與不良反應及依從性負擔一起評估，不是無上限加量。
+    citations: ['[@C:34-35]']
+  - id: strategy
+    kind: step
+    label: 共同比較換藥、加藥與心理介入
+    detail: 結合既往效果、耐受、偏好、證據與可近性。下面兩種藥物路徑是偏向與取捨，不是互斥的診斷測試；心理治療應及早考量，並非一定等藥物用盡。
+    citations: ['[@C:34-36]']
+  - id: switch
+    kind: step
+    label: 沒有反應或副作用困擾時考量換藥
+    detail: 核對停藥症狀、交互作用與換藥方向；一般交叉遞減／遞增不能取代 MAOI 所需 washout 等特定條件。不是「所有人先換藥」。
+    citations: ['[@C:35]']
+  - id: adjunct
+    kind: step
+    label: 部分反應且耐受良好時考量加藥
+    detail: 可保留既有效果，但需權衡額外不良反應、交互作用及多藥負擔。治療線別與目標劑量回到完整表格，不用圖中標籤代替處方。
+    citations: ['[@C:35-38]']
+  - id: psychological
+    kind: terminal
+    label: 及早評估合適的心理治療
+    detail: 一線心理治療可較早納入；反應不足後的特定 adjunctive 建議、嚴重度與可近性另有條件。不是所有心理治療或數位工具都等效。
+    citations: ['[@C:14-15,26-28,35,38]']
+  - id: further
+    kind: terminal
+    label: 重評結果與後續神經調節選項
+    detail: 一般路徑通常在換藥或加藥策略仍反應不足後，重新比較 TRD／DTD 的神經調節選項；嚴重、危及生命或既往 ECT 反應佳等情境另有起始直達出口，不將一般順序當必要門檻。
+    citations: ['[@C:14,34,38-41]']
+edges:
+  - {from: reassess, to: safety, label: 危急／適合較早 ECT 評估}
+  - {from: reassess, to: evidence, label: 持續核對已知與缺口}
+  - {from: evidence, to: safety, label: 安全情境未明／有疑慮}
+  - {from: evidence, to: missing, label: 其他資訊尚缺}
+  - {from: evidence, to: optimize, label: 可進行完整評估}
+  - {from: optimize, to: strategy, label: 比較效益與負擔}
+  - {from: strategy, to: switch, label: 換藥的偏向}
+  - {from: strategy, to: adjunct, label: 加藥的偏向}
+  - {from: strategy, to: psychological, label: 可及早考量}
+  - {from: switch, to: further, label: 策略後仍反應不足}
+  - {from: adjunct, to: further, label: 策略後仍反應不足}
+notes:
+  - '本圖簡化呈現 Q7 的學習順序，沒有重製原 Figure 7.1；原圖完整藥物與神經調節線別另見相應正文。[@C:34-41]'
+  - '資訊完整性節點與未知出口為本站編輯提示，不是 CANMAT 新增診斷準則或風險模型。[@C:33-35]'
+  - '危及生命的嚴重情境不得被一般藥物順序延誤；適用條件與來源版本需隨圖保留。[@C:14,41]'

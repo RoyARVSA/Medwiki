@@ -3,7 +3,7 @@ id: concept-nikolsky-sign
 title: 尼可斯基徵象
 type: concept
 created: '2026-11-13'
-updated: '2026-11-13'
+updated: '2026-11-14'
 summary: 輕擦皮膚就剝離＝Nikolsky sign positive；接著問是哪一種疾病。
 tags:
 - dermatology
@@ -11,6 +11,7 @@ specialties:
 - dermatology
 source_ids:
 - src-dermatology-atlas-55-2026
+- src-dermatology-atlas-supplement-01-2026
 review_status: not_reviewed
 conflict_status: none
 publish: true

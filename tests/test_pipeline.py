@@ -63,6 +63,21 @@ class PipelineTests(unittest.TestCase):
         (p/'two.md').write_text('---\nsource_id: same\nshort_id: B\n---\n')
         with self.assertRaises(ValueError):common.load_sources(self.root)
 
+    def test_cited_source_must_be_declared_for_provenance_and_footer(self):
+        from lint import lint
+        records = self.root / '02_sources/records'
+        records.mkdir(parents=True)
+        (records / 'source.md').write_text(
+            '---\nsource_id: source-a\nshort_id: A\npdf_pages: 2\nprinted_start: 1\n---\n', encoding='utf-8')
+        self.add_page('citation')
+        page = self.root / '01_wiki/concepts/citation.md'
+        page.write_text(page.read_text(encoding='utf-8') + '\nClaim [@A:1]\n', encoding='utf-8')
+        self.assertTrue(any('cited source absent from source_ids: source-a' in error
+                            for error in lint(self.root, check_site=False)))
+        page.write_text(page.read_text(encoding='utf-8').replace('source_ids: []',
+                        'source_ids: [source-a]'), encoding='utf-8')
+        self.assertEqual(lint(self.root, check_site=False), [])
+
     def test_configured_output_format_is_respected(self):
         self.api()
         config = self.root / 'config'

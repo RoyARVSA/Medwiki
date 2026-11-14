@@ -3,7 +3,7 @@ id: concept-tinea-cruris
 title: 股癬
 type: concept
 created: '2026-11-13'
-updated: '2026-11-13'
+updated: '2026-11-14'
 summary: 鼠蹊不對稱環形斑＋隆起脫屑邊緣＋中央淡化 → 股癬。
 tags:
 - dermatology
@@ -11,6 +11,7 @@ specialties:
 - dermatology
 source_ids:
 - src-dermatology-atlas-55-2026
+- src-dermatology-atlas-supplement-01-2026
 review_status: not_reviewed
 conflict_status: none
 publish: true

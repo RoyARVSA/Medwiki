@@ -156,6 +156,57 @@ class FlowTests(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     flows.validate_svg(unsafe)
 
+    def test_standalone_svg_materializes_colors_fonts_and_radii(self):
+        svg = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180"
+          style="--_fg:var(--pele-fg,#111);--_s:var(--pele-surface,#eee);
+          --_b:var(--pele-border,#888);--_l:var(--pele-line,#222);
+          --_r:var(--pele-radius,var(--missing-radius,4px));
+          color:var(--_fg);font:18px sans-serif;font-family:var(--pele-font,sans-serif)"
+          fill="var(--_fg)">
+          <g class="pele-edges" fill="none" stroke="var(--_l)">
+            <path d="M0 0L10 10"/><path fill="var(--_l)" stroke="none" d="M1 1L2 2Z"/>
+          </g>
+          <g class="pele-node" data-id="n0" transform="translate(80,30)">
+            <rect x="-60" y="-20" width="120" height="40" fill="var(--_s)"
+              stroke="var(--_b)" style="rx:var(--_r)"/>
+            <text>Check supplied condition</text>
+          </g>
+          <g class="pele-node" data-id="n1"><rect fill="var(--_s)" stroke="var(--_b)"/>
+            <text>Recorded endpoint</text></g>
+          <g class="pele-node" data-id="n2"><rect fill="var(--_s)" stroke="var(--_b)"/>
+            <text>Information missing</text></g>
+        </svg>'''
+        result = flows._decorate_svg(svg, self.graph)
+        self.assertNotIn('var(', result)
+        tree = ET.fromstring(result)
+        self.assertEqual(tree.get('fill'), '#193954')
+        self.assertEqual(tree.get('font-size'), '18px')
+        self.assertEqual(tree.get('font-family'), 'sans-serif')
+        self.assertEqual(tree.get('viewBox'), '0 0 240 180')
+        edges = tree.find('{http://www.w3.org/2000/svg}g')
+        self.assertEqual(edges.get('stroke'), '#547da1')
+        self.assertEqual(edges[1].get('fill'), '#547da1')
+        nodes = {g.get('data-flow-node'): g for g in tree.iter('{http://www.w3.org/2000/svg}g')
+                 if g.get('data-flow-node')}
+        shape = nodes['check'][0]
+        self.assertEqual((shape.get('fill'), shape.get('stroke'), shape.get('rx')),
+                         ('#edf4fb', '#8eabc4', '4px'))
+        self.assertNotIn('style', shape.attrib)  # Presentation attributes allow selection CSS to win.
+        self.assertEqual(nodes['check'].get('transform'), 'translate(80,30)')
+        self.assertEqual(''.join(nodes['check'].itertext()).strip(), 'Check supplied condition')
+        self.assertEqual((nodes['unknown'][0].get('fill'), nodes['unknown'][0].get('stroke')),
+                         ('#f6f9fd', '#285f91'))
+        self.assertEqual(nodes['unknown'][0].get('stroke-dasharray'), '6 4')
+
+    def test_unresolved_or_cyclic_svg_variables_fail_closed(self):
+        nodes = ''.join(f'<g class="pele-node" data-id="n{i}"><text>{node["label"]}</text></g>'
+                        for i, node in enumerate(self.graph['nodes']))
+        for style in ['--_fg:var(--missing)', '--_fg:var(--loop);--loop:var(--_fg)']:
+            with self.subTest(style=style):
+                svg = f'<svg xmlns="http://www.w3.org/2000/svg" style="{style}" fill="var(--_fg)">{nodes}</svg>'
+                with self.assertRaisesRegex(ValueError, 'SVG variable'):
+                    flows._decorate_svg(svg, self.graph)
+
     @unittest.skipUnless((ROOT / 'tools/diagrams/node_modules/pele').is_dir(),
                          'npm ci --prefix tools/diagrams is required for renderer integration')
     def test_unicode_labels_and_markup_remain_literal_and_html_locators_work(self):
@@ -186,6 +237,7 @@ class FlowTests(unittest.TestCase):
         prefix = self.root / 'assets/figures/flows/fixture-flow'
         snapshots = {suffix: prefix.with_suffix(suffix).read_bytes()
                      for suffix in ['.svg', '.mmd', '.json']}
+        self.assertNotIn(b'var(', snapshots['.svg'])
         html = flows.render_flow(self.root, 'fixture-flow', '03_outputs/web/test/index.html',
                                  SOURCE, tools_root=ROOT)
         for node in self.graph['nodes']:

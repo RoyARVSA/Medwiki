@@ -280,6 +280,91 @@ def _balance_cjk_lines(group, original):
         span.text = line
 
 
+def _resolve_svg_value(value, variables, trail=()):
+    """Resolve Pele's inline custom properties, including nested fallbacks."""
+    while match := re.search(r'\bvar\(', value):
+        start, depth, quote, comma = match.end(), 1, None, None
+        for end in range(start, len(value)):
+            char = value[end]
+            if quote:
+                if char == quote:
+                    quote = None
+            elif char in {'"', "'"}:
+                quote = char
+            elif char == '(':
+                depth += 1
+            elif char == ')':
+                depth -= 1
+                if not depth:
+                    break
+            elif char == ',' and depth == 1 and comma is None:
+                comma = end
+        else:
+            raise ValueError('Malformed SVG variable')
+        name = value[start:comma if comma is not None else end].strip()
+        if not re.fullmatch(r'--[A-Za-z0-9_-]+', name):
+            raise ValueError('Malformed SVG variable name')
+        if name in trail:
+            raise ValueError(f'Cyclic SVG variable: {name}')
+        if name in variables:
+            replacement = _resolve_svg_value(variables[name], variables, trail + (name,))
+        elif comma is not None:
+            replacement = _resolve_svg_value(value[comma + 1:end].strip(), variables, trail)
+        else:
+            raise ValueError(f'Unresolved SVG variable: {name}')
+        value = value[:match.start()] + replacement + value[end + 1:]
+    return value
+
+
+def _materialize_svg_style(tree):
+    """Keep standalone SVG readable in renderers without CSS variable support.
+
+    Inline presentation styles become attributes so page selection/focus CSS
+    can still override them. Geometry and source text are otherwise untouched.
+    """
+    presentation = {'color', 'direction', 'fill', 'font-family', 'font-size',
+                    'font-style', 'font-weight', 'letter-spacing', 'word-spacing',
+                    'stroke', 'stroke-width', 'stroke-dasharray', 'stroke-linecap',
+                    'stroke-linejoin', 'text-anchor', 'rx', 'ry'}
+
+    def visit(element, inherited):
+        declarations = []
+        for declaration in element.get('style', '').split(';'):
+            if declaration.strip():
+                key, separator, value = declaration.partition(':')
+                if not separator:
+                    raise ValueError('Malformed SVG style declaration')
+                declarations.append((key.strip(), value.strip()))
+        variables = dict(inherited)
+        variables.update((key, value) for key, value in declarations if key.startswith('--'))
+        variables = {key: _resolve_svg_value(value, variables, (key,))
+                     for key, value in variables.items()}
+        for key in presentation & element.attrib.keys():
+            element.set(key, _resolve_svg_value(element.get(key), variables))
+        styles = []
+        for key, value in declarations:
+            value = _resolve_svg_value(value, variables)
+            if key == 'font':
+                # The pinned renderer emits a simple measured font shorthand.
+                font = re.fullmatch(r'(\d+(?:\.\d+)?px)\s+(.+)', value)
+                if not font:
+                    raise ValueError('Unsupported SVG font shorthand')
+                element.set('font-size', font[1])
+                element.set('font-family', font[2])
+            elif key in presentation:
+                element.set(key, value)
+            else:
+                styles.append(key + ':' + value)
+        if styles:
+            element.set('style', ';'.join(styles))
+        else:
+            element.attrib.pop('style', None)
+        for child in element:
+            visit(child, variables)
+
+    visit(tree, {})
+
+
 def _decorate_svg(svg, data):
     tree = validate_svg(svg)
     tree.set('style', BLUE_DEFAULTS + tree.get('style', ''))
@@ -325,6 +410,7 @@ def _decorate_svg(svg, data):
         seen.add(internal_id)
     if seen != set(expected):
         raise ValueError('Pele omitted diagram nodes')
+    _materialize_svg_style(tree)
     result = ET.tostring(tree, encoding='unicode', short_empty_elements=True)
     validate_svg(result)
     return result + '\n'

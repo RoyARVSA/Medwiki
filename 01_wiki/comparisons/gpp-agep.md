@@ -3,7 +3,7 @@ id: comparison-gpp-agep
 title: 全身性膿疱性乾癬 vs 急性廣泛性發疹性膿疱症
 type: comparison
 created: '2026-11-13'
-updated: '2026-11-13'
+updated: '2026-11-14'
 summary: 新藥後急發、快速消退偏 AGEP；反覆發作或既有乾癬線索偏 GPP。
 tags:
 - dermatology
@@ -11,6 +11,7 @@ specialties:
 - dermatology
 source_ids:
 - src-dermatology-atlas-55-2026
+- src-dermatology-atlas-supplement-01-2026
 review_status: not_reviewed
 conflict_status: none
 publish: true

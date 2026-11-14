@@ -9,6 +9,7 @@
 - [皮膚病灶辨識圖譜](01_wiki/maps/dermatology-image-atlas.md)：從形態與分布出發，對照 59 項主題、鑑別與驗證方法。（not_reviewed）
 - [皮膚科學習導航](01_wiki/maps/dermatology.md)：病灶辨識、疾病與徵象、鑑別思路，以及 SJS/TEN 文獻與處置的共同入口。（not_reviewed）
 - [疾病與概念](01_wiki/maps/diseases-concepts.md)：依名稱、別名與關鍵詞查找疾病、徵象及相關概念，連回共同核心頁。（not_reviewed）
+- [精神科學習導航](01_wiki/maps/psychiatry.md)：從成人單極性憂鬱症的評估、治療選擇、療效追蹤與復發預防開始，連到指引版本比較。（not_reviewed）
 
 ## 概念頁
 
@@ -39,6 +40,16 @@
 - [卡波西肉瘤](01_wiki/concepts/kaposi-sarcoma.md)：多發紫紅色血管性斑塊／結節，合併免疫抑制線索 → 考慮 Kaposi sarcoma。（not_reviewed）
 - [蟹足腫](01_wiki/concepts/keloid.md)：重點是「超出原傷口範圍」，不是只看疤痕很凸。（not_reviewed）
 - [脂性皮膚硬化症](01_wiki/concepts/lipodermatosclerosis.md)：靜脈鬱滯背景中，若特別突出的是硬化及踝上方收窄，要想到 lipodermatosclerosis。（not_reviewed）
+- [成人單極性憂鬱症](01_wiki/concepts/major-depressive-disorder.md)：連接診斷評估、緩解與功能恢復、治療選擇、反應不足及長期復發預防；保留各指引的版本與適用範圍。（not_reviewed）
+- [憂鬱症：評估與測量照護](01_wiki/concepts/mdd-assessment-and-measurement.md)：分開篩檢、診斷、風險與療效評估；將症狀、功能、生活品質和不良反應一起納入追蹤。（not_reviewed）
+- [憂鬱症：持續與維持治療](01_wiki/concepts/mdd-continuation-and-maintenance.md)：好轉後仍要處理殘餘症狀、功能、依從性及再發風險；保留不同指引的階段、時間起算及長期監測。（not_reviewed）
+- [憂鬱症：減藥、停藥與症狀辨別](01_wiki/concepts/mdd-discontinuation.md)：區分停藥症狀、反彈與原症狀回返；保留不同版本的減藥時間、證據限制與監測情境。（not_reviewed）
+- [憂鬱症：反應不足與難治性憂鬱](01_wiki/concepts/mdd-inadequate-response.md)：先重查診斷、治療充分性與共病，再比較增量、換藥、加藥及心理／神經調節策略；區分 TRD 與 DTD。（not_reviewed）
+- [憂鬱症：神經調節治療](01_wiki/concepts/mdd-neuromodulation.md)：分開選用情境、刺激方案與急性／維持效果；比較 ECT、rTMS、tDCS、VNS 及研究性治療。（not_reviewed）
+- [憂鬱症：藥物治療與安全](01_wiki/concepts/mdd-pharmacotherapy.md)：分開藥物療效、線別、每日劑量範圍、耐受性、交互作用與監測；舊版數字保留年代及限制。（not_reviewed）
+- [憂鬱症：心理、生活型態與數位介入](01_wiki/concepts/mdd-psychological-and-lifestyle-interventions.md)：保留治療忠實度、嚴重度、引導程度與安全條件，分開心理治療、生活型態、CAM 及數位工具的證據。（not_reviewed）
+- [憂鬱症：特殊族群與適用限制](01_wiki/concepts/mdd-special-populations.md)：區分成人一般指引、年齡、孕哺期與共病情境；避免把歷史版本或有限研究直接外推為個別處方。（not_reviewed）
+- [憂鬱症：治療選擇與階段](01_wiki/concepts/mdd-treatment-selection.md)：以嚴重度、安全、偏好與可近性理解初始治療；分清兩階段與三階段架構的目標及起算點。（not_reviewed）
 - [黑色素瘤](01_wiki/concepts/melanoma.md)：不對稱、多色、持續變化的色素病灶，尤其掌蹠或甲部，優先排除 melanoma。（not_reviewed）
 - [傳染性軟疣](01_wiki/concepts/molluscum-contagiosum.md)：光滑珍珠樣小丘疹＋中央臍凹 → 傳染性軟疣。（not_reviewed）
 - [蕈狀肉芽腫（皮膚 T 細胞淋巴瘤）](01_wiki/concepts/mycosis-fungoides.md)：長期反覆、分布不對稱的濕疹樣斑片／斑塊，偏在衣服遮蔽處 → 想到 MF，安排臨床與切片對照。（not_reviewed）
@@ -78,6 +89,7 @@
 - [表皮剝脫：EB、SSSS 與 SJS/TEN](01_wiki/comparisons/epidermal-detachment-differential.md)：對齊外觀、病程、確認方法及照片判讀限制。（not_reviewed）
 - [全身性膿疱性乾癬 vs 急性廣泛性發疹性膿疱症](01_wiki/comparisons/gpp-agep.md)：新藥後急發、快速消退偏 AGEP；反覆發作或既有乾癬線索偏 GPP。（not_reviewed）
 - [淺色斑：白色糠疹、汗斑與白斑](01_wiki/comparisons/hypopigmented-lesions.md)：對齊外觀、病程、確認方法及照片判讀限制。（not_reviewed）
+- [憂鬱症指引：版本、分級與差異](01_wiki/comparisons/mdd-guideline-comparison.md)：對齊來源版本、適用階段、證據系統、療程與原文缺口；保留差異，不合成新的指引。（not_reviewed）
 - [MF 與 Sézary：外觀、病理與血液](01_wiki/comparisons/mycosis-fungoides-sezary.md)：對齊外觀、病程、確認方法及照片判讀限制。（not_reviewed）
 - [丘疹：疣、軟疣、皮贅與梅毒](01_wiki/comparisons/papular-lesions.md)：對齊外觀、病程、確認方法及照片判讀限制。（not_reviewed）
 - [小腿紅：鬱滯、硬化與感染](01_wiki/comparisons/red-leg-differential.md)：對齊外觀、病程、確認方法及照片判讀限制。（not_reviewed）
@@ -86,6 +98,7 @@
 ## 臨床思路
 
 - [表皮剝脫的鑑別思路](01_wiki/approaches/epidermal-detachment-reasoning.md)：依序區分照片外觀、黏膜、病程與檢查證據，再回到 EB、SSSS 與 SJS/TEN 的比較。（not_reviewed）
+- [初始抗憂鬱劑反應不足：再評估思路](01_wiki/approaches/mdd-treatment-reassessment.md)：依 CANMAT 保留再評估、最佳化、換藥／加藥及其他介入的取捨；未知資訊另列，不自動判定 TRD。（not_reviewed）
 - [SJS 診斷準則：逐項核對與限制](01_wiki/approaches/sjs-diagnostic-criteria.md)：以日本指引五項主準則、次要準則與完整病程呈現判讀關係，保留未知及例外註記。（not_reviewed）
 - [皮膚病灶：先描述，再辨認](01_wiki/approaches/skin-lesion-recognition.md)：把照片可見特徵、題幹病史與另外取得的檢驗證據分開，再對照鑑別。（not_reviewed）
 
@@ -95,6 +108,9 @@
 
 ## 來源摘要
 
+- [WFSBP 2013：急性與延續期治療](02_sources/summaries/bauer-2013-acute-continuation.md)：分清緩解與反應、早期評估與充分治療，以及反應不足、延續期和特殊情境的 2013 年建議。（not_reviewed）
+- [WFSBP 2015：維持治療、再發風險與停藥](02_sources/summaries/bauer-2015-maintenance.md)：從再發風險判斷長期治療需要，分清延續與維持階段，整理原版藥物分級、監測、療程與停藥限制。（not_reviewed）
+- [CANMAT 2023 更新：成人憂鬱症的評估、治療與追蹤](02_sources/summaries/canmat-2023-update.md)：八大問題的完整來源整理，涵蓋初始選擇、測量導向照護、維持停藥、反應不足與神經調控；保留版本、族群及證據限制。（not_reviewed）
 - [皮膚科圖片辨識講義｜55項考古主題](02_sources/summaries/dermatology-atlas-55.md)：主題卡片、鑑別與來源範圍的可追溯目錄。（not_reviewed）
 - [皮膚科圖片辨識增補｜MF・Sézary・SSSS・SJS](02_sources/summaries/dermatology-atlas-supplement-01.md)：主題卡片、鑑別與來源範圍的可追溯目錄。（not_reviewed）
 - [全身性免疫調節治療：系統性回顧](02_sources/summaries/heuer-systemic-therapies.md)：方法、主要效果、比較對象與侷限的完整閱讀摘要。（not_reviewed）
@@ -102,6 +118,9 @@
 
 ## 來源紀錄
 
+- [Bauer et al. · WFSBP 急性與延續期指引 2013](02_sources/records/bauer-2013.md)：complete；原始檔本機保存。
+- [Bauer et al. · WFSBP 維持治療 2015](02_sources/records/bauer-2015.md)：complete；原始檔本機保存。
+- [CANMAT · 2023 更新版（2024 刊登）](02_sources/records/canmat-2023-update.md)：complete；原始檔本機保存。
 - [皮膚病灶辨識・主講義 55 項](02_sources/records/dermatology-atlas-55.md)：complete；原始檔本機保存。
 - [皮膚病灶辨識・增補 01](02_sources/records/dermatology-atlas-supplement-01.md)：complete；原始檔本機保存。
 - [Heuer et al. · 系統性回顧](02_sources/records/heuer-2026.md)：complete；原始檔本機保存。

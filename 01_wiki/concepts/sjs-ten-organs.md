@@ -4,7 +4,7 @@ title: 器官併發症
 title_en: Ocular & systemic complications
 type: concept
 content_kind: chapter
-specialties: [dermatology]
+specialties: [dermatology, psychiatry]
 created: 2026-11-12
 updated: 2026-11-12
 summary: 從急性眼表損傷走向慢性後遺症，並整理肺、肝、腎與感染的評估線索。

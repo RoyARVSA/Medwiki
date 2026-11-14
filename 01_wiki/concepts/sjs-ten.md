@@ -4,7 +4,7 @@ title: SJS / TEN
 title_en: Stevens–Johnson syndrome & toxic epidermal necrolysis
 type: concept
 created: 2026-11-12
-updated: '2026-11-13'
+updated: '2026-11-14'
 summary: 從表皮壞死、黏膜侵犯與藥物反應，建立診斷、器官評估及治療證據的閱讀路徑。
 tags:
 - dermatology
@@ -22,6 +22,8 @@ source_ids:
 - src-watanabe-2026
 - src-dermatology-atlas-55-2026
 - src-dermatology-atlas-supplement-01-2026
+- src-canmat-2023-update
+- src-bauer-2015
 review_status: not_reviewed
 conflict_status: open
 publish: true
@@ -31,6 +33,7 @@ order: 1
 eyebrow: DERMATOLOGY / CLINICAL TOPIC
 specialties:
 - dermatology
+- psychiatry
 content_kind: disease
 related_ids:
 - concept-erythema-multiforme
@@ -169,3 +172,7 @@ Heuer 引述德國登錄的發生率為每百萬人每年 0.93 例（95% CI 0.86
 - [多形性紅斑](erythema-multiforme.md#atlas-d06)
 - [固定型藥物疹](fixed-drug-eruption.md#atlas-d08)
 - [葡萄球菌燙傷樣皮膚症候群](staphylococcal-scalded-skin-syndrome.md#atlas-d58)
+
+## 精神科用藥安全的交叉閱讀
+
+CANMAT 2023 update 在 MDD 的 lamotrigine 加用治療段落提醒 SJS 風險、低劑量開始及緩慢調升；WFSBP 2015 也在 carbamazepine 安全段落提醒嚴重皮膚反應與警訊教育。這些用藥學習連到同一份 SJS/TEN 核心頁，相關治療情境見[憂鬱症藥物與安全](mdd-pharmacotherapy.md)，不另複製皮膚診斷筆記。[@C:37][@M:10]

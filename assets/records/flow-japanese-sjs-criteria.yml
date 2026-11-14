@@ -16,33 +16,46 @@ source_version: Diagnostic criteria 2025；2026 年刊登，Table 3，PDF 9／e9
 source_locators:
 - '[@W:9]'
 source_url: null
-attribution: Original diagram by Medwiki; source facts and locators are cited in the accompanying node explanations.
+attribution: Original diagram by Medwiki; source facts and locators are cited in the
+  accompanying node explanations.
 public_allowed: true
-public_allowed_basis: User-authorized, self-created vector layout and paraphrased learning text derived from the
-  supplied source facts. No original source figure, photograph, or source full text is reproduced.
+public_allowed_basis: User-authorized, self-created vector layout and paraphrased
+  learning text derived from the supplied source facts. No original source figure,
+  photograph, or source full text is reproduced.
 conditions:
-- Retain source IDs, versions, node citations, scope, unknown outcomes and review status.
-- The diagram layout and information-state annotations do not establish new clinical rules.
+- Retain source IDs, versions, node citations, scope, unknown outcomes and review
+  status.
+- The diagram layout and information-state annotations do not establish new clinical
+  rules.
 definition_path: config/flows/japanese-sjs-criteria.yml
 mermaid_path: assets/figures/flows/japanese-sjs-criteria.mmd
 manifest_path: assets/figures/flows/japanese-sjs-criteria.json
-sha256: 7a7fdb53a58a42f45a4b6c4d3934b953f6e9620180f1483e5a2bcde419c99379
+sha256: b88ae3eef50776b8d2e6e7edb86d788c4b660b22fdee9cc11ede3be4f35067a9
 definition_sha256: 9bc07afe8ab8891f4a08fb27359daeb2137ed81cf4780db0af1f12a4d0ce3aac
 renderer:
+  files:
+    scripts/flows.py: 6d65cbcc4a9782d5afbafcad3cb4aa4ce4dc0a30a38ad9d2f4bfcfb0a4ee9d0c
+    tools/diagrams/package-lock.json: caf8eba3218494a5f00b0fb8bf5539e2b581632821528718cbd7174eaa3ea5a1
+    tools/diagrams/package.json: 65c7d7e238fc1fb87b2cae72c8942f9a99c0e8b0b49da9cbb03e60646cc040fe
+    tools/diagrams/render-flows.mjs: 8377c99ecb0d8d65dc654a1da742e33c85eb18cb13ea00ad2a2ed0e84171a293
+  integrity: sha512-Ie8UKY9x00MsuR3jO6AzUwzK2Z6MIV3Tf4EDdITiuk8Uaz8K7g0R082WqsqNaSU8DdgkrRvZThzhit83mi/uiw==
   name: pele
+  sha256: 921fff97a87371410f45d9bda78cebf572b0085d6e1f3ef7b9c6ead8372e2ff6
   version: 1.13.0
-  sha256: e7cd374e7674dbdc34e4c9983a7fd18674468934dbe0667ebbc22e13e95a6505
 modifications:
 - Generated from the unmodified public YAML definition with pinned Pele.
-- Applied academic-blue defaults, an explicit dashed unknown outlet, accessibility labels and node hooks; clinical
-  labels and relationships remain unchanged.
-- Balanced CJK line breaks within existing SVG tspan positions and maximum measured width. Canonical Mermaid labels
-  and clinical glyph sequences are unchanged.
+- Applied academic-blue defaults, an explicit dashed unknown outlet, accessibility
+  labels and node hooks; clinical labels and relationships remain unchanged.
+- Balanced CJK line breaks within existing SVG tspan positions and maximum measured
+  width. Canonical Mermaid labels and clinical glyph sequences are unchanged.
+- Resolved SVG style variables into portable presentation attributes; node geometry
+  and clinical meaning preserved.
 used_in:
 - 01_wiki/approaches/sjs-diagnostic-criteria.md
 - 03_outputs/web/clinical-reasoning/sjs-diagnostic-criteria.html
 review_status: not_reviewed
 conflict_status: open
 created: '2026-11-13'
-validation_scope: SVG safety, definition/renderer/artifact hashes, exact node glyph sequence, accessible title/description,
-  18 px label font and text equivalent; no claim of human clinical review.
+validation_scope: SVG safety, definition/renderer/artifact hashes, exact node glyph
+  sequence, accessible title/description, 18 px label font and text equivalent; no
+  claim of human clinical review.

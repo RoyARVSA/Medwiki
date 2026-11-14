@@ -3,7 +3,7 @@ id: concept-chronic-arsenicism
 title: 慢性砷中毒
 type: concept
 created: '2026-11-13'
-updated: '2026-11-13'
+updated: '2026-11-14'
 summary: 雨滴樣色素改變＋掌蹠角化＋長期暴露史：想慢性砷中毒。
 tags:
 - dermatology
@@ -11,6 +11,7 @@ specialties:
 - dermatology
 source_ids:
 - src-dermatology-atlas-55-2026
+- src-dermatology-atlas-supplement-01-2026
 review_status: not_reviewed
 conflict_status: none
 publish: true

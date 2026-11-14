@@ -4,6 +4,8 @@
 
 必要欄位：id、title、type、created、updated、summary、tags、source_ids、review_status、conflict_status。其定義見 AGENTS.md。
 
+`population` 與 `clinical_context` 記錄適用族群及治療／診斷情境，不以一段泛稱取代正文的限制。每個文內引用對應的 source-id 必須同時列在 `source_ids`，供來源面板與資訊關係使用；檢查工具會拒絕漏列。CANMAT 的指引版本與刊登年份分別保存，不以更新版名稱推定出版年。
+
 `type` 支援 concept / comparison / approach / question / map / source_summary。新增的 `approach` 存於 `01_wiki/approaches/`；`specialties` 可列多個科別，`content_kind` 區分 disease、sign、chapter、comparison、approach、differential、criteria、atlas、specialty、navigation、learning_resource。`related_ids` 連到既有核心頁，分類不另複製正文。
 
 `conflict_page_id` 明確指定保留分歧的已發布比較頁。沒有指定時只顯示衝突提示，不從同科別任選比較頁；目標為自身時不顯示重複跳轉按鈕。
@@ -33,7 +35,7 @@ route 為 `03_outputs/web/<web_topic>/<web_file>`。同一 route 不能重複，
 
 ## 來源
 
-source_id 穩定識別；short_id 是文內短代碼（本版 H/W）。pdf_pages、printed_start、printed_prefix 用於頁次檢核。DOI 用正式解析網址，原件位置只留 private 對照。processing_status complete 是提供的來源單位讀取完成，不包含未附補充資料或引用文獻全文。
+source_id 穩定識別；short_id 是文內短代碼（目前 H/W/A/B/F/M/C）。pdf_pages、printed_start、printed_prefix 用於頁次檢核。DOI 用正式解析網址，原件位置只留 private 對照。processing_status complete 是提供的來源單位讀取完成，不包含未附補充資料或引用文獻全文。
 
 ## 引用語法
 
