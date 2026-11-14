@@ -36,3 +36,5 @@ User explicitly requested agent supervision and execution in this chat. Root coo
 ## Final automated and source audit
 
 Full supplied-source integration and independent source/engineering review are complete. Root verified 77 Python tests without skips, both Node suites, JS syntax, flow artifacts and public-only reconstruction. The clean public export rebuilt all 252 site files identically (103 HTML) without raw/private/node_modules inputs. Clinical differences and source defects remain not_reviewed/open; actual browser visual and interaction QA remains the only uncompleted device-check requirement. See depression-ingestion-audit.md for the exact scope; local checks do not imply online deployment.
+
+Deployment was subsequently confirmed for integration commit `39b77ef`: Actions run `43550342604` built and deployed successfully. Five published entry URLs returned HTTP 200 with expected titles; actual browser QA remains outstanding.
