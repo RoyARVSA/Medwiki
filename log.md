@@ -140,3 +140,10 @@
 - 本輪瀏覽器工具因無法辨識目前網址停止，未完成實際裝置、互動、無JS或列印驗證；不以靜態圖像或舊版驗收代替。所有新醫學內容仍not_reviewed，選藥／臟器操作缺口明示。詳見docs/clinical-flow-redesign-audit.md；推送部署另記。
 
 - 公開重建：以495份已暫存公開檔匯出無raw/private/node_modules副本，建置成功，258份成品逐檔SHA-256一致；換行依.gitattributes正規化後無差異。沒有把私有原件當建置依賴。
+
+
+## 2026-11-16 · output · Clinical flow Pages delivery
+
+- 流程與規範提交a0f0b21已推至main；GitHub Actions 43734816666的build／deploy均成功，雲端重新執行完整測試、流程與公開邊界檢查。
+- 正式首頁、SJS準則頁、MDD再評估頁及兩份代表SVG均以純HTTP讀取確認200，逐檔SHA-256與本機驗證成品相同；沒有執行瀏覽器程式。原始PDF與private未推送。
+- 以上證明本次成品已上線，不取代尚未完成的瀏覽器／裝置互動或人工醫學審閱。完整製圖與來源驗收見docs/clinical-flow-redesign-audit.md。

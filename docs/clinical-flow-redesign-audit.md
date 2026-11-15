@@ -68,3 +68,8 @@
 ### 公開副本重建
 
 2026-11-16以已暫存的495份公開檔案匯出乾淨副本，不包含raw、private、inbox或node_modules；直接以保存的已驗證SVG建置成功。258份發布檔的逐檔SHA-256與本機一致。比對初次指出本機CSS的CRLF與儲存庫要求LF造成快取鍵不同，僅正規化換行後重建，差異為零；沒有改動CSS規則或臨床字句。
+
+
+### 上線確認
+
+實作提交`a0f0b21`已推至main，[Actions 43734816666](https://github.com/RoyARVSA/Medwiki/actions/runs/43734816666)的build及deploy成功。純HTTP讀取正式首頁、SJS/MDD閱讀頁和兩份代表SVG均200，位元組雜湊與本機一致；這不是瀏覽器操作驗證。
