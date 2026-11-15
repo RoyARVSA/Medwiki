@@ -4,7 +4,7 @@ title: 精神科學習導航
 title_en: Psychiatry
 type: map
 created: 2026-11-14
-updated: 2026-11-14
+updated: 2026-11-15
 summary: 從成人單極性憂鬱症的評估、治療選擇、療效追蹤與復發預防開始，連到指引版本比較。
 tags: [psychiatry, mood-disorders]
 specialties: [psychiatry]
@@ -27,15 +27,8 @@ eyebrow: SPECIALTY / PSYCHIATRY
 ## 疾病與主題
 
 - [成人單極性憂鬱症](../concepts/major-depressive-disorder.md)：核心概念與章節路徑。
-- [評估與測量照護](../concepts/mdd-assessment-and-measurement.md)。
-- [治療選擇與階段](../concepts/mdd-treatment-selection.md)。
-- [藥物治療與安全](../concepts/mdd-pharmacotherapy.md)。
-- [心理、生活型態與數位介入](../concepts/mdd-psychological-and-lifestyle-interventions.md)。
-- [反應不足與難治性憂鬱](../concepts/mdd-inadequate-response.md)。
-- [神經調節治療](../concepts/mdd-neuromodulation.md)。
-- [持續與維持治療](../concepts/mdd-continuation-and-maintenance.md)。
-- [減藥、停藥與症狀辨別](../concepts/mdd-discontinuation.md)。
-- [特殊族群與適用限制](../concepts/mdd-special-populations.md)。
+
+評估、藥物、心理介入、反應不足、神經調節、長期照護、停藥及特殊族群的章節，由上述疾病核心頁連入。藥物安全等相關論述可連到他科的既有疾病頁，不因此把該疾病列成精神科的主要疾病或專題。
 
 ## 思路與比較
 

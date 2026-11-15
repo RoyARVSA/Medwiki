@@ -6,13 +6,17 @@
 
 `population` 與 `clinical_context` 記錄適用族群及治療／診斷情境，不以一段泛稱取代正文的限制。每個文內引用對應的 source-id 必須同時列在 `source_ids`，供來源面板與資訊關係使用；檢查工具會拒絕漏列。CANMAT 的指引版本與刊登年份分別保存，不以更新版名稱推定出版年。
 
-`type` 支援 concept / comparison / approach / question / map / source_summary。新增的 `approach` 存於 `01_wiki/approaches/`；`specialties` 可列多個科別，`content_kind` 區分 disease、sign、chapter、comparison、approach、differential、criteria、atlas、specialty、navigation、learning_resource。`related_ids` 連到既有核心頁，分類不另複製正文。
+`type` 支援 concept / comparison / approach / question / map / source_summary。新增的 `approach` 存於 `01_wiki/approaches/`；`content_kind` 區分 disease、sign、chapter、comparison、approach、differential、criteria、atlas、specialty、navigation、learning_resource。`specialties` 表示目錄歸屬，疾病型 concept 發布時必須且只能列一個主要科別；其他非疾病頁可依實際用途列多個。`related_ids` 表達知識關係，不會自動讓目標加入引用者的科別目錄；正文連結應說明相關原因並指向既有頁或章節。
+
+每個疾病維持唯一核心 page-id 與穩定入口，詳細內容可用 `content_kind: chapter`、`parent_id` 分章。章節應明記核心關係，發布的疾病章節須與其核心使用相同主要科別；建置會拒絕多重疾病歸屬或不一致的章節歸屬。歸屬未決的草稿暫不發布，先向使用者確認，不推測科別。
+
+疾病核心及章節共同檢視核心概念、流行病學、機轉、臨床表現、診斷準則、鑑別與驗證、處置流程及限制。核心頁以一般 Markdown 簡述目前範圍與重要缺口，不新增個人閱讀追蹤欄位，也不強迫每檔填滿八類章節。導讀、回想答案與圖表依附正文，來源更新後由 Agent 同步核對；建置不會自動判斷醫學涵蓋度或改寫答案。
 
 `conflict_page_id` 明確指定保留分歧的已發布比較頁。沒有指定時只顯示衝突提示，不從同科別任選比較頁；目標為自身時不顯示重複跳轉按鈕。
 
 科別、疾病與概念、臨床思路是不同瀏覽方式；網站路徑由穩定 page-id 與發布欄位決定。`view` 可選 atlas / concept-library / specialty / reasoning，未設定使用一般閱讀頁；前三者的導航由公開欄位生成。
 
-網站以科別為主：`view: specialty` 且 `content_kind: specialty` 的 map 宣告科別入口；`specialties` 使用已宣告的英文科別 id，可列多個。`browse_group` 是可選的科內學習群組標籤；`cross_specialty: true` 明確加入主訴／跨科入口，不能由 comparison 類型推定。`catalog_role: work` 標示完整作品；一般頁與章節不因此逐一列成果。來源摘要仍按單一來源保留，文獻與作品目錄分開。
+網站以科別為主：`view: specialty` 且 `content_kind: specialty` 的 map 宣告科別入口；`specialties` 使用已宣告的英文科別 id，疾病與其章節遵守上述單一主要科別規則。`browse_group` 是可選的科內學習群組標籤；`cross_specialty: true` 明確加入主訴／跨科入口，不能由 comparison 類型或正文跨科引用推定。`catalog_role: work` 標示完整作品；一般頁與章節不因此逐一列成果。來源摘要仍按單一來源保留，文獻與作品目錄分開。
 
 新介面目錄由 `scripts/navigation.py` 的公開欄位模型生成；首頁科別框格受控換頁，科內四類清單分開。既有 concept-library 網址保留作精簡目錄，首頁不再列全站疾病卡片。通用文獻／成果／全部科別目錄是網站介面，不預造醫學知識頁。安全返回 context 僅使用已知科別 id；查詢、分組、頁碼存 URL，不寫個人儲存。
 
@@ -29,7 +33,7 @@
 | eyebrow | 學術版面的小標籤 |
 | title_en | 副標題 |
 | aliases | 搜尋用的中英文別名、縮寫 |
-| parent_id | 可選的共同核心頁 id；明記真正章節關係，與實體檔案或 web_topic 分開 |
+| parent_id | 發布的 chapter 必填有效核心／上層頁 id；其他頁可選。明記真正章節關係，與實體檔案或 web_topic 分開，不能用空值繞過檢查 |
 
 route 為 `03_outputs/web/<web_topic>/<web_file>`。同一 route 不能重複，站內 Markdown 連結在兩端都已發布時轉為相對網址；未發布的連結不能悄悄產生失效網址。跨主題的入口與側欄由共用版型維護。
 

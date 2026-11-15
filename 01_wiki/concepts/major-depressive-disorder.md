@@ -4,8 +4,8 @@ title: 成人單極性憂鬱症
 title_en: Major depressive disorder in adults
 type: concept
 created: 2026-11-14
-updated: 2026-11-14
-summary: 連接診斷評估、緩解與功能恢復、治療選擇、反應不足及長期復發預防；保留各指引的版本與適用範圍。
+updated: 2026-11-15
+summary: 以三份治療指引為目前範圍，連接評估、治療與長期照護；疾病總論仍有待補面向，保留版本、條件及缺口。
 tags: [psychiatry, major-depressive-disorder, unipolar-depression]
 aliases: [MDD, major depression, major depressive episode, MDE, 重鬱症, 重度憂鬱症, 單極性憂鬱症]
 specialties: [psychiatry]
@@ -29,6 +29,14 @@ related_ids: [comparison-mdd-guidelines, approach-mdd-treatment-reassessment]
 population: 成人單極性 MDD 為主；特殊族群與情境另標。
 clinical_context: 成人單極性 MDD 的核心概念與各治療階段；保留來源版本。
 ---
+
+## 目前範圍與缺口
+
+目前整合使用者提供的 WFSBP 2013、WFSBP 2015 與 CANMAT 2023 更新版（2024 出版），重點為評估、治療選擇、療效追蹤、反應不足及長期照護。三份提供 PDF 的處理範圍已完成，**疾病總論仍可持續補齊**。
+
+現有正文保留部分流行病學資訊、診斷版本與邊界、鑑別線索及驗證限制；**完整流行病學、系統性病因與機轉、完整現行診斷準則及鑑別驗證細節尚未充分整理**。這些是本專題的內容缺口，後續補充資料將整合至本頁或相應章節。[@F:5-7][@C:6-9,19-20]
+
+本頁是共同入口，詳細內容可由下方章節連入。
 
 ## 先抓住四個學習問題
 

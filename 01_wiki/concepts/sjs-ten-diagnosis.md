@@ -4,11 +4,11 @@ title: 診斷與評估
 title_en: Diagnosis & assessment
 type: concept
 created: 2026-11-12
-updated: 2026-11-13
+updated: '2026-11-15'
 specialties:
 - dermatology
-- psychiatry
 content_kind: chapter
+parent_id: concept-sjs-ten
 summary: 區分國際分型與日本準則，保留黏膜、病理、鑑別與致病藥物檢測的條件。
 tags:
 - dermatology

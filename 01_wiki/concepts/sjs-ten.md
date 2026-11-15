@@ -4,7 +4,7 @@ title: SJS / TEN
 title_en: Stevens–Johnson syndrome & toxic epidermal necrolysis
 type: concept
 created: 2026-11-12
-updated: '2026-11-14'
+updated: '2026-11-15'
 summary: 從表皮壞死、黏膜侵犯與藥物反應，建立診斷、器官評估及治療證據的閱讀路徑。
 tags:
 - dermatology
@@ -33,12 +33,12 @@ order: 1
 eyebrow: DERMATOLOGY / CLINICAL TOPIC
 specialties:
 - dermatology
-- psychiatry
 content_kind: disease
 related_ids:
 - concept-erythema-multiforme
 - concept-fixed-drug-eruption
 - concept-staphylococcal-scalded-skin-syndrome
+- concept-mdd-pharmacotherapy
 conflict_page_id: comparison-sjs-ten-evidence
 catalog_role: work
 browse_group: 水疱與藥物反應

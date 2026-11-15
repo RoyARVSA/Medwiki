@@ -147,6 +147,10 @@ def build_navigation(root, nav, catalog=None):
         seen.add(page['id'])
         _public_url(page['url'])
         specialties = _specialty_ids(page)
+        if page.get('type') == 'concept' and page.get('content_kind') == 'disease' and len(specialties) != 1:
+            raise ValueError('Disease must declare exactly one primary specialty: '+page['id'])
+        if page.get('content_kind') == 'chapter' and not page.get('parent_id'):
+            raise ValueError('Published chapter must declare a parent_id: '+page['id'])
         if 'cross_specialty' in page and not isinstance(page['cross_specialty'], bool):
             raise ValueError('cross_specialty must be a boolean: '+page['id'])
         if page.get('content_kind') == 'specialty' or page.get('view') == 'specialty':
@@ -175,6 +179,10 @@ def build_navigation(root, nav, catalog=None):
                 parent = next((p for p in nav if p['id'] == parent['parent_id']), {})
                 if not parent:
                     raise ValueError('Chapter parent must reference a published page: '+page['id'])
+            if (page.get('content_kind') == 'chapter' and parent.get('type') == 'concept' and
+                    parent.get('content_kind') == 'disease' and
+                    _specialty_ids(page) != _specialty_ids(parent)):
+                raise ValueError('Disease chapter must use its core specialty: '+page['id'])
         for specialty in _specialty_ids(page):
             if specialty not in registry:
                 raise ValueError('Unknown specialty without a landing: '+specialty+' ('+page['id']+')')

@@ -68,20 +68,44 @@ class NavigationTests(unittest.TestCase):
         self.assertEqual(len(registry), 20)
         self.assertTrue(all(set(value) == {'title', 'url'} for value in registry.values()))
 
-    def test_shared_disease_reuses_canonical_url_without_becoming_cross_complaint(self):
-        disease = page('shared-disease', ['dermatology', 'rheumatology'])
-        model = self.model([landing('dermatology'), landing('rheumatology'), disease])
-        for key in disease['specialties']:
-            entries = model['by_specialty'][key]['sections'][0]['pages']
-            self.assertEqual([(p['id'], p['url']) for p in entries], [(disease['id'], disease['url'])])
+    def test_shared_comparison_reuses_canonical_url_without_becoming_cross_complaint(self):
+        comparison = page('shared-comparison', ['dermatology', 'rheumatology'],
+                          type='comparison', content_kind='comparison')
+        model = self.model([landing('dermatology'), landing('rheumatology'), comparison])
+        for key in comparison['specialties']:
+            entries = model['by_specialty'][key]['sections'][1]['pages']
+            self.assertEqual([(p['id'], p['url']) for p in entries], [(comparison['id'], comparison['url'])])
         self.assertEqual(model['shared'], [])
+
+    def test_disease_requires_exactly_one_primary_specialty(self):
+        for specialties in [[], ['dermatology', 'psychiatry']]:
+            with self.subTest(specialties=specialties):
+                with self.assertRaisesRegex(ValueError, 'Disease must declare exactly one primary specialty'):
+                    self.model([landing('dermatology'), landing('psychiatry'),
+                                page('disease', specialties)])
+
+    def test_disease_chapter_keeps_its_core_primary_specialty(self):
+        core = page('core', ['dermatology'])
+        for specialties in [[], ['psychiatry'], ['dermatology', 'psychiatry']]:
+            with self.subTest(specialties=specialties):
+                child = page('child', specialties, content_kind='chapter', parent_id='core')
+                with self.assertRaisesRegex(ValueError, 'Disease chapter must use its core specialty'):
+                    self.model([landing('dermatology'), landing('psychiatry'), core, child])
+
+    def test_published_chapter_cannot_bypass_core_link_with_missing_or_empty_parent(self):
+        core = page('core', ['dermatology'], web_topic='shared')
+        for parent in [{}, {'parent_id': ''}, {'parent_id': None}]:
+            with self.subTest(parent=parent):
+                child = page('child', ['psychiatry'], content_kind='chapter', web_topic='shared', **parent)
+                with self.assertRaisesRegex(ValueError, 'Published chapter must declare a parent_id'):
+                    self.model([landing('dermatology'), landing('psychiatry'), core, child])
 
     def test_unknown_or_malformed_specialty_does_not_fabricate_a_landing(self):
         with self.assertRaisesRegex(ValueError, 'Unknown specialty'):
             self.model([landing('dermatology'), page('topic', ['psychiatry'])])
         with self.assertRaises(ValueError):
             self.model([landing('dermatology'), page('topic', 'dermatology')])
-        unclassified = page('without-specialty', [])
+        unclassified = page('without-specialty', [], content_kind='concept')
         self.assertEqual(self.model([unclassified])['specialties'], [])
 
     def test_specialty_identifiers_match_browser_context_validation(self):
@@ -89,7 +113,7 @@ class NavigationTests(unittest.TestCase):
             self.model([landing('1-specialty')])
 
     def test_explicit_chapter_parents_must_exist_and_not_point_to_self(self):
-        parent = page('parent', [], web_topic='topic')
+        parent = page('parent', [], content_kind='concept', web_topic='topic')
         for identity in ['missing', 'child']:
             child = page('child', [], content_kind='chapter', parent_id=identity, web_topic='topic')
             with self.assertRaises(ValueError):
@@ -97,7 +121,7 @@ class NavigationTests(unittest.TestCase):
 
     def test_sections_are_scoped_unique_and_sources_do_not_become_diseases(self):
         disease = page('disease', ['dermatology'], catalog_role='work', web_topic='topic')
-        chapter = page('chapter', ['dermatology'], content_kind='chapter')
+        chapter = page('chapter', ['dermatology'], content_kind='chapter', parent_id='disease')
         approach = page('approach', ['dermatology'], type='approach', cross_specialty=True)
         resource = page('resource', ['psychiatry'], type='source_summary')
         model = self.model([landing('dermatology'), landing('psychiatry'), disease, chapter, approach, resource])
@@ -123,7 +147,7 @@ class NavigationTests(unittest.TestCase):
 
     def test_generated_chapters_are_not_works_and_manual_formats_group(self):
         work = page('topic', ['dermatology'], url='03_outputs/web/topic/index.html', web_topic='topic', catalog_role='work')
-        chapter = page('chapter', ['dermatology'], url='03_outputs/web/topic/chapter.html', web_topic='topic', content_kind='chapter')
+        chapter = page('chapter', ['dermatology'], url='03_outputs/web/topic/chapter.html', web_topic='topic', content_kind='chapter', parent_id='topic')
         catalog = [
             dict(path=work['url'], kind='html', title='Work'),
             dict(path=chapter['url'], kind='html', title='Chapter'),
@@ -148,7 +172,7 @@ class NavigationTests(unittest.TestCase):
         self.assertEqual(self.model([], [])['outputs'], [])
         renamed = dict(entry, path='03_outputs/web/renamed/index.html')
         self.assertNotEqual(self.model([], [entry])['outputs'][0]['id'], self.model([], [renamed])['outputs'][0]['id'])
-        work = page('work', [], catalog_role='work')
+        work = page('work', [], content_kind='concept', catalog_role='work')
         self.assertEqual(self.model([work], [])['outputs'], [])
 
     def test_standalone_manual_formats_are_grouped_without_required_metadata(self):
@@ -181,7 +205,7 @@ class NavigationTests(unittest.TestCase):
             self.model([], [dict(path='private/patient.pdf', kind='pdf', title='Private')])
 
     def test_legacy_concept_directory_keeps_unclassified_canonical_pages_accessible(self):
-        topic = page('unclassified', [])
+        topic = page('unclassified', [], content_kind='concept')
         model = self.model([topic])
         descriptor = navigation.directory_for_page(dict(id='legacy', title='舊目錄', view='concept-library'), model)
         self.assertEqual([p['id'] for p in descriptor['pages']], ['unclassified'])
@@ -218,7 +242,7 @@ class NavigationBuildTests(unittest.TestCase):
         self.write_page(dict(id='project', title='共同專題', type='concept', specialties=['dermatology'],
                              catalog_role='work', web_topic='project', web_file='index.html'))
         self.write_page(dict(id='chapter', title='章節不另列作品', type='concept', specialties=['dermatology'],
-                             content_kind='chapter', web_topic='project', web_file='chapter.html', order=2))
+                             content_kind='chapter', parent_id='project', web_topic='project', web_file='chapter.html', order=2))
         import build_site
         build_site.build_site(self.root)
         import re
@@ -242,6 +266,37 @@ class NavigationBuildTests(unittest.TestCase):
             build_site.build_site(self.root)
         self.assertEqual(route.read_text(encoding='utf-8'), '<title>Manual resources</title>')
         self.assertEqual(prior.read_text(encoding='utf-8'), 'last-valid-site')
+
+    def test_cross_specialty_reference_does_not_enrol_disease_or_work_in_referring_catalog(self):
+        for key in ['dermatology', 'psychiatry']:
+            self.write_page(dict(id=key, title=key, type='map', content_kind='specialty',
+                                 specialties=[key], specialty_label=key, view='specialty',
+                                 web_topic=key, web_file='index.html'))
+        self.write_page(dict(id='sjs', title='SJS disease', type='concept', content_kind='disease',
+                             specialties=['dermatology'], catalog_role='work',
+                             web_topic='sjs-ten', web_file='index.html'))
+        self.write_page(dict(id='mdd', title='MDD disease', type='concept', content_kind='disease',
+                             specialties=['psychiatry'], catalog_role='work',
+                             web_topic='mdd', web_file='index.html'))
+        self.write_page(dict(id='medication', title='Medication safety', type='concept',
+                             content_kind='chapter', parent_id='mdd', specialties=['psychiatry'],
+                             related_ids=['sjs'], web_topic='mdd', web_file='medication.html'),
+                        '## Safety\n\nContextual reading: [SJS](sjs.md).')
+        import build_site
+        import common
+        build_site.build_site(self.root)
+        site = self.root / '.build/site'
+        target = '03_outputs/web/sjs-ten/index.html'
+        self.assertTrue((site / target).is_file())
+        psychiatry = common.PlainHTML()
+        psychiatry.feed((site / '03_outputs/web/psychiatry/index.html').read_text(encoding='utf-8'))
+        self.assertNotIn('../sjs-ten/index.html', psychiatry.links)
+        dermatology = common.PlainHTML()
+        dermatology.feed((site / '03_outputs/web/dermatology/index.html').read_text(encoding='utf-8'))
+        self.assertIn('../sjs-ten/index.html', dermatology.links)
+        medication = common.PlainHTML()
+        medication.feed((site / '03_outputs/web/mdd/medication.html').read_text(encoding='utf-8'))
+        self.assertIn('../sjs-ten/index.html', medication.links)
 
 
 if __name__ == '__main__':

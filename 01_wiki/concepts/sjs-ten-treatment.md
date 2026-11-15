@@ -4,11 +4,11 @@ title: 處置與流程
 title_en: Management & treatment pathways
 type: concept
 content_kind: chapter
+parent_id: concept-sjs-ten
 specialties:
 - dermatology
-- psychiatry
 created: 2026-11-12
-updated: 2026-11-12
+updated: '2026-11-15'
 summary: 保留日本指引的分層處置流程，並與系統性回顧的效果及限制分開閱讀。
 tags:
 - dermatology

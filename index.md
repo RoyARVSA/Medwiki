@@ -40,7 +40,7 @@
 - [卡波西肉瘤](01_wiki/concepts/kaposi-sarcoma.md)：多發紫紅色血管性斑塊／結節，合併免疫抑制線索 → 考慮 Kaposi sarcoma。（not_reviewed）
 - [蟹足腫](01_wiki/concepts/keloid.md)：重點是「超出原傷口範圍」，不是只看疤痕很凸。（not_reviewed）
 - [脂性皮膚硬化症](01_wiki/concepts/lipodermatosclerosis.md)：靜脈鬱滯背景中，若特別突出的是硬化及踝上方收窄，要想到 lipodermatosclerosis。（not_reviewed）
-- [成人單極性憂鬱症](01_wiki/concepts/major-depressive-disorder.md)：連接診斷評估、緩解與功能恢復、治療選擇、反應不足及長期復發預防；保留各指引的版本與適用範圍。（not_reviewed）
+- [成人單極性憂鬱症](01_wiki/concepts/major-depressive-disorder.md)：以三份治療指引為目前範圍，連接評估、治療與長期照護；疾病總論仍有待補面向，保留版本、條件及缺口。（not_reviewed）
 - [憂鬱症：評估與測量照護](01_wiki/concepts/mdd-assessment-and-measurement.md)：分開篩檢、診斷、風險與療效評估；將症狀、功能、生活品質和不良反應一起納入追蹤。（not_reviewed）
 - [憂鬱症：持續與維持治療](01_wiki/concepts/mdd-continuation-and-maintenance.md)：好轉後仍要處理殘餘症狀、功能、依從性及再發風險；保留不同指引的階段、時間起算及長期監測。（not_reviewed）
 - [憂鬱症：減藥、停藥與症狀辨別](01_wiki/concepts/mdd-discontinuation.md)：區分停藥症狀、反彈與原症狀回返；保留不同版本的減藥時間、證據限制與監測情境。（not_reviewed）
