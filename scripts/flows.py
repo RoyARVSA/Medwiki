@@ -28,6 +28,10 @@ ET.register_namespace('', SVG_NS)
 RENDERER_FILES = ('scripts/flows.py', 'tools/diagrams/render-flows.mjs',
                   'tools/diagrams/package.json', 'tools/diagrams/package-lock.json')
 NODE_KINDS = ('step', 'decision', 'terminal', 'unknown')
+CARD_ROLES = ('assessment', 'criteria', 'decision', 'action', 'safety',
+              'followup', 'uncertainty', 'outcome')
+EDGE_ROLES = ('flow', 'option', 'feedback')
+CLINICAL_RENDERER_FILES = ('scripts/clinical_flow_svg.py', 'tools/diagrams/layout-clinical.mjs')
 KIND_LABELS = {'criteria': '診斷準則圖', 'differential': '鑑別思路圖', 'management': '處置流程圖'}
 REVIEW_LABELS = {'not_reviewed': '尚未人工審閱', 'reviewed': '已人工審閱'}
 BLUE_DEFAULTS = ('--pele-bg:#f8fbff;--pele-fg:#193954;--pele-muted:#536c81;'
@@ -98,6 +102,9 @@ def _inline_citation_errors(text, sources, source_ids):
 
 def _definition_errors(data, flow_id, sources):
     errors = []
+    if data.get('presentation') not in (None, 'clinical-cards'):
+        errors.append('presentation must be clinical-cards when specified')
+    cards = data.get('presentation') == 'clinical-cards'
     if data.get('id') != flow_id or not _safe_id(data.get('id')):
         errors.append('id must match the safe definition filename')
     for key in ('title', 'population', 'version'):
@@ -143,6 +150,21 @@ def _definition_errors(data, flow_id, sources):
         by_id[node_id] = node
         if node.get('kind') not in NODE_KINDS:
             errors.append(f'{node_id}: invalid node kind')
+        if not cards and any(key in node for key in ('items', 'role', 'card_width')):
+            errors.append(f'{node_id}: rich node fields require presentation: clinical-cards')
+        if cards:
+            if node.get('role') not in CARD_ROLES:
+                errors.append(f'{node_id}: invalid or missing card role')
+            items = node.get('items', [])
+            if (not isinstance(items, list) or
+                    any(not isinstance(item, str) or not item.strip() for item in items)):
+                errors.append(f'{node_id}: items must be a list of nonempty plain strings')
+            else:
+                for item in items:
+                    errors.extend(_inline_citation_errors(item, sources, source_ids))
+            width = node.get('card_width', 440)
+            if type(width) is not int or not 320 <= width <= 720:
+                errors.append(f'{node_id}: card_width must be an integer from 320 to 720')
         for key in ('label', 'detail'):
             if not isinstance(node.get(key), str) or not node[key].strip():
                 errors.append(f'{node_id}: {key} is required')
@@ -164,13 +186,21 @@ def _definition_errors(data, flow_id, sources):
         if not isinstance(edge.get('label', ''), str):
             errors.append(f'{start} -> {end}: edge label must be text')
             continue
+        errors.extend(_inline_citation_errors(edge.get('label', ''), sources, source_ids))
+        if edge.get('role', 'flow') not in EDGE_ROLES:
+            errors.append(f'{start} -> {end}: invalid edge role')
+        if edge.get('role') == 'feedback' and not edge.get('label', '').strip():
+            errors.append(f'{start} -> {end}: feedback edges require an explicit label')
         outgoing[start].append(edge)
     for node_id, node in by_id.items():
         routes = outgoing[node_id]
         if not routes and node.get('kind') not in ('terminal', 'unknown'):
             errors.append(f'{node_id}: leaf must explicitly be terminal or unknown')
-        if routes and node.get('kind') in ('terminal', 'unknown'):
-            errors.append(f'{node_id}: terminal/unknown nodes cannot have outgoing edges')
+        if routes and node.get('kind') == 'terminal':
+            errors.append(f'{node_id}: terminal nodes cannot have outgoing edges')
+        if node.get('kind') == 'unknown' and any(
+                e.get('role') != 'feedback' or not e.get('label', '').strip() for e in routes):
+            errors.append(f'{node_id}: unknown outgoing edges must be explicitly labeled feedback')
         if node.get('kind') == 'decision':
             if any(not e.get('label', '').strip() for e in routes):
                 errors.append(f'{node_id}: all decision branch labels must be nonempty')
@@ -186,6 +216,26 @@ def _definition_errors(data, flow_id, sources):
             pending.extend(e['to'] for e in outgoing[node_id])
         if ids - reached:
             errors.append('Unreachable nodes from entry: ' + ', '.join(sorted(ids - reached)))
+        if cards:
+            # Feedback must be explicit; a cycle in the forward graph otherwise
+            # lets a layered renderer reverse the clinical reading sequence.
+            forward = {key: [e for e in routes if e.get('role') != 'feedback']
+                       for key, routes in outgoing.items()}
+            degree = {key: 0 for key in ids}
+            for routes in forward.values():
+                for edge in routes:
+                    degree[edge['to']] += 1
+            pending = [key for key, count in degree.items() if count == 0]
+            visited = 0
+            while pending:
+                key = pending.pop()
+                visited += 1
+                for edge in forward[key]:
+                    degree[edge['to']] -= 1
+                    if degree[edge['to']] == 0:
+                        pending.append(edge['to'])
+            if visited != len(ids):
+                errors.append('Forward cycles require explicitly labeled feedback edges')
     return errors
 
 
@@ -199,8 +249,9 @@ def mermaid_source(data):
     lines = ['flowchart TD']
     indexes = {node['id']: f'n{i}' for i, node in enumerate(data['nodes'])}
     for node in data['nodes']:
-        label = '"' + _label(node['label']) + '"'
-        if node['kind'] == 'decision':
+        content = '\n'.join([node['label'], *node.get('items', [])])
+        label = '"' + _label(content) + '"'
+        if node['kind'] == 'decision' and data.get('presentation') != 'clinical-cards':
             shape = '{' + label + '}'
         elif node['kind'] in {'terminal', 'unknown'}:
             shape = '([' + label + '])'
@@ -416,10 +467,11 @@ def _decorate_svg(svg, data):
     return result + '\n'
 
 
-def _renderer_identity(tools_root):
+def _renderer_identity(tools_root, presentation=None):
     tools_root = Path(tools_root)
     files = {}
-    for name in RENDERER_FILES:
+    names = RENDERER_FILES + (CLINICAL_RENDERER_FILES if presentation == 'clinical-cards' else ())
+    for name in names:
         path = tools_root / name
         if not common.safe_file(path, tools_root):
             raise ValueError(f'Missing renderer identity file: {name}')
@@ -427,11 +479,12 @@ def _renderer_identity(tools_root):
         files[name] = _hash(path.read_text(encoding='utf-8').encode('utf-8'))
     package = json.loads((tools_root / 'tools/diagrams/package.json').read_text(encoding='utf-8'))
     lock = json.loads((tools_root / 'tools/diagrams/package-lock.json').read_text(encoding='utf-8'))
-    version = package.get('dependencies', {}).get('pele')
-    locked = lock.get('packages', {}).get('node_modules/pele', {})
+    engine = 'elkjs' if presentation == 'clinical-cards' else 'pele'
+    version = package.get('dependencies', {}).get(engine)
+    locked = lock.get('packages', {}).get('node_modules/' + engine, {})
     if not re.fullmatch(r'\d+\.\d+\.\d+', str(version)) or locked.get('version') != version:
-        raise ValueError('Pele must be pinned to the exact lockfile version')
-    return {'name': 'pele', 'version': version, 'integrity': locked.get('integrity'),
+        raise ValueError(engine + ' must be pinned to the exact lockfile version')
+    return {'name': engine, 'version': version, 'integrity': locked.get('integrity'),
             'files': files, 'sha256': _hash(_canonical(files))}
 
 
@@ -440,7 +493,7 @@ def _artifact_paths(root, flow_id):
     return {suffix: folder / (flow_id + '.' + suffix) for suffix in ('svg', 'mmd', 'json')}
 
 
-def _verified_svg(root, data, tools_root):
+def _verified_svg(root, data, tools_root, sources):
     paths = _artifact_paths(root, data['id'])
     if any(not common.safe_file(p, Path(root)) for p in paths.values()):
         raise ValueError('Missing or unsafe flow artifact; run python scripts/flows.py --build')
@@ -450,13 +503,20 @@ def _verified_svg(root, data, tools_root):
         raise ValueError('Invalid flow artifact manifest') from exc
     svg_bytes, source_bytes = paths['svg'].read_bytes(), paths['mmd'].read_bytes()
     if (manifest.get('definition_sha256') != _hash(_canonical(data)) or
-            manifest.get('renderer') != _renderer_identity(tools_root) or
+            manifest.get('renderer') != _renderer_identity(tools_root, data.get('presentation')) or
             manifest.get('svg_sha256') != _hash(svg_bytes) or
             manifest.get('mermaid_sha256') != _hash(source_bytes) or
             source_bytes != mermaid_source(data).encode('utf-8')):
         raise ValueError('Flow artifacts are stale; run python scripts/flows.py --build')
     svg = svg_bytes.decode('utf-8')
     tree = validate_svg(svg)
+    if data.get('presentation') == 'clinical-cards':
+        import clinical_flow_svg
+        visible = [clinical_flow_svg.node_text(node, sources) for node in data['nodes']]
+        if manifest.get('visible_text_sha256') != _hash(_canonical(visible)):
+            raise ValueError('Flow citation captions are stale; run python scripts/flows.py --build')
+        clinical_flow_svg.verify_text(tree, data, sources)
+        return svg
     expected = {n['id']: n['label'] for n in data['nodes']}
     drawn = {}
     for group in tree.iter(f'{{{SVG_NS}}}g'):
@@ -481,7 +541,7 @@ def validate_flows(root, sources, *, check_artifacts=True, tools_root=None):
             data = _load(root, path.stem)
             found = _definition_errors(data, path.stem, sources)
             if not found and check_artifacts:
-                _verified_svg(root, data, tools_root)
+                _verified_svg(root, data, tools_root, sources)
             errors.extend(f'{path.name}: {error}' for error in found)
         except (ValueError, OSError, yaml.YAMLError) as exc:
             errors.append(f'{path.name}: {exc}')
@@ -495,22 +555,30 @@ def build_flows(root, sources, *, tools_root=None):
     errors = validate_flows(root, sources, check_artifacts=False, tools_root=tools_root)
     if errors:
         raise ValueError('\n'.join(errors))
-    renderer = _renderer_identity(tools_root)
     for path in sorted((root / 'config/flows').glob('*.yml')):
         data = _load(root, path.stem)
+        renderer = _renderer_identity(tools_root, data.get('presentation'))
         source = mermaid_source(data)
-        request = {'source': source, 'idPrefix': 'flow-' + data['id']}
-        try:
-            process = subprocess.run(['node', str(tools_root / 'tools/diagrams/render-flows.mjs')],
-                                     input=json.dumps(request, ensure_ascii=False),
-                                     text=True, encoding='utf-8', capture_output=True,
-                                     check=True, timeout=30)
-        except (OSError, subprocess.SubprocessError) as exc:
-            raise ValueError('Local Pele renderer failed; install with npm ci --prefix tools/diagrams --ignore-scripts') from exc
-        svg = _decorate_svg(process.stdout, data)
+        if data.get('presentation') == 'clinical-cards':
+            import clinical_flow_svg
+            svg = clinical_flow_svg.build_svg(data, sources, tools_root)
+            clinical_flow_svg.verify_text(validate_svg(svg), data, sources)
+        else:
+            request = {'source': source, 'idPrefix': 'flow-' + data['id']}
+            try:
+                process = subprocess.run(['node', str(tools_root / 'tools/diagrams/render-flows.mjs')],
+                                         input=json.dumps(request, ensure_ascii=False),
+                                         text=True, encoding='utf-8', capture_output=True,
+                                         check=True, timeout=30)
+            except (OSError, subprocess.SubprocessError) as exc:
+                raise ValueError('Local Pele renderer failed; install with npm ci --prefix tools/diagrams --ignore-scripts') from exc
+            svg = _decorate_svg(process.stdout, data)
         manifest = {'flow_id': data['id'], 'definition_sha256': _hash(_canonical(data)),
                     'renderer': renderer, 'svg_sha256': _hash(svg.encode('utf-8')),
                     'mermaid_sha256': _hash(source.encode('utf-8'))}
+        if data.get('presentation') == 'clinical-cards':
+            manifest['visible_text_sha256'] = _hash(_canonical(
+                [clinical_flow_svg.node_text(node, sources) for node in data['nodes']]))
         paths = _artifact_paths(root, data['id'])
         common.atomic_text(paths['mmd'], source)
         common.atomic_text(paths['svg'], svg)
@@ -544,23 +612,30 @@ def render_flow(root, flow_id, current, sources, *, tools_root=None):
     errors = _definition_errors(data, flow_id, sources)
     if errors:
         raise ValueError('\n'.join(errors))
-    svg = _verified_svg(root, data, tools_root or root)
+    svg = _verified_svg(root, data, tools_root or root, sources)
     page_prefix = 'p' + _hash(str(current).encode('utf-8'))[:10]
     prefix = page_prefix + '-flow-' + flow_id
     svg = _inline_svg(svg, page_prefix)
     context = [data['population'], data['version'], KIND_LABELS[data['kind']], REVIEW_LABELS[data['review_status']]]
     if data['conflict_status'] == 'open':
         context.append('保留來源差異')
-    parts = [f'<figure class="flow-figure" data-flow-id="{flow_id}" aria-labelledby="{prefix}-heading">',
+    presentation = ' data-flow-presentation="clinical-cards"' if data.get('presentation') == 'clinical-cards' else ''
+    parts = [f'<figure class="flow-figure" data-flow-id="{flow_id}"{presentation} aria-labelledby="{prefix}-heading">',
              f'<figcaption id="{prefix}-heading"><strong>{escape(data["title"])}</strong></figcaption>',
              '<p class="flow-context">' + ' · '.join(escape(item) for item in context) + '</p>',
              '<div class="flow-controls" aria-label="流程圖操作">']
     for action, label in [('zoom-in', '放大'), ('zoom-out', '縮小'), ('reset', '重設'),
                           ('fullscreen', '全螢幕'), ('diagram', '流程圖'), ('steps', '文字步驟')]:
         parts.append(f'<button type="button" data-flow-action="{action}">{label}</button>')
+    if data.get('presentation') == 'clinical-cards':
+        url = common.relative_url('assets/figures/flows/' + flow_id + '.svg', current)
+        parts.append(f'<a class="flow-open-full" href="{escape(url, quote=True)}" target="_blank" rel="noopener">開啟完整圖</a>')
     parts.extend(['</div>', '<div class="flow-viewport" tabindex="0" aria-label="可縮放流程圖">',
                   svg, '</div>', '<div class="flow-steps"><h3>文字步驟與節點說明</h3>',
                   '<p>此圖呈現來源支持的學習關係；未知資訊有獨立出口。</p>', '<ol>'])
+    if data.get('presentation') == 'clinical-cards':
+        import clinical_flow_svg
+        parts.insert(-1, '<p class="flow-legend">' + clinical_flow_svg.LEGEND + '</p>')
     labels = {node['id']: node['label'] for node in data['nodes']}
     outgoing = {node_id: [] for node_id in labels}
     for edge in data['edges']:
@@ -572,7 +647,13 @@ def render_flow(root, flow_id, current, sources, *, tools_root=None):
         parts.append('<summary>' + escape(node['label']) + '</summary>')
         if node['kind'] == 'unknown':
             parts.append('<p class="flow-node-kind">資訊不足出口</p>')
+        if data.get('presentation') == 'clinical-cards':
+            import clinical_flow_svg
+            parts.append('<p class="flow-node-role">' + clinical_flow_svg.ROLES[node['role']] + '</p>')
         parts.append(f'<button type="button" data-flow-select="{node_id}" aria-controls="{detail_id}">定位：{escape(node["label"])}</button>')
+        if node.get('items'):
+            parts.append('<ul class="flow-card-items">' + ''.join(
+                '<li>' + _text_citations(item, sources) + '</li>' for item in node['items']) + '</ul>')
         parts.append('<p>' + _text_citations(node['detail'], sources) + '</p>')
         if node.get('citations'):
             parts.append('<p class="flow-evidence">' + ' '.join(common.render_citations(c, sources) for c in node['citations']) + '</p>')

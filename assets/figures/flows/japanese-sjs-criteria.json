@@ -1,18 +1,21 @@
 {
-  "definition_sha256": "9bc07afe8ab8891f4a08fb27359daeb2137ed81cf4780db0af1f12a4d0ce3aac",
+  "definition_sha256": "b3bcf79ad1c1e922a6b4203603ae9061e5b2eeabb6d7fc04e687936d7a3220ff",
   "flow_id": "japanese-sjs-criteria",
-  "mermaid_sha256": "4f87ad73ecf75cd45bd12fd1e7c3cbb1e69a01ffbb8990594bbb543269d638c1",
+  "mermaid_sha256": "aa321701039d96d33be99e1674b056acd376878ed82172e243822bc9c1d57010",
   "renderer": {
     "files": {
-      "scripts/flows.py": "6d65cbcc4a9782d5afbafcad3cb4aa4ce4dc0a30a38ad9d2f4bfcfb0a4ee9d0c",
-      "tools/diagrams/package-lock.json": "caf8eba3218494a5f00b0fb8bf5539e2b581632821528718cbd7174eaa3ea5a1",
-      "tools/diagrams/package.json": "65c7d7e238fc1fb87b2cae72c8942f9a99c0e8b0b49da9cbb03e60646cc040fe",
+      "scripts/clinical_flow_svg.py": "9ad0a95717e45cb7a1508228db37c913e0a26af3f7646c3e48ab1b4db673fe27",
+      "scripts/flows.py": "b7066892e2ce8eedc2b86421d1d8d043950cb413449b06c85a1de846e806f656",
+      "tools/diagrams/layout-clinical.mjs": "0a69381b6839b3c68557130ad830d24880cb3425a78cdd2d914aadc710abfcf2",
+      "tools/diagrams/package-lock.json": "9b34ddb44c0317e745aa3a7746f151c8727b65cc0208a3099e8a62f78408eece",
+      "tools/diagrams/package.json": "3c89e293b28e135adee1d8f76099f233e4f9c4ba59ad2c354c3e9d426ec7e1fb",
       "tools/diagrams/render-flows.mjs": "8377c99ecb0d8d65dc654a1da742e33c85eb18cb13ea00ad2a2ed0e84171a293"
     },
-    "integrity": "sha512-Ie8UKY9x00MsuR3jO6AzUwzK2Z6MIV3Tf4EDdITiuk8Uaz8K7g0R082WqsqNaSU8DdgkrRvZThzhit83mi/uiw==",
-    "name": "pele",
-    "sha256": "921fff97a87371410f45d9bda78cebf572b0085d6e1f3ef7b9c6ead8372e2ff6",
-    "version": "1.13.0"
+    "integrity": "sha512-IhMYKHE4S2vtx0QrhBP3lYOIKDeIiJXBrdq9MGYkuB8ZHqhrBnHNfSUndjXFewrX1CPK8chwq+2NA0K0hliYuw==",
+    "name": "elkjs",
+    "sha256": "206f20649982da87b5f57162ff3ea2d36d4fca8713d0bc9857447026d68092b8",
+    "version": "0.12.1"
   },
-  "svg_sha256": "b88ae3eef50776b8d2e6e7edb86d788c4b660b22fdee9cc11ede3be4f35067a9"
+  "svg_sha256": "cd14caa2d80a398fffe5790e3fb36adcbab8b0387d6284e8ffe2ae52f4956ee1",
+  "visible_text_sha256": "5e32a4f57ebd713c2ef9b6abf2e0a551d7ff373d64cf88e97cd4a36b530b4da5"
 }

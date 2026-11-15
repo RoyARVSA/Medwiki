@@ -1,76 +1,129 @@
 id: mdd-canmat-reassessment
-title: 初始抗憂鬱劑反應不足：先再評估，再比較策略
+title: 反應不足的第一步：安全、病程、實際用藥與症狀變化
 kind: management
-population: 成人 MDD 初始抗憂鬱劑反應不理想；本圖為學習用途，不自動選藥或判定 TRD。
-version: CANMAT 2023 update（2024 出版），Q7／Figure 7.1；危急情境另參照 Q3／Q8。
-source_ids: [src-canmat-2023-update]
+presentation: clinical-cards
+population: 成人 MDD 初始抗憂鬱劑反應不理想；先確認仍適用單極性憂鬱症的治療情境。
+version: CANMAT 2023 update（2024 出版），Q1／Q2／Q5／Q7；轉躁線索另參照 NIMH 2025 與 NICE CG185 選讀。
+source_ids: [src-canmat-2023-update, src-nimh-bipolar-page, src-nice-cg185-selected]
 review_status: not_reviewed
 conflict_status: none
 entry: reassess
 nodes:
   - id: reassess
-    kind: step
-    label: 先評估安全，再重查診斷與充分治療
-    detail: 先確認安全與急迫性，並核對雙極性等診斷、精神科與身體共病、壓力、不良反應、依從性、劑量及時間；不能只憑一次量表分數宣告抗藥性。
-    citations: ['[@C:11,14,29,33-34,41]']
+    kind: decision
+    role: safety
+    card_width: 600
+    label: 現在是否需要優先安全處置？
+    items:
+      - 詢問自殺意念、計畫與意圖，並核對可用支持與保護因素。
+      - 檢視精神病性／catatonic 表現、身體惡化及照護場域。
+      - 已有風險或安全資訊不清時，先做臨床安全評估；其餘資料同步補齊。
+    detail: 安全量表不能單獨預測自殺行為。安全評估與照護場域先於一般換藥序列，不必等藥名、量表或療程資料全部齊備。以下分支是本站整理照護優先次序，不是自動風險分級。
+    citations: ['[@C:11,14,28,41]']
   - id: safety
     kind: terminal
-    label: 優先安全評估，必要時較早考量 ECT
-    detail: 嚴重、危及生命等情境可優先考量 ECT；既往 ECT 反應佳也可較早評估，並非自動指定 ECT。安全情境未明或有疑慮時，先做臨床安全評估，不等待一般換藥／加藥序列走完。
+    role: safety
+    card_width: 520
+    label: 安排安全計畫與合適照護場域
+    items:
+      - 高風險者可能需要住院照護；依個別風險安排支持、環境安全與追蹤。
+      - 嚴重自殺風險、精神病性／catatonic 表現或身體惡化，可較早考量 ECT。
+      - 既往 ECT 反應良好也可較早評估；不必先完成所有換藥／加藥。
+    detail: 這是轉入優先安全照護的出口，不自動指定住院或 ECT。ECT 的效益、負擔與適用情境仍需專業評估和共同決策。
     citations: ['[@C:11,14,41]']
+  - id: history
+    kind: decision
+    role: assessment
+    card_width: 620
+    label: 重查病程：有沒有轉躁線索或其他影響因素？
+    items:
+      - 核對縱向病程、既往治療反應、家族史，必要時取得家屬／照顧者旁證。
+      - 詢問睡眠需求降低、活動增加、語速加快／思緒奔逸及異常誇大。
+      - 同時查精神科與身體共病、物質／藥物因素、壓力及睡眠呼吸中止等線索。
+      - 病史與身體檢查引導驗證；CBC／TSH 可協助查貧血與甲狀腺問題。
+    detail: NIMH 所列是需進一步詢問的線索，不是完整躁／輕躁診斷準則；單一睡眠或活動變化不能確診。CANMAT 不支持所有患者常規接受相同檢驗、ECG 或影像。
+    citations: ['[@C:7-8,33-34]', '[@NIMH:symptoms]', '[@NIMH:diagnosis]', '[@NB:assessment]']
+  - id: bipolar
+    kind: terminal
+    role: safety
+    card_width: 520
+    label: 轉入雙極性評估，先釐清治療情境
+    items:
+      - 疑似躁症、嚴重憂鬱或對自己／他人有危險：依 NICE 轉入緊急專業評估。
+      - 其他轉躁線索仍須核對病程、嚴重度、功能、物質與藥物因素。
+      - 接本頁第三張圖；不從警訊直接診斷或套用一般 MDD 增量路徑。
+    detail: NICE CG185 的辨認與轉介建議和 NIMH 症狀教育資料用途不同；兩者都不能取代正式診斷。若專業評估已判定躁／輕躁，用藥處置需回到該情境。
+    citations: ['[@NB:recognition]', '[@NB:assessment]', '[@NIMH:diagnosis]']
+  - id: exposure
+    kind: step
+    role: assessment
+    card_width: 600
+    label: 對照處方與實際服用，重建治療暴露
+    items:
+      - 記錄藥名、製劑、處方劑量與實際服用劑量。
+      - 列出開始日期、每次劑量變更日期，以及中斷／漏服或自行減量的原因。
+      - 詢問不良反應、服藥困難及共用藥；辨認副作用是否被當成殘餘症狀。
+      - 逐次核對治療劑量與持續時間，不把資料不清算成足量足時失敗。
+    detail: 這是把 CANMAT 的劑量、時間、依從性及耐受因素整理成可核對欄位。來源沒有給通用依從性百分比或所有藥物一致的充分療程週數，本站不另訂切點。
+    citations: ['[@C:16,33-35]']
+  - id: measurement
+    kind: step
+    role: assessment
+    card_width: 620
+    label: 用同一量表、基準與日期量化變化
+    items:
+      - 記下同一工具的基準／追蹤分數與日期，並查看個別症狀、功能及不良反應。
+      - 早期改善通常為開始治療後 2–4 週較基準改善 ≥20%；response 為 ≥50%。
+      - 第 4 週仍改善 <20%：考量增量，或有耐受問題時換藥；不是自動宣告 TRD。
+      - 未達 response 與已有部分改善分開描述；不自訂「部分反應＝20–49%」。
+    detail: 量表結果與臨床訪談一起判讀。要計算改善比例，必須知道同一量表的基準與追蹤值；基準、日期或工具不同而無法比較時，保留未知。總分達緩解門檻仍可能有殘餘症狀。
+    citations: ['[@C:28-30,35]']
   - id: evidence
     kind: decision
-    label: 關鍵資訊是否足以比較策略？
-    detail: 此節點是本站的資訊完整性提示。已知沒有反應、部分反應、無法耐受及資料尚缺須分開；缺資料不視為陰性或已排除。
-    citations: ['[@C:33-35]']
+    role: decision
+    card_width: 540
+    label: 已知資料能否支持下一步策略比較？
+    items:
+      - 已確認安全處理與診斷／鑑別方向。
+      - 知道實際用藥劑量、時間、服用困難、不良反應與症狀變化。
+      - 區分沒有反應、已有部分改善、無法耐受，以及仍未確認的資料。
+    detail: 此處是本站的資訊完整性檢核，不是 CANMAT 新增的診斷準則。資料足夠比較策略不代表已確定 TRD；TRD 的常用定義與充分療程仍需另外核對。
+    citations: ['[@C:29,33-35]']
   - id: missing
     kind: unknown
-    label: 明列缺少資料，保留判斷
-    detail: 補上實際用藥與依從性、充分劑量／時間、反應與不良反應及共病；安全情境未明或有疑慮另走優先安全評估出口，不因藥物資訊尚缺而等待。本站不自動填值或指定治療。
-    citations: ['[@C:33-35]']
-  - id: optimize
-    kind: step
-    label: 在耐受與風險下考量最佳化
-    detail: 劑量不足或已有部分反應時，考量是否在治療範圍內最佳化；增量的可能效益須與不良反應及依從性負擔一起評估，不是無上限加量。
-    citations: ['[@C:34-35]']
-  - id: strategy
-    kind: step
-    label: 共同比較換藥、加藥與心理介入
-    detail: 結合既往效果、耐受、偏好、證據與可近性。下面兩種藥物路徑是偏向與取捨，不是互斥的診斷測試；心理治療應及早考量，並非一定等藥物用盡。
+    role: uncertainty
+    card_width: 560
+    label: 指出缺哪項資料，回到對應核對
+    items:
+      - 安全狀態不清：先進行臨床安全評估，不等待一般用藥資料齊備。
+      - 病程不清：補訪談與適當旁證；劑量／日期不清：對照處方與實際服用。
+      - 缺可比較量表：補記工具、分數、日期，同時保留臨床與功能評估。
+    detail: 已確認陰性、已知不符合與未確認分開記錄。缺資料時仍可處理已知問題，但不能把未確認暴露算成治療失敗，或將未知轉躁史當成已排除雙極性。
+    citations: ['[@C:7-8,11,28-30,33-35]', '[@NB:assessment]']
+  - id: ready
+    kind: terminal
+    role: outcome
+    card_width: 520
+    label: 帶著反應、耐受與偏好，進入策略比較
+    items:
+      - 低劑量／部分改善且耐受良好：核對能否合理增量。
+      - 無反應或副作用困擾：換藥較有優先考量。
+      - 部分反應且耐受良好：加藥可較早考量；心理治療可並行。
+    detail: 接本頁第二張圖。這些是選擇的偏向而非互斥規則；既往反應、患者偏好、證據、負擔與可近性仍影響共同決策。
     citations: ['[@C:34-36]']
-  - id: switch
-    kind: step
-    label: 沒有反應或副作用困擾時考量換藥
-    detail: 核對停藥症狀、交互作用與換藥方向；一般交叉遞減／遞增不能取代 MAOI 所需 washout 等特定條件。不是「所有人先換藥」。
-    citations: ['[@C:35]']
-  - id: adjunct
-    kind: step
-    label: 部分反應且耐受良好時考量加藥
-    detail: 可保留既有效果，但需權衡額外不良反應、交互作用及多藥負擔。治療線別與目標劑量回到完整表格，不用圖中標籤代替處方。
-    citations: ['[@C:35-38]']
-  - id: psychological
-    kind: terminal
-    label: 及早評估合適的心理治療
-    detail: 一線心理治療可較早納入；反應不足後的特定 adjunctive 建議、嚴重度與可近性另有條件。不是所有心理治療或數位工具都等效。
-    citations: ['[@C:14-15,26-28,35,38]']
-  - id: further
-    kind: terminal
-    label: 重評結果與後續神經調節選項
-    detail: 一般路徑通常在換藥或加藥策略仍反應不足後，重新比較 TRD／DTD 的神經調節選項；嚴重、危及生命或既往 ECT 反應佳等情境另有起始直達出口，不將一般順序當必要門檻。
-    citations: ['[@C:14,34,38-41]']
 edges:
-  - {from: reassess, to: safety, label: 危急／適合較早 ECT 評估}
-  - {from: reassess, to: evidence, label: 持續核對已知與缺口}
-  - {from: evidence, to: safety, label: 安全情境未明／有疑慮}
-  - {from: evidence, to: missing, label: 其他資訊尚缺}
-  - {from: evidence, to: optimize, label: 可進行完整評估}
-  - {from: optimize, to: strategy, label: 比較效益與負擔}
-  - {from: strategy, to: switch, label: 換藥的偏向}
-  - {from: strategy, to: adjunct, label: 加藥的偏向}
-  - {from: strategy, to: psychological, label: 可及早考量}
-  - {from: switch, to: further, label: 策略後仍反應不足}
-  - {from: adjunct, to: further, label: 策略後仍反應不足}
+  - {from: reassess, to: safety, label: 已知高風險／嚴重情境，優先照護, role: flow}
+  - {from: reassess, to: history, label: 安全已評估，可同步進行再評估, role: flow}
+  - {from: reassess, to: missing, label: 安全資訊尚未確認，先補安全評估, role: flow}
+  - {from: history, to: bipolar, label: 有轉躁線索或疑似雙極性, role: flow}
+  - {from: history, to: exposure, label: 已核對，可繼續比較 MDD 治療, role: flow}
+  - {from: history, to: missing, label: 病程／轉躁資訊尚缺, role: flow}
+  - {from: exposure, to: measurement, label: 同時對照實際治療與結果, role: flow}
+  - {from: measurement, to: evidence, label: 整合臨床、功能與耐受, role: flow}
+  - {from: evidence, to: ready, label: 資料已足以比較策略, role: flow}
+  - {from: evidence, to: missing, label: 仍缺影響判斷的重要資料, role: flow}
+  - {from: missing, to: reassess, label: 補對應資料後回查；安全疑慮立即重評, role: feedback}
 notes:
-  - '本圖簡化呈現 Q7 的學習順序，沒有重製原 Figure 7.1；原圖完整藥物與神經調節線別另見相應正文。[@C:34-41]'
-  - '資訊完整性節點與未知出口為本站編輯提示，不是 CANMAT 新增診斷準則或風險模型。[@C:33-35]'
-  - '危及生命的嚴重情境不得被一般藥物順序延誤；適用條件與來源版本需隨圖保留。[@C:14,41]'
+  - '病史、實際治療與測量可並行收集；連線是閱讀順序，不表示有危險時必須等資料齊備。[@C:7-8,11,33-35]'
+  - '第 4 週改善不足是調整考量，不是所有藥物的充分療程定義，也不是 TRD 診斷。[@C:29,33,35]'
+  - 'NIMH 與 NICE 僅使用已選讀的辨認／評估段落，非完整躁症診斷或治療流程。[@NIMH:diagnosis][@NB:recognition][@NB:assessment]'

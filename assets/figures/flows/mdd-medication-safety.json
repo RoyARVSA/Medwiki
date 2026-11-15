@@ -1,0 +1,21 @@
+{
+  "definition_sha256": "9111578e48d59872427a457d8403cff6f2dfbba44994cf8008375b3d1baf7173",
+  "flow_id": "mdd-medication-safety",
+  "mermaid_sha256": "0db2afdfce51e290e1aa8fc1317e480023f115ce211fb6894e5b17666be90180",
+  "renderer": {
+    "files": {
+      "scripts/clinical_flow_svg.py": "9ad0a95717e45cb7a1508228db37c913e0a26af3f7646c3e48ab1b4db673fe27",
+      "scripts/flows.py": "b7066892e2ce8eedc2b86421d1d8d043950cb413449b06c85a1de846e806f656",
+      "tools/diagrams/layout-clinical.mjs": "0a69381b6839b3c68557130ad830d24880cb3425a78cdd2d914aadc710abfcf2",
+      "tools/diagrams/package-lock.json": "9b34ddb44c0317e745aa3a7746f151c8727b65cc0208a3099e8a62f78408eece",
+      "tools/diagrams/package.json": "3c89e293b28e135adee1d8f76099f233e4f9c4ba59ad2c354c3e9d426ec7e1fb",
+      "tools/diagrams/render-flows.mjs": "8377c99ecb0d8d65dc654a1da742e33c85eb18cb13ea00ad2a2ed0e84171a293"
+    },
+    "integrity": "sha512-IhMYKHE4S2vtx0QrhBP3lYOIKDeIiJXBrdq9MGYkuB8ZHqhrBnHNfSUndjXFewrX1CPK8chwq+2NA0K0hliYuw==",
+    "name": "elkjs",
+    "sha256": "206f20649982da87b5f57162ff3ea2d36d4fca8713d0bc9857447026d68092b8",
+    "version": "0.12.1"
+  },
+  "svg_sha256": "69b1129ee69c5ea58244f068766791b33fe137b5c89a69f004459cb01a91e0d5",
+  "visible_text_sha256": "6bb35584054def9972f6e2982d38f6b6f59f5bbc5b4348d35337623faf2368f6"
+}

@@ -3,8 +3,9 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Build-time-only source-backed Mermaid diagrams for Medwiki",
+  "description": "Build-time-only source-backed diagram layouts for Medwiki",
   "dependencies": {
+    "elkjs": "0.12.1",
     "pele": "1.13.0"
   }
 }

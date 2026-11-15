@@ -57,6 +57,8 @@ HTML 彙編來源使用 `locator_type: html`、`locators` 字典，例如 `d01: 
 
 `config/flows/<flow-id>.yml` 是單一流程定義，記錄 id、title、kind、population、version、source_ids、review_status、conflict_status、entry、nodes、edges、notes。kind 為 criteria / differential / management；node kind 為 step / decision / terminal / unknown，節點保留 label、detail、citations，分支保留 from、to、label。
 
+臨床卡片使用 `presentation: clinical-cards`：節點另列 `role`（assessment / criteria / decision / action / safety / followup / uncertainty / outcome）、可見純文字 `items` 清單，以及可選的節點 `card_width`（整數320–720，預設440）。`role` 表達視覺用途，`kind` 保留圖結構，不是證據等級。箭頭可加 `role: flow / option / feedback`；unknown 只有具明確文字的 feedback 邊可離開，terminal 不可離開。沒有 presentation 的既有定義保留 Pele 路徑。臨床卡片正文18px、標題22px、來源14px；圖與文字均保留 items。
+
 `assets/figures/flows/` 保存由定義生成的 `.mmd`、`.svg` 及雜湊 manifest；資產紀錄在 `assets/records/flow-<id>.yml`。正式頁的 Markdown 保留原生圖片與註解：
 
 ```markdown

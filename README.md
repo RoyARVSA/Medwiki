@@ -72,7 +72,7 @@ python scripts/flows.py --build
 python scripts/build_site.py
 ```
 
-固定使用 Pele 1.13.0。流程須標準則版本與適用情境；未知不視為陰性，圖形重排不改動醫學條件。一般建置會驗證既有成品，公開 clone 不需私有原件。必要修訂說明放頁尾，完整專案維護留在 log.md。
+臨床卡片使用 elkjs 0.12.1 於建置時排版，既有圖維持 Pele 1.13.0。流程須標準則版本與適用情境；未知不視為陰性，圖形重排不改動醫學條件。一般建置會驗證既有成品，公開 clone 不需私有原件。必要修訂說明放頁尾，完整專案維護留在 log.md。
 
 ## 加入網頁或簡報
 
@@ -87,3 +87,7 @@ python scripts/build_site.py
 公開來源文件可重建網站，不依賴私有 PDF。網站發布白名單與 `.gitignore` 分開管理；不把專案整個根目錄上傳為 Pages artifact。第三方內容未經確認不重新授權。
 
 其他說明：[工作流程](docs/workflow.md) · [設計](docs/design.md) · [操作紀錄](log.md)。
+
+流程規範：[臨床製圖手冊](docs/clinical-diagram-playbook.md) · [研究與來源稽核](docs/clinical-flow-authoring-proposal.md) · [重製計畫](docs/clinical-flow-redesign-plan.md) · [驗收紀錄](docs/clinical-flow-redesign-audit.md)。製圖先做來源決策表，再生成圖形與文字，分別核對臨床路徑及實際版面。
+
+2026-11-16：SJS 準則圖與 MDD 四段流程已重製，正文與圖像共同保留具體核對項、分支及重評。實際靜態渲染與獨立來源／程式複查已做；本輪瀏覽器互動未驗證，人工審閱仍未完成。

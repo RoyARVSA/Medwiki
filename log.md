@@ -121,3 +121,22 @@
 - 新增疾病單一歸屬、章節一致性、缺失／空 parent 拒絕及跨科連結不加入引用者目錄的回歸。獨立工程審查發現省略 parent 可繞過的 P2，已以先失敗後通過測試補正並複查解除；根 agent 完整執行 81 項 Python 測試，全部通過且無略過。
 - Node 兩組回歸、導航 JS 語法及流程成品檢查通過。此筆維護未改寫來源與臨床建議，not_reviewed/open 狀態保留；實際裝置視覺／瀏覽器互動未重測。推送與線上狀態以本次發布流程及完成回報為準，不將本機檢查當成已部署。
 - 完整建置產生 103 個 HTML，引用、相對連結與私有排除 lint 通過；實際成品確認精神科目錄未列 SJS/TEN，藥物章節連結仍可到同一原網址，憂鬱症範圍與缺口已呈現。追蹤檔與發布成品未含 raw、private 或原始 PDF。
+
+## 2026-11-15 · query / maintenance · Clinical flow authoring research
+
+- 使用者要求先研究高品質醫學流程的實務，再整理成製圖工作流程及 MD 草案。新增 docs/clinical-flow-authoring-proposal.md：區分概念圖、準則核對與處置路徑，提出決策表、逐藥操作資料、重評、分層閱讀及案例驗收；本輪不改 AGENTS 生效規則或正式流程，不推送部署。
+- 查核 WHO SMART／DAK、HL7 CPG IG、NICE 原圖及建議、NIMH 症狀資料、原廠 duloxetine 美國標示與奠基方法。九份來源均登錄 partial、not_reviewed，選讀摘要 publish:false；未提供或未讀的整份指引、補充資料及其他標示不列完成。原件／擷取／渲染留本機；GLIA 本機下載回傳 challenge，未視為論文原件，僅記官網工具實際可讀範圍。
+- 獨立來源 agent 重查 Watanabe Table3、CANMAT Figure7.1 及相關表文：現 SJS 圖把清單畫成順序、部分整合資訊位置不當且未知出口可重疊；現 MDD 圖刪去原文可支持的時程、量化及具名選項。問題保存於提案，不能用工程測試代表臨床可用或人工審閱。
+- 本輪實際檢視 NICE 一頁後線治療圖與原廠標示 PDF4。保留 ALL5 與未知的區別，不新增4/5疑似準則；腎肝／換藥規則逐藥查核。Duloxetine→MAOI 標示與 CANMAT 一般表述的適用差異另列 open，尚未裁決或合併到正式臨床正文。
+- 來源 agent 複查草案後，補精確「細胞毒性抗癌藥」限定及抗憂鬱劑「試用」次數用語；未見剩餘阻擋交付草案的重要問題，不等於人工審閱。來源欄位／引用／連結 lint、提案相對連結、九份摘要的非發布狀態及可取得快照雜湊核對通過；未改程式，未新增或重跑無關工程測試。只更新 wiki 索引，未建置或部署網站。
+
+
+## 2026-11-16 · synthesis / output / maintenance · Clinical flow redesign
+
+- 依使用者要求重畫SJS與MDD並將方法落地：AGENTS第8節納入來源決策表、具體行動／重評、未知與安全優先、逐藥操作及獨立驗收；新增製圖手冊、骨架、計畫與審查紀錄。視覺參考ELK、React Flow、D2及Markmap，沒有宣稱某引擎為醫學最佳或已實作未安裝的工具。
+- SJS五項主準則合成一張清單，保留全病程、次要資訊、三態資訊出口與回查；MDD分安全／暴露／量化、策略／重評、轉躁及duloxetine四圖。原皮膚剝離圖語意未變。採固定elkjs0.12.1建置臨床卡片，既有Pele1.13.0相容；圖、文字與Mermaid由同一定義產生，資產／雜湊同步。
+- NIMH、NICE CG185、CYMBALTA選讀片段納入具名安全情境；來源仍partial/not_reviewed，九份研究摘要publish:false，原件私有。Duloxetine→MAOI與CANMAT一般說法的差異open並列；受影響原章節與回想答案同步，未自行裁決或補造門檻。
+- 獨立來源審查的兩項P2與工程審查的分支遮擋P2均修正並複查。實際渲染五張新圖與保留圖；回歸先失敗後修正，根agent最終93項Python測試全過、無略過，Node兩組、三JS語法、流程／索引建置及lint通過。部署目錄103HTML／258檔，沒有PDF或私有目錄。
+- 本輪瀏覽器工具因無法辨識目前網址停止，未完成實際裝置、互動、無JS或列印驗證；不以靜態圖像或舊版驗收代替。所有新醫學內容仍not_reviewed，選藥／臟器操作缺口明示。詳見docs/clinical-flow-redesign-audit.md；推送部署另記。
+
+- 公開重建：以495份已暫存公開檔匯出無raw/private/node_modules副本，建置成功，258份成品逐檔SHA-256一致；換行依.gitattributes正規化後無差異。沒有把私有原件當建置依賴。

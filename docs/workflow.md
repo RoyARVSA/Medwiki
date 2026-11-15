@@ -39,9 +39,9 @@
 1. 讀取提供的 HTML，原件、完整擷取與解碼留在 raw/private；公開來源紀錄保留版本與卡片/章節定位。
 2. 先對照既有核心頁，合併同疾病階段及重複主題；來源摘要、科別 map、圖譜與思路入口連到同頁。
 3. 圖片依位元組雜湊去重，分別保存每次圖說與使用情境；公開條件確認後才輸出原圖與資產紀錄，保留水印及全幅。
-4. 流程先核對準則版本、全部/擇一條件、排除項、時間、數字/單位、未知與註解，再寫 config/flows 定義。
-5. 首次產圖工具安裝：`npm ci --prefix tools/diagrams --ignore-scripts`。使用鎖定的 Pele 1.13.0，不在讀者瀏覽器載入 CDN。
-6. `python scripts/flows.py --build` 重建 SVG/Mermaid/manifest；核對圖文、節點與引用，更新圖像資產紀錄後才執行網站建置。普通公開 clone 可使用已核對的 SVG 成品建置，無需本機原件。
+4. 流程依 [製圖手冊](clinical-diagram-playbook.md)：先讀原圖表與註腳，完成來源決策表與教學案例，再將共同檢核項分組、設計條件分支、具體行動及重評，最後寫 config/flows 定義。
+5. 首次產圖工具安裝：`npm ci --prefix tools/diagrams --ignore-scripts`。臨床卡片使用鎖定的 elkjs 0.12.1；既有圖使用 Pele 1.13.0。排版於建置時執行，不在讀者瀏覽器載入 CDN。
+6. `python scripts/flows.py --build` 重建 SVG/Mermaid/manifest；實際渲染檢視中文、數值、分支、遮擋及留白，分別核對來源／案例／圖文，更新圖像資產紀錄後才執行網站建置。普通公開 clone 可使用已核對的 SVG 成品建置，無需本機原件。
 7. 檢查同一主題跨入口 URL 一致、卡片定位、圖片/署名、圖譜篩選、自測揭示、流程縮放/節點/文字步驟與行動閱讀。自測不保存結果，不建立待讀或複習紀錄。
 
 瀏覽器 URL 可保留當次篩選與返回位置，無帳戶、localStorage、IndexedDB、分析追蹤或同步資料庫。圖像與表格均保留可讀靜態內容；輕量動態遵守 reduced-motion。

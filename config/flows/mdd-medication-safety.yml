@@ -1,0 +1,75 @@
+id: mdd-medication-safety
+title: duloxetine：逐藥核對腎肝限制與其他安全條件
+kind: management
+presentation: clinical-cards
+population: 現用或候選藥含 duloxetine 的成人 MDD 學習情境；其他藥物須分別核對。
+version: CYMBALTA 美國標示 08/2023 §§2.7–2.9 選讀；換藥差異另對照 CANMAT 2023 update。
+source_ids: [src-cymbalta-us-label-2023, src-canmat-2023-update]
+review_status: not_reviewed
+conflict_status: open
+entry: context
+nodes:
+  - id: context
+    kind: step
+    role: assessment
+    card_width: 520
+    label: 候選藥含 duloxetine 時，核對製劑與腎肝資料
+    items:
+      - 確認藥名／製劑、實際服用與共用藥。
+      - 本圖限 CYMBALTA 美國標示 08/2023 選讀，當地標示仍須另核對。
+      - 腎肝條件分開檢查；這不是其他抗憂鬱劑的通用門檻。
+    detail: 已有安全疑慮先處理，不等待一般藥物資料齊備。本圖只涵蓋已選讀的腎肝限制與換藥差異提示，未完成整份藥品標示評讀。
+    citations: ['[@DUL:4]', '[@C:11]']
+  - id: duloxetine-check
+    kind: decision
+    role: decision
+    card_width: 560
+    label: 有沒有 §2.7 任一避免使用條件？
+    items:
+      - GFR <30 mL/minute：保留原標示指標與單位，不換成 eGFR 或 CrCl。
+      - 慢性肝病或肝硬化：是另一項避免使用條件，不自訂 ALT 切點。
+      - 沒有資料不等於限制不存在；GFR ≥30 也不表示全面安全。
+    detail: 任一條件已確認符合，即依該標示避免 duloxetine；即使另一項資料尚缺，仍保留該缺口，不延後處理已知限制。兩項均已核對且未符合時，仍須繼續查其他警語、交互作用與適應症。
+    citations: ['[@DUL:4]']
+  - id: avoid
+    kind: terminal
+    role: safety
+    card_width: 500
+    label: 任一符合：依該美國標示避免 duloxetine
+    items:
+      - GFR <30 mL/minute，或慢性肝病／肝硬化，任一符合即適用。
+      - 保留其他未知資料，帶著腎肝與共用藥資料返回候選藥比較。
+    detail: 不由此直接指定另一藥。已有使用者需由照護者評估調整方式，不從本圖自行套用突然停藥；該標示 §2.8 建議可能時逐步減量。
+    citations: ['[@DUL:4]']
+  - id: complete
+    kind: terminal
+    role: outcome
+    card_width: 520
+    label: 未符合這兩項限制，仍須完成其他安全核對
+    items:
+      - GFR ≥30 且無慢性肝病／肝硬化，不等於 duloxetine 全面安全。
+      - 繼續核對其他警語、交互作用、適應症與當地標示。
+      - duloxetine→MAOI 的來源差異未解；見本頁並列說明，不套一般交叉換藥。
+    detail: CANMAT 的一般 serotonergic→MAOI 表述與該 duloxetine 美國標示存在尚未裁決的適用差異，故不在圖內合成單一 washout 數字。本圖亦未提供完整起始、遞增或停換藥處方。
+    citations: ['[@DUL:4]', '[@C:35]']
+  - id: missing
+    kind: unknown
+    role: uncertainty
+    card_width: 480
+    label: 尚無已知限制，但仍缺資料：補齊再核對
+    items:
+      - 核對腎功能指標、單位，以及慢性肝病／肝硬化是否已評估。
+      - 未確認不算無限制；不替其他藥物補造通用腎肝界值。
+      - 已知任一限制成立時先依限制處理，同時保留其他未知資料。
+    detail: 這個出口適用於尚無已知符合項，但至少一項未確認的資訊狀態。補資料後回查；安全疑慮或已知限制不因其他資訊未齊而等待。
+    citations: ['[@DUL:4]']
+edges:
+  - {from: context, to: duloxetine-check, label: 對照原標示的兩項限制, role: flow}
+  - {from: duloxetine-check, to: avoid, label: 至少一項已符合，保留其他未知, role: flow}
+  - {from: duloxetine-check, to: complete, label: 兩項均已核對且未符合, role: flow}
+  - {from: duloxetine-check, to: missing, label: 無已知符合，但至少一項未確認, role: flow}
+  - {from: missing, to: context, label: 補對應腎肝資料後回查, role: feedback}
+notes:
+  - 'GFR 恰為 30 mL/minute 不落在本條的 <30，但不能由此宣告全面安全；指標、單位與肝病條件均須保留。[@DUL:4]'
+  - '本圖限原標示選讀，不代表完整 duloxetine 或其他候選藥的處方級流程。[@DUL:4]'
+  - 'duloxetine→MAOI 的差異維持 open，數值與方向在相鄰正文並列；本圖不自行裁決。[@DUL:4][@C:35]'

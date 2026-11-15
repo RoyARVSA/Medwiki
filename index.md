@@ -98,8 +98,8 @@
 ## 臨床思路
 
 - [表皮剝脫的鑑別思路](01_wiki/approaches/epidermal-detachment-reasoning.md)：依序區分照片外觀、黏膜、病程與檢查證據，再回到 EB、SSSS 與 SJS/TEN 的比較。（not_reviewed）
-- [初始抗憂鬱劑反應不足：再評估思路](01_wiki/approaches/mdd-treatment-reassessment.md)：依 CANMAT 保留再評估、最佳化、換藥／加藥及其他介入的取捨；未知資訊另列，不自動判定 TRD。（not_reviewed）
-- [SJS 診斷準則：逐項核對與限制](01_wiki/approaches/sjs-diagnostic-criteria.md)：以日本指引五項主準則、次要準則與完整病程呈現判讀關係，保留未知及例外註記。（not_reviewed）
+- [初始抗憂鬱劑反應不足：再評估思路](01_wiki/approaches/mdd-treatment-reassessment.md)：先核對安全、病程、實際治療與量化變化，再比較增量、換藥、加藥及早期心理治療；保留逐藥限制與未解換藥差異。（not_reviewed）
+- [SJS 診斷準則：逐項核對與限制](01_wiki/approaches/sjs-diagnostic-criteria.md)：用單張五項主準則清單整合次要資訊與全病程，區分全部符合、已知不符及未確認，提供資料回補與重核出口。（not_reviewed）
 - [皮膚病灶：先描述，再辨認](01_wiki/approaches/skin-lesion-recognition.md)：把照片可見特徵、題幹病史與另外取得的檢驗證據分開，再對照鑑別。（not_reviewed）
 
 ## 學習問答
@@ -110,18 +110,36 @@
 
 - [WFSBP 2013：急性與延續期治療](02_sources/summaries/bauer-2013-acute-continuation.md)：分清緩解與反應、早期評估與充分治療，以及反應不足、延續期和特殊情境的 2013 年建議。（not_reviewed）
 - [WFSBP 2015：維持治療、再發風險與停藥](02_sources/summaries/bauer-2015-maintenance.md)：從再發風險判斷長期治療需要，分清延續與維持階段，整理原版藥物分級、監測、療程與停藥限制。（not_reviewed）
+- [Building better guidelines with BRIDGE-Wiz: development and evaluation of a software assistant to promote clarity, transparency, and implementability：方法研究選讀](02_sources/summaries/bridge-wiz-2012.md)：奠基性建議句型：明確交代情境、執行者、義務強度、行動、對象及理由。（not_reviewed）
 - [CANMAT 2023 更新：成人憂鬱症的評估、治療與追蹤](02_sources/summaries/canmat-2023-update.md)：八大問題的完整來源整理，涵蓋初始選擇、測量導向照護、維持停藥、反應不足與神經調控；保留版本、族群及證據限制。（not_reviewed）
+- [CYMBALTA (duloxetine delayed-release capsules): US Prescribing Information：方法研究選讀](02_sources/summaries/cymbalta-us-label-2023.md)：選讀原廠標示的腎肝限制與換藥方向，示範逐藥核對及指標／時間窗保留。（not_reviewed）
 - [皮膚科圖片辨識講義｜55項考古主題](02_sources/summaries/dermatology-atlas-55.md)：主題卡片、鑑別與來源範圍的可追溯目錄。（not_reviewed）
 - [皮膚科圖片辨識增補｜MF・Sézary・SSSS・SJS](02_sources/summaries/dermatology-atlas-supplement-01.md)：主題卡片、鑑別與來源範圍的可追溯目錄。（not_reviewed）
+- [The GuideLine Implementability Appraisal (GLIA): development of an instrument to identify obstacles to guideline implementation：方法研究選讀](02_sources/summaries/glia-2005.md)：奠基性方法：檢查何時適用及具體應做什麼，不能以版面或節點連通取代可用性。（not_reviewed）
 - [全身性免疫調節治療：系統性回顧](02_sources/summaries/heuer-systemic-therapies.md)：方法、主要效果、比較對象與侷限的完整閱讀摘要。（not_reviewed）
+- [Methodology — Clinical Practice Guidelines v2.0.0：方法研究選讀](02_sources/summaries/hl7-cpg-methodology-2.md)：HL7 將建議、策略與照護路徑分層，以事件、適用條件與行動表達建議。（not_reviewed）
+- [Bipolar disorder: assessment and management — selected recognition, assessment and mania recommendations：方法研究選讀](02_sources/summaries/nice-cg185-selected.md)：用來界定 MDD 反應不足流程遇到疑似或已確認躁期時，需轉入另一評估／治療情境。（not_reviewed）
+- [Depression in adults: treatment and management — selected recommendations and further-line visual summary：方法研究選讀](02_sources/summaries/nice-ng222-selected.md)：選讀 NICE 後線治療建議與原圖，作為分支、選項及註解呈現的比較案例。（not_reviewed）
+- [Bipolar Disorder：方法研究選讀](02_sources/summaries/nimh-bipolar-page.md)：官方症狀教育資料，用來把「注意轉躁」具體化為需詢問與觀察的線索。（not_reviewed）
 - [日本指引：17 個臨床問題](02_sources/summaries/watanabe-guideline.md)：逐題整理 CQ1–17、診斷準則、處置流程及原指引限制。（not_reviewed）
+- [Digital adaptation kits: implementation facilitation guide — publication information page：方法研究選讀](02_sources/summaries/who-dak-facilitation-2026-page.md)：確認現行 WHO DAK 實作出版物，僅使用出版摘要，未讀整本指引。（not_reviewed）
+- [Authoring a L2 DAK — SMART Guidelines Starter Kit：方法研究選讀](02_sources/summaries/who-smart-dak-authoring-2.md)：WHO 現行 DAK 製作方法：分開記錄流程、資料與決策邏輯，並以領域專家反覆驗證。（not_reviewed）
 
 ## 來源紀錄
 
 - [Bauer et al. · WFSBP 急性與延續期指引 2013](02_sources/records/bauer-2013.md)：complete；原始檔本機保存。
 - [Bauer et al. · WFSBP 維持治療 2015](02_sources/records/bauer-2015.md)：complete；原始檔本機保存。
+- [BRIDGE-Wiz · 2012 方法選讀](02_sources/records/bridge-wiz-2012.md)：partial；原始檔本機保存。
 - [CANMAT · 2023 更新版（2024 刊登）](02_sources/records/canmat-2023-update.md)：complete；原始檔本機保存。
+- [CYMBALTA US PI · 08/2023 選讀](02_sources/records/cymbalta-us-label-2023.md)：partial；原始檔本機保存。
 - [皮膚病灶辨識・主講義 55 項](02_sources/records/dermatology-atlas-55.md)：complete；原始檔本機保存。
 - [皮膚病灶辨識・增補 01](02_sources/records/dermatology-atlas-supplement-01.md)：complete；原始檔本機保存。
+- [GLIA · 2005 方法選讀](02_sources/records/glia-2005.md)：partial；原始檔本機保存。
 - [Heuer et al. · 系統性回顧](02_sources/records/heuer-2026.md)：complete；原始檔本機保存。
+- [HL7 CPG methodology · 2.0.0](02_sources/records/hl7-cpg-methodology-2.md)：partial；原始檔本機保存。
+- [NICE CG185 · 辨認與躁期選讀](02_sources/records/nice-cg185-selected.md)：partial；原始檔本機保存。
+- [NICE NG222 · 後線治療選讀](02_sources/records/nice-ng222-selected.md)：partial；原始檔本機保存。
+- [NIMH · Bipolar Disorder · 2025 選讀](02_sources/records/nimh-bipolar-page.md)：partial；原始檔本機保存。
 - [Watanabe et al. · 日本指引補充](02_sources/records/watanabe-2026.md)：complete；原始檔本機保存。
+- [WHO DAK · 2026 出版資訊頁](02_sources/records/who-dak-facilitation-2026-page.md)：partial；原始檔本機保存。
+- [WHO DAK authoring · 2.0.0](02_sources/records/who-smart-dak-authoring-2.md)：partial；原始檔本機保存。

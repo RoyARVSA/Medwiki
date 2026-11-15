@@ -4,14 +4,14 @@ title: 憂鬱症：反應不足與難治性憂鬱
 title_en: Inadequate response, TRD and difficult-to-treat depression
 type: concept
 created: 2026-11-14
-updated: 2026-11-14
+updated: 2026-11-16
 summary: 先重查診斷、治療充分性與共病，再比較增量、換藥、加藥及心理／神經調節策略；區分 TRD 與 DTD。
 tags: [psychiatry, MDD, TRD, DTD, adjunctive-treatment]
 aliases: [treatment-resistant depression, difficult-to-treat depression, augmentation, suboptimal response]
 specialties: [psychiatry]
 content_kind: chapter
 parent_id: concept-major-depressive-disorder
-source_ids: [src-canmat-2023-update, src-bauer-2013]
+source_ids: [src-canmat-2023-update, src-bauer-2013, src-cymbalta-us-label-2023]
 review_status: not_reviewed
 conflict_status: open
 conflict_page_id: comparison-mdd-guidelines
@@ -81,6 +81,8 @@ Lithium／triiodothyronine 的研究脈絡需另外保留：CANMAT Q7.g 指出�
 
 CANMAT 描述一般情況可交叉遞減／遞增（X），或先漸減停掉原藥再開始新藥（V）；依停藥風險、急迫性及交互作用選擇。**換至 MAOI** 時，從其他 serotonergic 藥物需至少兩週 washout；從 fluoxetine 則至少五週。此處不能外推成所有方向、所有藥對的通用換藥表。[@C:35]
 
+**未解差異（open）：** 上述 CANMAT 一般表述與 CYMBALTA 美國標示對 duloxetine→MAOI 的個別時間窗不同；藥對、方向與版本須分開核對。詳見[未解換藥差異的並列說明](../approaches/mdd-treatment-reassessment.md#未解換藥差異)，尚未由使用者裁決，不將兩者合成單一數字或排程。[@C:35][@DUL:4]
+
 ## 舊版 WFSBP 如何閱讀？
 
 WFSBP 2013 的增強治療框架列 lithium 等選項，並給 CE／RG；其圖示的早期調整節點還有缺漏的註解標記，不能把圖單獨當完整演算法。CANMAT 的線別及 DTD 框架不同，詳見[指引比較](../comparisons/mdd-guideline-comparison.md)。[@F:20-25][@C:33-37]
@@ -89,4 +91,4 @@ WFSBP 2013 的增強治療框架列 lithium 等選項，並給 CE／RG；其圖�
 
 <details class="recall-question"><summary>為何有部分反應且耐受良好時，會考慮 adjunctive，而不是每次都換藥？</summary><p>加藥可保留既有效果並可能較快改善，但須權衡多藥、交互作用及額外不良反應。這是 CANMAT 依反應／耐受及共同決策提出的偏向，不是單靠部分反應就必須加藥。[@C:35-37]</p></details>
 
-<details class="recall-question"><summary>從 fluoxetine 換至 MAOI，為何不能直接套一般交叉換藥？</summary><p>CANMAT 對此方向列至少五週 washout，其他 serotonergic 藥物換至 MAOI 則至少兩週；需保留藥物、方向和交互作用條件。[@C:35]</p></details>
+<details class="recall-question"><summary>從 fluoxetine 換至 MAOI，為何不能直接套一般交叉換藥？</summary><p>CANMAT 對此方向列至少五週 washout，其他 serotonergic 藥物換至 MAOI 則至少兩週；這是該版 CANMAT 的一般表述；另有 duloxetine 個別美國標示的未解差異，見上方並列說明。須保留藥物、方向、版本及交互作用，不能套成所有藥對的排程。[@C:35][@DUL:4]</p></details>
