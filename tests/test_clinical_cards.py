@@ -3,6 +3,7 @@ from copy import deepcopy
 import json
 from pathlib import Path
 import re
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -32,6 +33,18 @@ def cards():
 
 
 class ClinicalCardsTests(unittest.TestCase):
+    def test_closing_punctuation_keeps_short_acronyms_on_one_line(self):
+        from clinical_flow_svg import wrap_text, text_width
+        prefix = '取得結果後核對'
+        for acronym in ['PE', 'IVIG', 'ALT', 'COMET']:
+            with self.subTest(acronym=acronym):
+                text = prefix + acronym + '。'
+                width = text_width(prefix + acronym, 18) + text_width('。', 18) / 2
+                lines = wrap_text(text, width, 18)
+                self.assertTrue(any(acronym in line for line in lines), lines)
+                self.assertEqual(''.join(lines), text)
+                self.assertTrue(all(text_width(line, 18) <= width for line in lines))
+
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
@@ -85,9 +98,25 @@ class ClinicalCardsTests(unittest.TestCase):
         self.graph['edges'].pop()
         self.assertIn('presentation', self.errors())
 
-    def test_decision_still_requires_unknown_exit_with_rich_cards(self):
-        self.graph['nodes'][2]['kind'] = 'step'
-        self.assertIn('unknown exit', self.errors())
+    def test_response_reassessment_can_branch_to_two_actions_without_unknown(self):
+        """A response-based decision need not add a fabricated missing-data route."""
+        self.graph['nodes'][0].update(
+            role='decision', label='Have target symptoms improved at reassessment?',
+            detail='Compare documented target symptoms with the previous assessment.',
+            items=['Use the recorded symptom response.'])
+        self.graph['nodes'][1].update(
+            role='followup', label='Continue the planned follow-up',
+            detail='Follow the existing plan after documented symptom improvement.',
+            items=['Continue the planned follow-up.'])
+        self.graph['nodes'][2].update(
+            id='review', kind='terminal', role='action', label='Review the management plan',
+            detail='Review symptoms and treatment when improvement is absent.',
+            items=['Reassess symptoms and current treatment.'])
+        self.graph['edges'] = [
+            {'from': 'check', 'to': 'done', 'label': 'Target symptoms improved'},
+            {'from': 'check', 'to': 'review', 'label': 'Target symptoms did not improve'},
+        ]
+        self.assertEqual(self.errors(), '')
 
     def test_return_cycles_cannot_silently_reverse_the_forward_graph(self):
         self.graph['nodes'][1]['kind'] = 'step'
@@ -128,6 +157,47 @@ class ClinicalCardsTests(unittest.TestCase):
         self.assertFalse(left < 1218 < right and top < 1563 and bottom > 1511)
         self.assertFalse(left < 1513 < right and top < 1681 and bottom > 1563)
         self.assertLess(right, layout['width'])
+
+    def test_feedback_return_does_not_cross_forward_labels_or_neighboring_cards(self):
+        # The former fixed y=723 return crossed a forward label at y=702..741.
+        # The same measured rectangle can be occupied by a neighboring card.
+        import clinical_flow_svg
+        for obstacle_kind in ['label', 'card']:
+            with self.subTest(obstacle_kind=obstacle_kind):
+                obstacle = {'x': 1137, 'y': 702, 'width': 186.86, 'height': 39}
+                forward = {'id': 'edge-5', 'sections': [{
+                    'startPoint': {'x': 1000, 'y': 600},
+                    'endPoint': {'x': 1000, 'y': 757}}],
+                    'labels': [dict(obstacle, id='label-5')] if obstacle_kind == 'label' else []}
+                layout = {'width': 1600, 'height': 1600, 'children': [
+                    {'id': 'response', 'x': 600, 'y': 757, 'width': 460, 'height': 200},
+                    {'id': 'repeat', 'x': 1100, 'y': 1200, 'width': 460, 'height': 200}],
+                    'edges': [forward]}
+                if obstacle_kind == 'card':
+                    layout['children'].append(dict(obstacle, id='neighbor'))
+                original_nodes, original_forward = deepcopy(layout['children']), deepcopy(forward)
+                feedback = {'id': 'edge-10', 'sources': ['repeat'], 'targets': ['response'],
+                            'labels': []}
+                clinical_flow_svg._feedback_routes(layout, [feedback])
+                section = layout['edges'][-1]['sections'][0]
+                points = [section['startPoint'], *section['bendPoints'], section['endPoint']]
+                for start, end in zip(points, points[1:]):
+                    if start['y'] == end['y']:
+                        self.assertFalse(702 < start['y'] < 741 and
+                                         min(start['x'], end['x']) < 1323.86 and
+                                         max(start['x'], end['x']) > 1137)
+                    else:
+                        self.assertFalse(1137 < start['x'] < 1323.86 and
+                                         min(start['y'], end['y']) < 741 and
+                                         max(start['y'], end['y']) > 702)
+                self.assertEqual(layout['children'], original_nodes)
+                self.assertEqual(layout['edges'][0], original_forward)
+                self.assertEqual(points[-1], {'x': 830, 'y': 757})
+                for point in points:
+                    self.assertGreaterEqual(point['x'], 0)
+                    self.assertLess(point['x'], layout['width'])
+                    self.assertGreaterEqual(point['y'] + layout['top_offset'], 0)
+                    self.assertLess(point['y'] + layout['top_offset'], layout['height'])
 
     @unittest.skipUnless((ROOT / 'tools/diagrams/node_modules/elkjs').is_dir(), 'Install pinned elkjs')
     def test_real_cards_svg_preserves_text_citations_hooks_and_orthogonal_routes(self):
@@ -209,6 +279,42 @@ class ClinicalCardsTests(unittest.TestCase):
         self.assertIn('虛線：返回重評', svg_text)
         html = flows.render_flow(self.root, 'fixture-flow', 'index.html', SOURCE, tools_root=ROOT)
         self.assertIn('虛線：返回重評', html)
+
+    @unittest.skipUnless((ROOT / 'tools/diagrams/node_modules/elkjs').is_dir(), 'Install pinned elkjs')
+    def test_layout_geometry_is_stable_across_fresh_process_clocks(self):
+        """A measured branch/rejoin topology must rebuild identically over time."""
+        # Captured measured geometry, with technical IDs/labels and no clinical
+        # content dependency. ELK documents seed 0 as time-derived; controlling
+        # the clock makes that regression deterministic instead of probabilistic.
+        dimensions = [(600, 281), (520, 281), (620, 391), (520, 308),
+                      (600, 254), (620, 281), (560, 335), (520, 281)]
+        branches = [(0, 0, 1, 279.55999999999995, 66),
+                    (1, 0, 2, 279.55999999999995, 39),
+                    (2, 0, 6, 279.55999999999995, 66),
+                    (3, 2, 3, 223.93999999999994, 39),
+                    (4, 2, 4, 282.25999999999993, 39),
+                    (5, 2, 6, 186.85999999999996, 39),
+                    (6, 4, 5, 223.93999999999994, 39),
+                    (8, 5, 7, 279.55999999999995, 66),
+                    (9, 5, 6, 279.55999999999995, 66)]
+        graph = {'id': 'clinical-flow',
+                 'children': [{'id': f'node-{i}', 'width': width, 'height': height}
+                              for i, (width, height) in enumerate(dimensions)],
+                 'edges': [{'id': f'edge-{i}', 'sources': [f'node-{source}'],
+                            'targets': [f'node-{target}'],
+                            'labels': [{'id': f'label-{i}', 'text': 'Technical branch label',
+                                        'width': width, 'height': height,
+                                        'layoutOptions': {'elk.edgeLabels.placement': 'CENTER'}}]}
+                           for i, source, target, width, height in branches]}
+        script = (ROOT / 'tools/diagrams/layout-clinical.mjs').read_text(encoding='utf-8')
+        layouts = []
+        for clock in [1000, 3000]:
+            process = subprocess.run(
+                ['node', '--input-type=module', '-e', f'Date.now = () => {clock};\n' + script],
+                cwd=ROOT / 'tools/diagrams', input=json.dumps(graph),
+                text=True, encoding='utf-8', capture_output=True, check=True, timeout=60)
+            layouts.append(json.loads(process.stdout))
+        self.assertEqual(layouts[0], layouts[1], 'Identical measured geometry changed with the build clock')
 
     @unittest.skipUnless((ROOT / 'tools/diagrams/node_modules/elkjs').is_dir(), 'Install pinned elkjs')
     def test_cards_are_deterministic_and_cannot_hide_changed_item_glyphs(self):

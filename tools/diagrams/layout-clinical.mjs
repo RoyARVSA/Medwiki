@@ -15,7 +15,8 @@ graph.layoutOptions = {
   'elk.algorithm': 'layered',
   'elk.direction': 'DOWN',
   'elk.edgeRouting': 'ORTHOGONAL',
-  'elk.randomSeed': '0',
+  // ELK uses a time-derived seed for zero; a fixed nonzero value keeps rebuilds stable.
+  'elk.randomSeed': '1',
   'elk.padding': '[top=24,left=24,bottom=24,right=24]',
   'elk.spacing.nodeNode': '48',
   'elk.spacing.edgeNode': '28',

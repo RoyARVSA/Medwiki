@@ -91,3 +91,5 @@ python scripts/build_site.py
 流程規範：[臨床製圖手冊](docs/clinical-diagram-playbook.md) · [研究與來源稽核](docs/clinical-flow-authoring-proposal.md) · [重製計畫](docs/clinical-flow-redesign-plan.md) · [驗收紀錄](docs/clinical-flow-redesign-audit.md)。製圖先做來源決策表，再生成圖形與文字，分別核對臨床路徑及實際版面。
 
 2026-11-16：SJS 準則圖與 MDD 四段流程已重製，正文與圖像共同保留具體核對項、分支及重評。實際靜態渲染與獨立來源／程式複查已做；本輪瀏覽器互動未驗證，人工審閱仍未完成。
+
+醫學製圖流程已正式採用：先完成臨床旅程、來源主幹及狀態—行動—回饋表，再精簡節點／文字與排版。見[製圖手冊](docs/clinical-diagram-playbook.md)、[原圖分析與修訂理由](docs/clinical-pathway-authoring-revision.md)及[SJS路徑實作計畫](docs/sjs-pathway-implementation-plan.md)。

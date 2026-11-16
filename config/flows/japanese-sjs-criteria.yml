@@ -1,100 +1,115 @@
 id: japanese-sjs-criteria
-title: 日本 SJS 診斷準則：五項主準則與完整病程
-kind: criteria
+title: SJS/TEN：辨識、診斷與嚴重度分層
+kind: management
 presentation: clinical-cards
-population: Watanabe 指引 Table 3 所述的日本 SJS 準則；不是國際 TEN 分型。
-version: Diagnostic criteria 2025；2026 年刊登，Table 3，PDF 9／e96。
-source_ids: [src-watanabe-2026]
+population: 疑似或已診斷SJS/TEN的學習路徑；診斷使用日本2025準則，國際面積分類分開標示。
+version: Watanabe 2025 Supplement（2026刊登），Table3、CQ6、9–16；Heuer 2026引言。
+source_ids: [src-watanabe-2026, src-heuer-2026]
 review_status: not_reviewed
 conflict_status: open
-entry: scope
+entry: suspect
 nodes:
-  - id: scope
+  - id: suspect
+    kind: step
+    role: safety
+    card_width: 560
+    label: 疑似SJS/TEN：撤藥、支持照護與眼部評估同時開始
+    detail: 廣泛紅斑、水疱／糜爛及黏膜損傷時及早辨識，撤除可能致病藥物並開始支持照護；診斷資料回補與照護並行。
+    items:
+      - 核對用藥及開始／停用時間，撤除可能致病藥物。
+      - 開始支持照護；同步查看眼表上皮缺損、偽膜與全身器官狀態。
+      - 眼部嚴重或病情快速惡化時，立即接圖2全身治療及圖3眼部處理。
+    citations: ['[@H:1-2]', '[@W:5-7]']
+  - id: collect
     kind: step
     role: assessment
     card_width: 560
-    label: 準備全病程資料，再核對日本 2025 準則
-    detail: 以原始病史、檢查與病理記錄核對；每項分別記符合、不符合或未確認及依據。資料整理與回補方式是本站編輯安排，不是原指引新增的診斷規則。
+    label: 取得全病程皮膚、黏膜、病理及鑑別資料
+    detail: 次要準則、嚴重度／倦怠、治療反應與病理共同參與EMM鑑別。將每項原始依據保留為符合、不符或未確認。
     items:
-      - 取得各時點的皮膚／黏膜分布、受影響面積與發燒記錄。
-      - 取得病理報告、用藥病史、治療經過與反應；不只看初診或局部照片。
-    citations: ['[@W:9]']
-  - id: course
-    kind: step
-    role: assessment
-    card_width: 640
-    label: 核對主⑤時，同時使用次要資訊與完整病程
-    detail: 排除 erythema multiforme major（EMM）須綜合主①至⑤、嚴重度與倦怠、治療反應及表皮壞死病理。EMM 通常以四肢為主，黏膜與全身症狀相對較輕；單一靶形外觀不足以完成鑑別。
-    items:
-      - 次要皮膚線索：全身紅斑以臉、頸、軀幹為主；平坦、中央暗紅的非典型靶形，可融合。
-      - 次要黏膜線索：黏膜皮膚交界病灶；眼部可有雙側急性結膜炎合併偽膜和／或眼表上皮缺損。
-      - 核對全身嚴重度、倦怠、口咽疼痛與進食困難，並排除自體免疫性水疱病。
-      - 連同治療前後的變化與病理，回填主⑤的鑑別依據；次要資訊不能補足主準則。
-    citations: ['[@W:9]']
+      - 記錄全身分布、各時點面積，計入輕壓易剝離區；查看眼、口腔及生殖器。
+      - 取得發燒病史／體溫、病理報告、用藥與治療反應。
+      - 鑑別EMM、自體免疫水疱病與抗癌藥直接藥理性傷害。
+    citations: ['[@W:9-11]']
   - id: checklist
     kind: step
     role: criteria
     card_width: 720
-    label: 五項主準則：全部須符合，不是依序通關
-    detail: 一起核對五項，逐項保留符合／不符合／未確認與原始依據。主④在充分發展病灶的病理呈全層表皮壞死；每 200× 視野至少 10 個壞死角質形成細胞是 desirable 註記，不另升格為硬門檻。
+    label: 日本SJS：全部五項主準則＋次要資訊與完整病程
+    detail: 五項一起核對。次要資訊包括臉頸軀幹平坦非典型靶形、雙側急性結膜炎合併偽膜／上皮缺損、倦怠與進食困難及排除自體免疫水疱病；詳細病理註記與例外見同頁準則表。
     items:
-      - ① 黏膜皮膚交界的廣泛且嚴重黏膜病灶，如出血性糜爛或結痂；眼、口腔、生殖器為例，不要求三處全有。
-      - ② 廣泛紅斑合併表皮壞死所致糜爛／水疱，恢復後可有結痂或膜狀脫屑；受影響面積 <10% BSA，計入輕壓易剝離區，結合全病程核對。
-      - ③ 存在發燒；本表未指定數字體溫門檻。
-      - ④ 組織病理顯示表皮壞死；臨床照片不能代替病理證據。
-      - ⑤ 排除 EMM，以及細胞毒性抗癌藥的藥理作用、而非遲發型過敏所致皮膚傷害；有抗癌藥暴露本身不足以判定機轉。
+      - ① 黏膜皮膚交界廣泛、嚴重病灶，例如出血性糜爛或結痂。
+      - ② 廣泛紅斑＋表皮壞死性糜爛／水疱；恢復後結痂／膜狀脫屑；受影響區<10% BSA，含輕壓易剝離區。
+      - ③ 存在發燒。
+      - ④ 組織病理顯示表皮壞死。
+      - ⑤ 排除EMM及細胞毒性抗癌藥直接藥理作用、而非遲發型過敏所致皮膚傷害。
     citations: ['[@W:9]', '[@W:11]']
-  - id: all-five
-    kind: decision
-    role: decision
-    card_width: 560
-    label: 五項核對後，目前是哪一種資訊狀態？
-    detail: 以下三態互斥，屬本站資訊整理。只要有一項已確認不符合，即走「未滿足」出口並保留其他未知項；沒有已知不符合但仍有未知，才走「未確認」出口。
-    items:
-      - 全部五項已確認符合。
-      - 至少一項已確認不符合，不論是否另有未知。
-      - 沒有已知不符合，但至少一項未確認。
-    citations: ['[@W:9]']
-  - id: criteria-met
-    kind: terminal
-    role: outcome
-    card_width: 480
-    label: 滿足本版主準則，結合全病程判讀
-    detail: 依日本 2025 準則，全部五項符合並參考次要準則診斷 SJS。保留各項依據、準則版本與病程；本圖不自動確認個案診斷，後續診斷／處置另見相關頁。
-    citations: ['[@W:9]']
-  - id: not-all-met
+  - id: classify
     kind: step
+    role: assessment
+    card_width: 480
+    label: 面積≥10%：核對TEN準則並註明分類版本
+    detail: 日本TEN須三項全滿足，並考慮次要資訊及全病程。指定排除包括AGEP、自體免疫水疱病、SSSS、TSS、impetigo及抗癌藥藥理性傷害。
+    items:
+      - 日本TEN：>10% BSA（含易剝離區）＋發燒＋排除指定疾病。
+      - 國際：10–30%為overlap；>30%為TEN。
+      - 恰10%的日本準則界線保留待釐清，繼續按臨床狀態照護。
+    citations: ['[@W:10]', '[@H:1]']
+  - id: clarify
+    kind: step
+    role: uncertainty
+    card_width: 480
+    label: 回補病理／缺項，重查EMM與藥理性傷害
+    detail: 未取得病理維持未確認；已知不符與未知可以並存。持續疑似時，撤藥、支持及眼部照護繼續進行。
+    items:
+      - 取得缺少的病理、發燒及全身範圍記錄。
+      - 綜合分布、黏膜嚴重度、反應及病理，重查EMM與藥物機轉。
+      - 資料回填清單；仍疑似者同時進入嚴重度與器官分層。
+    citations: ['[@W:9-11]', '[@H:1-2]']
+  - id: alternative
+    kind: terminal
+    role: action
+    card_width: 440
+    label: 支持其他病因：轉相應疾病／藥物傷害處理
+    detail: 抗癌藥暴露本身不足以判定直接毒性；此出口需有臨床與機轉依據。
+    items:
+      - 直接藥理性傷害可考慮局部類固醇、口服抗組織胺等支持療法。
+      - 該情境使用高劑量全身類固醇／免疫抑制須審慎。
+    citations: ['[@W:11]']
+  - id: severity
+    kind: step
+    role: assessment
+    card_width: 640
+    label: 以進展速度、眼表與全身器官決定當下照護
+    detail: Figure2依臨床進展與嚴重度選初始治療；CRISTEN十項詳細定義在同頁表格，作預後資料，來源沒有其治療切點。
+    items:
+      - 分清慢進展輕中度、進展性／嚴重、快速進展／最嚴重。
+      - 眼表上皮缺損或偽膜＝嚴重眼部侵犯；皮膚輕也可考慮早期pulse。
+      - 同步核對呼吸支持需求、肝腎異常、感染／sepsis及CRISTEN病史因子。
+    citations: ['[@W:4-8]']
+  - id: next-tasks
+    kind: terminal
     role: action
     card_width: 560
-    label: 未滿足全部主準則：列明不符合與未知項
-    detail: 未滿足這套準則不等於排除 SJS。先核對不符合項的原始依據，仍有未知時同步回補；資料或病程更新後，重核整張清單，不以次要線索湊足五項。
+    label: 接續同頁圖2治療選擇，並行圖3器官照護
+    detail: 兩項任務並行，診斷與面積分類的變化持續回填。
     items:
-      - 面積為 10% 或更大時不符合本表 <10% 條件；核對面積定義與病程，另查 TEN／國際分型，不能只憑面積判 TEN。
-      - 主⑤未符合時重查 EMM 與藥物作用機轉；抗癌藥暴露或表皮剝離本身不能完成鑑別。
-    citations: ['[@W:9-10]', '[@W:11]']
-  - id: incomplete
-    kind: unknown
-    role: uncertainty
-    card_width: 640
-    label: 尚未確認：按缺項回查資料，再核對
-    detail: 未記載不等於陰性，也不能輸出「4/5 疑似 SJS」。下列是回補原始資料的編輯提示；本圖未規定切片位置、時機或完整檢查操作。
-    items:
-      - 缺①／②：補全黏膜與全身皮膚記錄，核對各時點的病灶、面積及輕壓易剝離區；局部照片不能推算全身範圍。
-      - 缺③：回查發燒病史與體溫記錄，不以「未記載發燒」判定不符合。
-      - 缺④：取得病理報告與判讀；仍未取得病理證據時，主④維持未確認。
-      - 缺⑤：回查用藥病史、病灶分布、嚴重度、治療反應與病理，補上 EMM／藥理性傷害的鑑別依據。
-    citations: ['[@W:9]']
+      - 圖2：選0.5–1 mg/kg/day、1 mg/kg/day或pulse，依反應接PE／IVIG等升階。
+      - 圖3：嚴重眼部局部治療與感染監測；呼吸／肝腎支持及後遺症追蹤。
+    citations: ['[@W:5-7]', '[@W:11]']
 edges:
-  - {from: scope, to: course, label: 整理判讀依據}
-  - {from: course, to: checklist, label: 一併核對五項}
-  - {from: checklist, to: all-five, label: 逐項保留三態與依據}
-  - {from: all-five, to: criteria-met, label: 全部五項已確認符合}
-  - {from: all-five, to: not-all-met, label: 至少一項已知不符合（可另有未知）}
-  - {from: all-five, to: incomplete, label: 無已知不符合，至少一項未知}
-  - {from: not-all-met, to: scope, role: feedback, label: 核對依據或病程更新後重核}
-  - {from: incomplete, to: scope, role: feedback, label: 缺項資料取得後重核；未取得仍保留未知}
+  - {from: suspect, to: collect, label: 診斷查核與照護並行}
+  - {from: suspect, to: severity, role: option, label: 眼部嚴重／快速惡化，照護立即前進}
+  - {from: collect, to: checklist, label: 一次核對五項}
+  - {from: checklist, to: severity, label: 全部五項符合，依日本準則診斷SJS}
+  - {from: checklist, to: classify, label: 受影響面積≥10% BSA}
+  - {from: checklist, to: clarify, label: 其他缺項／不符或鑑別未明}
+  - {from: classify, to: severity, label: 仍支持SJS/TEN，照護按實際進展與器官狀態}
+  - {from: classify, to: clarify, label: 發燒／指定鑑別未齊或不符，回補並重查}
+  - {from: clarify, to: checklist, role: feedback, label: 新資料／病程取得後重核五項}
+  - {from: clarify, to: severity, label: 仍疑似SJS/TEN，持續分層照護}
+  - {from: clarify, to: alternative, label: 判讀支持其他疾病／直接藥理性傷害}
+  - {from: severity, to: next-tasks, label: 治療與器官工作包同步執行}
 notes:
-  - '主準則不能擇一；次要準則並非另一組可任意替換主準則的條件。[@W:9]'
-  - '全病程、次要資訊、嚴重度、治療反應與病理須參與主⑤判讀，不是五項通過後才閱讀的附件。[@W:9]'
-  - '本圖只呈現日本 SJS 準則；日本 TEN 與國際分型的面積界線另見診斷與評估頁，保留差異，不混合。[@W:9-10]'
-  - '少數僅黏膜病灶的原文註記保留為例外說明；不由本站另訂例外演算法。[@W:9]'
+  - '本圖將撤藥、診斷回補與照護連接為閱讀路徑；支持照護操作細節的來源缺口集中列在同頁。[@H:1-2]'
+  - '日本SJS的<10%與TEN的>10%保留原文；國際10–30% overlap另列。[@W:9-10][@H:1]'

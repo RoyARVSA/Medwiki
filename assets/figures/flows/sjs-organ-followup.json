@@ -1,0 +1,21 @@
+{
+  "definition_sha256": "e48000ab33283b46d1115a55fc191d5ee14c10fa2c8b5d7adf949fff3c33b084",
+  "flow_id": "sjs-organ-followup",
+  "mermaid_sha256": "d7a8c0cc36b1aad8fa97de5cb677d3cfb4d23e7c0ae5a6f2a1d1bb6a3a278f69",
+  "renderer": {
+    "files": {
+      "scripts/clinical_flow_svg.py": "a78cea048954bd7a46fa1bba0c6951a62c420d080254a53bcb9c4cc08d4f5029",
+      "scripts/flows.py": "e59ba68f111bd10d1666d50b1ebd47096c4e78ea34baae770cd69fd7d8344237",
+      "tools/diagrams/layout-clinical.mjs": "27f9f600caaa566b613b6fadeff59da4f755307492ba8b5eacafc456cedef16c",
+      "tools/diagrams/package-lock.json": "9b34ddb44c0317e745aa3a7746f151c8727b65cc0208a3099e8a62f78408eece",
+      "tools/diagrams/package.json": "3c89e293b28e135adee1d8f76099f233e4f9c4ba59ad2c354c3e9d426ec7e1fb",
+      "tools/diagrams/render-flows.mjs": "8377c99ecb0d8d65dc654a1da742e33c85eb18cb13ea00ad2a2ed0e84171a293"
+    },
+    "integrity": "sha512-IhMYKHE4S2vtx0QrhBP3lYOIKDeIiJXBrdq9MGYkuB8ZHqhrBnHNfSUndjXFewrX1CPK8chwq+2NA0K0hliYuw==",
+    "name": "elkjs",
+    "sha256": "81b9e7ff5e698a3a7884648e941aa20e17c75ca47c2267eba0b70a8c7af1a69d",
+    "version": "0.12.1"
+  },
+  "svg_sha256": "6ca249385e3acd98cd2ae6ae0d9a445c5db36c580241602c3b8f8859ae2cf95b",
+  "visible_text_sha256": "eb695d4076818af42c1ab631555a02bd77031fbf2cc437514b0e796f4f0e80f6"
+}

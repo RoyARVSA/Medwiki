@@ -1,0 +1,66 @@
+asset_id: asset-flow-sjs-systemic-treatment
+filename: sjs-systemic-treatment.svg
+path: assets/figures/flows/sjs-systemic-treatment.svg
+title: SJS/TEN：全身治療、反應與升階
+description: 沿用同頁診斷與器官分層結果；日本Figure2的治療路徑，撤藥／支持及眼部照護持續。
+keywords:
+- dermatology
+- management
+- source-backed-flow
+- original-vector
+source_type: original_source_based_vector_diagram
+author: Medwiki project (AI-assisted diagram assembly)
+source_ids:
+- src-watanabe-2026
+- src-heuer-2026
+source_version: Watanabe 2025 Supplement（2026刊登），Figure2、CQ12–13及17；Heuer 2026比較證據另列。
+source_locators:
+- '[@W:6-7]'
+- '[@H:1-2]'
+- '[@W:7]'
+- '[@W:5-7]'
+- '[@W:11]'
+- '[@W:4-6]'
+- '[@W:6]'
+- '[@H:3-6]'
+source_url: null
+attribution: Original diagram by Medwiki; source facts and locators accompany the diagram and same-definition
+  text.
+public_allowed: true
+public_allowed_basis: User-authorized original vector layout and paraphrased learning text. No publisher
+  figure or source full text is reproduced.
+conditions:
+- Retain source IDs, versions, scope, citations and review status.
+- Preserve source-supported conditions, concurrent care and reassessment routes when reusing.
+definition_path: config/flows/sjs-systemic-treatment.yml
+mermaid_path: assets/figures/flows/sjs-systemic-treatment.mmd
+manifest_path: assets/figures/flows/sjs-systemic-treatment.json
+sha256: 0f434e9c0cb3b55f7a1c007aa10b2addb8089d2f51d014c2a462bdcd5d3a996c
+definition_sha256: 2fb96ba7e6ff7abef662983aca10fa664268a313f0f11c87e2794d6dc3744122
+renderer:
+  files:
+    scripts/clinical_flow_svg.py: a78cea048954bd7a46fa1bba0c6951a62c420d080254a53bcb9c4cc08d4f5029
+    scripts/flows.py: e59ba68f111bd10d1666d50b1ebd47096c4e78ea34baae770cd69fd7d8344237
+    tools/diagrams/layout-clinical.mjs: 27f9f600caaa566b613b6fadeff59da4f755307492ba8b5eacafc456cedef16c
+    tools/diagrams/package-lock.json: 9b34ddb44c0317e745aa3a7746f151c8727b65cc0208a3099e8a62f78408eece
+    tools/diagrams/package.json: 3c89e293b28e135adee1d8f76099f233e4f9c4ba59ad2c354c3e9d426ec7e1fb
+    tools/diagrams/render-flows.mjs: 8377c99ecb0d8d65dc654a1da742e33c85eb18cb13ea00ad2a2ed0e84171a293
+  integrity: sha512-IhMYKHE4S2vtx0QrhBP3lYOIKDeIiJXBrdq9MGYkuB8ZHqhrBnHNfSUndjXFewrX1CPK8chwq+2NA0K0hliYuw==
+  name: elkjs
+  sha256: 81b9e7ff5e698a3a7884648e941aa20e17c75ca47c2267eba0b70a8c7af1a69d
+  version: 0.12.1
+review_status: not_reviewed
+conflict_status: open
+created: '2026-11-16'
+updated: '2026-11-16'
+modifications:
+- '2026-11-16: Adopted the source-first clinical-journey workflow; rebuilt from the single editable definition
+  with renderer fixes for acronym wrapping and feedback-path clearance.'
+- '2026-11-16: Fixed the layout seed to a nonzero value so fresh builds reproduce the same geometry across
+  process start times.'
+used_in:
+- 01_wiki/approaches/sjs-diagnostic-criteria.md
+- 03_outputs/web/clinical-reasoning/sjs-diagnostic-criteria.html
+validation_scope: Definition/source/renderer/artifact hashes, safe SVG, exact labels/items/branch glyphs,
+  accessible title/description and same-definition text checked; static rendering and agent clinical/engineering
+  review. Human medical review and browser/device interactions remain separate.

@@ -86,9 +86,16 @@ def wrap_text(text, width, size, *, bold=False):
             if current.strip() and text_width(current + token, size, bold=bold) > width:
                 # Avoid leaving closing punctuation alone on a new line.
                 if token in '，。！？；：、）)］】%':
-                    previous = current.rstrip()[-1:]
-                    current = current.rstrip()[:-1]
-                    lines.append(current.rstrip())
+                    trimmed = current.rstrip()
+                    latin = re.search(r'[A-Za-z0-9]+(?:[-_./][A-Za-z0-9]+)*$', trimmed)
+                    if latin and text_width(latin[0] + token, size, bold=bold) <= width:
+                        previous = latin[0]
+                        current = trimmed[:latin.start()]
+                    else:
+                        previous = trimmed[-1:]
+                        current = trimmed[:-1]
+                    if current.strip():
+                        lines.append(current.rstrip())
                     current = previous + token
                     continue
                 lines.append(current.rstrip())
@@ -214,12 +221,13 @@ def _feedback_routes(layout, edges):
     """Route explicit returns outside the forward DAG without changing its ranks.
 
     ELK measures/routes the forward graph. Feedback returns use a separate gutter
-    with measured label boxes, exiting below the whole source layer and entering
-    above the target layer so that they never cut through a neighboring card.
+    with measured label boxes, exiting below the whole source layer and choosing
+    an entry above the target that clears cards and forward branch labels.
     """
     positions = {node['id']: node for node in layout['children']}
     right = layout['width']
     forward = list(layout['edges'])
+    entry_boxes = [*layout['children'], *[label for edge in forward for label in edge.get('labels', [])]]
     returns = []
     for index, edge in enumerate(edges):
         source, target = positions[edge['sources'][0]], positions[edge['targets'][0]]
@@ -228,6 +236,23 @@ def _feedback_routes(layout, edges):
         top = target['y'] - 34 - index * 24
         lane = right + 26 + index * 24
         source_x, target_x = source['x'] + source['width'] / 2, target['x'] + target['width'] / 2
+        # A fixed return height can cross a forward label between adjacent
+        # layers. Try measured box boundaries, preserving the target's top port
+        # and the main DAG; also keep the final vertical entry clear.
+        candidates = {top, target['y'] - 8}
+        for box in entry_boxes:
+            candidates.update((box['y'] - 8, box['y'] + box['height'] + 8))
+        for candidate in sorted(candidates, key=lambda y: (abs(y - top), -y)):
+            if candidate > target['y'] - 8:
+                continue
+            entry = {'x': target_x, 'y': candidate}
+            end = {'x': target_x, 'y': target['y']}
+            if (not any(_segment_hits_box({'x': lane, 'y': candidate}, entry, box) for box in entry_boxes) and
+                    not any(_segment_hits_box(entry, end, box) for box in entry_boxes if box is not target)):
+                top = candidate
+                break
+        else:
+            raise ValueError('No unobstructed clinical feedback entry')
         points = [{'x': source_x, 'y': source['y'] + source['height']},
                   {'x': source_x, 'y': bottom}, {'x': lane, 'y': bottom},
                   {'x': lane, 'y': top}, {'x': target_x, 'y': top},

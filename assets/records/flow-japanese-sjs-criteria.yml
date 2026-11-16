@@ -1,73 +1,77 @@
 asset_id: asset-flow-japanese-sjs-criteria
 filename: japanese-sjs-criteria.svg
 path: assets/figures/flows/japanese-sjs-criteria.svg
-title: 日本 SJS 診斷準則：五項主準則與完整病程
-description: Watanabe 指引 Table 3 所述的日本 SJS 準則；不是國際 TEN 分型。
+title: SJS/TEN：辨識、診斷與嚴重度分層
+description: 疑似或已診斷SJS/TEN的學習路徑；診斷使用日本2025準則，國際面積分類分開標示。
 keywords:
 - dermatology
-- criteria
+- management
 - source-backed-flow
 - original-vector
 source_type: original_source_based_vector_diagram
 author: Medwiki project (AI-assisted diagram assembly)
 source_ids:
 - src-watanabe-2026
-source_version: Diagnostic criteria 2025；2026 年刊登，Table 3，PDF 9／e96。
+- src-heuer-2026
+source_version: Watanabe 2025 Supplement（2026刊登），Table3、CQ6、9–16；Heuer 2026引言。
 source_locators:
-- '[@W:11]'
-- '[@W:9-10]'
+- '[@H:1-2]'
+- '[@W:5-7]'
+- '[@W:9-11]'
 - '[@W:9]'
+- '[@W:11]'
+- '[@W:10]'
+- '[@H:1]'
+- '[@W:4-8]'
+- '[@W:9-10]'
 source_url: null
-attribution: Original diagram by Medwiki; source facts and locators are cited in the
-  accompanying node explanations.
+attribution: Original diagram by Medwiki; source facts and locators accompany the diagram and same-definition
+  text.
 public_allowed: true
-public_allowed_basis: User-authorized, self-created vector layout and paraphrased
-  learning text derived from the supplied source facts. No original source figure,
-  photograph, or source full text is reproduced.
+public_allowed_basis: User-authorized original vector layout and paraphrased learning text. No publisher
+  figure or source full text is reproduced.
 conditions:
-- Retain source IDs, versions, node citations, scope, unknown outcomes and review
-  status.
-- The diagram layout and information-state annotations do not establish new clinical
-  rules.
+- Retain source IDs, versions, scope, citations and review status.
+- Preserve source-supported conditions, concurrent care and reassessment routes when reusing.
 definition_path: config/flows/japanese-sjs-criteria.yml
 mermaid_path: assets/figures/flows/japanese-sjs-criteria.mmd
 manifest_path: assets/figures/flows/japanese-sjs-criteria.json
-sha256: cd14caa2d80a398fffe5790e3fb36adcbab8b0387d6284e8ffe2ae52f4956ee1
-definition_sha256: b3bcf79ad1c1e922a6b4203603ae9061e5b2eeabb6d7fc04e687936d7a3220ff
+sha256: d4adf01eb69aeec44be23029e9db442d777eb1956c331fded48ec26f99d2b68e
+definition_sha256: a003ec082b7e9f051e5ec7388fd75f085e805283a63a4ce835e17f86ba5c7dab
 renderer:
   files:
-    scripts/clinical_flow_svg.py: 9ad0a95717e45cb7a1508228db37c913e0a26af3f7646c3e48ab1b4db673fe27
-    scripts/flows.py: b7066892e2ce8eedc2b86421d1d8d043950cb413449b06c85a1de846e806f656
-    tools/diagrams/layout-clinical.mjs: 0a69381b6839b3c68557130ad830d24880cb3425a78cdd2d914aadc710abfcf2
+    scripts/clinical_flow_svg.py: a78cea048954bd7a46fa1bba0c6951a62c420d080254a53bcb9c4cc08d4f5029
+    scripts/flows.py: e59ba68f111bd10d1666d50b1ebd47096c4e78ea34baae770cd69fd7d8344237
+    tools/diagrams/layout-clinical.mjs: 27f9f600caaa566b613b6fadeff59da4f755307492ba8b5eacafc456cedef16c
     tools/diagrams/package-lock.json: 9b34ddb44c0317e745aa3a7746f151c8727b65cc0208a3099e8a62f78408eece
     tools/diagrams/package.json: 3c89e293b28e135adee1d8f76099f233e4f9c4ba59ad2c354c3e9d426ec7e1fb
     tools/diagrams/render-flows.mjs: 8377c99ecb0d8d65dc654a1da742e33c85eb18cb13ea00ad2a2ed0e84171a293
   integrity: sha512-IhMYKHE4S2vtx0QrhBP3lYOIKDeIiJXBrdq9MGYkuB8ZHqhrBnHNfSUndjXFewrX1CPK8chwq+2NA0K0hliYuw==
   name: elkjs
-  sha256: 206f20649982da87b5f57162ff3ea2d36d4fca8713d0bc9857447026d68092b8
+  sha256: 81b9e7ff5e698a3a7884648e941aa20e17c75ca47c2267eba0b70a8c7af1a69d
   version: 0.12.1
 modifications:
-- 'Before 2026-11-16: Generated from the unmodified public YAML definition with pinned
-  Pele.'
-- 'Before 2026-11-16: Applied academic-blue defaults, an explicit dashed unknown outlet,
-  accessibility labels and node hooks; clinical labels and relationships remain unchanged.'
-- 'Before 2026-11-16: Balanced CJK line breaks within existing SVG tspan positions
-  and maximum measured width. Canonical Mermaid labels and clinical glyph sequences
-  are unchanged.'
-- 'Before 2026-11-16: Resolved SVG style variables into portable presentation attributes;
-  node geometry and clinical meaning preserved.'
-- '2026-11-16: Redrawn from the public clinical-card definition with pinned elkjs
-  0.12.1; grouped visible clinical items, explicit conditional branches and external
-  feedback lanes. Native SVG glyphs, solid arrowheads and dash segments remain portable;
-  no original source figure reproduced.'
+- 'Before 2026-11-16: Generated from the unmodified public YAML definition with pinned Pele.'
+- 'Before 2026-11-16: Applied academic-blue defaults, an explicit dashed unknown outlet, accessibility
+  labels and node hooks; clinical labels and relationships remain unchanged.'
+- 'Before 2026-11-16: Balanced CJK line breaks within existing SVG tspan positions and maximum measured
+  width. Canonical Mermaid labels and clinical glyph sequences are unchanged.'
+- 'Before 2026-11-16: Resolved SVG style variables into portable presentation attributes; node geometry
+  and clinical meaning preserved.'
+- '2026-11-16: Redrawn from the public clinical-card definition with pinned elkjs 0.12.1; grouped visible
+  clinical items, explicit conditional branches and external feedback lanes. Native SVG glyphs, solid
+  arrowheads and dash segments remain portable; no original source figure reproduced.'
+- '2026-11-16: Adopted the source-first clinical-journey workflow; rebuilt from the single editable definition
+  with renderer fixes for acronym wrapping and feedback-path clearance.'
+- '2026-11-16: Fixed the layout seed to a nonzero value so fresh builds reproduce the same geometry across
+  process start times.'
 used_in:
 - 01_wiki/approaches/sjs-diagnostic-criteria.md
 - 03_outputs/web/clinical-reasoning/sjs-diagnostic-criteria.html
 review_status: not_reviewed
 conflict_status: open
 created: '2026-11-13'
-validation_scope: Definition/source/renderer/artifact hashes, safe SVG, exact labels/items/branch
-  glyphs, accessible title/description, 18px card text and same-definition text equivalent;
-  actual static rendering reviewed. Agent checks are not human clinical review; browser/device
-  interactions unverified this round.
+validation_scope: Definition/source/renderer/artifact hashes, safe SVG, exact labels/items/branch glyphs,
+  accessible title/description and same-definition text checked; static rendering and agent clinical/engineering
+  review. Human medical review and browser/device interactions remain separate.
 updated: '2026-11-16'

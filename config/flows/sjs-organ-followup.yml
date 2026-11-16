@@ -1,0 +1,112 @@
+id: sjs-organ-followup
+title: SJS/TEN：眼部、全身器官與恢復後追蹤
+kind: management
+presentation: clinical-cards
+population: 從疑似SJS/TEN急性期至恢復後；三個器官工作包並行，可同時符合。
+version: Watanabe 2025 Supplement（2026刊登），CQ6、8–11及13。
+source_ids: [src-watanabe-2026]
+review_status: not_reviewed
+conflict_status: none
+entry: parallel-care
+nodes:
+  - id: parallel-care
+    kind: step
+    role: assessment
+    card_width: 560
+    label: 急性期同步看眼表、呼吸／肝腎與感染
+    detail: 這三條工作線可並存，持續與圖2全身治療互相回報。觀察項目依來源所述器官傷害整理成臨床工作包。
+    items:
+      - 眼：上皮缺損／偽膜、視力、炎症與感染。
+      - 全身：呼吸／氧合、肝腎損傷與支持需求。
+      - 感染：sepsis、糖尿病、ICU需求與免疫調節風險。
+    citations: ['[@W:4-6]']
+  - id: eye
+    kind: step
+    role: assessment
+    card_width: 440
+    label: 眼科核對上皮缺損、偽膜及炎症變化
+    detail: 年輕且NSAID／感冒藥相關者即使已開始治療仍可能惡化；眼表缺損或偽膜提示嚴重侵犯及後遺症風險。
+    items:
+      - 上皮缺損或偽膜：進嚴重眼部治療。
+      - 持續記錄眼表、視力及感染變化。
+    citations: ['[@W:5]']
+  - id: organs
+    kind: step
+    role: action
+    card_width: 520
+    label: 核對呼吸支持、肝損傷與腎功能／循環量
+    detail: CQ11列肺炎、間質性肺炎、喉水腫、ARDS、肝損傷／膽管消失及AKI；腎傷害可有低循環量、藥物、免疫及感染等機轉。
+    items:
+      - 呼吸惡化：氧療、必要時通氣，與肺科協作。
+      - 肝：追蹤ALT／bilirubin及肝損傷是否持續。
+      - 腎：核對腎功能、循環量、用藥與感染；判斷腎臟支持需求。
+    citations: ['[@W:5-6]']
+  - id: infection
+    kind: step
+    role: safety
+    card_width: 440
+    label: 密切監測感染／sepsis並重看免疫抑制風險
+    detail: Sepsis與死亡相關；糖尿病及需ICU層級管理為主要sepsis風險。廣泛糜爛時類固醇須衡量感染及再生抑制風險。
+    items:
+      - 核對感染及新發器官惡化；感染時同步處理與支持。
+      - 全身／局部類固醇期間持續感染監測。
+      - 皮膚仍進展時，同時回圖2重選全身治療。
+    citations: ['[@W:4-6]']
+  - id: eye-intensive
+    kind: step
+    role: action
+    card_width: 520
+    label: 嚴重眼部：局部高劑量類固醇＋全身pulse
+    detail: CQ10建議合併治療並密切監測感染。CQ13引述發病4日內pulse可能降低嚴重眼後遺症；源文沒有將4日訂為禁用界線。
+    items:
+      - 眼科與皮膚科協作，局部及全身治療同步。
+      - 看上皮缺損／偽膜、眼表炎症及感染的變化。
+      - 眼表炎症較久：局部治療較全身治療慢減量。
+    citations: ['[@W:5-6]']
+  - id: recovery
+    kind: step
+    role: followup
+    card_width: 640
+    label: 恢復期逐項確認眼、呼吸及肝腎是否復原
+    detail: 各工作線持續到相應問題改善；來源未給統一的門診間隔或出院檢核表。眼部治療量與時程的病例系列放同頁表格。
+    items:
+      - 眼表仍炎症：局部較慢減量，繼續感染監測。
+      - 呼吸症狀持續／惡化：肺科評估，留意閉塞性細支氣管炎。
+      - 肝損傷／腎功能未復：持續檢視ALT／bilirubin、腎功能及支持需求。
+    citations: ['[@W:4-6]']
+  - id: chronic-eye
+    kind: terminal
+    role: action
+    card_width: 520
+    label: 視力受損、乾眼或嚴重沾黏：選慢性眼部治療
+    detail: CQ8描述limbal rigid contact lens與COMET（cultured autologous oral mucosal epithelial transplantation），可按眼表狀況組合應用。
+    items:
+      - 視力／乾眼：考慮limbal rigid contact lens。
+      - 嚴重眼表沾黏：考慮COMET，再配合limbal rigid lens。
+      - 持續眼科追蹤眼表穩定與視覺功能。
+    citations: ['[@W:4-5]']
+  - id: continued-organs
+    kind: terminal
+    role: followup
+    card_width: 480
+    label: 持續呼吸／肝腎異常：延續相應專科與器官支持
+    detail: CQ11描述呼吸症狀可延續多年、肝損傷可在末次皮膚科就診時仍存，以及部分腎傷害需長期透析。
+    items:
+      - 依殘留器官問題續肺科及肝腎照護。
+      - 依症狀／功能變化重評氧療、通氣或腎臟支持需求。
+    citations: ['[@W:5-6]']
+edges:
+  - {from: parallel-care, to: eye, label: 眼部工作線}
+  - {from: parallel-care, to: organs, label: 呼吸／肝腎工作線}
+  - {from: parallel-care, to: infection, label: 感染工作線}
+  - {from: eye, to: eye-intensive, label: 眼表上皮缺損或偽膜}
+  - {from: eye, to: recovery, label: 持續觀察眼表與視覺，未見嚴重眼部病灶}
+  - {from: eye-intensive, to: eye, role: feedback, label: 治療中反覆檢視眼表與感染，惡化即重選處理}
+  - {from: eye-intensive, to: recovery, label: 急性病灶改善後仍追眼表炎症}
+  - {from: organs, to: recovery, label: 急性支持與觀察持續到相應問題恢復}
+  - {from: infection, to: recovery, label: 感染與器官狀態持續追蹤}
+  - {from: recovery, to: chronic-eye, label: 殘留視力損傷／乾眼或眼表沾黏}
+  - {from: recovery, to: continued-organs, label: 殘留呼吸／肝腎異常}
+notes:
+  - '眼、全身器官與感染可同時需要處理；合流表示共同重評任務，不要求等其他工作線完成。[@W:4-6]'
+  - 'CQ10十例系列的滴眼、眼膏與減量時程見同頁表格；固定追蹤間隔及完整處方安全資訊的缺口集中說明。[@W:5-6]'

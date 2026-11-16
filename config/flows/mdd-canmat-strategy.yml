@@ -4,141 +4,196 @@ kind: management
 presentation: clinical-cards
 population: 成人 MDD 初始抗憂鬱劑反應不足，安全、診斷、實際治療與反應資料已先核對。
 version: CANMAT 2023 update（2024 出版），Q3／Q5–Q8、Figure 7.1、Table 3.3／7.2。
-source_ids: [src-canmat-2023-update]
+source_ids:
+- src-canmat-2023-update
 review_status: not_reviewed
 conflict_status: none
 entry: strategy
 nodes:
-  - id: strategy
-    kind: decision
-    role: decision
-    card_width: 620
-    label: 依目前劑量、反應與耐受，共同比較下一步
-    items:
-      - 劑量偏低或較低劑量已有部分反應且耐受良好：比較增量的效益與負擔。
-      - 沒有反應／副作用困擾：較偏向換藥；部分反應且耐受佳：較偏向加藥。
-      - 第一或第二次抗憂鬱劑試用反應有限後，可較早考量 adjunctive。
-      - 心理治療可早期並行；納入既往效果、偏好、成本與可近性。
-    detail: 這些是 CANMAT 的策略偏向，不是互斥診斷規則，也不是所有人都必須先換藥再加藥。若初始暴露或反應資料不清，回到第一張圖補上，而不是直接升級治療。
-    citations: ['[@C:34-36]']
-  - id: optimize
-    kind: step
-    role: action
-    card_width: 440
-    label: 可耐受時，對照治療範圍調整原藥
-    items:
-      - 先核對實際劑量、時間、不良反應與服用困難，再決定是否增量。
-      - 例如 escitalopram 10–20、sertraline 50–200 mg/day，均為原表治療範圍。
-      - 增量可能增加療效，也可能增加副作用並降低依從性；沒有無限加量。
-    detail: Figure 7.1 對低於治療劑量，或在較低且耐受劑量已有部分反應時提出最佳化考量。Table 3.3 的數值不是起始量或完整遞增處方；逐藥安全限制仍須核對。
-    citations: ['[@C:16,34-35]']
-  - id: switch
-    kind: step
-    role: action
-    card_width: 460
-    label: 無反應或耐受困擾時，選另一抗憂鬱劑
-    items:
-      - 比較具名一線選項：escitalopram、sertraline、fluoxetine、venlafaxine-XR 等。
-      - 對照過往反應、副作用、交互作用及證據；同類與跨類換藥未有一致優劣。
-      - 依原藥／新藥、停藥風險與急迫性，決定交叉調整或先減停再開始。
-      - 換至 MAOI 有特定 washout；不能直接套一般交叉換藥，另見本頁安全與衝突說明。
-    detail: CANMAT 建議優先選擇具有較佳療效證據及合適耐受特性的一線藥物，並非上述任一藥物對每人都較好。必須保留製劑、藥對與換藥方向，不用一張通用圖取代逐藥操作。
-    citations: ['[@C:16-18,35]']
-  - id: adjunct
-    kind: step
-    role: action
-    card_width: 520
-    label: 部分反應且耐受佳時，比較 adjunctive
-    items:
-      - CANMAT 一線加用：aripiprazole 目標量 2–10 mg，brexpiprazole 目標量 0.5–2 mg。
-      - 可保留原藥既有效果；同時權衡額外副作用、交互作用、成本與多藥負擔。
-      - 詢問 akathisia、追蹤體重；增重相關藥物須依來源安排代謝監測。
-      - 目標量不是起始量，MDD adjunctive 劑量不直接移作躁期治療。
-    detail: 上述一線是 CANMAT 本版 DTD adjunctive 線別。Table 7.2 不提供完整起始、遞增與逐藥腎肝調整方案；長期加用應持續多久，證據仍有限。使用前需補齊相應藥品標示與監測資訊。
-    citations: ['[@C:28,36-37]']
-  - id: psychological
-    kind: step
-    role: action
-    card_width: 460
-    label: 及早討論 CBT、IPT 或 behavioural activation
-    items:
-      - CBT、IPT、behavioural activation 是本版一般 MDD 的一線心理治療。
-      - 可與藥物策略並行，依嚴重度、偏好與可近性安排，不必等所有藥物失敗。
-      - DTD 反應不足情境的 CBT 加用列二線；與一般心理治療線別分開。
-    detail: 心理治療形式和研究情境不可視為等效。嚴重 MDE 合併精神病性症狀時，CANMAT 指出先處理精神病性症狀，結構式心理治療待其緩解後再考量。
-    citations: ['[@C:14-15,35,38]']
-  - id: followup
-    kind: decision
-    role: followup
-    card_width: 620
-    label: 約定追蹤，再用結果決定去向
-    items:
-      - 急性期主動調整治療時，量表可每 2–4 週追蹤，連同功能、耐受與實際服用核對。
-      - 新開抗憂鬱劑後 2 週內主動詢問副作用；不冒稱每種加藥都有相同專屬期限。
-      - 殘餘症狀／反應不足：回查診斷、暴露與策略；達緩解後接維持與功能恢復。
-      - 新增安全疑慮或轉躁線索：立即回安全／診斷評估，不等例行追蹤日。
-    detail: MBC 是共同決策的回饋，不只比較總分。response（較基準改善 ≥50%）與緩解不同；緩解依量表、病程和臨床評估判讀，仍須檢視功能及個別症狀。
-    citations: ['[@C:11,17,28-31,33-35]']
-  - id: maintenance
-    kind: terminal
-    role: outcome
-    card_width: 440
-    label: 緩解後安排維持與復發預防
-    items:
-      - 確認殘餘症狀、功能與生活品質，不把 response 當成完全恢復。
-      - 依復發風險與既往病程討論維持藥物／心理治療，接回完整維持章節。
-    detail: 緩解是下一階段照護的起點。維持多久和如何停藥需個別討論；不能因某次分數改善就突然停藥，亦不將所有 adjunctive 的維持證據視為相同。
-    citations: ['[@C:29-31,36]']
-  - id: further
-    kind: terminal
-    role: outcome
-    card_width: 460
-    label: 策略後仍不足，重新比較 TRD／DTD 與神經調節
-    items:
-      - 回查每次治療的劑量、時間、實際服用、反應與耐受，不按試藥次數自動貼標籤。
-      - 通常在換藥／加藥後仍反應不足時，比較 rTMS、ECT 等適用情境與負擔。
-      - 嚴重或危及生命情境、既往 ECT 反應佳，可走較早 ECT 評估出口。
-    detail: TRD 沒有全體一致定義；DTD 強調症狀、功能、生活品質與可達成目標的共同照護。一般序列不取代 Q8 的嚴重度、既往反應與可近性條件。
-    citations: ['[@C:33-34,38-41]']
-  - id: missing
-    kind: unknown
-    role: uncertainty
-    card_width: 440
-    label: 補足影響選擇或追蹤的資料
-    items:
-      - 補實際劑量／日期、服用困難、量表基準、反應及不良反應。
-      - 補患者偏好、既往治療效果、可近性與候選藥的安全資料。
-      - 安全疑慮先處理；未知不是沒有反應，也不是已經耐受良好。
-    detail: 回到第一張圖的相應核對項目。資料不全時，保留已知資訊並處理可確認的問題，不自動選藥、補值或判定充分療程失敗。
-    citations: ['[@C:11,28-30,33-36]']
-  - id: safety
-    kind: terminal
-    role: safety
-    card_width: 420
-    label: 立即回安全與診斷評估
-    items:
-      - 安全惡化：重做臨床風險評估、安全計畫及照護場域安排。
-      - 新轉躁線索：轉入本頁第一／第三張圖，不沿一般 MDD 增量路徑。
-    detail: 這是中止一般序列、優先處理安全或診斷改變的出口。必要照護不等待例行 2–4 週量表時間；ECT 是否較早適用仍需核對嚴重情境。
-    citations: ['[@C:11,14,33-34,41]']
+- id: strategy
+  kind: decision
+  role: decision
+  card_width: 620
+  label: 依目前劑量、反應與耐受，共同比較下一步
+  items:
+  - 劑量偏低或較低劑量已有部分反應且耐受良好：比較增量的效益與負擔。
+  - 沒有反應／副作用困擾：較偏向換藥；部分反應且耐受佳：較偏向加藥。
+  - 第一或第二次抗憂鬱劑試用反應有限後，可較早考量 adjunctive。
+  - 心理治療可早期並行；納入既往效果、偏好、成本與可近性。
+  detail: 結合反應、耐受、偏好與可近性，共同比較增量、換藥、加用及心理治療；資料未清時先補對應項目。
+  citations:
+  - '[@C:34-36]'
+- id: optimize
+  kind: step
+  role: action
+  card_width: 440
+  label: 可耐受時，對照治療範圍調整原藥
+  items:
+  - 核對實際劑量、時間、不良反應與服用困難。
+  - 每日治療範圍例：escitalopram 10–20 mg、sertraline 50–200 mg。
+  - 增量時追蹤療效、副作用與實際服用。
+  detail: 低於治療範圍，或較低且可耐受的治療劑量已有部分反應時，可比較增量的效益與負擔。
+  citations:
+  - '[@C:16,34-35]'
+- id: switch
+  kind: step
+  role: action
+  card_width: 460
+  label: 無反應或耐受困擾時，選另一抗憂鬱劑
+  items:
+  - 一線選項例：escitalopram、sertraline、fluoxetine、venlafaxine-XR。
+  - 按過往反應、副作用、交互作用及療效證據選擇。
+  - 依藥對、停藥風險與急迫性，安排交叉調整或先減停再開始。
+  - 換至MAOI先核對藥對方向與washout；本頁並列來源差異。
+  detail: 優先考量具較佳療效證據與合適耐受特性的一線選項；同類與跨類換藥的比較結果未一致。
+  citations:
+  - '[@C:16-18,35]'
+- id: adjunct
+  kind: step
+  role: action
+  card_width: 520
+  label: 部分反應且耐受佳時，比較 adjunctive
+  items:
+  - CANMAT 一線加用：aripiprazole 目標量 2–10 mg，brexpiprazole 目標量 0.5–2 mg。
+  - 可保留原藥既有效果；同時權衡額外副作用、交互作用、成本與多藥負擔。
+  - 詢問 akathisia、追蹤體重；增重相關藥物須依來源安排代謝監測。
+  detail: CANMAT本版DTD的一線加用選項與目標量見Table7.2；持續追蹤副作用、交互作用與多藥負擔，長期加用時間的證據仍有限。
+  citations:
+  - '[@C:28,36-37]'
+- id: psychological
+  kind: step
+  role: action
+  card_width: 460
+  label: 及早討論 CBT、IPT 或 behavioural activation
+  items:
+  - 一般MDD一線心理治療：CBT、IPT、behavioural activation。
+  - 依嚴重度、偏好與可近性，與藥物策略並行安排。
+  - DTD情境的CBT加用列二線。
+  detail: 嚴重MDE合併精神病性症狀時先處理精神病性症狀，緩解後再考量結構式心理治療。
+  citations:
+  - '[@C:14-15,35,38]'
+- id: followup
+  kind: decision
+  role: followup
+  card_width: 620
+  label: 約定追蹤，再用結果決定去向
+  items:
+  - 急性期主動調整治療時，量表可每 2–4 週追蹤，連同功能、耐受與實際服用核對。
+  - 新開抗憂鬱劑後2週內主動詢問副作用。
+  - 殘餘症狀／反應不足：回查診斷、暴露與策略；達緩解後接維持與功能恢復。
+  - 新增安全疑慮或轉躁線索：立即回安全／診斷評估，不等例行追蹤日。
+  detail: 一併追蹤症狀、功能、不良反應及實際服用。response為較基準改善≥50%；緩解另依量表、病程與臨床評估判定。
+  citations:
+  - '[@C:11,17,28-31,33-35]'
+- id: maintenance
+  kind: terminal
+  role: outcome
+  card_width: 440
+  label: 緩解後安排維持與復發預防
+  items:
+  - 確認殘餘症狀、功能與生活品質。
+  - 依復發風險與既往病程討論維持藥物／心理治療，接回完整維持章節。
+  detail: 依復發風險、既往病程與偏好討論維持時間及後續停藥；定期重評加用藥物的效益與負擔。
+  citations:
+  - '[@C:29-31,36]'
+- id: further
+  kind: terminal
+  role: outcome
+  card_width: 460
+  label: 策略後仍不足，重新比較 TRD／DTD 與神經調節
+  items:
+  - 回查各次治療的劑量、時間、實際服用、反應與耐受。
+  - 通常在換藥／加藥後仍反應不足時，比較 rTMS、ECT 等適用情境與負擔。
+  - 嚴重或危及生命情境、既往 ECT 反應佳，可走較早 ECT 評估出口。
+  detail: 再評TRD／DTD與治療目標，依嚴重度、既往反應及可近性比較神經調節方案。
+  citations:
+  - '[@C:33-34,38-41]'
+- id: missing
+  kind: unknown
+  role: uncertainty
+  card_width: 440
+  label: 補足影響選擇或追蹤的資料
+  items:
+  - 補實際劑量／日期、服用困難、量表基準、反應及不良反應。
+  - 補患者偏好、既往治療效果、可近性與候選藥的安全資料。
+  detail: 補足影響選擇的資料並處理已知問題後，回到共同策略比較。
+  citations:
+  - '[@C:11,28-30,33-36]'
+- id: safety
+  kind: terminal
+  role: safety
+  card_width: 420
+  label: 立即回安全與診斷評估
+  items:
+  - 安全惡化：重做臨床風險評估、安全計畫及照護場域安排。
+  - 新轉躁線索：轉入本頁第一／第三張圖的病程與診斷評估。
+  detail: 必要時優先安排安全照護及較早ECT評估，依臨床嚴重度決定。
+  citations:
+  - '[@C:11,14,33-34,41]'
 edges:
-  - {from: strategy, to: optimize, label: 劑量偏低／較低劑量部分反應且耐受, role: option}
-  - {from: strategy, to: switch, label: 無反應或副作用困擾，較偏向換藥, role: option}
-  - {from: strategy, to: adjunct, label: 部分反應且耐受佳，較偏向加藥, role: option}
-  - {from: strategy, to: psychological, label: 可早期並行心理治療, role: option}
-  - {from: strategy, to: missing, label: 反應／暴露／耐受等資料仍缺, role: flow}
-  - {from: strategy, to: safety, label: 出現安全惡化／診斷疑慮, role: flow}
-  - {from: optimize, to: followup, label: 記錄調整與追蹤計畫, role: flow}
-  - {from: switch, to: followup, label: 記錄藥對、方向與追蹤計畫, role: flow}
-  - {from: adjunct, to: followup, label: 記錄加用方案與監測, role: flow}
-  - {from: psychological, to: followup, label: 一起追蹤症狀與功能, role: flow}
-  - {from: followup, to: maintenance, label: 已確認緩解，規劃維持與功能恢復, role: flow}
-  - {from: followup, to: strategy, label: 仍有症狀，回查資料並再比較策略, role: feedback}
-  - {from: followup, to: further, label: 換藥／加藥後仍不足，可並行專科比較, role: option}
-  - {from: followup, to: safety, label: 安全惡化／新增轉躁線索, role: flow}
-  - {from: followup, to: missing, label: 結果或治療暴露仍未確認, role: flow}
-  - {from: missing, to: strategy, label: 補資料並核對安全後，重新比較策略, role: feedback}
+- from: strategy
+  to: optimize
+  label: 劑量偏低／較低劑量部分反應且耐受
+  role: option
+- from: strategy
+  to: switch
+  label: 無反應或副作用困擾，較偏向換藥
+  role: option
+- from: strategy
+  to: adjunct
+  label: 部分反應且耐受佳，較偏向加藥
+  role: option
+- from: strategy
+  to: psychological
+  label: 可早期並行心理治療
+  role: option
+- from: strategy
+  to: missing
+  label: 反應／暴露／耐受等資料仍缺
+  role: flow
+- from: strategy
+  to: safety
+  label: 出現安全惡化／診斷疑慮
+  role: flow
+- from: optimize
+  to: followup
+  label: 記錄調整與追蹤計畫
+  role: flow
+- from: switch
+  to: followup
+  label: 記錄藥對、方向與追蹤計畫
+  role: flow
+- from: adjunct
+  to: followup
+  label: 記錄加用方案與監測
+  role: flow
+- from: psychological
+  to: followup
+  label: 一起追蹤症狀與功能
+  role: flow
+- from: followup
+  to: maintenance
+  label: 已確認緩解，規劃維持與功能恢復
+  role: flow
+- from: followup
+  to: strategy
+  label: 仍有症狀，回查資料並再比較策略
+  role: feedback
+- from: followup
+  to: further
+  label: 換藥／加藥後仍不足，可並行專科比較
+  role: option
+- from: followup
+  to: safety
+  label: 安全惡化／新增轉躁線索
+  role: flow
+- from: followup
+  to: missing
+  label: 結果或治療暴露仍未確認
+  role: flow
+- from: missing
+  to: strategy
+  label: 補資料並核對安全後，重新比較策略
+  role: feedback
 notes:
-  - '增量、換藥、加藥是依條件比較的選項；心理治療可並行。箭頭不是自動處方或所有人必經順序。[@C:34-38]'
-  - '圖中的抗憂鬱劑範圍與 adjunctive 目標量用途不同；缺完整起始、遞增及逐藥腎肝調整資料，不稱處方級流程。[@C:16,36]'
-  - '急性期 2–4 週是量表追蹤框架；新開抗憂鬱劑 2 週內詢問副作用是另一項建議，不混成每種介入的專屬時程。[@C:17,30]'
+- 增量、換藥與加用依反應及耐受比較，心理治療可並行。[@C:34-38]

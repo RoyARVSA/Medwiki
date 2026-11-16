@@ -16,21 +16,18 @@ source_ids:
 source_version: 主講義 c2、增補 blister；2026 年 11 月提供版本。
 source_locators:
 - '[@A:c2]'
-- '[@A:guide]'
 - '[@B:blister]'
 - '[@B:d58]'
+- '[@A:guide]'
 source_url: null
-attribution: Original diagram by Medwiki; source facts and locators are cited in the
-  accompanying node explanations.
+attribution: Original diagram by Medwiki; source facts and locators accompany the diagram and same-definition
+  text.
 public_allowed: true
-public_allowed_basis: User-authorized, self-created vector layout and paraphrased
-  learning text derived from the supplied source facts. No original source figure,
-  photograph, or source full text is reproduced.
+public_allowed_basis: User-authorized original vector layout and paraphrased learning text. No publisher
+  figure or source full text is reproduced.
 conditions:
-- Retain source IDs, versions, node citations, scope, unknown outcomes and review
-  status.
-- The diagram layout and information-state annotations do not establish new clinical
-  rules.
+- Retain source IDs, versions, scope, citations and review status.
+- Preserve source-supported conditions, concurrent care and reassessment routes when reusing.
 definition_path: config/flows/epidermal-detachment-reasoning.yml
 mermaid_path: assets/figures/flows/epidermal-detachment-reasoning.mmd
 manifest_path: assets/figures/flows/epidermal-detachment-reasoning.json
@@ -38,31 +35,35 @@ sha256: 993bd522daaa4fbbce338aa4e3e545b4f93492bfc85d878de9b2583143bd30b0
 definition_sha256: 1f4d5acaef4ac19e483a3a548259263a278c569e35dbee44a045375cc75798a6
 renderer:
   files:
-    scripts/flows.py: b7066892e2ce8eedc2b86421d1d8d043950cb413449b06c85a1de846e806f656
+    scripts/flows.py: e59ba68f111bd10d1666d50b1ebd47096c4e78ea34baae770cd69fd7d8344237
     tools/diagrams/package-lock.json: 9b34ddb44c0317e745aa3a7746f151c8727b65cc0208a3099e8a62f78408eece
     tools/diagrams/package.json: 3c89e293b28e135adee1d8f76099f233e4f9c4ba59ad2c354c3e9d426ec7e1fb
     tools/diagrams/render-flows.mjs: 8377c99ecb0d8d65dc654a1da742e33c85eb18cb13ea00ad2a2ed0e84171a293
   integrity: sha512-Ie8UKY9x00MsuR3jO6AzUwzK2Z6MIV3Tf4EDdITiuk8Uaz8K7g0R082WqsqNaSU8DdgkrRvZThzhit83mi/uiw==
   name: pele
-  sha256: 169278699211218df858d4efc838152b9ec37521d71fef3199c759c5607cb7bb
+  sha256: 4f9e75ab0a6ed4fc0b48bf141847e7b0e0a831b9bcc7ea61dbd1db5dafbe7a39
   version: 1.13.0
 modifications:
 - Generated from the unmodified public YAML definition with pinned Pele.
-- Applied academic-blue defaults, an explicit dashed unknown outlet, accessibility
-  labels and node hooks; clinical labels and relationships remain unchanged.
-- Balanced CJK line breaks within existing SVG tspan positions and maximum measured
-  width. Canonical Mermaid labels and clinical glyph sequences are unchanged.
-- Resolved SVG style variables into portable presentation attributes; node geometry
-  and clinical meaning preserved.
-- '2026-11-16: Rebuilt with the same legacy Pele clinical definition after renderer/package
-  identity changed; no clinical labels or relationships changed.'
+- Applied academic-blue defaults, an explicit dashed unknown outlet, accessibility labels and node hooks;
+  clinical labels and relationships remain unchanged.
+- Balanced CJK line breaks within existing SVG tspan positions and maximum measured width. Canonical Mermaid
+  labels and clinical glyph sequences are unchanged.
+- Resolved SVG style variables into portable presentation attributes; node geometry and clinical meaning
+  preserved.
+- '2026-11-16: Rebuilt with the same legacy Pele clinical definition after renderer/package identity changed;
+  no clinical labels or relationships changed.'
+- '2026-11-16: Rebuilt artifact manifests for the updated shared validation and renderer; clinical definition
+  unchanged.'
+- '2026-11-16: Fixed the layout seed to a nonzero value so fresh builds reproduce the same geometry across
+  process start times.'
 used_in:
 - 01_wiki/approaches/epidermal-detachment-reasoning.md
 - 03_outputs/web/clinical-reasoning/epidermal-detachment.html
 review_status: not_reviewed
 conflict_status: none
 created: '2026-11-13'
-validation_scope: SVG safety, definition/renderer/artifact hashes, exact node glyph
-  sequence, accessible title/description, 18 px label font and text equivalent; no
-  claim of human clinical review.
+validation_scope: Definition/source/renderer/artifact hashes, safe SVG, exact labels/items/branch glyphs,
+  accessible title/description and same-definition text checked; static rendering and agent clinical/engineering
+  review. Human medical review and browser/device interactions remain separate.
 updated: '2026-11-16'

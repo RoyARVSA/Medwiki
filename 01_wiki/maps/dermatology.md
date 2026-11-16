@@ -3,7 +3,7 @@ id: map-dermatology
 title: 皮膚科學習導航
 type: map
 created: 2026-11-12
-updated: 2026-11-13
+updated: 2026-11-16
 summary: 病灶辨識、疾病與徵象、鑑別思路，以及 SJS/TEN 文獻與處置的共同入口。
 tags:
 - dermatology
@@ -40,7 +40,7 @@ conflict_page_id: comparison-sjs-ten-evidence
 - [皮膚科鑑別比較](dermatology-comparisons.md)：外觀、病程、檢查與判讀限制。
 - [先描述，再辨認](../approaches/skin-lesion-recognition.md)：區分照片、病史與另外取得的檢驗證據。
 - [表皮剝脫的鑑別思路](../approaches/epidermal-detachment-reasoning.md)。
-- [SJS 日本準則圖](../approaches/sjs-diagnostic-criteria.md)：保留版本、全部主準則、次要條件與未知出口。
+- [SJS/TEN 臨床路徑](../approaches/sjs-diagnostic-criteria.md)：從診斷與嚴重度，接全身處置、反應不足後的選項及器官追蹤。
 
 ## SJS/TEN 專題
 

@@ -4,74 +4,86 @@ kind: management
 presentation: clinical-cards
 population: 成人 MDD 再評估中需核對轉躁線索、疑似雙極性或已出現躁／輕躁的學習情境。
 version: NIMH 2025 症狀／診斷段；NICE CG185（2025-09-02 更新）辨認／評估及躁期選讀；CANMAT 2023 update。
-source_ids: [src-nimh-bipolar-page, src-nice-cg185-selected, src-canmat-2023-update]
+source_ids:
+- src-nimh-bipolar-page
+- src-nice-cg185-selected
+- src-canmat-2023-update
 review_status: not_reviewed
 conflict_status: none
 entry: context
 nodes:
-  - id: context
-    kind: step
-    role: assessment
-    card_width: 600
-    label: 記錄轉躁線索、縱向病程與實際用藥
-    items:
-      - 詢問睡眠需求降低、活動增加、語速加快／思緒奔逸及異常誇大。
-      - 補持續時間、嚴重度、功能、旁證、過往病程及物質／藥物因素。
-      - 列出抗憂鬱劑、抗精神病藥與 mood stabiliser，區分單方與合併用藥。
-      - 單一警訊不是躁／輕躁診斷；疑似狀態與專業評估已確認狀態分開。
-    detail: NIMH 是教育與辨認線索，不提供本圖可直接套用的完整專業診斷準則。NICE 的辨認／轉介及精神科評估另有用途；安全評估先行，不等待全部病史資料齊備。
-    citations: ['[@NIMH:symptoms]', '[@NIMH:diagnosis]', '[@NB:recognition]', '[@NB:assessment]']
-  - id: triage
-    kind: decision
-    role: decision
-    card_width: 540
-    label: 已核對的資料屬於哪種情境？
-    items:
-      - 分清需處理的線索／風險、疑似躁症與已確認躁／輕躁。
-      - 已有危險或疑似躁症時，先轉專業評估，即使其他資料仍缺。
-      - 未見線索與未確認不同；不能把未知病程當成已排除雙極性。
-    detail: 以下三個出口是本站的資訊與照護整理，不是新的診斷準則。進入專業照護的出口後，緊急轉介與用藥建議各保留自己的適用條件，不能由辨認線索直接觸發處方。
-    citations: ['[@NB:recognition]', '[@NB:assessment]', '[@NB:mania]', '[@NIMH:diagnosis]']
-  - id: specialist
-    kind: terminal
-    role: safety
-    card_width: 640
-    label: 轉入專業照護：緊急評估與用藥前提分開
-    items:
-      - 疑似躁症、嚴重憂鬱或對自己／他人有危險：依 NICE 1.2.2 緊急專業評估。
-      - 僅有辨認線索：補專業病程與鑑別評估，不從線索自行診斷或給藥。
-      - 僅在已出現躁／輕躁且抗憂鬱劑單方時，1.5.2 建議考量停該藥，並提供抗精神病藥，不論是否停抗憂鬱劑。
-      - 已出現躁／輕躁，且尚未使用抗精神病藥或 mood stabiliser，1.5.3 列 haloperidol、olanzapine、quetiapine、risperidone；保留偏好、共病、過往反應與副作用。
-      - 其他既有用藥情境另依適用指引處理；躁期劑量與監測仍缺，不移用 MDD adjunctive 劑量。
-    detail: 緊急評估不等待一般增量／換藥序列。用藥條文只在其特定躁／輕躁與既有用藥前提下適用，由專業照護處理；本圖沒有根據警訊自動給藥，亦未涵蓋完整躁期處方。
-    citations: ['[@NB:recognition]', '[@NB:assessment]', '[@NB:mania]', '[@C:11,36-37]']
-  - id: complete
-    kind: terminal
-    role: outcome
-    card_width: 460
-    label: 未見所列線索，保留病程與鑑別追蹤
-    items:
-      - 這次核對未見上述線索或風險，不等於已排除雙極性。
-      - 帶回縱向病程、實際用藥與反應，繼續比較適用的 MDD 策略。
-    detail: 量表或一次訪談不能代替完整病程判讀；後續出現新線索或安全改變時，重新核對。未確認資料仍需保留，不以此出口宣告全面安全。
-    citations: ['[@NIMH:diagnosis]', '[@NB:assessment]', '[@C:33-34]']
-  - id: missing
-    kind: unknown
-    role: uncertainty
-    card_width: 480
-    label: 尚無已知風險／線索，但病程資料仍缺
-    items:
-      - 補病程、持續時間、旁證、功能及實際用藥。
-      - 未確認不算陰性；安全資料不清時先做臨床安全評估。
-      - 一旦已有危險或疑似躁症，先依緊急評估條件處理，不等待資料齊備。
-    detail: 這個出口保留判斷，不把未知轉躁史當成已排除。補資料後回查相應項目；已知風險與其他資料未知並存時，優先處理風險並保留缺口。
-    citations: ['[@NB:recognition]', '[@NB:assessment]', '[@C:11]']
+- id: context
+  kind: step
+  role: assessment
+  card_width: 600
+  label: 記錄轉躁線索、縱向病程與實際用藥
+  items:
+  - 詢問睡眠需求降低、活動增加、語速加快／思緒奔逸及異常誇大。
+  - 補持續時間、嚴重度、功能、旁證、過往病程及物質／藥物因素。
+  - 列出抗憂鬱劑、抗精神病藥與 mood stabiliser，區分單方與合併用藥。
+  detail: 結合持續時間、嚴重度、功能與縱向病程，安排精神科診斷及鑑別；有危險或疑似躁症時優先評估。
+  citations:
+  - '[@NIMH:symptoms]'
+  - '[@NIMH:diagnosis]'
+  - '[@NB:recognition]'
+  - '[@NB:assessment]'
+- id: specialist
+  kind: terminal
+  role: safety
+  card_width: 640
+  label: 轉入專業照護：緊急評估與用藥前提分開
+  items:
+  - 疑似躁症、嚴重憂鬱或對自己／他人有危險：依 NICE 1.2.2 緊急專業評估。
+  - 僅有辨認線索：取得完整病程與精神科鑑別評估。
+  - 僅在已出現躁／輕躁且抗憂鬱劑單方時，1.5.2 建議考量停該藥，並提供抗精神病藥，不論是否停抗憂鬱劑。
+  - 已出現躁／輕躁，且尚未使用抗精神病藥或 mood stabiliser，1.5.3 列 haloperidol、olanzapine、quetiapine、risperidone；保留偏好、共病、過往反應與副作用。
+  detail: 依確認後的躁／輕躁狀態與實際用藥，比較適用方案；選擇時納入偏好、共病、既往反應與副作用。
+  citations:
+  - '[@NB:recognition]'
+  - '[@NB:assessment]'
+  - '[@NB:mania]'
+  - '[@C:11,36-37]'
+- id: complete
+  kind: terminal
+  role: outcome
+  card_width: 460
+  label: 未見所列線索，保留病程與鑑別追蹤
+  items:
+  - 帶回縱向病程、實際用藥與反應，比較適用的MDD策略。
+  - 後續出現新線索或安全改變時，重新評估。
+  detail: 繼續追蹤病程與功能變化。
+  citations:
+  - '[@NIMH:diagnosis]'
+  - '[@NB:assessment]'
+  - '[@C:33-34]'
+- id: missing
+  kind: unknown
+  role: uncertainty
+  card_width: 480
+  label: 尚無已知風險／線索，但病程資料仍缺
+  items:
+  - 補持續時間、病程、旁證、功能及實際用藥。
+  - 安全資料不清時先做臨床安全評估；已有危險或疑似躁症時緊急轉介。
+  detail: 取得病程與用藥資料後重新評估。
+  citations:
+  - '[@NB:recognition]'
+  - '[@NB:assessment]'
+  - '[@C:11]'
 edges:
-  - {from: context, to: triage, label: 分清線索、疑似、確認與未知, role: flow}
-  - {from: triage, to: specialist, label: 有線索／風險、疑似或已確認躁／輕躁, role: flow}
-  - {from: triage, to: complete, label: 已核對，未見上述線索或風險, role: flow}
-  - {from: triage, to: missing, label: 尚無已知線索／風險，但資料未齊, role: flow}
-  - {from: missing, to: context, label: 補病程與用藥後回查；安全疑慮先處理, role: feedback}
-notes:
-  - 'NIMH 與 NICE 均限已登錄選讀範圍，沒有完成整份雙極性指引、完整診斷或躁期處方評讀。[@NIMH:diagnosis][@NB:mania]'
-  - '辨認線索、緊急轉介與已出現躁／輕躁後的用藥前提用途不同；不能合成由單一警訊到處方的自動路徑。[@NB:recognition][@NB:mania]'
+- from: context
+  to: specialist
+  label: 有線索／風險、疑似或已確認躁／輕躁
+  role: flow
+- from: context
+  to: complete
+  label: 已核對，未見上述線索或風險
+  role: flow
+- from: context
+  to: missing
+  label: 尚無已知線索／風險，但資料未齊
+  role: flow
+- from: missing
+  to: context
+  label: 補病程與用藥後回查；安全疑慮先處理
+  role: feedback
+notes: []

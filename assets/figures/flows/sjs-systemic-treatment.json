@@ -1,0 +1,21 @@
+{
+  "definition_sha256": "2fb96ba7e6ff7abef662983aca10fa664268a313f0f11c87e2794d6dc3744122",
+  "flow_id": "sjs-systemic-treatment",
+  "mermaid_sha256": "86316805eb051a15df9d717a1ba0601604da8aba7f4e9cf7aaf1ea95c04660a1",
+  "renderer": {
+    "files": {
+      "scripts/clinical_flow_svg.py": "a78cea048954bd7a46fa1bba0c6951a62c420d080254a53bcb9c4cc08d4f5029",
+      "scripts/flows.py": "e59ba68f111bd10d1666d50b1ebd47096c4e78ea34baae770cd69fd7d8344237",
+      "tools/diagrams/layout-clinical.mjs": "27f9f600caaa566b613b6fadeff59da4f755307492ba8b5eacafc456cedef16c",
+      "tools/diagrams/package-lock.json": "9b34ddb44c0317e745aa3a7746f151c8727b65cc0208a3099e8a62f78408eece",
+      "tools/diagrams/package.json": "3c89e293b28e135adee1d8f76099f233e4f9c4ba59ad2c354c3e9d426ec7e1fb",
+      "tools/diagrams/render-flows.mjs": "8377c99ecb0d8d65dc654a1da742e33c85eb18cb13ea00ad2a2ed0e84171a293"
+    },
+    "integrity": "sha512-IhMYKHE4S2vtx0QrhBP3lYOIKDeIiJXBrdq9MGYkuB8ZHqhrBnHNfSUndjXFewrX1CPK8chwq+2NA0K0hliYuw==",
+    "name": "elkjs",
+    "sha256": "81b9e7ff5e698a3a7884648e941aa20e17c75ca47c2267eba0b70a8c7af1a69d",
+    "version": "0.12.1"
+  },
+  "svg_sha256": "0f434e9c0cb3b55f7a1c007aa10b2addb8089d2f51d014c2a462bdcd5d3a996c",
+  "visible_text_sha256": "1abd464fa631fe506328890c86cb692d2f22afa921bb932b350a1fbdc62299fe"
+}

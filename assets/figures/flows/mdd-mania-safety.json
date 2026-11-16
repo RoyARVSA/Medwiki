@@ -1,21 +1,21 @@
 {
-  "definition_sha256": "bf3cc4de161c1f3af6ae837c81efb5983a312b5c13548b5fea5fab1df376a5b2",
+  "definition_sha256": "a4e7a7234fc1d96c6e673bf96ff4589cc38ebb7fd417ce3787af1b6282bd9d24",
   "flow_id": "mdd-mania-safety",
-  "mermaid_sha256": "d0e7221b4e5ed0021dd53f23882bb14bf8c5ee035809a1a08854f4732d00080e",
+  "mermaid_sha256": "a68cf0b9951392fd21d637bb120a8fcd7203993d7ecb5ae8ceeaed0a9afa6874",
   "renderer": {
     "files": {
-      "scripts/clinical_flow_svg.py": "9ad0a95717e45cb7a1508228db37c913e0a26af3f7646c3e48ab1b4db673fe27",
-      "scripts/flows.py": "b7066892e2ce8eedc2b86421d1d8d043950cb413449b06c85a1de846e806f656",
-      "tools/diagrams/layout-clinical.mjs": "0a69381b6839b3c68557130ad830d24880cb3425a78cdd2d914aadc710abfcf2",
+      "scripts/clinical_flow_svg.py": "a78cea048954bd7a46fa1bba0c6951a62c420d080254a53bcb9c4cc08d4f5029",
+      "scripts/flows.py": "e59ba68f111bd10d1666d50b1ebd47096c4e78ea34baae770cd69fd7d8344237",
+      "tools/diagrams/layout-clinical.mjs": "27f9f600caaa566b613b6fadeff59da4f755307492ba8b5eacafc456cedef16c",
       "tools/diagrams/package-lock.json": "9b34ddb44c0317e745aa3a7746f151c8727b65cc0208a3099e8a62f78408eece",
       "tools/diagrams/package.json": "3c89e293b28e135adee1d8f76099f233e4f9c4ba59ad2c354c3e9d426ec7e1fb",
       "tools/diagrams/render-flows.mjs": "8377c99ecb0d8d65dc654a1da742e33c85eb18cb13ea00ad2a2ed0e84171a293"
     },
     "integrity": "sha512-IhMYKHE4S2vtx0QrhBP3lYOIKDeIiJXBrdq9MGYkuB8ZHqhrBnHNfSUndjXFewrX1CPK8chwq+2NA0K0hliYuw==",
     "name": "elkjs",
-    "sha256": "206f20649982da87b5f57162ff3ea2d36d4fca8713d0bc9857447026d68092b8",
+    "sha256": "81b9e7ff5e698a3a7884648e941aa20e17c75ca47c2267eba0b70a8c7af1a69d",
     "version": "0.12.1"
   },
-  "svg_sha256": "96aa0113ca68dc48030db34d1ce5608937d3321d7148e574a600545913686aa6",
-  "visible_text_sha256": "307952dc30a113babd4e25c6388b81557513d0389ea77e7e80ba580da134b650"
+  "svg_sha256": "a3e6d347fc3759d2e1e71ea5775f4f43b1d5164ef3d783476485d30f256481fd",
+  "visible_text_sha256": "d85b0fd7652f12e8c228a7ec805e9c0621cdfa548211525380e02e45f6491ffb"
 }

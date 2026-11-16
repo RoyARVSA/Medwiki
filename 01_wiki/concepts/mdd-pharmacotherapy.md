@@ -4,7 +4,7 @@ title: 憂鬱症：藥物治療與安全
 title_en: Antidepressant selection and medication safety
 type: concept
 created: 2026-11-14
-updated: 2026-11-14
+updated: 2026-11-16
 summary: 分開藥物療效、線別、每日劑量範圍、耐受性、交互作用與監測；舊版數字保留年代及限制。
 tags: [psychiatry, MDD, antidepressants, medication-safety]
 aliases: [SSRI, SNRI, TCA, MAOI, pharmacotherapy, lithium monitoring]
@@ -81,7 +81,7 @@ WFSBP 2013 舊表的 citalopram 劑量含括號中的 60 mg，但同篇另討論
 
 ## 啟動與停藥期間的安全追蹤
 
-CANMAT 指出自殺相關風險與年齡、疾病狀態及治療時段均有關。抗憂鬱劑整體可減少自殺意念，但部分患者在開始治療時可能增加意念或激動；尤其需注意年輕族群。**新開抗憂鬱劑後前四週及停藥後需加強留意**，不是以「藥一定有害」或「藥一定預防自殺」概括。[@C:21]
+CANMAT 指出自殺相關風險與年齡、疾病狀態及治療時段均有關。抗憂鬱劑整體可減少自殺意念，但部分患者在開始治療時可能增加意念或激動；尤其需注意年輕族群。**新開抗憂鬱劑後前四週及停藥後需加強留意**。[@C:21]
 
 混合特徵、活化、疑似躁／輕躁轉換須重新檢視診斷；症狀維度可以幫助討論藥物選擇，但 CANMAT 未證實某一藥對所有 anhedonia 都優於其他藥。[@C:19-21]
 

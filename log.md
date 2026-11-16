@@ -147,3 +147,26 @@
 - 流程與規範提交a0f0b21已推至main；GitHub Actions 43734816666的build／deploy均成功，雲端重新執行完整測試、流程與公開邊界檢查。
 - 正式首頁、SJS準則頁、MDD再評估頁及兩份代表SVG均以純HTTP讀取確認200，逐檔SHA-256與本機驗證成品相同；沒有執行瀏覽器程式。原始PDF與private未推送。
 - 以上證明本次成品已上線，不取代尚未完成的瀏覽器／裝置互動或人工醫學審閱。完整製圖與來源驗收見docs/clinical-flow-redesign-audit.md。
+
+
+## 2026-11-16 · query / maintenance · Clinical pathway authoring revision proposal
+
+- 使用者指出SJS圖停在準則與資料狀態、分支重複、處置未銜接，MDD部分正文及圖內有多餘預防性句子；要求這輪提出新的製作流程，不重畫SJS。
+- 已實際檢視使用者CRS圖片並找到EPOS2020 Figure1.6.2原始出處，另讀Figures1.6.1、1.6.3–1.6.4與相鄰正文。實際檢視GINA2026 Figures4、5、9及相鄰正文、BTS2023 Appendix1的診斷與處置圖；獨立agent另回查CANMAT Figure7.1及CAPABLE情境驗證方法。
+- 新增docs/clinical-pathway-authoring-revision.md供確認：先定臨床旅程及種子情境、從原圖取主幹、列狀態—行動—回饋表、走完整路徑，再刪重複節點／預防性句子、排版、案例及圖面驗收；附兩段MDD改寫例與AGENTS核心條文草案。
+- 四份新來源均partial/not_reviewed，摘要publish:false，原件、使用者附圖與擷取留本機。BTS同頁圖／表的LDH邊界差異只記來源open，不裁決或寫入疾病正文。沒有將其他科的指引治療內容移植入SJS/MDD。
+- 本輪不改AGENTS生效條文、既有疾病正文、流程定義／成品，不執行推送或部署。僅更新方法研究、來源登錄、內容索引與本紀錄；檢查結果另附。
+
+- 草案獨立審查提出「僅有正文／表格、沒有原圖時仍需能新製」P2，已補入依資料依賴、處置先後與重評連接的做法。已通過metadata／引用／wiki及網站連結／私有排除lint，另核對草案連結、四原件雜湊及既有醫學正文、流程、程式、AGENTS未變更。純文件研究未新增或重跑工程測試。
+
+
+## 2026-11-16 · maintenance / synthesis / output · Adopt clinical pathway workflow
+
+- 使用者確認新製作流程，要求正式寫入AGENTS、製圖手冊與範本，精簡多餘預防句，再把SJS診斷、嚴重度、具體處置及重評追蹤接完整。新增docs/sjs-pathway-implementation-plan.md；沿用既有隔離worktree與穩定URL。
+- 正式規範採八步臨床流程，醫學原圖與情境優先；必要條件直接陳述，無作用框及通用預防句刪減。製圖工具撤除每個decision強制unknown出口，保留至少兩個具名分支、引用、可達性、安全轉義及真未知回返；新回歸先失敗後通過。
+- 來源決策表及14個先定教學案例由Watanabe／Heuer原文建立，先於YAML；三圖以診斷／分層、全身治療／反應、器官照護／追蹤為任務。CRISTEN預後與臨床治療分層分開，不新訂門檻。
+- MDD精簡使用者指出的PHQ與加用藥段落、圖內重複提醒，去除兩個重述資料狀態的框，保留反應時程、用藥前提、腎肝條件及MAOI未解差異。獨立來源agent已核對語義及原文，未見剩餘P1/P2；SJS與最終圖像／整合驗收持續進行。
+
+- SJS三圖及診斷／治療／器官三章、核心頁與科別map同步完成，保持既有approach id／URL。獨立來源審查回查Watanabe PDF2–11、Heuer PDF1–6及實際表圖，僅看圖走查S1–S14，未見剩餘P1/P2。未提供的pulse、PE／IVIG完整處方與固定重評／追蹤時程集中列缺口，未自行補寫。
+- 圖像工程審查修正PE等縮寫被拆行、回饋線穿過前向分支標籤，以及ELK零種子導致重畫版面不同三項問題；均先以失敗測試重現。固定非零種子後99項Python測試通過／0skip，兩組Node功能測試及三支前端JS語法檢查通過。八張定義／成品／renderer／資產紀錄雜湊一致；八圖獨立重建兩次逐檔一致，七張卡片51節點／69連線幾何核對及八圖實際渲染未見剩餘遮擋。Agent審查與人工醫學審閱仍分開。
+- 統一索引／白名單建置、metadata／引用／wiki及網站連結／私有排除lint通過；30份規範與範本的實際文件連結通過。以已暫存公開檔案另建乾淨副本，不含raw、private、node_modules，無私有原件仍可重建，262檔／103HTML與本機成品逐檔位元一致。SJS原網址含三張流程及操作缺口錨點。推送／部署及實際瀏覽器驗收另附結果。

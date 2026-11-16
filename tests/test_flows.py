@@ -94,15 +94,24 @@ class FlowTests(unittest.TestCase):
         self.graph['edges'].pop()
         self.assertIn('unreachable', self.errors().lower())
 
-    def test_decisions_require_evidence_and_explicit_unknown_exit(self):
+    def test_decisions_require_source_evidence(self):
         self.graph['nodes'][0]['citations'] = []
         self.assertIn('evidence', self.errors().lower())
-        self.graph = definition()
-        self.graph['nodes'][2]['kind'] = 'terminal'
-        self.assertIn('unknown', self.errors().lower())
-        self.graph = definition()
-        self.graph['edges'][0]['label'] = ''
-        self.assertIn('label', self.errors().lower())
+
+    def test_decisions_require_at_least_two_outgoing_routes(self):
+        self.graph['nodes'].pop(1)
+        self.graph['edges'].pop(0)
+        self.assertIn('at least two', self.errors().lower())
+
+    def test_decision_branches_require_nonempty_labels(self):
+        for label in [None, '', '   ']:
+            with self.subTest(label=label):
+                self.graph = definition()
+                if label is None:
+                    self.graph['edges'][0].pop('label')
+                else:
+                    self.graph['edges'][0]['label'] = label
+                self.assertIn('label', self.errors().lower())
 
     def test_leaf_nodes_must_explicitly_be_terminal_or_unknown(self):
         self.graph['nodes'][1]['kind'] = 'step'
@@ -279,6 +288,19 @@ class FlowTests(unittest.TestCase):
 
     @unittest.skipUnless((ROOT / 'tools/diagrams/node_modules/pele').is_dir(),
                          'npm ci --prefix tools/diagrams is required for renderer integration')
+    def test_two_way_path_does_not_announce_an_unknown_exit(self):
+        self.graph['nodes'][2].update(
+            id='alternative', kind='terminal', label='Recorded alternative endpoint',
+            detail='The alternative endpoint in the supplied fixture.')
+        self.graph['edges'][1].update(to='alternative', label='Condition absent')
+        self.save()
+        flows.build_flows(self.root, SOURCE, tools_root=ROOT)
+        html = flows.render_flow(self.root, 'fixture-flow', 'index.html', SOURCE, tools_root=ROOT)
+        self.assertIn('此圖呈現來源支持的學習關係', html)
+        self.assertNotIn('未知資訊有獨立出口', html)
+
+    @unittest.skipUnless((ROOT / 'tools/diagrams/node_modules/pele').is_dir(),
+                         'npm ci --prefix tools/diagrams is required for renderer integration')
     def test_product_labels_and_standalone_theme_preserve_unknown_annotation(self):
         self.graph['conflict_status'] = 'open'
         self.save()
@@ -287,6 +309,7 @@ class FlowTests(unittest.TestCase):
         self.assertIn('診斷準則圖', html)
         self.assertIn('尚未人工審閱', html)
         self.assertIn('保留來源差異', html)
+        self.assertIn('未知資訊有獨立出口', html)
         self.assertNotIn('conflict_status:', html)
         self.assertNotIn('not_reviewed', html)
         svg = ET.fromstring((self.root / 'assets/figures/flows/fixture-flow.svg').read_text(encoding='utf-8'))

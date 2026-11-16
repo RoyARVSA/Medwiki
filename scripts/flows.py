@@ -101,6 +101,11 @@ def _inline_citation_errors(text, sources, source_ids):
 
 
 def _definition_errors(data, flow_id, sources):
+    """Validate graph structure and evidence, not clinical completeness.
+
+    Decisions need labeled alternatives. Whether missing information changes
+    an action, and therefore needs its own route, is a clinical content review.
+    """
     errors = []
     if data.get('presentation') not in (None, 'clinical-cards'):
         errors.append('presentation must be clinical-cards when specified')
@@ -202,10 +207,10 @@ def _definition_errors(data, flow_id, sources):
                 e.get('role') != 'feedback' or not e.get('label', '').strip() for e in routes):
             errors.append(f'{node_id}: unknown outgoing edges must be explicitly labeled feedback')
         if node.get('kind') == 'decision':
+            if len(routes) < 2:
+                errors.append(f'{node_id}: decision requires at least two outgoing routes')
             if any(not e.get('label', '').strip() for e in routes):
                 errors.append(f'{node_id}: all decision branch labels must be nonempty')
-            if not any(by_id[e['to']].get('kind') == 'unknown' for e in routes):
-                errors.append(f'{node_id}: decision requires an explicit unknown exit')
     if isinstance(entry, str) and entry in ids:
         reached, pending = set(), [entry]
         while pending:
@@ -630,9 +635,10 @@ def render_flow(root, flow_id, current, sources, *, tools_root=None):
     if data.get('presentation') == 'clinical-cards':
         url = common.relative_url('assets/figures/flows/' + flow_id + '.svg', current)
         parts.append(f'<a class="flow-open-full" href="{escape(url, quote=True)}" target="_blank" rel="noopener">開啟完整圖</a>')
+    unknown_note = '；未知資訊有獨立出口' if any(node['kind'] == 'unknown' for node in data['nodes']) else ''
     parts.extend(['</div>', '<div class="flow-viewport" tabindex="0" aria-label="可縮放流程圖">',
                   svg, '</div>', '<div class="flow-steps"><h3>文字步驟與節點說明</h3>',
-                  '<p>此圖呈現來源支持的學習關係；未知資訊有獨立出口。</p>', '<ol>'])
+                  f'<p>此圖呈現來源支持的學習關係{unknown_note}。</p>', '<ol>'])
     if data.get('presentation') == 'clinical-cards':
         import clinical_flow_svg
         parts.insert(-1, '<p class="flow-legend">' + clinical_flow_svg.LEGEND + '</p>')

@@ -4,7 +4,7 @@ title: 憂鬱症：評估與測量照護
 title_en: Assessment and measurement-based care
 type: concept
 created: 2026-11-14
-updated: 2026-11-14
+updated: 2026-11-16
 summary: 分開篩檢、診斷、風險與療效評估；將症狀、功能、生活品質和不良反應一起納入追蹤。
 tags: [psychiatry, MDD, assessment, measurement-based-care]
 aliases: [MBC, PHQ-2, PHQ-9, HAM-D, MADRS, measurement-based care]
@@ -33,7 +33,7 @@ clinical_context: 篩檢、完整診斷評估及治療中測量照護。
 
 ## 篩檢之後要做什麼？
 
-CANMAT 本版對有風險因素者建議在具備後續診斷與治療資源的情境使用驗證量表。Q1.c 的兩步方式是 **PHQ-2 ≥2 → PHQ-9 ≥10**，陽性再做完整評估。這是本指引的篩檢門檻，不應把另一個常見切點或量表結果直接套成診斷準則。[@C:7,9]
+CANMAT 本版對有風險因素者建議在具備後續診斷與治療資源的情境使用驗證量表。Q1.c 的兩步方式是 **PHQ-2 ≥2 → PHQ-9 ≥10**，陽性再做完整評估。[@C:7,9]
 
 完整評估納入情緒、認知、身體症狀及功能；病程、過去治療與反應、家族史、逆境與保護因素、文化／語言及可近性也會改變判讀。需要時取得旁證，敏感探索不一定會主動提出的創傷史。[@C:6-9]
 

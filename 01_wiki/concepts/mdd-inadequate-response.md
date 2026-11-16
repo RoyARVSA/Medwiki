@@ -73,7 +73,7 @@ Table 7.1／Q7.c 要核對：診斷（包括遺漏雙極性）、精神科與身
 | 二線 | Modafinil／triiodothyronine | 分別 100–400 mg/day／25–50 μg/day；甲狀腺素的單位不可誤成 mg。 |
 | 三線 | 其他抗憂鬱劑、stimulants、lamotrigine、非 IV racemic ketamine、pramipexole、ziprasidone | 原表的證據、安全與途徑限制各不相同，不能合稱等效。 |
 
-Aripiprazole／brexpiprazole 的一線是本版的 adjunctive 線別；不是所有抗精神病藥均一線。Ketamine／esketamine 的急速降低自殺意念證據，不等同已證實降低自殺死亡；其監測與可行性負擔也是列二線的原因。長期 adjunctive 藥物要繼續多久，證據仍有限。[@C:36-37]
+Aripiprazole／brexpiprazole 為本版一線加用藥物。Ketamine／esketamine 有快速降低自殺意念的證據；監測與可行性負擔也是其列二線的原因。長期 adjunctive 藥物要繼續多久，證據仍有限。[@C:36-37]
 
 Lithium／triiodothyronine 的研究脈絡需另外保留：CANMAT Q7.g 指出所述 network meta-analysis 中，兩者的 RCT 是 2003 年以前、小樣本且與 TCA 合併，不能把表格數字讀成所有現代合併策略都經同等驗證。Lithium 需濃度監測，T3 也需甲狀腺濃度監測。[@C:38]
 

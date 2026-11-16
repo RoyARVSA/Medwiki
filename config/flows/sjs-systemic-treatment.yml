@@ -1,0 +1,110 @@
+id: sjs-systemic-treatment
+title: SJS/TEN：全身治療、反應與升階
+kind: management
+presentation: clinical-cards
+population: 沿用同頁診斷與器官分層結果；日本Figure2的治療路徑，撤藥／支持及眼部照護持續。
+version: Watanabe 2025 Supplement（2026刊登），Figure2、CQ12–13及17；Heuer 2026比較證據另列。
+source_ids: [src-watanabe-2026, src-heuer-2026]
+review_status: not_reviewed
+conflict_status: open
+entry: select-initial
+nodes:
+  - id: select-initial
+    kind: step
+    role: assessment
+    card_width: 560
+    label: 按皮膚進展與眼部嚴重度選初始治療
+    detail: 原Figure2框內有三組；CQ13也支持嚴重、快速進展或皮膚輕但眼重時考慮pulse。圖說與框內的表述差異及療效不確定性集中於同頁說明。
+    items:
+      - 繼續撤藥與支持照護；同時執行圖3的眼／器官處理。
+      - 廣泛糜爛時，類固醇須衡量感染與表皮再生抑制風險。
+    citations: ['[@W:6-7]', '[@H:1-2]']
+  - id: mild
+    kind: step
+    role: action
+    card_width: 400
+    label: 慢進展、輕中度：全身類固醇
+    detail: Figure2左組的初始prednisolone等效劑量。
+    items:
+      - Prednisolone equivalent 0.5–1.0 mg/kg/day。
+      - 觀察皮膚進展、再上皮、眼部與感染。
+    citations: ['[@W:7]']
+  - id: progressive
+    kind: step
+    role: action
+    card_width: 400
+    label: 進展性／嚴重：全身類固醇
+    detail: Figure2中組的初始prednisolone等效劑量；CQ13另述嚴重時可考慮pulse。
+    items:
+      - Prednisolone equivalent 1.0 mg/kg/day。
+      - 觀察皮膚進展、再上皮、眼部與感染。
+    citations: ['[@W:6-7]']
+  - id: pulse
+    kind: step
+    role: safety
+    card_width: 440
+    label: 快速進展／最嚴重或嚴重眼部：早期pulse
+    detail: 眼表上皮缺損／偽膜屬嚴重眼部。CQ13引述發病4日內pulse可能減少眼後遺症；精確pulse藥量及療程未在本補充文件給定。
+    items:
+      - 考慮steroid pulse therapy。
+      - 眼部嚴重時同時高劑量局部類固醇，密切監測感染。
+    citations: ['[@W:5-7]']
+  - id: response
+    kind: step
+    role: followup
+    card_width: 640
+    label: 持續重看新病灶／剝離、再上皮、眼部及感染
+    detail: Figure2要求反應不足或持續進展時不延誤第二階段；來源未定各療法固定重評間隔，按當下變化重新選擇。
+    items:
+      - 持續進展／初始反應不足：按已用方案選下方升階。
+      - 中重度或類固醇單用後再上皮不足：可考慮加etanercept（CQ17弱推薦）。
+      - CQ17日本試驗：etanercept 50 mg/week、最多3次，合併類固醇。
+    citations: ['[@W:6-7]', '[@W:11]']
+  - id: second-progressive
+    kind: step
+    role: action
+    card_width: 520
+    label: 慢進展或進展性組反應不足：選第二階段方案
+    detail: 左組反應不佳接中組第二階段。下列為原圖並列選項；圖上pulse、pulse＋PE及PE三路之後均有箭頭接IVIG，也可直接IVIG。
+    items:
+      - 可選pulse、pulse＋PE、PE或直接IVIG。
+      - 前三條路之後可接IVIG。
+      - PE／IVIG合併中高劑量全身類固醇；IVIG後不立即PE。
+    citations: ['[@W:7]']
+  - id: second-pulse
+    kind: step
+    role: action
+    card_width: 480
+    label: 已用pulse仍進展：PE後IVIG，或直接IVIG
+    detail: Figure2右組的第二階段，眼部局部治療與器官支持同步繼續。
+    items:
+      - 可選PE後接IVIG，或直接IVIG。
+      - PE／IVIG合併中高劑量全身類固醇。
+      - IVIG後不立即PE。
+    citations: ['[@W:7]']
+  - id: improving
+    kind: terminal
+    role: followup
+    card_width: 440
+    label: 皮膚／全身改善：按反應調整，接圖3持續器官照護
+    detail: 全身與眼部恢復可能不同步；圖3提供具名眼部及臟器觀察與慢性後遺症選項。
+    items:
+      - 按臨床反應調整全身類固醇。
+      - 眼表仍炎症時，局部治療較慢減量並監測感染。
+      - 繼續查看呼吸、肝腎與慢性眼部後遺症。
+    citations: ['[@W:4-6]']
+edges:
+  - {from: select-initial, to: mild, label: 慢進展、輕中度}
+  - {from: select-initial, to: progressive, label: 進展性／嚴重}
+  - {from: select-initial, to: pulse, label: 快速進展／最嚴重，或眼表缺損／偽膜}
+  - {from: mild, to: response, label: 初始治療後持續觀察}
+  - {from: progressive, to: response, label: 初始治療後持續觀察}
+  - {from: pulse, to: response, label: 全身與眼部同步重評}
+  - {from: response, to: second-progressive, label: 初始0.5–1或1 mg/kg/day後反應不足／進展}
+  - {from: response, to: second-pulse, label: 初始pulse後反應不足／進展}
+  - {from: response, to: improving, label: 皮膚／全身改善}
+  - {from: second-progressive, to: response, role: feedback, label: 升階後重看進展、再上皮、眼及感染}
+  - {from: second-pulse, to: response, role: feedback, label: 升階後重看進展、再上皮、眼及感染}
+notes:
+  - 'W推薦早期高劑量類固醇／pulse；H對支持照護死亡率RR0.50（95%CI0.23–1.09），療效比較仍open。[@W:6][@H:3-6]'
+  - 'PE＝plasma exchange；IVIG＝intravenous immunoglobulin。具體療程、途徑與逐藥安全資訊的來源缺口見同頁。[@W:7]'

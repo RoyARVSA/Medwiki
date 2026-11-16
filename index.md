@@ -70,7 +70,7 @@
 - [Sézary 症候群（白血病型皮膚 T 細胞淋巴瘤）](01_wiki/concepts/sezary-syndrome.md)：紅皮症＋劇癢＋淋巴結腫大，再加上血中克隆性異常 T 細胞證據 → 考慮 Sézary syndrome。（not_reviewed）
 - [診斷與評估](01_wiki/concepts/sjs-ten-diagnosis.md)：區分國際分型與日本準則，保留黏膜、病理、鑑別與致病藥物檢測的條件。（not_reviewed）
 - [器官併發症](01_wiki/concepts/sjs-ten-organs.md)：從急性眼表損傷走向慢性後遺症，並整理肺、肝、腎與感染的評估線索。（not_reviewed）
-- [處置與流程](01_wiki/concepts/sjs-ten-treatment.md)：保留日本指引的分層處置流程，並與系統性回顧的效果及限制分開閱讀。（not_reviewed）
+- [處置與流程](01_wiki/concepts/sjs-ten-treatment.md)：連接撤藥與支持照護、日本指引初始及升階治療、反應重評，並保留系統性回顧的比較與不確定性。（not_reviewed）
 - [SJS / TEN](01_wiki/concepts/sjs-ten.md)：從表皮壞死、黏膜侵犯與藥物反應，建立診斷、器官評估及治療證據的閱讀路徑。（not_reviewed）
 - [皮贅／軟纖維瘤](01_wiki/concepts/skin-tag.md)：皺摺處一小塊柔軟皮膚由細柄掛著：skin tag。（not_reviewed）
 - [葡萄球菌燙傷樣皮膚症候群](01_wiki/concepts/staphylococcal-scalded-skin-syndrome.md)：幼兒＋皺褶／口周開始的疼痛紅皮與表淺剝脫＋黏膜保留 → 想到 SSSS。（not_reviewed）
@@ -99,7 +99,7 @@
 
 - [表皮剝脫的鑑別思路](01_wiki/approaches/epidermal-detachment-reasoning.md)：依序區分照片外觀、黏膜、病程與檢查證據，再回到 EB、SSSS 與 SJS/TEN 的比較。（not_reviewed）
 - [初始抗憂鬱劑反應不足：再評估思路](01_wiki/approaches/mdd-treatment-reassessment.md)：先核對安全、病程、實際治療與量化變化，再比較增量、換藥、加藥及早期心理治療；保留逐藥限制與未解換藥差異。（not_reviewed）
-- [SJS 診斷準則：逐項核對與限制](01_wiki/approaches/sjs-diagnostic-criteria.md)：用單張五項主準則清單整合次要資訊與全病程，區分全部符合、已知不符及未確認，提供資料回補與重核出口。（not_reviewed）
+- [SJS/TEN：診斷、嚴重度、治療與追蹤路徑](01_wiki/approaches/sjs-diagnostic-criteria.md)：從疑似時撤藥與支持照護，連接日本診斷準則、進展與眼／器官分層、具名全身治療、反應不足升階及後遺症追蹤。（not_reviewed）
 - [皮膚病灶：先描述，再辨認](01_wiki/approaches/skin-lesion-recognition.md)：把照片可見特徵、題幹病史與另外取得的檢驗證據分開，再對照鑑別。（not_reviewed）
 
 ## 學習問答
@@ -111,10 +111,14 @@
 - [WFSBP 2013：急性與延續期治療](02_sources/summaries/bauer-2013-acute-continuation.md)：分清緩解與反應、早期評估與充分治療，以及反應不足、延續期和特殊情境的 2013 年建議。（not_reviewed）
 - [WFSBP 2015：維持治療、再發風險與停藥](02_sources/summaries/bauer-2015-maintenance.md)：從再發風險判斷長期治療需要，分清延續與維持階段，整理原版藥物分級、監測、療程與停藥限制。（not_reviewed）
 - [Building better guidelines with BRIDGE-Wiz: development and evaluation of a software assistant to promote clarity, transparency, and implementability：方法研究選讀](02_sources/summaries/bridge-wiz-2012.md)：奠基性建議句型：明確交代情境、執行者、義務強度、行動、對象及理由。（not_reviewed）
+- [BTS Guideline for Pleural Disease Appendix 1: Clinical Pathways/decision trees：流程方法選讀](02_sources/summaries/bts-2023-pleural-pathways-selected.md)：共同工作包、真正改變去向的判斷、結果組合、處置泳道與失敗後的升階／回返。（not_reviewed）
 - [CANMAT 2023 更新：成人憂鬱症的評估、治療與追蹤](02_sources/summaries/canmat-2023-update.md)：八大問題的完整來源整理，涵蓋初始選擇、測量導向照護、維持停藥、反應不足與神經調控；保留版本、族群及證據限制。（not_reviewed）
+- [Defining and Simulating Scenarios for the CAPABLE Clinical Decision Support System：流程方法選讀](02_sources/summaries/capable-scenarios-2023.md)：先寫臨床情境、輸入與預期建議，再轉換格式及按時間模擬，比對實際建議與預期。（not_reviewed）
 - [CYMBALTA (duloxetine delayed-release capsules): US Prescribing Information：方法研究選讀](02_sources/summaries/cymbalta-us-label-2023.md)：選讀原廠標示的腎肝限制與換藥方向，示範逐藥核對及指標／時間窗保留。（not_reviewed）
 - [皮膚科圖片辨識講義｜55項考古主題](02_sources/summaries/dermatology-atlas-55.md)：主題卡片、鑑別與來源範圍的可追溯目錄。（not_reviewed）
 - [皮膚科圖片辨識增補｜MF・Sézary・SSSS・SJS](02_sources/summaries/dermatology-atlas-supplement-01.md)：主題卡片、鑑別與來源範圍的可追溯目錄。（not_reviewed）
+- [Executive summary of EPOS 2020 including integrated care pathways：流程方法選讀](02_sources/summaries/epos-2020-pathway-selected.md)：整合型路徑由臨床分型接處置、指定時間重評及後續升階；門檻與反應指標各有具體去向。（not_reviewed）
+- [Summary Guide for Asthma Management and Prevention 2026：流程方法選讀](02_sources/summaries/gina-2026-pathway-selected.md)：以急性嚴重度分組接具體治療與一小時內反應重評；慢性階梯圖分開表達治療選項與持續評估。（not_reviewed）
 - [The GuideLine Implementability Appraisal (GLIA): development of an instrument to identify obstacles to guideline implementation：方法研究選讀](02_sources/summaries/glia-2005.md)：奠基性方法：檢查何時適用及具體應做什麼，不能以版面或節點連通取代可用性。（not_reviewed）
 - [全身性免疫調節治療：系統性回顧](02_sources/summaries/heuer-systemic-therapies.md)：方法、主要效果、比較對象與侷限的完整閱讀摘要。（not_reviewed）
 - [Methodology — Clinical Practice Guidelines v2.0.0：方法研究選讀](02_sources/summaries/hl7-cpg-methodology-2.md)：HL7 將建議、策略與照護路徑分層，以事件、適用條件與行動表達建議。（not_reviewed）
@@ -130,10 +134,14 @@
 - [Bauer et al. · WFSBP 急性與延續期指引 2013](02_sources/records/bauer-2013.md)：complete；原始檔本機保存。
 - [Bauer et al. · WFSBP 維持治療 2015](02_sources/records/bauer-2015.md)：complete；原始檔本機保存。
 - [BRIDGE-Wiz · 2012 方法選讀](02_sources/records/bridge-wiz-2012.md)：partial；原始檔本機保存。
+- [BTSP · 2023 流程方法選讀](02_sources/records/bts-2023-pleural-pathways-selected.md)：partial；原始檔本機保存。
 - [CANMAT · 2023 更新版（2024 刊登）](02_sources/records/canmat-2023-update.md)：complete；原始檔本機保存。
+- [CAP · 2023 流程方法選讀](02_sources/records/capable-scenarios-2023.md)：partial；原始檔本機保存。
 - [CYMBALTA US PI · 08/2023 選讀](02_sources/records/cymbalta-us-label-2023.md)：partial；原始檔本機保存。
 - [皮膚病灶辨識・主講義 55 項](02_sources/records/dermatology-atlas-55.md)：complete；原始檔本機保存。
 - [皮膚病灶辨識・增補 01](02_sources/records/dermatology-atlas-supplement-01.md)：complete；原始檔本機保存。
+- [EPOS · 2020 流程方法選讀](02_sources/records/epos-2020-pathway-selected.md)：partial；原始檔本機保存。
+- [GINA26 · 2026 流程方法選讀](02_sources/records/gina-2026-pathway-selected.md)：partial；原始檔本機保存。
 - [GLIA · 2005 方法選讀](02_sources/records/glia-2005.md)：partial；原始檔本機保存。
 - [Heuer et al. · 系統性回顧](02_sources/records/heuer-2026.md)：complete；原始檔本機保存。
 - [HL7 CPG methodology · 2.0.0](02_sources/records/hl7-cpg-methodology-2.md)：partial；原始檔本機保存。
